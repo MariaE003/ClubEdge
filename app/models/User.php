@@ -38,9 +38,6 @@ abstract class User{
         return $this->email;
     }
 
-    public function getTelephone(): string {
-        return $this->telephone;
-    }
 
     public function getRole(): string {
         return $this->role;
@@ -62,33 +59,11 @@ abstract class User{
         $this->email = $email;
     }
 
-    public function setTelephone(string $telephone): void {
-        $this->telephone = $telephone;
-    }
-
     public function setImage(?string $image): void {
         $this->image = $image;
     }
 
-    public function register(): array {
 
-        $check = $this->db->prepare("SELECT id_utilisateur FROM users WHERE email = ?");
-        $check->execute([$this->email]);
-        if ($check->fetch()) {
-            return [
-                "success" => false,
-                "message" => "Email deja utilise"
-            ];
-        }
-        $stmt = $this->db->prepare("INSERT INTO users(nom, prenom, email, password, telephone, role, profile, date_creation) VALUES (?, ?, ?, ?, ?, ?, NOW())");
-        $stmt->execute([$this->nom,$this->prenom,$this->email,$this->password,$this->role,$this->image]);
-        $this->id = $this->db->lastInsertId();
-        return [
-            "success" => true,
-            "message" => "Inscription réussie",
-            "id_utilisateur" => $this->id
-        ];
-    }
     public static function lougoutUser(){
         session_destroy();
     }

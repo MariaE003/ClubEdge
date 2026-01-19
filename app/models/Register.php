@@ -5,8 +5,39 @@ class Register extends User{
         parent::__construct($id,$nom , $prenom , $email , $password , $role , $image);
     }
 
-    public function registerUser(){
-        return parent::register();
+    public function register(): array {
+        $check = $this->db->prepare("SELECT id FROM users WHERE email = ?");
+        $check->execute([$this->email]);
+
+        if ($check->fetch()) {
+            return [
+                "success" => false,
+                "message" => "Email déjà utilisé"
+            ];
+        }
+        $stmt = $this->db->prepare("
+            INSERT INTO users (nom, prenom, email, password, role, profile, date_creation)
+            VALUES (?, ?, ?, ?, ?, ?, NOW())
+            RETURNING id
+        ");
+
+        $stmt->execute([
+            $this->nom,
+            $this->prenom,
+            $this->email,
+            $this->password,
+            $this->role,
+            $this->image
+        ]);
+
+        $this->id = $stmt->fetchColumn();
+
+        return [
+            "success" => true,
+            "message" => "Inscription réussie",
+            "id_utilisateur" => $this->id
+        ];
     }
+
 
 }

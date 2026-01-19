@@ -18,7 +18,7 @@ class AuthController{
         $password = $_POST["password"];
         $result = $this->repo->login($email,$password);
         if ($result['success']) {
-            if($result["user"]["role"] === "coach"){
+            if($result["user"]["role"] === "admin"){
                 header("Location: coach/dashboard");
             }else{
                 header("Location: sportif/dashboard");
@@ -31,11 +31,12 @@ class AuthController{
     }
     public function register() {
         $register = new Register(
+            null,
         $_POST['nom'],
         $_POST['prenom'],
         $_POST['email'],
         $_POST['password'],
-        $_POST['role'],
+        "etudiant",
         $_POST['urlImage']
     );
         $result = $this->repo->register($register);

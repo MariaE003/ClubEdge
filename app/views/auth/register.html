@@ -88,23 +88,23 @@
                     </p>
                 </div>
 
-                <form class="auth-form" action="#" method="POST">
+                <form class="auth-form" action="register" method="POST">
                     <div class="grid grid-cols-2 gap-4">
                         <div class="form-group">
                             <label for="firstname" class="form-label">Prénom</label>
-                            <input type="text" id="firstname" name="firstname" class="form-input" placeholder="Jean"
+                            <input type="text" id="firstname" name="prenom" class="form-input" placeholder="Jean"
                                 required>
                         </div>
 
                         <div class="form-group">
                             <label for="lastname" class="form-label">Nom</label>
-                            <input type="text" id="lastname" name="lastname" class="form-input" placeholder="Dupont"
+                            <input type="text" id="lastname" name="nom" class="form-input" placeholder="Dupont"
                                 required>
                         </div>
 
                         <div class="form-group">
                             <label for="lastname" class="form-label">profile</label>
-                            <input type="url" id="lastname" name="lastname" class="form-input" 
+                            <input type="url" id="lastname" name="urlImage" class="form-input" 
                                 required>
                         </div>
                     </div>
@@ -136,7 +136,6 @@
                         <input type="password" id="password_confirm" name="password_confirm" class="form-input"
                             placeholder="Répétez votre mot de passe" required>
                     </div>
-
                     <div class="form-group">
                         <label class="checkbox-wrapper">
                             <input type="checkbox" class="checkbox" name="terms" required>
