@@ -1,0 +1,224 @@
+/**
+ * ClubEdge - Authentication Pages
+ */
+
+/* Auth branding sidebar */
+.auth-brand {
+    color: var(--color-white);
+}
+
+.auth-brand-logo {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    margin-bottom: var(--space-16);
+}
+
+.auth-brand-logo svg {
+    width: 40px;
+    height: 40px;
+}
+
+.auth-brand-name {
+    font-size: var(--text-xl);
+    font-weight: var(--font-bold);
+    letter-spacing: var(--tracking-tight);
+}
+
+.auth-brand-headline {
+    font-size: var(--text-4xl);
+    font-weight: var(--font-bold);
+    line-height: var(--leading-tight);
+    letter-spacing: var(--tracking-tight);
+    margin-bottom: var(--space-6);
+}
+
+.auth-brand-description {
+    font-size: var(--text-lg);
+    color: var(--color-gray-400);
+    line-height: var(--leading-relaxed);
+    max-width: 480px;
+}
+
+.auth-brand-features {
+    margin-top: var(--space-12);
+}
+
+.auth-feature {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-4);
+    margin-bottom: var(--space-6);
+}
+
+.auth-feature-icon {
+    width: 24px;
+    height: 24px;
+    color: var(--color-accent);
+    flex-shrink: 0;
+}
+
+.auth-feature-text {
+    font-size: var(--text-base);
+    color: var(--color-gray-300);
+}
+
+/* Auth card content */
+.auth-header {
+    text-align: center;
+    margin-bottom: var(--space-8);
+}
+
+.auth-logo {
+    width: 48px;
+    height: 48px;
+    margin: 0 auto var(--space-6);
+}
+
+.auth-title {
+    font-size: var(--text-2xl);
+    font-weight: var(--font-semibold);
+    letter-spacing: var(--tracking-tight);
+    margin-bottom: var(--space-2);
+}
+
+.auth-subtitle {
+    font-size: var(--text-sm);
+    color: var(--color-text-secondary);
+}
+
+.auth-subtitle a {
+    color: var(--color-accent);
+    font-weight: var(--font-medium);
+}
+
+.auth-subtitle a:hover {
+    text-decoration: underline;
+}
+
+/* Auth form */
+.auth-form {
+    margin-bottom: var(--space-6);
+}
+
+.auth-form .form-group:last-of-type {
+    margin-bottom: var(--space-6);
+}
+
+.auth-form .btn {
+    width: 100%;
+    padding: var(--space-4);
+}
+
+.auth-remember {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: var(--space-6);
+}
+
+.auth-forgot {
+    font-size: var(--text-sm);
+    color: var(--color-accent);
+    font-weight: var(--font-medium);
+}
+
+.auth-forgot:hover {
+    text-decoration: underline;
+}
+
+/* Divider */
+.auth-divider {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+    margin: var(--space-6) 0;
+}
+
+.auth-divider::before,
+.auth-divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background-color: var(--border-color);
+}
+
+.auth-divider span {
+    font-size: var(--text-xs);
+    color: var(--color-text-muted);
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-wide);
+}
+
+/* Social login */
+.auth-social {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+}
+
+.auth-social .btn {
+    width: 100%;
+    justify-content: center;
+}
+
+.auth-social-icon {
+    width: 20px;
+    height: 20px;
+}
+
+/* Footer links */
+.auth-footer {
+    text-align: center;
+    padding-top: var(--space-6);
+    border-top: 1px solid var(--border-color);
+    margin-top: var(--space-6);
+}
+
+.auth-footer p {
+    font-size: var(--text-xs);
+    color: var(--color-text-muted);
+}
+
+.auth-footer a {
+    color: var(--color-text-secondary);
+}
+
+.auth-footer a:hover {
+    color: var(--color-text-primary);
+}
+
+/* Password strength */
+.password-strength {
+    margin-top: var(--space-2);
+}
+
+.password-strength-bar {
+    display: flex;
+    gap: var(--space-1);
+    margin-bottom: var(--space-1);
+}
+
+.password-strength-segment {
+    flex: 1;
+    height: 4px;
+    background-color: var(--color-gray-200);
+    border-radius: var(--radius-full);
+}
+
+.password-strength-segment.active {
+    background-color: var(--color-error);
+}
+
+.password-strength-segment.active.medium {
+    background-color: var(--color-warning);
+}
+
+.password-strength-segment.active.strong {
+    background-color: var(--color-success);
+}
+
+.password-strength-text {
+    font-size: var(--text-xs);
+    color: var(--color-text-muted);
+}
