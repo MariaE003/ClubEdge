@@ -1,0 +1,95 @@
+<!-- Button Component Examples -->
+
+<!-- Primary Button -->
+<button class="btn btn-primary">
+    Action principale
+</button>
+
+<!-- Primary with icon -->
+<button class="btn btn-primary">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <line x1="12" y1="5" x2="12" y2="19" />
+        <line x1="5" y1="12" x2="19" y2="12" />
+    </svg>
+    Ajouter
+</button>
+
+<!-- Secondary Button -->
+<button class="btn btn-secondary">
+    Action secondaire
+</button>
+
+<!-- Outline Button -->
+<button class="btn btn-outline">
+    Annuler
+</button>
+
+<!-- Ghost Button -->
+<button class="btn btn-ghost">
+    Voir plus
+</button>
+
+<!-- Small Button -->
+<button class="btn btn-primary btn-sm">
+    Petit bouton
+</button>
+
+<!-- Large Button -->
+<button class="btn btn-primary btn-lg">
+    Grand bouton
+</button>
+
+<!-- Icon Button -->
+<button class="btn btn-icon btn-ghost" aria-label="Options">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <circle cx="12" cy="12" r="1" />
+        <circle cx="12" cy="5" r="1" />
+        <circle cx="12" cy="19" r="1" />
+    </svg>
+</button>
+
+<!-- Disabled Button -->
+<button class="btn btn-primary" disabled>
+    Désactivé
+</button>
+
+<!-- Loading Button -->
+<button class="btn btn-primary" disabled>
+    <div class="spinner spinner-sm"></div>
+    Chargement...
+</button>
+
+<!-- Button Group -->
+<div class="btn-group">
+    <button class="btn btn-outline active">Option 1</button>
+    <button class="btn btn-outline">Option 2</button>
+    <button class="btn btn-outline">Option 3</button>
+</div>
+
+<style>
+    .btn-group {
+        display: inline-flex;
+    }
+
+    .btn-group .btn {
+        border-radius: 0;
+    }
+
+    .btn-group .btn:first-child {
+        border-radius: var(--radius-base) 0 0 var(--radius-base);
+    }
+
+    .btn-group .btn:last-child {
+        border-radius: 0 var(--radius-base) var(--radius-base) 0;
+    }
+
+    .btn-group .btn:not(:last-child) {
+        border-right: none;
+    }
+
+    .btn-group .btn.active {
+        background-color: var(--color-accent);
+        color: var(--color-white);
+        border-color: var(--color-accent);
+    }
+</style>

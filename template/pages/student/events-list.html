@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Découvrez tous les événements des clubs universitaires">
+    <title>Événements - ClubEdge</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="../../assets/css/variables.css">
+    <link rel="stylesheet" href="../../assets/css/reset.css">
+    <link rel="stylesheet" href="../../assets/css/layout.css">
+    <link rel="stylesheet" href="../../assets/css/components.css">
+    <link rel="stylesheet" href="../../assets/css/utilities.css">
+    <link rel="stylesheet" href="../../assets/css/animations.css">
+    <link rel="stylesheet" href="../../assets/css/responsive.css">
+    <link rel="stylesheet" href="../../assets/css/pages/events.css">
+</head>
+
+<body>
+    <div class="app-layout">
+        <!-- Sidebar -->
+        <aside class="app-sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <a href="/" class="sidebar-logo">
+                    <svg width="32" height="32" viewBox="0 0 40 40" fill="none">
+                        <rect width="40" height="40" rx="4" fill="#FF4F00" />
+                        <path
+                            d="M12 28V12H20C22.12 12 24.16 12.84 25.66 14.34C27.16 15.84 28 17.88 28 20C28 22.12 27.16 24.16 25.66 25.66C24.16 27.16 22.12 28 20 28H12Z"
+                            stroke="white" stroke-width="2" />
+                    </svg>
+                    <span class="sidebar-logo-text">ClubEdge</span>
+                </a>
+            </div>
+
+            <nav class="sidebar-nav">
+                <ul class="sidebar-menu">
+                    <li class="sidebar-item">
+                        <a href="dashboard.html" class="sidebar-link">
+                            <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="1.5">
+                                <rect x="3" y="3" width="7" height="9" rx="1" />
+                                <rect x="14" y="3" width="7" height="5" rx="1" />
+                                <rect x="14" y="12" width="7" height="9" rx="1" />
+                                <rect x="3" y="16" width="7" height="5" rx="1" />
+                            </svg>
+                            <span>Tableau de bord</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="clubs-list.html" class="sidebar-link">
+                            <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="1.5">
+                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                                <circle cx="9" cy="7" r="4" />
+                                <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                                <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                            </svg>
+                            <span>Clubs</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="events-list.html" class="sidebar-link active">
+                            <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="1.5">
+                                <rect x="3" y="4" width="18" height="18" rx="2" />
+                                <line x1="16" y1="2" x2="16" y2="6" />
+                                <line x1="8" y1="2" x2="8" y2="6" />
+                                <line x1="3" y1="10" x2="21" y2="10" />
+                            </svg>
+                            <span>Événements</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="articles-list.html" class="sidebar-link">
+                            <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="1.5">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                                <polyline points="14 2 14 8 20 8" />
+                            </svg>
+                            <span>Articles</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="sidebar-user">
+                    <div class="avatar avatar-sm">JD</div>
+                    <div class="sidebar-user-info">
+                        <span class="sidebar-user-name">Jean Dupont</span>
+                        <span class="sidebar-user-role">Étudiant</span>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <div class="app-main">
+            <header class="app-header">
+                <button class="btn btn-icon btn-ghost" id="menu-toggle">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="1.5">
+                        <line x1="3" y1="12" x2="21" y2="12" />
+                        <line x1="3" y1="6" x2="21" y2="6" />
+                        <line x1="3" y1="18" x2="21" y2="18" />
+                    </svg>
+                </button>
+                <div class="flex-1"></div>
+                <button class="btn btn-icon btn-ghost">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="1.5">
+                        <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" />
+                        <path d="M13.73 21a2 2 0 0 1-3.46 0" />
+                    </svg>
+                </button>
+                <div class="avatar avatar-sm">JD</div>
+            </header>
+
+            <main class="app-content">
+                <!-- Page Header -->
+                <div class="page-header">
+                    <h1 class="page-title">Événements</h1>
+                    <p class="page-description">Découvrez tous les événements organisés par les clubs et inscrivez-vous.
+                    </p>
+                </div>
+
+                <!-- Filter Tabs -->
+                <div class="events-filters mb-8">
+                    <div class="tabs">
+                        <button class="tab active" data-filter="all">Tous</button>
+                        <button class="tab" data-filter="upcoming">À venir</button>
+                        <button class="tab" data-filter="past">Passés</button>
+                    </div>
+                </div>
+
+                <!-- Events Grid -->
+                <div class="grid grid-cols-3 gap-6 stagger-animation">
+                    <!-- Event Card 1 -->
+                    <div class="event-card" data-status="upcoming">
+                        <div class="event-card-header">
+                            <div class="event-card-cover"
+                                style="background: linear-gradient(135deg, #1a1a1a 0%, #404040 100%);"></div>
+                            <div class="event-card-date">
+                                <span class="event-card-day">24</span>
+                                <span class="event-card-month">Jan</span>
+                            </div>
+                        </div>
+                        <div class="event-card-body">
+                            <span class="badge badge-accent mb-2">À venir</span>
+                            <h3 class="event-card-title">Tournoi d'échecs inter-clubs</h3>
+                            <p class="event-card-description">Affrontez les meilleurs joueurs de l'établissement dans un
+                                tournoi passionnant.</p>
+                            <div class="event-card-meta">
+                                <div class="event-card-info">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                        <circle cx="12" cy="12" r="10" />
+                                        <polyline points="12 6 12 12 16 14" />
+                                    </svg>
+                                    <span>14h00 - 18h00</span>
+                                </div>
+                                <div class="event-card-info">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                                        <circle cx="12" cy="10" r="3" />
+                                    </svg>
+                                    <span>Salle A102</span>
+                                </div>
+                            </div>
+                            <div class="event-card-footer">
+                                <div class="event-card-participants">
+                                    <div class="avatar-group">
+                                        <div class="avatar avatar-sm">P1</div>
+                                        <div class="avatar avatar-sm">P2</div>
+                                        <div class="avatar avatar-sm">P3</div>
+                                        <div class="avatar avatar-sm">+5</div>
+                                    </div>
+                                    <span class="text-sm text-muted">8 participants</span>
+                                </div>
+                                <button class="btn btn-primary btn-sm" data-action="register-event" data-event-id="1">
+                                    S'inscrire
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Event Card 2 -->
+                    <div class="event-card" data-status="upcoming">
+                        <div class="event-card-header">
+                            <div class="event-card-cover"
+                                style="background: linear-gradient(135deg, #2d2d2d 0%, #525252 100%);"></div>
+                            <div class="event-card-date">
+                                <span class="event-card-day">28</span>
+                                <span class="event-card-month">Jan</span>
+                            </div>
+                        </div>
+                        <div class="event-card-body">
+                            <span class="badge badge-accent mb-2">À venir</span>
+                            <h3 class="event-card-title">Atelier photo portrait</h3>
+                            <p class="event-card-description">Apprenez les techniques de la photographie portrait avec
+                                un professionnel.</p>
+                            <div class="event-card-meta">
+                                <div class="event-card-info">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                        <circle cx="12" cy="12" r="10" />
+                                        <polyline points="12 6 12 12 16 14" />
+                                    </svg>
+                                    <span>16h30 - 19h00</span>
+                                </div>
+                                <div class="event-card-info">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                                        <circle cx="12" cy="10" r="3" />
+                                    </svg>
+                                    <span>Studio B</span>
+                                </div>
+                            </div>
+                            <div class="event-card-footer">
+                                <div class="event-card-participants">
+                                    <div class="avatar-group">
+                                        <div class="avatar avatar-sm">P1</div>
+                                        <div class="avatar avatar-sm">P2</div>
+                                        <div class="avatar avatar-sm">+3</div>
+                                    </div>
+                                    <span class="text-sm text-muted">5 participants</span>
+                                </div>
+                                <button class="btn btn-primary btn-sm" data-action="register-event" data-event-id="2">
+                                    S'inscrire
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Event Card 3 -->
+                    <div class="event-card" data-status="upcoming">
+                        <div class="event-card-header">
+                            <div class="event-card-cover"
+                                style="background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);"></div>
+                            <div class="event-card-date">
+                                <span class="event-card-day">02</span>
+                                <span class="event-card-month">Fév</span>
+                            </div>
+                        </div>
+                        <div class="event-card-body">
+                            <span class="badge badge-accent mb-2">À venir</span>
+                            <h3 class="event-card-title">Hackathon 48h</h3>
+                            <p class="event-card-description">48 heures pour développer un projet innovant en équipe.
+                                Repas inclus !</p>
+                            <div class="event-card-meta">
+                                <div class="event-card-info">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                        <circle cx="12" cy="12" r="10" />
+                                        <polyline points="12 6 12 12 16 14" />
+                                    </svg>
+                                    <span>09h00 - 48h</span>
+                                </div>
+                                <div class="event-card-info">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                                        <circle cx="12" cy="10" r="3" />
+                                    </svg>
+                                    <span>Amphi C</span>
+                                </div>
+                            </div>
+                            <div class="event-card-footer">
+                                <div class="event-card-participants">
+                                    <div class="avatar-group">
+                                        <div class="avatar avatar-sm">P1</div>
+                                        <div class="avatar avatar-sm">P2</div>
+                                        <div class="avatar avatar-sm">P3</div>
+                                        <div class="avatar avatar-sm">+12</div>
+                                    </div>
+                                    <span class="text-sm text-muted">15 participants</span>
+                                </div>
+                                <button class="btn btn-primary btn-sm" data-action="register-event" data-event-id="3">
+                                    S'inscrire
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Event Card 4 - Past -->
+                    <div class="event-card" data-status="past">
+                        <div class="event-card-header">
+                            <div class="event-card-cover"
+                                style="background: linear-gradient(135deg, #404040 0%, #6b6b6b 100%);"></div>
+                            <div class="event-card-date">
+                                <span class="event-card-day">15</span>
+                                <span class="event-card-month">Jan</span>
+                            </div>
+                        </div>
+                        <div class="event-card-body">
+                            <span class="badge badge-secondary mb-2">Terminé</span>
+                            <h3 class="event-card-title">Conférence IA & Avenir</h3>
+                            <p class="event-card-description">Conférence sur l'intelligence artificielle et son impact
+                                sur les métiers de demain.</p>
+                            <div class="event-card-meta">
+                                <div class="event-card-info">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                        <polygon
+                                            points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                                    </svg>
+                                    <span>4.5/5 (12 avis)</span>
+                                </div>
+                            </div>
+                            <div class="event-card-footer">
+                                <div class="event-card-participants">
+                                    <span class="text-sm text-muted">24 participants</span>
+                                </div>
+                                <a href="event-detail.html" class="btn btn-outline btn-sm">
+                                    Voir les avis
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+
+            <footer class="app-footer">
+                <p class="text-sm text-muted">2026 ClubEdge. Tous droits réservés.</p>
+            </footer>
+        </div>
+    </div>
+
+    <div class="mobile-overlay" id="mobile-overlay"></div>
+    <script src="../../assets/js/main.js" defer></script>
+    <script src="../../assets/js/modules/events.js" defer></script>
+</body>
+
+</html>
