@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Articles des clubs - ClubEdge">
+    <title>Articles - ClubEdge</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="../../assets/css/variables.css">
+    <link rel="stylesheet" href="../../assets/css/reset.css">
+    <link rel="stylesheet" href="../../assets/css/layout.css">
+    <link rel="stylesheet" href="../../assets/css/components.css">
+    <link rel="stylesheet" href="../../assets/css/utilities.css">
+    <link rel="stylesheet" href="../../assets/css/animations.css">
+    <link rel="stylesheet" href="../../assets/css/responsive.css">
+</head>
+
+<body>
+    <div class="app-layout">
+        <!-- Sidebar -->
+        <aside class="app-sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <a href="../home.html" class="sidebar-logo">
+                    <svg width="32" height="32" viewBox="0 0 40 40" fill="none">
+                        <rect width="40" height="40" rx="4" fill="#FF4F00" />
+                        <path
+                            d="M12 28V12H20C22.12 12 24.16 12.84 25.66 14.34C27.16 15.84 28 17.88 28 20C28 22.12 27.16 24.16 25.66 25.66C24.16 27.16 22.12 28 20 28H12Z"
+                            stroke="white" stroke-width="2" />
+                    </svg>
+                    <span class="sidebar-logo-text">ClubEdge</span>
+                </a>
+            </div>
+
+            <nav class="sidebar-nav">
+                <ul class="sidebar-menu">
+                    <li class="sidebar-item">
+                        <a href="dashboard.html" class="sidebar-link">
+                            <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="1.5">
+                                <rect x="3" y="3" width="7" height="9" rx="1" />
+                                <rect x="14" y="3" width="7" height="5" rx="1" />
+                                <rect x="14" y="12" width="7" height="9" rx="1" />
+                                <rect x="3" y="16" width="7" height="5" rx="1" />
+                            </svg>
+                            <span>Tableau de bord</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="clubs-list.html" class="sidebar-link">
+                            <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="1.5">
+                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                                <circle cx="9" cy="7" r="4" />
+                            </svg>
+                            <span>Clubs</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="events-list.html" class="sidebar-link">
+                            <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="1.5">
+                                <rect x="3" y="4" width="18" height="18" rx="2" />
+                                <line x1="16" y1="2" x2="16" y2="6" />
+                                <line x1="8" y1="2" x2="8" y2="6" />
+                                <line x1="3" y1="10" x2="21" y2="10" />
+                            </svg>
+                            <span>Événements</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="articles-list.html" class="sidebar-link active">
+                            <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="1.5">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                                <polyline points="14 2 14 8 20 8" />
+                            </svg>
+                            <span>Articles</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="sidebar-user">
+                    <div class="avatar avatar-sm">JD</div>
+                    <div class="sidebar-user-info">
+                        <span class="sidebar-user-name">Jean Dupont</span>
+                        <span class="sidebar-user-role">Étudiant</span>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <div class="app-main">
+            <header class="app-header">
+                <button class="btn btn-icon btn-ghost" id="menu-toggle">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="1.5">
+                        <line x1="3" y1="12" x2="21" y2="12" />
+                        <line x1="3" y1="6" x2="21" y2="6" />
+                        <line x1="3" y1="18" x2="21" y2="18" />
+                    </svg>
+                </button>
+                <div class="flex-1"></div>
+                <div class="avatar avatar-sm">JD</div>
+            </header>
+
+            <main class="app-content">
+                <div class="page-header">
+                    <h1 class="page-title">Articles</h1>
+                    <p class="page-description">Retrouvez les derniers articles publiés par les clubs.</p>
+                </div>
+
+                <div class="grid grid-cols-2 gap-6">
+                    <!-- Article Card 1 -->
+                    <article class="card card-hover">
+                        <div class="card-body">
+                            <div class="flex items-center gap-3 mb-4">
+                                <div class="avatar avatar-sm">CP</div>
+                                <div>
+                                    <span class="text-sm font-medium">Club Photo</span>
+                                    <p class="text-xs text-muted">Il y a 2 heures</p>
+                                </div>
+                            </div>
+                            <h3 class="text-lg font-semibold mb-2">Retour sur l'exposition annuelle</h3>
+                            <p class="text-sm text-secondary mb-4">Découvrez les moments forts de notre exposition photo
+                                qui a eu lieu la semaine dernière. Plus de 50 photos exposées...</p>
+                            <a href="#" class="btn btn-outline btn-sm">Lire l'article</a>
+                        </div>
+                    </article>
+
+                    <!-- Article Card 2 -->
+                    <article class="card card-hover">
+                        <div class="card-body">
+                            <div class="flex items-center gap-3 mb-4">
+                                <div class="avatar avatar-sm">CI</div>
+                                <div>
+                                    <span class="text-sm font-medium">Club Informatique</span>
+                                    <p class="text-xs text-muted">Hier</p>
+                                </div>
+                            </div>
+                            <h3 class="text-lg font-semibold mb-2">Les tendances tech de 2026</h3>
+                            <p class="text-sm text-secondary mb-4">Notre analyse des technologies émergentes qui vont
+                                façonner l'année à venir. IA, blockchain, réalité virtuelle...</p>
+                            <a href="#" class="btn btn-outline btn-sm">Lire l'article</a>
+                        </div>
+                    </article>
+
+                    <!-- Article Card 3 -->
+                    <article class="card card-hover">
+                        <div class="card-body">
+                            <div class="flex items-center gap-3 mb-4">
+                                <div class="avatar avatar-sm">CE</div>
+                                <div>
+                                    <span class="text-sm font-medium">Club Échecs</span>
+                                    <p class="text-xs text-muted">Il y a 3 jours</p>
+                                </div>
+                            </div>
+                            <h3 class="text-lg font-semibold mb-2">Championnat régional : notre parcours</h3>
+                            <p class="text-sm text-secondary mb-4">Récit de notre participation au championnat régional
+                                d'échecs où notre équipe a brillé avec deux podiums...</p>
+                            <a href="#" class="btn btn-outline btn-sm">Lire l'article</a>
+                        </div>
+                    </article>
+
+                    <!-- Article Card 4 -->
+                    <article class="card card-hover">
+                        <div class="card-body">
+                            <div class="flex items-center gap-3 mb-4">
+                                <div class="avatar avatar-sm">CM</div>
+                                <div>
+                                    <span class="text-sm font-medium">Club Musique</span>
+                                    <p class="text-xs text-muted">Il y a 5 jours</p>
+                                </div>
+                            </div>
+                            <h3 class="text-lg font-semibold mb-2">Concert de fin de semestre</h3>
+                            <p class="text-sm text-secondary mb-4">Revivez en images notre concert de fin de semestre
+                                qui a réuni plus de 200 personnes dans l'amphithéâtre...</p>
+                            <a href="#" class="btn btn-outline btn-sm">Lire l'article</a>
+                        </div>
+                    </article>
+                </div>
+            </main>
+
+            <footer class="app-footer">
+                <p class="text-sm text-muted">2026 ClubEdge. Tous droits réservés.</p>
+            </footer>
+        </div>
+    </div>
+
+    <div class="mobile-overlay" id="mobile-overlay"></div>
+    <script src="../../assets/js/main.js" defer></script>
+</body>
+
+</html>

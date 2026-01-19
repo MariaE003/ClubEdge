@@ -1,0 +1,128 @@
+<!-- Badge Component Examples -->
+
+<!-- Variants -->
+<div class="flex items-center gap-3 mb-6">
+    <span class="badge badge-default">Défaut</span>
+    <span class="badge badge-primary">Primaire</span>
+    <span class="badge badge-secondary">Secondaire</span>
+    <span class="badge badge-accent">Accent</span>
+    <span class="badge badge-success">Succès</span>
+    <span class="badge badge-warning">Attention</span>
+    <span class="badge badge-error">Erreur</span>
+</div>
+
+<!-- With Icons -->
+<div class="flex items-center gap-3 mb-6">
+    <span class="badge badge-success">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="20 6 9 17 4 12" />
+        </svg>
+        Actif
+    </span>
+    <span class="badge badge-warning">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10" />
+            <polyline points="12 6 12 12 16 14" />
+        </svg>
+        En attente
+    </span>
+    <span class="badge badge-error">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10" />
+            <line x1="15" y1="9" x2="9" y2="15" />
+            <line x1="9" y1="9" x2="15" y2="15" />
+        </svg>
+        Erreur
+    </span>
+</div>
+
+<!-- Outline Badges -->
+<div class="flex items-center gap-3 mb-6">
+    <span class="badge badge-outline">Outline</span>
+    <span class="badge badge-outline badge-outline-accent">Accent</span>
+</div>
+
+<!-- Dot Badges -->
+<div class="flex items-center gap-4 mb-6">
+    <span class="badge badge-dot badge-success">En ligne</span>
+    <span class="badge badge-dot badge-warning">Occupé</span>
+    <span class="badge badge-dot badge-error">Hors ligne</span>
+</div>
+
+<!-- Count Badges -->
+<div class="flex items-center gap-4 mb-6">
+    <span class="badge badge-count">5</span>
+    <span class="badge badge-count badge-accent">12</span>
+    <span class="badge badge-count">99+</span>
+</div>
+
+<style>
+    .badge-default {
+        background-color: var(--color-gray-100);
+        color: var(--color-text-secondary);
+    }
+
+    .badge-primary {
+        background-color: var(--color-black);
+        color: var(--color-white);
+    }
+
+    .badge-outline {
+        background-color: transparent;
+        border: 1px solid var(--border-color);
+        color: var(--color-text-secondary);
+    }
+
+    .badge-outline-accent {
+        border-color: var(--color-accent);
+        color: var(--color-accent);
+    }
+
+    .badge-dot {
+        display: inline-flex;
+        align-items: center;
+        gap: var(--space-2);
+        background-color: transparent;
+        color: var(--color-text-primary);
+        padding: 0;
+    }
+
+    .badge-dot::before {
+        content: '';
+        width: 8px;
+        height: 8px;
+        border-radius: var(--radius-full);
+        background-color: currentColor;
+    }
+
+    .badge-dot.badge-success::before {
+        background-color: var(--color-success);
+    }
+
+    .badge-dot.badge-warning::before {
+        background-color: var(--color-warning);
+    }
+
+    .badge-dot.badge-error::before {
+        background-color: var(--color-error);
+    }
+
+    .badge-count {
+        min-width: 24px;
+        height: 24px;
+        padding: 0 var(--space-2);
+        font-size: var(--text-xs);
+        font-weight: var(--font-semibold);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        background-color: var(--color-gray-200);
+        color: var(--color-text-primary);
+        border-radius: var(--radius-full);
+    }
+
+    .badge-count.badge-accent {
+        background-color: var(--color-accent);
+        color: var(--color-white);
+    }
+</style>

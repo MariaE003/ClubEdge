@@ -1,0 +1,186 @@
+<!-- Form Component Examples -->
+
+<!-- Text Input -->
+<div class="form-group">
+    <label for="text-input" class="form-label">Label du champ</label>
+    <input type="text" id="text-input" class="form-input" placeholder="Placeholder...">
+</div>
+
+<!-- Input with Hint -->
+<div class="form-group">
+    <label for="email-input" class="form-label">Email</label>
+    <input type="email" id="email-input" class="form-input" placeholder="vous@exemple.com">
+    <span class="form-hint">Utilisez votre email universitaire</span>
+</div>
+
+<!-- Input with Error -->
+<div class="form-group">
+    <label for="error-input" class="form-label">Mot de passe</label>
+    <input type="password" id="error-input" class="form-input form-input-error" value="123">
+    <span class="form-error">Le mot de passe doit contenir au moins 8 caractères</span>
+</div>
+
+<!-- Input with Success -->
+<div class="form-group">
+    <label for="success-input" class="form-label">Nom d'utilisateur</label>
+    <input type="text" id="success-input" class="form-input form-input-success" value="jean.dupont">
+    <span class="form-success">Ce nom d'utilisateur est disponible</span>
+</div>
+
+<!-- Disabled Input -->
+<div class="form-group">
+    <label for="disabled-input" class="form-label">Champ désactivé</label>
+    <input type="text" id="disabled-input" class="form-input" value="Valeur en lecture seule" disabled>
+</div>
+
+<!-- Textarea -->
+<div class="form-group">
+    <label for="textarea" class="form-label">Description</label>
+    <textarea id="textarea" class="form-input form-textarea" rows="4"
+        placeholder="Entrez une description..."></textarea>
+</div>
+
+<!-- Select -->
+<div class="form-group">
+    <label for="select" class="form-label">Catégorie</label>
+    <select id="select" class="form-input form-select">
+        <option value="">Sélectionner une option</option>
+        <option value="1">Option 1</option>
+        <option value="2">Option 2</option>
+        <option value="3">Option 3</option>
+    </select>
+</div>
+
+<!-- Checkbox -->
+<div class="form-group">
+    <label class="checkbox-wrapper">
+        <input type="checkbox" class="checkbox" checked>
+        <span class="checkbox-label">J'accepte les conditions</span>
+    </label>
+</div>
+
+<!-- Radio Buttons -->
+<div class="form-group">
+    <span class="form-label">Choisir une option</span>
+    <div class="radio-group">
+        <label class="radio-wrapper">
+            <input type="radio" name="radio-group" class="radio" checked>
+            <span class="radio-label">Option A</span>
+        </label>
+        <label class="radio-wrapper">
+            <input type="radio" name="radio-group" class="radio">
+            <span class="radio-label">Option B</span>
+        </label>
+        <label class="radio-wrapper">
+            <input type="radio" name="radio-group" class="radio">
+            <span class="radio-label">Option C</span>
+        </label>
+    </div>
+</div>
+
+<!-- Toggle -->
+<div class="form-group">
+    <label class="toggle-wrapper">
+        <div class="toggle active">
+            <div class="toggle-handle"></div>
+        </div>
+        <span class="toggle-label">Notifications activées</span>
+    </label>
+</div>
+
+<!-- Input with Icon -->
+<div class="form-group">
+    <label for="search-input" class="form-label">Recherche</label>
+    <div class="input-with-icon">
+        <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <circle cx="11" cy="11" r="8" />
+            <line x1="21" y1="21" x2="16.65" y2="16.65" />
+        </svg>
+        <input type="text" id="search-input" class="form-input" placeholder="Rechercher...">
+    </div>
+</div>
+
+<!-- Input Group -->
+<div class="form-group">
+    <label class="form-label">Prix</label>
+    <div class="input-group">
+        <span class="input-group-text">€</span>
+        <input type="number" class="form-input" placeholder="0.00">
+    </div>
+</div>
+
+<style>
+    .form-success {
+        display: block;
+        font-size: var(--text-xs);
+        color: var(--color-success);
+        margin-top: var(--space-1);
+    }
+
+    .form-input-success {
+        border-color: var(--color-success);
+    }
+
+    .form-input-success:focus {
+        border-color: var(--color-success);
+        box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.1);
+    }
+
+    .radio-group {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-2);
+        margin-top: var(--space-2);
+    }
+
+    .toggle-wrapper {
+        display: flex;
+        align-items: center;
+        gap: var(--space-3);
+        cursor: pointer;
+    }
+
+    .toggle-label {
+        font-size: var(--text-sm);
+        color: var(--color-text-primary);
+    }
+
+    .input-with-icon {
+        position: relative;
+    }
+
+    .input-with-icon .input-icon {
+        position: absolute;
+        left: var(--space-3);
+        top: 50%;
+        transform: translateY(-50%);
+        width: 18px;
+        height: 18px;
+        color: var(--color-gray-400);
+        pointer-events: none;
+    }
+
+    .input-with-icon .form-input {
+        padding-left: var(--space-10);
+    }
+
+    .input-group {
+        display: flex;
+    }
+
+    .input-group-text {
+        display: flex;
+        align-items: center;
+        padding: 0 var(--space-3);
+        font-size: var(--text-sm);
+        color: var(--color-text-secondary);
+        background-color: var(--color-cool-slate);
+        border: 1px solid var(--border-color);
+        border-right: none;
+        border-radius: var(--radius-base) 0 0 var(--radius-base);
+    }
+
+    .input-group .form-input {
+        border-radius: 0 var(--radius-base) var(--radius-base) 0;
+    }
+</style>

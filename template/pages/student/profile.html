@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Mon profil - ClubEdge">
+    <title>Mon profil - ClubEdge</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="../../assets/css/variables.css">
+    <link rel="stylesheet" href="../../assets/css/reset.css">
+    <link rel="stylesheet" href="../../assets/css/layout.css">
+    <link rel="stylesheet" href="../../assets/css/components.css">
+    <link rel="stylesheet" href="../../assets/css/utilities.css">
+    <link rel="stylesheet" href="../../assets/css/animations.css">
+    <link rel="stylesheet" href="../../assets/css/responsive.css">
+    <link rel="stylesheet" href="../../assets/css/pages/profile.css">
+</head>
+
+<body>
+    <div class="app-layout">
+        <!-- Sidebar -->
+        <aside class="app-sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <a href="/" class="sidebar-logo">
+                    <svg width="32" height="32" viewBox="0 0 40 40" fill="none">
+                        <rect width="40" height="40" rx="4" fill="#FF4F00" />
+                        <path
+                            d="M12 28V12H20C22.12 12 24.16 12.84 25.66 14.34C27.16 15.84 28 17.88 28 20C28 22.12 27.16 24.16 25.66 25.66C24.16 27.16 22.12 28 20 28H12Z"
+                            stroke="white" stroke-width="2" />
+                    </svg>
+                    <span class="sidebar-logo-text">ClubEdge</span>
+                </a>
+            </div>
+
+            <nav class="sidebar-nav">
+                <ul class="sidebar-menu">
+                    <li class="sidebar-item">
+                        <a href="dashboard.html" class="sidebar-link">
+                            <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="1.5">
+                                <rect x="3" y="3" width="7" height="9" rx="1" />
+                                <rect x="14" y="3" width="7" height="5" rx="1" />
+                                <rect x="14" y="12" width="7" height="9" rx="1" />
+                                <rect x="3" y="16" width="7" height="5" rx="1" />
+                            </svg>
+                            <span>Tableau de bord</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="clubs-list.html" class="sidebar-link">
+                            <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="1.5">
+                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                                <circle cx="9" cy="7" r="4" />
+                            </svg>
+                            <span>Clubs</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="events-list.html" class="sidebar-link">
+                            <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="1.5">
+                                <rect x="3" y="4" width="18" height="18" rx="2" />
+                                <line x1="16" y1="2" x2="16" y2="6" />
+                                <line x1="8" y1="2" x2="8" y2="6" />
+                                <line x1="3" y1="10" x2="21" y2="10" />
+                            </svg>
+                            <span>Événements</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="sidebar-user">
+                    <div class="avatar avatar-sm">JD</div>
+                    <div class="sidebar-user-info">
+                        <span class="sidebar-user-name">Jean Dupont</span>
+                        <span class="sidebar-user-role">Étudiant</span>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <div class="app-main">
+            <header class="app-header">
+                <button class="btn btn-icon btn-ghost" id="menu-toggle">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="1.5">
+                        <line x1="3" y1="12" x2="21" y2="12" />
+                        <line x1="3" y1="6" x2="21" y2="6" />
+                        <line x1="3" y1="18" x2="21" y2="18" />
+                    </svg>
+                </button>
+                <div class="flex-1"></div>
+                <div class="avatar avatar-sm">JD</div>
+            </header>
+
+            <main class="app-content">
+                <!-- Profile Header -->
+                <div class="profile-header">
+                    <div class="profile-cover"></div>
+                    <div class="profile-info">
+                        <div class="avatar avatar-xl profile-avatar">JD</div>
+                        <div class="profile-details">
+                            <h1 class="profile-name">Jean Dupont</h1>
+                            <p class="profile-meta">
+                                <span>Étudiant</span>
+                                <span class="profile-separator"></span>
+                                <span>Membre depuis Janvier 2026</span>
+                            </p>
+                        </div>
+                        <button class="btn btn-outline ml-auto">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="1.5">
+                                <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" />
+                                <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z" />
+                            </svg>
+                            Modifier le profil
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Profile Stats -->
+                <div class="profile-stats">
+                    <div class="profile-stat">
+                        <span class="profile-stat-value">1</span>
+                        <span class="profile-stat-label">Club</span>
+                    </div>
+                    <div class="profile-stat">
+                        <span class="profile-stat-value">8</span>
+                        <span class="profile-stat-label">Participations</span>
+                    </div>
+                    <div class="profile-stat">
+                        <span class="profile-stat-value">5</span>
+                        <span class="profile-stat-label">Avis donnés</span>
+                    </div>
+                </div>
+
+                <!-- Profile Content -->
+                <div class="grid grid-cols-12 gap-6 mt-8">
+                    <!-- Left Column -->
+                    <div class="col-span-4">
+                        <!-- Club Card -->
+                        <div class="card mb-6">
+                            <div class="card-header">
+                                <h2 class="card-title">Mon Club</h2>
+                            </div>
+                            <div class="card-body">
+                                <div class="profile-club">
+                                    <div class="avatar avatar-lg">CI</div>
+                                    <div class="profile-club-info">
+                                        <h3 class="profile-club-name">Club Informatique</h3>
+                                        <span class="badge badge-secondary">Membre</span>
+                                    </div>
+                                </div>
+                                <a href="my-club.html" class="btn btn-outline w-full mt-4">
+                                    Voir le club
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Contact Info -->
+                        <div class="card">
+                            <div class="card-header">
+                                <h2 class="card-title">Informations</h2>
+                            </div>
+                            <div class="card-body">
+                                <div class="profile-info-list">
+                                    <div class="profile-info-item">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                            <path
+                                                d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                                            <polyline points="22,6 12,13 2,6" />
+                                        </svg>
+                                        <span>jean.dupont@universite.fr</span>
+                                    </div>
+                                    <div class="profile-info-item">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                            <rect x="3" y="4" width="18" height="18" rx="2" />
+                                            <line x1="16" y1="2" x2="16" y2="6" />
+                                            <line x1="8" y1="2" x2="8" y2="6" />
+                                            <line x1="3" y1="10" x2="21" y2="10" />
+                                        </svg>
+                                        <span>Inscrit le 15 janvier 2026</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Column -->
+                    <div class="col-span-8">
+                        <!-- Edit Profile Form -->
+                        <div class="card">
+                            <div class="card-header">
+                                <h2 class="card-title">Modifier mon profil</h2>
+                            </div>
+                            <div class="card-body">
+                                <form class="profile-form">
+                                    <div class="grid grid-cols-2 gap-4">
+                                        <div class="form-group">
+                                            <label for="firstname" class="form-label">Prénom</label>
+                                            <input type="text" id="firstname" class="form-input" value="Jean">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="lastname" class="form-label">Nom</label>
+                                            <input type="text" id="lastname" class="form-input" value="Dupont">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="email" class="form-label">Adresse email</label>
+                                        <input type="email" id="email" class="form-input"
+                                            value="jean.dupont@universite.fr" disabled>
+                                        <span class="form-hint">L'email ne peut pas être modifié</span>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="bio" class="form-label">Biographie</label>
+                                        <textarea id="bio" class="form-input form-textarea" rows="3"
+                                            placeholder="Parlez-nous de vous..."></textarea>
+                                    </div>
+
+                                    <div class="form-actions flex justify-end gap-3">
+                                        <button type="button" class="btn btn-outline">Annuler</button>
+                                        <button type="submit" class="btn btn-primary">Enregistrer</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+
+                        <!-- Password Change -->
+                        <div class="card mt-6">
+                            <div class="card-header">
+                                <h2 class="card-title">Changer de mot de passe</h2>
+                            </div>
+                            <div class="card-body">
+                                <form class="profile-form">
+                                    <div class="form-group">
+                                        <label for="current_password" class="form-label">Mot de passe actuel</label>
+                                        <input type="password" id="current_password" class="form-input">
+                                    </div>
+
+                                    <div class="grid grid-cols-2 gap-4">
+                                        <div class="form-group">
+                                            <label for="new_password" class="form-label">Nouveau mot de passe</label>
+                                            <input type="password" id="new_password" class="form-input">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="confirm_password" class="form-label">Confirmer</label>
+                                            <input type="password" id="confirm_password" class="form-input">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-actions flex justify-end">
+                                        <button type="submit" class="btn btn-primary">Mettre à jour</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+
+            <footer class="app-footer">
+                <p class="text-sm text-muted">2026 ClubEdge. Tous droits réservés.</p>
+            </footer>
+        </div>
+    </div>
+
+    <div class="mobile-overlay" id="mobile-overlay"></div>
+    <script src="../../assets/js/main.js" defer></script>
+</body>
+
+</html>
