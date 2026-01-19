@@ -1,0 +1,98 @@
+<!-- Modal Component Examples -->
+
+<!-- Modal Trigger -->
+<button class="btn btn-primary" data-modal="example-modal">
+    Ouvrir le modal
+</button>
+
+<!-- Modal Backdrop -->
+<div class="modal-backdrop" data-modal-backdrop="example-modal"></div>
+
+<!-- Modal -->
+<div class="modal" id="example-modal">
+    <div class="modal-header">
+        <h2 class="modal-title">Titre du modal</h2>
+        <button class="btn btn-icon btn-ghost" data-modal-close>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <line x1="18" y1="6" x2="6" y2="18" />
+                <line x1="6" y1="6" x2="18" y2="18" />
+            </svg>
+        </button>
+    </div>
+    <div class="modal-body">
+        <p class="text-secondary">Contenu du modal. Vous pouvez ajouter des formulaires, du texte ou tout autre élément
+            ici.</p>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-outline" data-modal-close>Annuler</button>
+        <button class="btn btn-primary">Confirmer</button>
+    </div>
+</div>
+
+<!-- Confirmation Modal -->
+<div class="modal-backdrop" data-modal-backdrop="confirm-modal"></div>
+<div class="modal" id="confirm-modal">
+    <div class="modal-body text-center py-8">
+        <svg class="mx-auto mb-4" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="1.5" style="color: var(--color-warning);">
+            <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" />
+            <line x1="12" y1="9" x2="12" y2="13" />
+            <line x1="12" y1="17" x2="12.01" y2="17" />
+        </svg>
+        <h2 class="modal-title mb-2">Confirmer la suppression ?</h2>
+        <p class="text-secondary mb-6">Cette action est irréversible. Le club et tous ses événements seront supprimés
+            définitivement.</p>
+        <div class="flex gap-3 justify-center">
+            <button class="btn btn-outline" data-modal-close>Annuler</button>
+            <button class="btn btn-primary"
+                style="background-color: var(--color-error); border-color: var(--color-error);">
+                Supprimer
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- Large Modal -->
+<div class="modal-backdrop" data-modal-backdrop="large-modal"></div>
+<div class="modal" id="large-modal" style="max-width: 720px;">
+    <div class="modal-header">
+        <h2 class="modal-title">Créer un événement</h2>
+        <button class="btn btn-icon btn-ghost" data-modal-close>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <line x1="18" y1="6" x2="6" y2="18" />
+                <line x1="6" y1="6" x2="18" y2="18" />
+            </svg>
+        </button>
+    </div>
+    <div class="modal-body">
+        <form class="grid gap-4">
+            <div class="form-group">
+                <label for="event-title" class="form-label">Titre de l'événement</label>
+                <input type="text" id="event-title" class="form-input" placeholder="Ex: Tournoi d'échecs">
+            </div>
+            <div class="grid grid-cols-2 gap-4">
+                <div class="form-group">
+                    <label for="event-date" class="form-label">Date</label>
+                    <input type="date" id="event-date" class="form-input">
+                </div>
+                <div class="form-group">
+                    <label for="event-time" class="form-label">Heure</label>
+                    <input type="time" id="event-time" class="form-input">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="event-location" class="form-label">Lieu</label>
+                <input type="text" id="event-location" class="form-input" placeholder="Ex: Salle A102">
+            </div>
+            <div class="form-group">
+                <label for="event-description" class="form-label">Description</label>
+                <textarea id="event-description" class="form-input form-textarea"
+                    placeholder="Décrivez votre événement..."></textarea>
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-outline" data-modal-close>Annuler</button>
+        <button class="btn btn-primary">Créer l'événement</button>
+    </div>
+</div>

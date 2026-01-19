@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Mon club - ClubEdge">
+    <title>Mon Club - ClubEdge</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="../../assets/css/variables.css">
+    <link rel="stylesheet" href="../../assets/css/reset.css">
+    <link rel="stylesheet" href="../../assets/css/layout.css">
+    <link rel="stylesheet" href="../../assets/css/components.css">
+    <link rel="stylesheet" href="../../assets/css/utilities.css">
+    <link rel="stylesheet" href="../../assets/css/animations.css">
+    <link rel="stylesheet" href="../../assets/css/responsive.css">
+</head>
+
+<body>
+    <div class="app-layout">
+        <!-- Sidebar -->
+        <aside class="app-sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <a href="../home.html" class="sidebar-logo">
+                    <svg width="32" height="32" viewBox="0 0 40 40" fill="none">
+                        <rect width="40" height="40" rx="4" fill="#FF4F00" />
+                        <path
+                            d="M12 28V12H20C22.12 12 24.16 12.84 25.66 14.34C27.16 15.84 28 17.88 28 20C28 22.12 27.16 24.16 25.66 25.66C24.16 27.16 22.12 28 20 28H12Z"
+                            stroke="white" stroke-width="2" />
+                    </svg>
+                    <span class="sidebar-logo-text">ClubEdge</span>
+                </a>
+            </div>
+
+            <nav class="sidebar-nav">
+                <ul class="sidebar-menu">
+                    <li class="sidebar-item">
+                        <a href="dashboard.html" class="sidebar-link">
+                            <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="1.5">
+                                <rect x="3" y="3" width="7" height="9" rx="1" />
+                                <rect x="14" y="3" width="7" height="5" rx="1" />
+                                <rect x="14" y="12" width="7" height="9" rx="1" />
+                                <rect x="3" y="16" width="7" height="5" rx="1" />
+                            </svg>
+                            <span>Tableau de bord</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="clubs-list.html" class="sidebar-link">
+                            <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="1.5">
+                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                                <circle cx="9" cy="7" r="4" />
+                            </svg>
+                            <span>Clubs</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="events-list.html" class="sidebar-link">
+                            <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="1.5">
+                                <rect x="3" y="4" width="18" height="18" rx="2" />
+                                <line x1="16" y1="2" x2="16" y2="6" />
+                                <line x1="8" y1="2" x2="8" y2="6" />
+                                <line x1="3" y1="10" x2="21" y2="10" />
+                            </svg>
+                            <span>Événements</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="articles-list.html" class="sidebar-link">
+                            <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="1.5">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                                <polyline points="14 2 14 8 20 8" />
+                            </svg>
+                            <span>Articles</span>
+                        </a>
+                    </li>
+                </ul>
+
+                <div class="sidebar-section">
+                    <h3 class="sidebar-section-title">Mon Club</h3>
+                    <ul class="sidebar-menu">
+                        <li class="sidebar-item">
+                            <a href="my-club.html" class="sidebar-link active">
+                                <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="1.5">
+                                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+                                    <polyline points="9 22 9 12 15 12 15 22" />
+                                </svg>
+                                <span>Espace club</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="sidebar-user">
+                    <div class="avatar avatar-sm">JD</div>
+                    <div class="sidebar-user-info">
+                        <span class="sidebar-user-name">Jean Dupont</span>
+                        <span class="sidebar-user-role">Étudiant</span>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <div class="app-main">
+            <header class="app-header">
+                <button class="btn btn-icon btn-ghost" id="menu-toggle">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="1.5">
+                        <line x1="3" y1="12" x2="21" y2="12" />
+                        <line x1="3" y1="6" x2="21" y2="6" />
+                        <line x1="3" y1="18" x2="21" y2="18" />
+                    </svg>
+                </button>
+                <div class="flex-1"></div>
+                <div class="avatar avatar-sm">JD</div>
+            </header>
+
+            <main class="app-content">
+                <!-- Club Header -->
+                <div class="card mb-6">
+                    <div class="card-body">
+                        <div class="flex items-center gap-6">
+                            <div class="avatar avatar-xl" style="background-color: #FF4F00; color: white;">CI</div>
+                            <div class="flex-1">
+                                <h1 class="text-2xl font-bold mb-1">Club Informatique</h1>
+                                <p class="text-secondary mb-3">Technologie & Innovation</p>
+                                <div class="flex items-center gap-4">
+                                    <span class="badge badge-success">Actif</span>
+                                    <span class="text-sm text-muted">Membre depuis Janvier 2026</span>
+                                </div>
+                            </div>
+                            <div class="flex gap-3">
+                                <button class="btn btn-outline">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="1.5">
+                                        <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" />
+                                        <path d="M13.73 21a2 2 0 0 1-3.46 0" />
+                                    </svg>
+                                    Notifications
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-3 gap-6">
+                    <!-- Club Info -->
+                    <div class="col-span-2">
+                        <div class="card mb-6">
+                            <div class="card-header">
+                                <h2 class="card-title">À propos</h2>
+                            </div>
+                            <div class="card-body">
+                                <p class="text-secondary leading-relaxed">
+                                    Le Club Informatique est dédié à l'apprentissage et au partage des connaissances en
+                                    développement, cybersécurité, et nouvelles technologies. Nous organisons
+                                    régulièrement des hackathons, des ateliers de programmation et des conférences avec
+                                    des professionnels du secteur.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Recent Events -->
+                        <div class="card">
+                            <div class="card-header flex items-center justify-between">
+                                <h2 class="card-title">Événements du club</h2>
+                                <a href="events-list.html" class="btn btn-ghost btn-sm">Voir tout</a>
+                            </div>
+                            <div class="card-body">
+                                <div class="flex flex-col gap-4">
+                                    <div class="flex items-center gap-4 p-4 border border-gray-200 rounded">
+                                        <div class="text-center" style="min-width: 48px;">
+                                            <div class="text-xl font-bold">02</div>
+                                            <div class="text-xs text-muted">Fév</div>
+                                        </div>
+                                        <div class="flex-1">
+                                            <h3 class="font-medium">Hackathon 48h</h3>
+                                            <p class="text-sm text-muted">Amphi C - 09h00</p>
+                                        </div>
+                                        <span class="badge badge-accent">Inscrit</span>
+                                    </div>
+                                    <div class="flex items-center gap-4 p-4 border border-gray-200 rounded">
+                                        <div class="text-center" style="min-width: 48px;">
+                                            <div class="text-xl font-bold">15</div>
+                                            <div class="text-xs text-muted">Fév</div>
+                                        </div>
+                                        <div class="flex-1">
+                                            <h3 class="font-medium">Atelier Python</h3>
+                                            <p class="text-sm text-muted">Salle B201 - 14h00</p>
+                                        </div>
+                                        <button class="btn btn-outline btn-sm">S'inscrire</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sidebar Info -->
+                    <div>
+                        <!-- Members -->
+                        <div class="card mb-6">
+                            <div class="card-header">
+                                <h2 class="card-title">Membres (6/8)</h2>
+                            </div>
+                            <div class="card-body">
+                                <div class="flex flex-col gap-3">
+                                    <div class="flex items-center gap-3">
+                                        <div class="avatar avatar-sm">MM</div>
+                                        <div class="flex-1">
+                                            <span class="text-sm font-medium">Marie Martin</span>
+                                        </div>
+                                        <span class="badge badge-accent">Présidente</span>
+                                    </div>
+                                    <div class="flex items-center gap-3">
+                                        <div class="avatar avatar-sm">JD</div>
+                                        <div class="flex-1">
+                                            <span class="text-sm font-medium">Jean Dupont</span>
+                                        </div>
+                                        <span class="text-xs text-muted">Vous</span>
+                                    </div>
+                                    <div class="flex items-center gap-3">
+                                        <div class="avatar avatar-sm">LB</div>
+                                        <div class="flex-1">
+                                            <span class="text-sm font-medium">Lucas Bernard</span>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-center gap-3">
+                                        <div class="avatar avatar-sm">SD</div>
+                                        <div class="flex-1">
+                                            <span class="text-sm font-medium">Sophie Dubois</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Actions -->
+                        <div class="card">
+                            <div class="card-body">
+                                <button class="btn btn-outline w-full text-error mb-3">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="1.5">
+                                        <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
+                                        <polyline points="16 17 21 12 16 7" />
+                                        <line x1="21" y1="12" x2="9" y2="12" />
+                                    </svg>
+                                    Quitter le club
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+
+            <footer class="app-footer">
+                <p class="text-sm text-muted">2026 ClubEdge. Tous droits réservés.</p>
+            </footer>
+        </div>
+    </div>
+
+    <div class="mobile-overlay" id="mobile-overlay"></div>
+    <script src="../../assets/js/main.js" defer></script>
+</body>
+
+</html>
