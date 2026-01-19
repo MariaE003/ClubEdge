@@ -41,10 +41,10 @@ class AuthController{
         $result = $this->repo->register($register);
 
     if ($result['success']) {
-        header("Location: index");
+        header("Location: loginPage");
         exit();   
     } else {
-        header("Location: index");
+        header("Location: registerPage");
         exit();      
     }
     }

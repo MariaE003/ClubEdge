@@ -5,6 +5,8 @@ $routes = [
     "home" => ["AuthController" , "pageHome"],
     "loginPage" => ["AuthController" , "pageLogin"],
     "registerPage" => ["AuthController" , "pageRegister"],
+    "register" => ["AuthController" , "register"],
+    "login" => ["AuthController" , "login"],
 
 ];
 
