@@ -1,0 +1,35 @@
+<!-- Footer Partial -->
+<footer class="app-footer">
+    <div class="footer-content flex items-center justify-between">
+        <p class="text-sm text-muted">
+            2026 ClubEdge. Tous droits réservés.
+        </p>
+        <nav class="footer-links flex gap-6">
+            <a href="#" class="text-sm text-secondary hover:text-primary">Confidentialité</a>
+            <a href="#" class="text-sm text-secondary hover:text-primary">Conditions</a>
+            <a href="#" class="text-sm text-secondary hover:text-primary">Aide</a>
+        </nav>
+    </div>
+</footer>
+
+<style>
+    .footer-links a {
+        transition: color var(--duration-fast);
+    }
+
+    .footer-links a:hover {
+        color: var(--color-text-primary);
+    }
+
+    @media (max-width: 639px) {
+        .footer-content {
+            flex-direction: column;
+            gap: var(--space-3);
+            text-align: center;
+        }
+
+        .footer-links {
+            justify-content: center;
+        }
+    }
+</style>
