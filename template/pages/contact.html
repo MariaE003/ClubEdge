@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Contactez l'équipe ClubEdge">
+    <title>Contact - ClubEdge</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="../assets/css/variables.css">
+    <link rel="stylesheet" href="../assets/css/reset.css">
+    <link rel="stylesheet" href="../assets/css/layout.css">
+    <link rel="stylesheet" href="../assets/css/components.css">
+    <link rel="stylesheet" href="../assets/css/utilities.css">
+    <link rel="stylesheet" href="../assets/css/animations.css">
+    <link rel="stylesheet" href="../assets/css/responsive.css">
+
+    <style>
+        .page-hero {
+            padding: var(--space-20) 0 0;
+            background-color: var(--color-bg-secondary);
+            text-align: center;
+        }
+
+        .contact-section {
+            padding: var(--space-16) 0;
+            background-color: var(--color-bg-secondary);
+        }
+
+        .contact-card {
+            background-color: var(--color-white);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: var(--space-8);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .contact-info-item {
+            display: flex;
+            align-items: flex-start;
+            gap: var(--space-4);
+            margin-bottom: var(--space-6);
+        }
+
+        .contact-icon {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--color-accent-light);
+            color: var(--color-accent);
+            border-radius: var(--radius-base);
+            flex-shrink: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-content">
+                <a href="/" class="navbar-logo">
+                    <svg width="32" height="32" viewBox="0 0 40 40" fill="none">
+                        <rect width="40" height="40" rx="4" fill="#FF4F00" />
+                        <path
+                            d="M12 28V12H20C22.12 12 24.16 12.84 25.66 14.34C27.16 15.84 28 17.88 28 20C28 22.12 27.16 24.16 25.66 25.66C24.16 27.16 22.12 28 20 28H12Z"
+                            stroke="white" stroke-width="2" />
+                    </svg>
+                    <span class="navbar-logo-text">ClubEdge</span>
+                </a>
+
+                <ul class="navbar-menu">
+                    <li><a href="home.html" class="navbar-link">Accueil</a></li>
+                    <li><a href="about.html" class="navbar-link">À propos</a></li>
+                    <li><a href="contact.html" class="navbar-link active">Contact</a></li>
+                </ul>
+
+                <div class="navbar-actions">
+                    <a href="auth/login.html" class="btn btn-ghost">Connexion</a>
+                    <a href="auth/register.html" class="btn btn-primary">Commencer</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="page-hero pb-6">
+        <div class="container">
+            <h1 class="text-4xl font-bold mb-4 tracking-tight">Contactez-nous</h1>
+            <p class="text-xl text-muted max-w-2xl mx-auto">Une question ? Un projet ? Notre équipe est là pour vous
+                accompagner dans la gestion de votre vie associative.</p>
+        </div>
+    </section>
+
+    <!-- Contact Content -->
+    <section class="contact-section pt-6">
+        <div class="container">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                <!-- Contact Form -->
+                <div class="contact-card">
+                    <h2 class="text-2xl font-bold mb-6">Envoyez-nous un message</h2>
+                    <form action="#" class="space-y-4">
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="form-group">
+                                <label class="form-label">Prénom</label>
+                                <input type="text" class="form-input" placeholder="Jean">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Nom</label>
+                                <input type="text" class="form-input" placeholder="Dupont">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Email</label>
+                            <input type="email" class="form-input" placeholder="jean.dupont@exemple.com">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Sujet</label>
+                            <select class="form-input form-select">
+                                <option>Demande d'information</option>
+                                <option>Support technique</option>
+                                <option>Partenariat</option>
+                                <option>Autre</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Message</label>
+                            <textarea class="form-input" rows="5"
+                                placeholder="Comment pouvons-nous vous aider ?"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-full">Envoyer le message</button>
+                    </form>
+                </div>
+
+                <!-- Contact Info -->
+                <div class="space-y-6">
+                    <div class="contact-card">
+                        <h2 class="text-xl font-bold mb-6">Nos coordonnées</h2>
+
+                        <div class="contact-info-item">
+                            <div class="contact-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                    <circle cx="12" cy="10" r="3"></circle>
+                                </svg>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold mb-1">Adresse</h3>
+                                <p class="text-muted text-sm">Campus Universitaire<br>123 Avenue des Sciences<br>75000
+                                    Paris, France</p>
+                            </div>
+                        </div>
+
+                        <div class="contact-info-item">
+                            <div class="contact-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <path
+                                        d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z">
+                                    </path>
+                                    <polyline points="22,6 12,13 2,6"></polyline>
+                                </svg>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold mb-1">Email</h3>
+                                <a href="mailto:contact@clubedge.fr"
+                                    class="text-accent text-sm hover:underline">contact@clubedge.fr</a>
+                                <p class="text-muted text-xs mt-1">Réponse sous 24h ouvrées</p>
+                            </div>
+                        </div>
+
+                        <div class="contact-info-item">
+                            <div class="contact-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <path
+                                        d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
+                                    </path>
+                                </svg>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold mb-1">Téléphone</h3>
+                                <a href="tel:+33123456789" class="text-muted text-sm hover:text-primary">+33 1 23 45 67
+                                    89</a>
+                                <p class="text-muted text-xs mt-1">Lun-Ven, 9h-18h</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="contact-card bg-black text-white border-none">
+                        <h3 class="text-lg font-bold mb-2">FAQ</h3>
+                        <p class="text-gray-400 text-sm mb-4">Vous avez une question fréquente ? Consultez notre base de
+                            connaissances avant de nous contacter.</p>
+                        <button class="btn btn-outline w-full border-gray-700 text-white hover:bg-gray-900">Consulter la
+                            FAQ</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="app-footer">
+        <div class="container">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+                <div class="flex items-center gap-2">
+                    <svg width="24" height="24" viewBox="0 0 40 40" fill="none">
+                        <rect width="40" height="40" rx="4" fill="#FF4F00" />
+                        <path
+                            d="M12 28V12H20C22.12 12 24.16 12.84 25.66 14.34C27.16 15.84 28 17.88 28 20C28 22.12 27.16 24.16 25.66 25.66C24.16 27.16 22.12 28 20 28H12Z"
+                            stroke="white" stroke-width="2" />
+                    </svg>
+                    <span class="font-bold">ClubEdge</span>
+                </div>
+                <p class="text-sm text-muted">© 2026 ClubEdge. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../assets/js/main.js"></script>
+</body>
+
+</html>
