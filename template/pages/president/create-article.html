@@ -11,27 +11,23 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="../../assets/css/variables.css">
-    <link rel="stylesheet" href="../../assets/css/reset.css">
-    <link rel="stylesheet" href="../../assets/css/layout.css">
-    <link rel="stylesheet" href="../../assets/css/components.css">
-    <link rel="stylesheet" href="../../assets/css/utilities.css">
-    <link rel="stylesheet" href="../../assets/css/animations.css">
-    <link rel="stylesheet" href="../../assets/css/responsive.css">
-    <link rel="stylesheet" href="../../assets/css/pages/dashboard.css">
+    <!-- Styles (fallbacks for different hosting setups) -->
+    <link rel="stylesheet" href="/coachprov3/public/assets/css/main.css">
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <link rel="stylesheet" href="../../assets/css/main.css">
+    <link rel="stylesheet" href="../../../public/assets/css/main.css">
 </head>
 
 <body>
     <div class="app-layout">
-        <!-- Sidebar -->
         <aside class="app-sidebar" id="sidebar">
             <div class="sidebar-header">
                 <a href="/" class="sidebar-logo">
-                    <svg width="32" height="32" viewBox="0 0 40 40" fill="none">
+                    <svg width="32" height="32" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <rect width="40" height="40" rx="4" fill="#FF4F00" />
                         <path
-                            d="M12 28V12H20C22.12 12 24.16 12.84 25.66 14.34C27.16 15.84 28 17.88 28 20C28 22.12 27.16 24.16 25.66 25.66C24.16 27.16 22.12 28 20 28H12Z"
-                            stroke="white" stroke-width="2" />
+                            d="M12 28V12H20C22.1217 12 24.1566 12.8429 25.6569 14.3431C27.1571 15.8434 28 17.8783 28 20C28 22.1217 27.1571 24.1566 25.6569 25.6569C24.1566 27.1571 22.1217 28 20 28H12Z"
+                            stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                     </svg>
                     <span class="sidebar-logo-text">ClubEdge</span>
                 </a>
@@ -54,20 +50,10 @@
                 </ul>
 
                 <div class="sidebar-section">
-                    <h3 class="sidebar-section-title">Mon Club</h3>
+                    <h3 class="sidebar-section-title">Mon club</h3>
                     <ul class="sidebar-menu">
                         <li class="sidebar-item">
-                            <a href="club-settings.html" class="sidebar-link">
-                                <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                    stroke-width="1.5">
-                                    <circle cx="12" cy="12" r="3" />
-                                    <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06" />
-                                </svg>
-                                <span>Paramètres du club</span>
-                            </a>
-                        </li>
-                        <li class="sidebar-item">
-                            <a href="members.html" class="sidebar-link">
+                            <a href="members-manage.html" class="sidebar-link">
                                 <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                     stroke-width="1.5">
                                     <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
@@ -76,7 +62,7 @@
                                     <path d="M16 3.13a4 4 0 0 1 0 7.75" />
                                 </svg>
                                 <span>Membres</span>
-                                <span class="badge badge-secondary ml-auto">6</span>
+                                <span class="badge badge-secondary ml-auto">6/8</span>
                             </a>
                         </li>
                     </ul>
@@ -115,7 +101,7 @@
                     <h3 class="sidebar-section-title">Articles</h3>
                     <ul class="sidebar-menu">
                         <li class="sidebar-item">
-                            <a href="articles.html" class="sidebar-link">
+                            <a href="articles-manage.html" class="sidebar-link">
                                 <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                     stroke-width="1.5">
                                     <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
@@ -151,7 +137,7 @@
 
         <div class="app-main">
             <header class="app-header">
-                <button class="btn btn-icon btn-ghost" id="menu-toggle">
+                <button class="btn btn-icon btn-ghost lg:hidden" id="menu-toggle" aria-label="Ouvrir le menu">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                         stroke-width="1.5">
                         <line x1="3" y1="12" x2="21" y2="12" />
@@ -171,41 +157,52 @@
                         <p class="page-description">Partagez les actualités de votre club avec la communauté.</p>
                     </div>
                     <div class="flex gap-3">
-                        <button class="btn btn-ghost">Enregistrer le brouillon</button>
-                        <button class="btn btn-primary">Publier</button>
+                        <button class="btn btn-primary" type="button">Publier</button>
                     </div>
                 </div>
 
                 <div class="grid grid-cols-12 gap-6">
-                    <div class="col-span-8">
+                    <div class="col-span-12 lg:col-span-8">
                         <div class="card">
-                            <div class="card-body cursor-text h-[500px]">
-                                <input type="text"
-                                    class="text-3xl font-bold w-full border-none focus:ring-0 p-0 mb-4 placeholder-gray-300"
-                                    placeholder="Titre de votre article...">
-                                <textarea
-                                    class="w-full h-[400px] border-none focus:ring-0 p-0 resize-none text-gray-600"
-                                    placeholder="Écrivez votre contenu ici..."></textarea>
+                            <div class="card-body">
+                                <div class="form-group">
+                                    <label for="article-title" class="form-label">Titre</label>
+                                    <input id="article-title" type="text" class="form-input"
+                                        placeholder="Titre de votre article...">
+                                </div>
+                                <div class="form-group">
+                                    <label for="article-content" class="form-label">Contenu</label>
+                                    <textarea id="article-content" class="form-input form-textarea" rows="14"
+                                        placeholder="Écrivez votre contenu ici..."></textarea>
+                                </div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="col-span-4 space-y-6">
+                    <div class="col-span-12 lg:col-span-4 space-y-6">
                         <div class="card">
                             <div class="card-header">
                                 <h3 class="card-title text-base">Image de couverture</h3>
                             </div>
                             <div class="card-body">
-                                <div
-                                    class="w-full aspect-video bg-gray-50 rounded-lg flex flex-col items-center justify-center border-2 border-dashed border-gray-300 hover:border-accent cursor-pointer transition-colors">
-                                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                        stroke-width="1.5" class="text-gray-400 mb-2">
-                                        <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
-                                        <circle cx="8.5" cy="8.5" r="1.5" />
-                                        <polyline points="21 15 16 10 5 21" />
-                                    </svg>
-                                    <span class="text-sm text-gray-500">Cliquez pour ajouter une image</span>
-                                </div>
+                                <input type="file" id="cover-image-input" class="sr-only" accept="image/*">
+                                <button type="button" id="cover-image-dropzone"
+                                    class="relative w-full aspect-video bg-gray-50 rounded-lg border-2 border-dashed border-gray-300 hover:border-accent cursor-pointer transition-colors overflow-hidden focus-ring"
+                                    aria-label="Ajouter une image de couverture">
+                                    <img id="cover-image-preview" class="hidden w-full h-full object-cover"
+                                        alt="Aperçu de l'image de couverture">
+                                    <div id="cover-image-placeholder"
+                                        class="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
+                                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none"
+                                            stroke="currentColor" stroke-width="1.5" class="text-gray-400 mb-2">
+                                            <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
+                                            <circle cx="8.5" cy="8.5" r="1.5" />
+                                            <polyline points="21 15 16 10 5 21" />
+                                        </svg>
+                                        <span class="text-sm text-gray-500">Cliquez pour ajouter une image</span>
+                                        <span class="text-xs text-gray-400 mt-2">PNG, JPG jusqu'à 5MB</span>
+                                    </div>
+                                </button>
                             </div>
                         </div>
 
@@ -223,21 +220,62 @@
                                     </select>
                                 </div>
 
-                                <div class="form-group">
-                                    <label class="form-label text-sm">Tags</label>
-                                    <input type="text" class="form-input text-sm"
-                                        placeholder="Ex: Tech, Retour d'expérience...">
-                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </main>
+
+            <footer class="app-footer">
+                <p class="text-sm text-muted">2026 ClubEdge. Tous droits réservés.</p>
+            </footer>
         </div>
     </div>
 
     <div class="mobile-overlay" id="mobile-overlay"></div>
     <script src="../../assets/js/main.js" defer></script>
+    <script>
+        (() => {
+            const input = document.getElementById('cover-image-input');
+            const dropzone = document.getElementById('cover-image-dropzone');
+            const preview = document.getElementById('cover-image-preview');
+            const placeholder = document.getElementById('cover-image-placeholder');
+
+            if (!input || !dropzone || !preview || !placeholder) return;
+
+            let objectUrl = null;
+
+            const openPicker = () => input.click();
+
+            dropzone.addEventListener('click', openPicker);
+            dropzone.addEventListener('keydown', (event) => {
+                if (event.key !== 'Enter' && event.key !== ' ') return;
+                event.preventDefault();
+                openPicker();
+            });
+
+            input.addEventListener('change', () => {
+                const file = input.files && input.files[0];
+                if (!file) return;
+                if (!file.type || !file.type.startsWith('image/')) {
+                    input.value = '';
+                    return;
+                }
+
+                if (objectUrl) URL.revokeObjectURL(objectUrl);
+                objectUrl = URL.createObjectURL(file);
+
+                preview.src = objectUrl;
+                preview.classList.remove('hidden');
+                placeholder.classList.add('hidden');
+                dropzone.setAttribute('aria-label', `Changer l'image de couverture (${file.name})`);
+            });
+
+            window.addEventListener('beforeunload', () => {
+                if (objectUrl) URL.revokeObjectURL(objectUrl);
+            });
+        })();
+    </script>
 </body>
 
 </html>

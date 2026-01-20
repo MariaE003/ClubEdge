@@ -142,19 +142,11 @@
 
             <main class="app-content">
                 <!-- Page Header -->
-                <div class="page-header flex items-center justify-between">
+                <div class="page-header">
                     <div>
                         <h1 class="page-title">Étudiants</h1>
                         <p class="page-description">Gérez les comptes étudiants et leurs affiliations.</p>
                     </div>
-                    <button class="btn btn-primary" data-modal="create-student-modal">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="1.5">
-                            <line x1="12" y1="5" x2="12" y2="19" />
-                            <line x1="5" y1="12" x2="19" y2="12" />
-                        </svg>
-                        Ajouter un étudiant
-                    </button>
                 </div>
 
                 <!-- Filters -->
@@ -327,40 +319,6 @@
                     </div>
                 </div>
             </main>
-        </div>
-    </div>
-
-    <!-- Create Student Modal -->
-    <div class="modal-backdrop" data-modal-backdrop="create-student-modal"></div>
-    <div class="modal" id="create-student-modal">
-        <div class="modal-header">
-            <h2 class="modal-title">Ajouter un étudiant</h2>
-            <button class="btn btn-icon btn-ghost" data-modal-close>
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                    <line x1="18" y1="6" x2="6" y2="18" />
-                    <line x1="6" y1="6" x2="18" y2="18" />
-                </svg>
-            </button>
-        </div>
-        <div class="modal-body">
-            <form>
-                <div class="form-group">
-                    <label for="student-name" class="form-label">Nom complet</label>
-                    <input type="text" id="student-name" class="form-input" placeholder="Ex: Jean Dupont">
-                </div>
-                <div class="form-group">
-                    <label for="student-email" class="form-label">Email étudiant</label>
-                    <input type="email" id="student-email" class="form-input" placeholder="Ex: jean.d@ecole.com">
-                </div>
-                <div class="form-group">
-                    <label for="student-password" class="form-label">Mot de passe provisoire</label>
-                    <input type="password" id="student-password" class="form-input" placeholder="********">
-                </div>
-            </form>
-        </div>
-        <div class="modal-footer">
-            <button class="btn btn-outline" data-modal-close>Annuler</button>
-            <button class="btn btn-primary">Créer le compte</button>
         </div>
     </div>
 
