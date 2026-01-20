@@ -239,6 +239,7 @@
                                                     class="text-accent">parcourez</span></p>
                                             <p class="upload-hint">PNG, JPG jusqu'à 5MB</p>
                                         </div>
+                                        <div class="upload-overlay" aria-hidden="true">Changer l'image</div>
                                         <input type="file" id="event-image" class="upload-input" accept="image/*">
                                     </div>
                                 </div>
@@ -355,6 +356,22 @@
             background-color: transparent;
         }
 
+        .upload-zone.has-preview::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(0, 0, 0, 0) 55%, rgba(0, 0, 0, 0.35) 100%);
+            opacity: 0;
+            transition: opacity 0.15s ease;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .upload-zone.has-preview:hover::before,
+        .upload-zone.has-preview:focus-within::before {
+            opacity: 1;
+        }
+
         .upload-icon {
             width: 48px;
             height: 48px;
@@ -388,7 +405,7 @@
             height: 100%;
             object-fit: cover;
             border-radius: inherit;
-            z-index: 1;
+            z-index: 0;
         }
 
         .upload-placeholder {
@@ -400,6 +417,29 @@
             padding: var(--space-8);
             z-index: 2;
             pointer-events: none;
+        }
+
+        .upload-overlay {
+            position: absolute;
+            right: 12px;
+            bottom: 12px;
+            padding: 6px 10px;
+            font-size: 12px;
+            font-weight: 500;
+            color: #fff;
+            background: rgba(18, 18, 18, 0.65);
+            border-radius: 999px;
+            opacity: 0;
+            transform: translateY(4px);
+            transition: opacity 0.15s ease, transform 0.15s ease;
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        .upload-zone.has-preview:hover .upload-overlay,
+        .upload-zone.has-preview:focus-within .upload-overlay {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         .toggle-wrapper {
