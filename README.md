@@ -71,41 +71,46 @@ ClubHub est une plateforme web (PHP orienté objet) permettant de gérer les **c
 ---
 
 ## 📁 Structure du Projet (exemple recommandé)
+
 clubhub/
-public/
-index.php
-.htaccess
-assets/
-app/
-Controllers/
-Models/
-Repositories/
-Services/
-Middlewares/
-Views/
-core/
-Router.php
-Database.php
-Auth.php
-Csrf.php
-Validator.php
-Logger.php
-ErrorHandler.php
-config/
-config.php
-database.php
-storage/
-logs/
-cache/
-uploads/
-database/
-schema.sql
-docs/
-uml/
-planning/
-.env
-composer.json
-README.md
+├── public/
+│   ├── index.php                 # Point d’entrée (Front Controller)
+│   ├── .htaccess                 # Rewrite vers index.php (routing)
+│   └── assets/
+│       ├── css/
+│       ├── js/
+│       └── images/
+├── app/
+│   ├── Controllers/              # Logique HTTP (actions, redirections, réponses)
+│   ├── Models/                   # Entités + logique liée aux données
+│   ├── Repositories/             # Accès DB (CRUD, requêtes SQL)
+│   ├── Services/                 # Logique métier (règles, use-cases)
+│   ├── Middlewares/              # Auth/roles/CSRF (avant contrôleurs)
+│   └── Views/                    # Templates (Twig/Blade ou PHP)
+├── core/
+│   ├── Router.php                # Router + dispatch
+│   ├── Database.php              # Connexion PDO (PostgreSQL) via .env
+│   ├── Auth.php                  # Auth + session + rôles
+│   ├── Csrf.php                  # Génération/validation des tokens CSRF
+│   ├── Validator.php             # Validation serveur (sanitize, rules)
+│   ├── Logger.php                # Écriture des logs (storage/logs)
+│   └── ErrorHandler.php          # Gestion globale erreurs/exceptions + 404
+├── config/
+│   ├── config.php                # Config globale (app name, debug, etc.)
+│   └── database.php              # Config DB (lit .env et prépare DSN)
+├── storage/
+│   ├── logs/                     # Logs de l’application
+│   ├── cache/                    # Cache templates (si Twig/Blade)
+│   └── uploads/                  # Uploads (images events, clubs, etc.)
+├── database/
+│   └── schema.sql                # Script SQL (tables, contraintes, relations)
+├── docs/
+│   ├── uml/                      # Use Case, Class Diagram, ERD
+│   └── planning/                 # Planning, captures, notes d’équipe
+├── .env                          # Variables d’environnement (non versionné)
+├── composer.json                 # Dépendances + autoload PSR-4
+└── README.md                     # Documentation projet
+
 
 
 ---
