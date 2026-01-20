@@ -6,9 +6,8 @@ CREATE TABLE users (
     password VARCHAR(255) NOT NULL,
     profile VARCHAR(50),
     role VARCHAR(50) NOT NULL,
-    date_creationTIMESTAMP DEFAULT CURRENT_TIMESTAMP
-)
-
+    date_creation TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
 
 CREATE TABLE clubs (
     id SERIAL PRIMARY KEY,
@@ -17,9 +16,8 @@ CREATE TABLE clubs (
     president_id INTEGER REFERENCES users(id) ON DELETE SET NULL,
     members INTEGER[] DEFAULT '{}',
     logo TEXT,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-)
-
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
 
 CREATE TABLE events (
     id SERIAL PRIMARY KEY,
@@ -30,20 +28,19 @@ CREATE TABLE events (
     location VARCHAR(150),
     images TEXT[],
     created_by INTEGER REFERENCES users(id) ON DELETE SET NULL,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
     
-)
-
+);
 
 
 CREATE TABLE event_participants (
     id SERIAL PRIMARY KEY,
     event_id INTEGER NOT NULL REFERENCES events(id) ON DELETE CASCADE,
-    user_id INTEGER NOT NULL REF 
+    user_id INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE 
 )
 
 
-
+;
 CREATE TABLE reviews (
     id SERIAL PRIMARY KEY,
     event_id INTEGER NOT NULL REFERENCES events(id) ,
@@ -53,7 +50,7 @@ CREATE TABLE reviews (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     UNIQUE (event_id, user_id)
 )
-
+;
 
 
 CREATE TABLE articles (
@@ -66,7 +63,7 @@ CREATE TABLE articles (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 )
 
-
+;
 
 CREATE TABLE logs (
     id SERIAL PRIMARY KEY,
