@@ -13,10 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initAlerts();
     initTabs();
     initTooltips();
-<<<<<<< HEAD
-=======
     initToggles();
->>>>>>> f45a95e1df63276fac731540b9e375a96c6960d4
 });
 
 /**
@@ -223,15 +220,6 @@ function initTooltips() {
  */
 function initToggles() {
     document.querySelectorAll('.toggle').forEach(toggle => {
-<<<<<<< HEAD
-        toggle.addEventListener('click', () => {
-            toggle.classList.toggle('active');
-
-            const input = toggle.querySelector('input[type="checkbox"]');
-            if (input) {
-                input.checked = toggle.classList.contains('active');
-            }
-=======
         const input = toggle.querySelector('input[type="checkbox"]');
         if (input?.checked) {
             toggle.classList.add('active');
@@ -246,7 +234,6 @@ function initToggles() {
             }
 
             toggle.setAttribute('aria-checked', toggle.classList.contains('active') ? 'true' : 'false');
->>>>>>> f45a95e1df63276fac731540b9e375a96c6960d4
         });
     });
 }
