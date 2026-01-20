@@ -199,7 +199,7 @@
                             <div class="form-section mb-8">
                                 <h3 class="form-section-title">Date et horaires</h3>
 
-                                <div class="grid grid-cols-3 gap-4">
+                                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                                     <div class="form-group">
                                         <label for="event-date" class="form-label">Date *</label>
                                         <input type="date" id="event-date" class="form-input" required>
@@ -350,6 +350,21 @@
         .toggle-label {
             font-size: var(--text-sm);
             color: var(--color-text-primary);
+        }
+
+        .form-actions {
+            flex-wrap: wrap;
+        }
+
+        @media (max-width: 639px) {
+            .form-actions {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .form-actions .btn {
+                width: 100%;
+            }
         }
     </style>
 </body>
