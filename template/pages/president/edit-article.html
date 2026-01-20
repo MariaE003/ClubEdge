@@ -154,19 +154,19 @@
             </header>
 
             <main class="app-content">
-                <nav class="breadcrumb mb-6">
-                    <ol class="breadcrumb-list">
-                        <li class="breadcrumb-item">
-                            <a href="articles-manage.html" class="breadcrumb-link">Mes articles</a>
+                <nav class="breadcrumb mb-6" aria-label="Fil d'Ariane">
+                    <ol class="breadcrumb-list flex items-center gap-2" role="list">
+                        <li class="breadcrumb-item flex items-center">
+                            <a href="articles-manage.html" class="breadcrumb-link text-sm text-secondary hover:text-primary">Mes articles</a>
                         </li>
-                        <li class="breadcrumb-separator">
+                        <li class="breadcrumb-separator flex items-center text-muted" aria-hidden="true">
                             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                 stroke-width="1.5">
                                 <polyline points="9 18 15 12 9 6" />
                             </svg>
                         </li>
-                        <li class="breadcrumb-item">
-                            <span class="breadcrumb-current">Modifier</span>
+                        <li class="breadcrumb-item flex items-center">
+                            <span class="breadcrumb-current text-sm font-medium">Modifier</span>
                         </li>
                     </ol>
                 </nav>

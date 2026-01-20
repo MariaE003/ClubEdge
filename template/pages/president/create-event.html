@@ -11,14 +11,11 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="../../assets/css/variables.css">
-    <link rel="stylesheet" href="../../assets/css/reset.css">
-    <link rel="stylesheet" href="../../assets/css/layout.css">
-    <link rel="stylesheet" href="../../assets/css/components.css">
-    <link rel="stylesheet" href="../../assets/css/utilities.css">
-    <link rel="stylesheet" href="../../assets/css/animations.css">
-    <link rel="stylesheet" href="../../assets/css/responsive.css">
-    <link rel="stylesheet" href="../../assets/css/pages/dashboard.css">
+    <!-- Styles (fallbacks for different hosting setups) -->
+    <link rel="stylesheet" href="/coachprov3/public/assets/css/main.css">
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <link rel="stylesheet" href="../../assets/css/main.css">
+    <link rel="stylesheet" href="../../../public/assets/css/main.css">
 </head>
 
 <body>
@@ -154,19 +151,19 @@
             </header>
 
             <main class="app-content">
-                <nav class="breadcrumb mb-6">
-                    <ol class="breadcrumb-list">
-                        <li class="breadcrumb-item">
-                            <a href="dashboard.html" class="breadcrumb-link">Tableau de bord</a>
+                <nav class="breadcrumb mb-6" aria-label="Fil d'Ariane">
+                    <ol class="breadcrumb-list flex items-center gap-2" role="list">
+                        <li class="breadcrumb-item flex items-center">
+                            <a href="dashboard.html" class="breadcrumb-link text-sm text-secondary hover:text-primary">Tableau de bord</a>
                         </li>
-                        <li class="breadcrumb-separator">
+                        <li class="breadcrumb-separator flex items-center text-muted" aria-hidden="true">
                             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                 stroke-width="1.5">
                                 <polyline points="9 18 15 12 9 6" />
                             </svg>
                         </li>
-                        <li class="breadcrumb-item">
-                            <span class="breadcrumb-current">Créer un événement</span>
+                        <li class="breadcrumb-item flex items-center">
+                            <span class="breadcrumb-current text-sm font-medium">Créer un événement</span>
                         </li>
                     </ol>
                 </nav>
@@ -255,7 +252,8 @@
 
                                 <div class="form-group">
                                     <label class="toggle-wrapper">
-                                        <input type="checkbox" class="toggle" checked>
+                                        <input type="checkbox" class="sr-only toggle-input" checked>
+                                        <span class="toggle" aria-hidden="true"></span>
                                         <span class="toggle-label">Inscriptions ouvertes</span>
                                     </label>
                                 </div>
