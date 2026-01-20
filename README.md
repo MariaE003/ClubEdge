@@ -71,7 +71,7 @@ ClubHub est une plateforme web (PHP orienté objet) permettant de gérer les **c
 ---
 
 ## 📁 Structure du Projet (exemple recommandé)
-
+```
 clubhub/
 ├── public/
 │   ├── index.php                 # Point d’entrée (Front Controller)
@@ -110,7 +110,7 @@ clubhub/
 ├── .env                          # Variables d’environnement (non versionné)
 ├── composer.json                 # Dépendances + autoload PSR-4
 └── README.md                     # Documentation projet
-
+```
 
 
 ---
