@@ -1,12 +1,12 @@
 CREATE TABLE users (
     id SERIAL PRIMARY KEY,
-    first_name VARCHAR(100) NOT NULL,
-    last_name VARCHAR(100) NOT NULL,
+    nom VARCHAR(100) NOT NULL,
+    prenom VARCHAR(100) NOT NULL,
     email VARCHAR(150) UNIQUE NOT NULL,
-    password TEXT NOT NULL,
-    role VARCHAR(20) CHECK (role IN ('student', 'admin','president')) NOT NULL,
-    profile_image TEXT,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    password VARCHAR(255) NOT NULL,
+    profile VARCHAR(50),
+    role VARCHAR(50) NOT NULL,
+    date_creationTIMESTAMP DEFAULT CURRENT_TIMESTAMP
 )
 
 
