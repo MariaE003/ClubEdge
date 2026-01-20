@@ -1,7 +1,7 @@
 <?php
-class ClubRepository{
-    // public function 
+// class ClubRepository{
+//     public function 
 
-}
+// }
 
 ?>
