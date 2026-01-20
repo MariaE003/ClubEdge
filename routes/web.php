@@ -7,6 +7,9 @@ $routes = [
     "registerPage" => ["AuthController" , "pageRegister"],
     "register" => ["AuthController" , "register"],
     "login" => ["AuthController" , "login"],
+    "admin/dashboard" => ["AdminController" , "dashboard"],
+    "president/dashboard" => ["PresidentController" , "dashboard"],
+    "etudiant/dashboard" => ["EtudiantController" , "dashboard"],
 
 ];
 
