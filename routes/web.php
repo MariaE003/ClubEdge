@@ -11,6 +11,7 @@ $routes = [
     "president/dashboard" => ["PresidentController" , "dashboard"],
     "etudiant/dashboard" => ["EtudiantController" , "dashboard"],
     "admin/users" => ["AdminController" , "usersPage"],
+    "admin/editUser" => ["AdminController" , "EditUserPage"],
 
 ];
 

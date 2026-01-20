@@ -15,5 +15,9 @@ class AdminController{
         require_once __DIR__."/../views/admin/students-manage.html";
     }
 
+    public function EditUserPage(){
+        require_once __DIR__."/../views/admin/edit-student.html";
+    }
+
 
 }
