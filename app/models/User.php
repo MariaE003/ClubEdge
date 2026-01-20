@@ -68,8 +68,8 @@ abstract class User{
         session_destroy();
     }
     public function updateInfoUser(): bool {
-        $stmt = $this->db->prepare("UPDATE utilisateur SET nom = ?, prenom = ?, email = ?, telephone = ?, img_utilisateur = ? WHERE id_utilisateur = ?");
-        return $stmt->execute([$this->nom, $this->prenom, $this->email, $this->telephone, $this->image, $this->id]);
+        $stmt = $this->db->prepare("UPDATE utilisateur SET nom = ?, prenom = ?, email = ?, img_utilisateur = ? WHERE id_utilisateur = ?");
+        return $stmt->execute([$this->nom, $this->prenom, $this->email, $this->image, $this->id]);
     }
 
     public function deleteUser(): bool {
