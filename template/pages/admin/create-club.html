@@ -11,14 +11,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="../../assets/css/variables.css">
-    <link rel="stylesheet" href="../../assets/css/reset.css">
-    <link rel="stylesheet" href="../../assets/css/layout.css">
-    <link rel="stylesheet" href="../../assets/css/components.css">
-    <link rel="stylesheet" href="../../assets/css/utilities.css">
-    <link rel="stylesheet" href="../../assets/css/animations.css">
-    <link rel="stylesheet" href="../../assets/css/responsive.css">
-    <link rel="stylesheet" href="../../assets/css/pages/admin.css">
+    <link rel="stylesheet" href="../../assets/css/admin.css"
+        onerror="this.onerror=null;this.href='../assets/css/admin.css';">
 </head>
 
 <body>
@@ -218,8 +212,7 @@
                             <div class="form-group">
                                 <label class="form-label">Paramètres</label>
                                 <div class="flex items-center gap-3">
-                                    <input type="checkbox" id="public-view"
-                                        class="w-4 h-4 text-accent border-gray-300 rounded focus:ring-accent" checked>
+                                    <input type="checkbox" id="public-view" class="checkbox" checked>
                                     <label for="public-view" class="text-sm">Rendre le club visible publiquement</label>
                                 </div>
                             </div>
@@ -236,7 +229,7 @@
     </div>
 
     <div class="mobile-overlay" id="mobile-overlay"></div>
-    <script src="../../assets/js/main.js" defer></script>
+    <script src="../../assets/js/main.js" defer onerror="this.onerror=null;this.src='../assets/js/main.js';"></script>
 </body>
 
 </html>

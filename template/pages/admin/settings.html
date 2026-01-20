@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Paramètres - Admin ClubEdge">
+    <title>Paramètres - Admin - ClubEdge</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="../../assets/css/admin.css"
+        onerror="this.onerror=null;this.href='../assets/css/admin.css';">
+</head>
+
+<body>
+    <div class="app-layout">
+        <!-- Admin Sidebar -->
+        <aside class="app-sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <a href="/" class="sidebar-logo">
+                    <svg width="32" height="32" viewBox="0 0 40 40" fill="none">
+                        <rect width="40" height="40" rx="4" fill="#FF4F00" />
+                        <path
+                            d="M12 28V12H20C22.12 12 24.16 12.84 25.66 14.34C27.16 15.84 28 17.88 28 20C28 22.12 27.16 24.16 25.66 25.66C24.16 27.16 22.12 28 20 28H12Z"
+                            stroke="white" stroke-width="2" />
+                    </svg>
+                    <span class="sidebar-logo-text">ClubEdge</span>
+                </a>
+                <span class="badge badge-accent ml-2">Admin</span>
+            </div>
+
+            <nav class="sidebar-nav">
+                <ul class="sidebar-menu">
+                    <li class="sidebar-item">
+                        <a href="dashboard.html" class="sidebar-link">
+                            <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="1.5">
+                                <rect x="3" y="3" width="7" height="9" rx="1" />
+                                <rect x="14" y="3" width="7" height="5" rx="1" />
+                                <rect x="14" y="12" width="7" height="9" rx="1" />
+                                <rect x="3" y="16" width="7" height="5" rx="1" />
+                            </svg>
+                            <span>Tableau de bord</span>
+                        </a>
+                    </li>
+                </ul>
+
+                <div class="sidebar-section">
+                    <h3 class="sidebar-section-title">Gestion</h3>
+                    <ul class="sidebar-menu">
+                        <li class="sidebar-item">
+                            <a href="clubs.html" class="sidebar-link">
+                                <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="1.5">
+                                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                                    <circle cx="9" cy="7" r="4" />
+                                </svg>
+                                <span>Clubs</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a href="students-manage.html" class="sidebar-link">
+                                <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="1.5">
+                                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                                    <circle cx="12" cy="7" r="4" />
+                                </svg>
+                                <span>Étudiants</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a href="events-overview.html" class="sidebar-link">
+                                <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="1.5">
+                                    <rect x="3" y="4" width="18" height="18" rx="2" />
+                                    <line x1="16" y1="2" x2="16" y2="6" />
+                                    <line x1="8" y1="2" x2="8" y2="6" />
+                                    <line x1="3" y1="10" x2="21" y2="10" />
+                                </svg>
+                                <span>Événements</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-section">
+                    <h3 class="sidebar-section-title">Système</h3>
+                    <ul class="sidebar-menu">
+                        <li class="sidebar-item">
+                            <a href="settings.html" class="sidebar-link active">
+                                <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="1.5">
+                                    <circle cx="12" cy="12" r="3" />
+                                    <path
+                                        d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33" />
+                                </svg>
+                                <span>Paramètres</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a href="logs.html" class="sidebar-link">
+                                <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="1.5">
+                                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                                    <polyline points="14 2 14 8 20 8" />
+                                </svg>
+                                <span>Logs système</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="sidebar-user">
+                    <div class="avatar avatar-sm bg-accent text-white">AD</div>
+                    <div class="sidebar-user-info">
+                        <span class="sidebar-user-name">Administrateur</span>
+                        <span class="sidebar-user-role">Super Admin</span>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <div class="app-main">
+            <header class="app-header">
+                <button class="btn btn-icon btn-ghost" id="menu-toggle">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="1.5">
+                        <line x1="3" y1="12" x2="21" y2="12" />
+                        <line x1="3" y1="6" x2="21" y2="6" />
+                        <line x1="3" y1="18" x2="21" y2="18" />
+                    </svg>
+                </button>
+                <h1 class="text-lg font-semibold ml-4">Paramètres système</h1>
+                <div class="flex-1"></div>
+                <button class="btn btn-outline btn-sm">Déconnexion</button>
+            </header>
+
+            <main class="app-content">
+                <div class="container-sm mx-auto">
+                    <!-- Page Header -->
+                    <div class="page-header">
+                        <h1 class="page-title">Paramètres</h1>
+                        <p class="page-description">Configuration générale de la plateforme ClubEdge.</p>
+                    </div>
+
+                    <div class="space-y-6">
+                        <!-- General Settings -->
+                        <div class="card">
+                            <div class="card-header border-b">
+                                <h2 class="card-title text-lg">Informations de l'établissement</h2>
+                            </div>
+                            <div class="card-body">
+                                <form class="space-y-4">
+                                    <div class="form-group">
+                                        <label class="form-label">Nom de l'établissement</label>
+                                        <input type="text" class="form-input" value="Lycée International de Paris">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">Email de contact (Admin)</label>
+                                        <input type="email" class="form-input" value="admin@ecole.com">
+                                    </div>
+                                    <div class="flex justify-end">
+                                        <button class="btn btn-primary btn-sm">Enregistrer</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+
+                        <!-- System Restrictions -->
+                        <div class="card">
+                            <div class="card-header border-b">
+                                <h2 class="card-title text-lg">Règles et Restrictions</h2>
+                            </div>
+                            <div class="card-body">
+                                <form class="space-y-4">
+                                    <div class="flex items-center justify-between p-3 border rounded-lg">
+                                        <div>
+                                            <p class="font-medium">Membres max par club</p>
+                                            <p class="text-xs text-muted">Limite stricte du nombre d'étudiants par club.
+                                            </p>
+                                        </div>
+                                        <input type="number" class="form-input w-24" value="8">
+                                    </div>
+
+                                    <div class="flex items-center justify-between p-3 border rounded-lg">
+                                        <div>
+                                            <p class="font-medium">Clubs max par établissement</p>
+                                            <p class="text-xs text-muted">Nombre maximum de clubs autorisés.</p>
+                                        </div>
+                                        <input type="number" class="form-input w-24" value="6">
+                                    </div>
+
+                                    <label
+                                        class="flex items-center gap-3 p-3 border rounded-lg cursor-pointer hover:bg-slate-50">
+                                        <input type="checkbox" class="checkbox" checked>
+                                        <div class="flex-1">
+                                            <p class="font-medium">Validation automatique des inscriptions</p>
+                                            <p class="text-xs text-muted">Les étudiants rejoignent les clubs sans
+                                                approbation du président.</p>
+                                        </div>
+                                    </label>
+
+                                    <div class="flex justify-end">
+                                        <button class="btn btn-primary btn-sm">Mettre à jour les règles</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+
+                        <!-- Security -->
+                        <div class="card">
+                            <div class="card-header border-b">
+                                <h2 class="card-title text-lg">Sécurité et Maintenance</h2>
+                            </div>
+                            <div class="card-body space-y-4">
+                                <div class="flex items-center justify-between">
+                                    <div>
+                                        <p class="font-medium">Mode Maintenance</p>
+                                        <p class="text-sm text-muted">Rend le site inaccessible aux étudiants.</p>
+                                    </div>
+                                    <div class="toggle" role="switch" aria-checked="false">
+                                        <input type="checkbox" class="sr-only" aria-label="Mode Maintenance">
+                                    </div>
+                                </div>
+                                <div class="border-t pt-4">
+                                    <button class="btn btn-outline w-full justify-between">
+                                        <span>Exporter les données (GDPR)</span>
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
+                                            stroke="currentColor" stroke-width="1.5">
+                                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                                            <polyline points="7 10 12 15 17 10" />
+                                            <line x1="12" y1="15" x2="12" y2="3" />
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <div class="mobile-overlay" id="mobile-overlay"></div>
+    <script src="../../assets/js/main.js" defer onerror="this.onerror=null;this.src='../assets/js/main.js';"></script>
+</body>
+
+</html>
