@@ -1,6 +1,5 @@
 <?php
 session_start();
-require_once __DIR__ . '../../vendor/autoloadRepository.php';
 
 class Router
 {
@@ -8,7 +7,10 @@ class Router
     {
         require_once __DIR__ . '/../routes/web.php';
 
-        $url = trim($_GET['url'] ?? '/', '/');
+        $url = trim($_GET['url'] ?? '', '/');
+        if ($url === '') {
+            $url = '/';
+        }
 
         foreach ($routes as $route => $action) {
 
@@ -39,8 +41,9 @@ class Router
             }
         }
 
-        die($url);
+        http_response_code(404);
+        require_once __DIR__ . '/../app/views/errors/404.html';
+        return;
     }
 }
-
 

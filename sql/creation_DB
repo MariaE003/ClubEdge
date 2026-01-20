@@ -1,14 +1,13 @@
-    CREATE TABLE users (
-        id SERIAL PRIMARY KEY,
-        nom VARCHAR(100) NOT NULL,
-        prenom VARCHAR(100) NOT NULL,
-        email VARCHAR(150) UNIQUE NOT NULL,
-        password VARCHAR(255) NOT NULL,
-        profile VARCHAR(50),
-        role VARCHAR(50) NOT NULL,
-        date_creationTIMESTAMP DEFAULT CURRENT_TIMESTAMP
-    )
-
+CREATE TABLE users (
+    id SERIAL PRIMARY KEY,
+    nom VARCHAR(100) NOT NULL,
+    prenom VARCHAR(100) NOT NULL,
+    email VARCHAR(150) UNIQUE NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    profile VARCHAR(50),
+    role VARCHAR(50) NOT NULL,
+    date_creation TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
 
 CREATE TABLE clubs (
     id SERIAL PRIMARY KEY,
@@ -17,9 +16,8 @@ CREATE TABLE clubs (
     president_id INTEGER REFERENCES users(id) ON DELETE SET NULL,
     members INTEGER[] DEFAULT '{}',
     logo TEXT,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-)
-
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
 
 CREATE TABLE events (
     id SERIAL PRIMARY KEY,
@@ -30,31 +28,25 @@ CREATE TABLE events (
     location VARCHAR(150),
     images TEXT[],
     created_by INTEGER REFERENCES users(id) ON DELETE SET NULL,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    
-)
-
-
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
 
 CREATE TABLE event_participants (
     id SERIAL PRIMARY KEY,
     event_id INTEGER NOT NULL REFERENCES events(id) ON DELETE CASCADE,
-    user_id INTEGER NOT NULL REF 
-)
-
-
+    user_id INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+    UNIQUE (event_id, user_id)
+);
 
 CREATE TABLE reviews (
     id SERIAL PRIMARY KEY,
-    event_id INTEGER NOT NULL REFERENCES events(id) ,
-    user_id INTEGER NOT NULL REFERENCES users(id) ,
-    rating INTEGER ,
+    event_id INTEGER NOT NULL REFERENCES events(id),
+    user_id INTEGER NOT NULL REFERENCES users(id),
+    rating INTEGER,
     comment TEXT,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     UNIQUE (event_id, user_id)
-)
-
-
+);
 
 CREATE TABLE articles (
     id SERIAL PRIMARY KEY,
@@ -64,9 +56,7 @@ CREATE TABLE articles (
     content TEXT,
     images TEXT[],
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-)
-
-
+);
 
 CREATE TABLE logs (
     id SERIAL PRIMARY KEY,
@@ -74,4 +64,4 @@ CREATE TABLE logs (
     message TEXT NOT NULL,
     context JSON,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-)
+);
