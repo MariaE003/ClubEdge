@@ -150,16 +150,20 @@
                                 <label class="form-label">Logo du club</label>
                                 <div class="flex items-center gap-6">
                                     <div
-                                        class="w-24 h-24 rounded-full bg-gray-100 flex items-center justify-center border-2 border-dashed border-gray-300">
+                                        class="w-24 h-24 rounded-full bg-gray-100 flex items-center justify-center border-2 border-dashed border-gray-300 overflow-hidden cursor-pointer"
+                                        id="club-logo-dropzone" title="Choisir une image">
+                                        <img id="club-logo-preview" class="hidden w-full h-full object-cover" alt="Logo du club">
                                         <svg width="32" height="32" viewBox="0 0 24 24" fill="none"
-                                            stroke="currentColor" stroke-width="1.5" class="text-gray-400">
+                                            stroke="currentColor" stroke-width="1.5" class="text-gray-400" id="club-logo-placeholder">
                                             <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
                                             <polyline points="17 8 12 3 7 8" />
                                             <line x1="12" y1="3" x2="12" y2="15" />
                                         </svg>
                                     </div>
                                     <div>
-                                        <button type="button" class="btn btn-outline btn-sm mb-2">Choisir une
+                                        <input type="file" id="club-logo-input" class="sr-only" accept="image/*">
+                                        <button type="button" class="btn btn-outline btn-sm mb-2"
+                                            id="club-logo-button">Choisir une
                                             image</button>
                                         <p class="text-xs text-muted">JPG, PNG ou GIF. Max 2MB. Recommandé : 400x400px
                                         </p>
@@ -230,6 +234,71 @@
 
     <div class="mobile-overlay" id="mobile-overlay"></div>
     <script src="../../assets/js/main.js" defer onerror="this.onerror=null;this.src='../assets/js/main.js';"></script>
+    <script>
+        (function () {
+            const fileInput = document.getElementById('club-logo-input');
+            const pickButton = document.getElementById('club-logo-button');
+            const dropzone = document.getElementById('club-logo-dropzone');
+            const preview = document.getElementById('club-logo-preview');
+            const placeholder = document.getElementById('club-logo-placeholder');
+
+            if (!fileInput || !pickButton || !dropzone || !preview || !placeholder) return;
+
+            let objectUrl;
+
+            function resetPreview() {
+                if (objectUrl) URL.revokeObjectURL(objectUrl);
+                objectUrl = undefined;
+                preview.removeAttribute('src');
+                preview.classList.add('hidden');
+                placeholder.classList.remove('hidden');
+                dropzone.classList.add('border-dashed');
+            }
+
+            function setPreview(file) {
+                if (!file || !file.type || !file.type.startsWith('image/')) {
+                    resetPreview();
+                    return;
+                }
+
+                if (objectUrl) URL.revokeObjectURL(objectUrl);
+                objectUrl = URL.createObjectURL(file);
+
+                preview.src = objectUrl;
+                preview.classList.remove('hidden');
+                placeholder.classList.add('hidden');
+                dropzone.classList.remove('border-dashed');
+            }
+
+            function openPicker() {
+                fileInput.click();
+            }
+
+            pickButton.addEventListener('click', openPicker);
+            dropzone.addEventListener('click', openPicker);
+
+            fileInput.addEventListener('change', () => {
+                const file = fileInput.files && fileInput.files[0];
+                setPreview(file);
+            });
+
+            dropzone.addEventListener('dragover', (e) => {
+                e.preventDefault();
+                dropzone.classList.add('bg-slate-50');
+            });
+
+            dropzone.addEventListener('dragleave', () => {
+                dropzone.classList.remove('bg-slate-50');
+            });
+
+            dropzone.addEventListener('drop', (e) => {
+                e.preventDefault();
+                dropzone.classList.remove('bg-slate-50');
+                const file = e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files[0];
+                setPreview(file);
+            });
+        })();
+    </script>
 </body>
 
 </html>
