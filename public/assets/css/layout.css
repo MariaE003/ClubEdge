@@ -12,6 +12,7 @@
 }
 
 .container-sm {
+<<<<<<< HEAD
     max-width: 48rem;
 }
 
@@ -21,6 +22,26 @@
 
 .container-lg {
     max-width: 72rem;
+=======
+    width: 100%;
+    max-width: 48rem;
+    margin: 0 auto;
+    padding: 0 var(--space-6);
+}
+
+.container-md {
+    width: 100%;
+    max-width: 64rem;
+    margin: 0 auto;
+    padding: 0 var(--space-6);
+}
+
+.container-lg {
+    width: 100%;
+    max-width: 72rem;
+    margin: 0 auto;
+    padding: 0 var(--space-6);
+>>>>>>> f45a95e1df63276fac731540b9e375a96c6960d4
 }
 
 /* App Layout */
@@ -164,6 +185,81 @@
     grid-column: 1 / -1;
 }
 
+<<<<<<< HEAD
+=======
+.col-span-5 {
+    grid-column: span 5;
+}
+
+.col-span-7 {
+    grid-column: span 7;
+}
+
+.col-span-8 {
+    grid-column: span 8;
+}
+
+.col-span-9 {
+    grid-column: span 9;
+}
+
+.col-span-10 {
+    grid-column: span 10;
+}
+
+.col-span-11 {
+    grid-column: span 11;
+}
+
+.col-span-12 {
+    grid-column: span 12;
+}
+
+@media (min-width: 768px) {
+    .md\:grid-cols-2 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .md\:grid-cols-3 {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .md\:col-span-6 {
+        grid-column: span 6;
+    }
+}
+
+@media (min-width: 1024px) {
+    .lg\:grid-cols-3 {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .lg\:grid-cols-4 {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .lg\:col-span-3 {
+        grid-column: span 3;
+    }
+
+    .lg\:col-span-4 {
+        grid-column: span 4;
+    }
+
+    .lg\:col-span-6 {
+        grid-column: span 6;
+    }
+
+    .lg\:col-span-8 {
+        grid-column: span 8;
+    }
+
+    .lg\:col-span-9 {
+        grid-column: span 9;
+    }
+}
+
+>>>>>>> f45a95e1df63276fac731540b9e375a96c6960d4
 /* Flexbox */
 .flex {
     display: flex;
@@ -206,10 +302,24 @@
 }
 
 /* Gap */
+<<<<<<< HEAD
+=======
+.gap-1 {
+    gap: var(--space-1);
+}
+
+>>>>>>> f45a95e1df63276fac731540b9e375a96c6960d4
 .gap-2 {
     gap: var(--space-2);
 }
 
+<<<<<<< HEAD
+=======
+.gap-3 {
+    gap: var(--space-3);
+}
+
+>>>>>>> f45a95e1df63276fac731540b9e375a96c6960d4
 .gap-4 {
     gap: var(--space-4);
 }

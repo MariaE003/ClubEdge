@@ -230,6 +230,14 @@
     color: var(--color-accent);
 }
 
+<<<<<<< HEAD
+=======
+.badge-primary {
+    background-color: var(--color-accent);
+    color: var(--color-white);
+}
+
+>>>>>>> f45a95e1df63276fac731540b9e375a96c6960d4
 .badge-success {
     background-color: var(--color-success-light);
     color: var(--color-success);
@@ -240,11 +248,34 @@
     color: var(--color-warning);
 }
 
+<<<<<<< HEAD
+=======
+.badge-secondary {
+    background-color: var(--color-gray-100);
+    color: var(--color-text-secondary);
+    border: 1px solid var(--border-color);
+}
+
+>>>>>>> f45a95e1df63276fac731540b9e375a96c6960d4
 .badge-error {
     background-color: var(--color-error-light);
     color: var(--color-error);
 }
 
+<<<<<<< HEAD
+=======
+.badge-ghost {
+    background-color: transparent;
+    color: var(--color-text-secondary);
+    border: 1px solid var(--border-color);
+}
+
+.badge-sm {
+    padding: 2px 6px;
+    font-size: 10px;
+}
+
+>>>>>>> f45a95e1df63276fac731540b9e375a96c6960d4
 /* ═══════════════════════════════════════════════════════════════
    AVATAR
    ═══════════════════════════════════════════════════════════════ */
@@ -269,6 +300,15 @@
     object-fit: cover;
 }
 
+<<<<<<< HEAD
+=======
+.avatar-xs {
+    width: 24px;
+    height: 24px;
+    font-size: 10px;
+}
+
+>>>>>>> f45a95e1df63276fac731540b9e375a96c6960d4
 .avatar-sm {
     width: 32px;
     height: 32px;
@@ -787,6 +827,17 @@
    PAGINATION
    ═══════════════════════════════════════════════════════════════ */
 
+<<<<<<< HEAD
+=======
+.pagination-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-4);
+    flex-wrap: wrap;
+}
+
+>>>>>>> f45a95e1df63276fac731540b9e375a96c6960d4
 .pagination {
     display: flex;
     align-items: center;
@@ -822,4 +873,8 @@
 .pagination-item:disabled {
     opacity: 0.5;
     cursor: not-allowed;
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> f45a95e1df63276fac731540b9e375a96c6960d4
