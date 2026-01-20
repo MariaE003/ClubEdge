@@ -230,6 +230,11 @@
     color: var(--color-accent);
 }
 
+.badge-primary {
+    background-color: var(--color-accent);
+    color: var(--color-white);
+}
+
 .badge-success {
     background-color: var(--color-success-light);
     color: var(--color-success);
@@ -255,6 +260,11 @@
     background-color: transparent;
     color: var(--color-text-secondary);
     border: 1px solid var(--border-color);
+}
+
+.badge-sm {
+    padding: 2px 6px;
+    font-size: 10px;
 }
 
 /* ═══════════════════════════════════════════════════════════════
@@ -804,6 +814,14 @@
 /* ═══════════════════════════════════════════════════════════════
    PAGINATION
    ═══════════════════════════════════════════════════════════════ */
+
+.pagination-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-4);
+    flex-wrap: wrap;
+}
 
 .pagination {
     display: flex;

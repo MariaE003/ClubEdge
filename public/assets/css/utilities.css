@@ -120,6 +120,10 @@
     color: var(--color-text-primary);
 }
 
+.hover\:text-primary:hover {
+    color: var(--color-text-primary);
+}
+
 .text-secondary {
     color: var(--color-text-secondary);
 }
