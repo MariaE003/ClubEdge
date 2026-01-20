@@ -1,1 +1,5 @@
 /config
+/vendor/composer/
+/vendor/symfony/
+/vendor/twig/
+/vendor/autoload.php

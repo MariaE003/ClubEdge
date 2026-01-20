@@ -1,77 +1,71 @@
-<?php
+<?php 
 
-    class Club{
-       
+class Club{
+    private ?int $id;
+    private string $nom;
+    private ?string $description;
 
-    private $db;
+    private ?int $presidentId;
+    private ?string $logo;
+    private ?string $createdAt; 
+    private array $members;
 
-    public function __construct(){
-    $this->db=Database::getInstance()->getConnection();
-    }
-    
+    public function __construct(?int $id,string $nom,?string $description=null,?int $presidentId=null,?string $logo = null,array $members=[],?string $createdAt = null){
+    $this->id=$id;
+    $this->setNom($nom);
+    $this->description=$description;
+    $this->logo=$logo;
+    $this->presidentId=$presidentId;
+    $this->setMembers($members);
+    $this->createdAt=$createdAt;
 
-    public function countMembers(){
-        $sql_prepare="SELECT cardinality(members) as total from clubs where id=?";
-        $sql=$this->db->prepare($sql_prepare);
-        $sql->execute([$this->id]);
-        $result=$sql->fetch(PDO::FETCH_ASSOC);
-        return $result;
-    }
-
-
-    public function isStudentInClub($user_id){
-    $sql_prepare="SELECT count(*) where ? = ANY(members)";
-    $sql=$this->db->prepare($sql_prepare);
-    $sql->execute([$user_id]);
-    $result=$sql->fetchColumn();
-    return $result>0;
     }
 
+    public function getId(): ?int {
+        return $this->id;
+    }
 
-
-
-    public function canJoin(){
-        $count_members=$this->countMembers();
-        if($count_members>=8){
-            return false;
-        }else{
-            return true;
+    public function getNom(): string {
+        return $this->nom;
+    }
+    public function setNom(string $nom): void {
+        if (trim($nom)==='') {
+            throw new Exception('le nom du club est obligatoire !');
         }
+        $this->nom = $nom;
+    }
+
+    public function getDescription(): ?string {
+        return $this->description;
+    }
+    public function setDescription(?string $description): void {
+        $this->description = $description;
+    }
+    // 
+    public function getPresidentId(): ?int{ 
+        return $this->presidentId; 
+    }
+    public function setPresidentId(?int $presidentId){
+        $this->presidentId = $presidentId;
+    }
+
+    public function getMembers(): array{ 
+        return $this->members; 
+    }
+
+    public function getLogo(): ?string{ 
+        return $this->logo;  
+    }
+    public function setLogo(?string $logo): void {
+        $this->logo = $logo;
+    }
+
+    public function getCreatedAt(): ?string {
+        return $this->createdAt; 
     }
 
 
-    public function joinClub($user_id){
-        try{
 
-            $this->db->beginTransaction();
-
-            $currentCount=$this->countMembers();
-            
-            $sql_prepare="UPDATE clubs SET members =array_append(members,?) where id=?";
-            $sql=$this->db->prepare($sql_prepare);
-            $sql->execute([$user_id,$this->id]);
-
-            if($currentCount==0){
-                $sql_pre="UPDATE clubs set president_id=? where id=?";
-                $sql=$this->db->prepare($sql_pre);
-                $sql->execute([$user_id,$this->id]);
-
-                $prepareRole="UPDATE users set role='president' where id=?";
-                $sqlRole=$this->db->prepare($prepareRole);
-                $sqlRole->execute([$user_id]);
-            }
-            $this->db->commit();
-            
-        }catch(Exception $e){
-            $this->db->rollBack();
-            return $e->getMessage();
-            
-        }
-    }
-
-
-
-
-    }
+}
 
 ?>
