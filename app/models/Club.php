@@ -53,6 +53,10 @@ class Club{
         return $this->members; 
     }
 
+    public function setMembers(?array $members): void {
+        $this->members = $members ?? []; // [] =>pour eviter erreur en cas de loop && array vide
+    }
+
     public function getLogo(): ?string{ 
         return $this->logo;  
     }

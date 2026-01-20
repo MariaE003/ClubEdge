@@ -43,9 +43,9 @@ CREATE TABLE event_participants (
 ;
 CREATE TABLE reviews (
     id SERIAL PRIMARY KEY,
-    event_id INTEGER NOT NULL REFERENCES events(id) ,
-    user_id INTEGER NOT NULL REFERENCES users(id) ,
-    rating INTEGER ,
+    event_id INTEGER NOT NULL REFERENCES events(id),
+    user_id INTEGER NOT NULL REFERENCES users(id),
+    rating INTEGER,
     comment TEXT,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     UNIQUE (event_id, user_id)
@@ -61,7 +61,11 @@ CREATE TABLE articles (
     content TEXT,
     images TEXT[],
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-)
+);
+	
+
+
+
 
 ;
 
@@ -71,4 +75,4 @@ CREATE TABLE logs (
     message TEXT NOT NULL,
     context JSON,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-)
+);
