@@ -90,6 +90,20 @@
     flex-wrap: wrap;
 }
 
+.admin-toolbar--filters {
+    align-items: center;
+}
+
+.admin-toolbar--filters > .form-select {
+    width: auto;
+    min-width: 200px;
+    flex: 0 0 auto;
+}
+
+.admin-toolbar--filters .admin-search {
+    max-width: none;
+}
+
 .admin-search {
     display: flex;
     align-items: center;
@@ -227,5 +241,10 @@
 
     .admin-search {
         max-width: none;
+    }
+
+    .admin-toolbar--filters > .form-select {
+        width: 100%;
+        min-width: 0;
     }
 }

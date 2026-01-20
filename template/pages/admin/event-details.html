@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Paramètres - Admin ClubEdge">
-    <title>Paramètres - Admin - ClubEdge</title>
+    <meta name="description" content="Détails de l'événement - Admin ClubEdge">
+    <title>Détails événement - Admin - ClubEdge</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -17,7 +17,6 @@
 
 <body>
     <div class="app-layout">
-        <!-- Admin Sidebar -->
         <aside class="app-sidebar" id="sidebar">
             <div class="sidebar-header">
                 <a href="dashboard.html" class="sidebar-logo">
@@ -72,7 +71,7 @@
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a href="events-overview.html" class="sidebar-link">
+                            <a href="events-overview.html" class="sidebar-link active">
                                 <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                     stroke-width="1.5">
                                     <rect x="3" y="4" width="18" height="18" rx="2" />
@@ -90,7 +89,7 @@
                     <h3 class="sidebar-section-title">Système</h3>
                     <ul class="sidebar-menu">
                         <li class="sidebar-item">
-                            <a href="settings.html" class="sidebar-link active">
+                            <a href="settings.html" class="sidebar-link">
                                 <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                     stroke-width="1.5">
                                     <circle cx="12" cy="12" r="3" />
@@ -135,110 +134,45 @@
                         <line x1="3" y1="18" x2="21" y2="18" />
                     </svg>
                 </button>
-                <h1 class="text-lg font-semibold ml-4">Paramètres système</h1>
+                <h1 class="text-lg font-semibold ml-4">Détails événement</h1>
                 <div class="flex-1"></div>
                 <button class="btn btn-outline btn-sm">Déconnexion</button>
             </header>
 
             <main class="app-content">
-                <div class="container-sm mx-auto">
-                    <!-- Page Header -->
-                    <div class="page-header">
-                        <h1 class="page-title">Paramètres</h1>
-                        <p class="page-description">Configuration générale de la plateforme ClubEdge.</p>
+                <div class="page-header flex items-center justify-between">
+                    <div>
+                        <h1 class="page-title">Atelier Python : Les Bases</h1>
+                        <p class="page-description">Page de détail (placeholder) — à connecter au backend.</p>
                     </div>
+                    <a href="events-overview.html" class="btn btn-ghost">Retour</a>
+                </div>
 
-                    <div class="space-y-6">
-                        <!-- General Settings -->
-                        <div class="card">
-                            <div class="card-header border-b">
-                                <h2 class="card-title text-lg">Informations de l'établissement</h2>
+                <div class="card">
+                    <div class="card-body space-y-4">
+                        <div class="grid grid-cols-2 gap-6">
+                            <div>
+                                <p class="text-xs text-muted">Club</p>
+                                <p class="font-medium">Club Informatique</p>
                             </div>
-                            <div class="card-body">
-                                <form class="space-y-4">
-                                    <div class="form-group">
-                                        <label class="form-label">Nom de l'établissement</label>
-                                        <input type="text" class="form-input" value="Lycée International de Paris">
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="form-label">Email de contact (Admin)</label>
-                                        <input type="email" class="form-input" value="admin@ecole.com">
-                                    </div>
-                                    <div class="flex justify-end">
-                                        <button class="btn btn-primary btn-sm">Enregistrer</button>
-                                    </div>
-                                </form>
+                            <div>
+                                <p class="text-xs text-muted">Statut</p>
+                                <span class="badge badge-success">À venir</span>
                             </div>
-                        </div>
-
-                        <!-- System Restrictions -->
-                        <div class="card">
-                            <div class="card-header border-b">
-                                <h2 class="card-title text-lg">Règles et Restrictions</h2>
+                            <div>
+                                <p class="text-xs text-muted">Date</p>
+                                <p class="font-medium">24 Jan 2026</p>
                             </div>
-                            <div class="card-body">
-                                <form class="space-y-4">
-                                    <div class="flex items-center justify-between p-3 border rounded-lg">
-                                        <div>
-                                            <p class="font-medium">Membres max par club</p>
-                                            <p class="text-xs text-muted">Limite stricte du nombre d'étudiants par club.
-                                            </p>
-                                        </div>
-                                        <input type="number" class="form-input w-24" value="8">
-                                    </div>
-
-                                    <div class="flex items-center justify-between p-3 border rounded-lg">
-                                        <div>
-                                            <p class="font-medium">Clubs max par établissement</p>
-                                            <p class="text-xs text-muted">Nombre maximum de clubs autorisés.</p>
-                                        </div>
-                                        <input type="number" class="form-input w-24" value="6">
-                                    </div>
-
-                                    <label
-                                        class="flex items-center gap-3 p-3 border rounded-lg cursor-pointer hover:bg-slate-50">
-                                        <input type="checkbox" class="checkbox" checked>
-                                        <div class="flex-1">
-                                            <p class="font-medium">Validation automatique des inscriptions</p>
-                                            <p class="text-xs text-muted">Les étudiants rejoignent les clubs sans
-                                                approbation du président.</p>
-                                        </div>
-                                    </label>
-
-                                    <div class="flex justify-end">
-                                        <button class="btn btn-primary btn-sm">Mettre à jour les règles</button>
-                                    </div>
-                                </form>
+                            <div>
+                                <p class="text-xs text-muted">Participants</p>
+                                <p class="font-medium">14</p>
                             </div>
                         </div>
 
-                        <!-- Security -->
-                        <div class="card">
-                            <div class="card-header border-b">
-                                <h2 class="card-title text-lg">Sécurité et Maintenance</h2>
-                            </div>
-                            <div class="card-body space-y-4">
-                                <div class="flex items-center justify-between">
-                                    <div>
-                                        <p class="font-medium">Mode Maintenance</p>
-                                        <p class="text-sm text-muted">Rend le site inaccessible aux étudiants.</p>
-                                    </div>
-                                    <div class="toggle" role="switch" aria-checked="false">
-                                        <input type="checkbox" class="sr-only" aria-label="Mode Maintenance">
-                                    </div>
-                                </div>
-                                <div class="border-t pt-4">
-                                    <button class="btn btn-outline w-full justify-between">
-                                        <span>Exporter les données (GDPR)</span>
-                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
-                                            stroke="currentColor" stroke-width="1.5">
-                                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-                                            <polyline points="7 10 12 15 17 10" />
-                                            <line x1="12" y1="15" x2="12" y2="3" />
-                                        </svg>
-                                    </button>
-                                </div>
-                            </div>
+                        <div class="border-t pt-4">
+                            <p class="text-sm text-muted">
+                                Une introduction complète au langage Python pour les débutants.
+                            </p>
                         </div>
                     </div>
                 </div>

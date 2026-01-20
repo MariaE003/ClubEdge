@@ -11,14 +11,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="../../assets/css/variables.css">
-    <link rel="stylesheet" href="../../assets/css/reset.css">
-    <link rel="stylesheet" href="../../assets/css/layout.css">
-    <link rel="stylesheet" href="../../assets/css/components.css">
-    <link rel="stylesheet" href="../../assets/css/utilities.css">
-    <link rel="stylesheet" href="../../assets/css/animations.css">
-    <link rel="stylesheet" href="../../assets/css/responsive.css">
-    <link rel="stylesheet" href="../../assets/css/pages/admin.css">
+    <link rel="stylesheet" href="../../assets/css/admin.css"
+        onerror="this.onerror=null;this.href='../assets/css/admin.css';">
 </head>
 
 <body>
@@ -26,7 +20,7 @@
         <!-- Admin Sidebar -->
         <aside class="app-sidebar" id="sidebar">
             <div class="sidebar-header">
-                <a href="/" class="sidebar-logo">
+                <a href="dashboard.html" class="sidebar-logo">
                     <svg width="32" height="32" viewBox="0 0 40 40" fill="none">
                         <rect width="40" height="40" rx="4" fill="#FF4F00" />
                         <path
@@ -70,17 +64,17 @@
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a href="users.html" class="sidebar-link">
+                            <a href="students-manage.html" class="sidebar-link">
                                 <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                     stroke-width="1.5">
                                     <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
                                     <circle cx="12" cy="7" r="4" />
                                 </svg>
-                                <span>Utilisateurs</span>
+                                <span>Étudiants</span>
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a href="events.html" class="sidebar-link">
+                            <a href="events-overview.html" class="sidebar-link">
                                 <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                     stroke-width="1.5">
                                     <rect x="3" y="4" width="18" height="18" rx="2" />
@@ -239,7 +233,7 @@
                 <!-- Content Grid -->
                 <div class="grid grid-cols-12 gap-6">
                     <!-- Recent Clubs -->
-                    <div class="col-span-8">
+                    <div class="col-span-12 lg:col-span-8">
                         <div class="card">
                             <div class="card-header flex items-center justify-between">
                                 <h2 class="card-title">Clubs récents</h2>
@@ -327,7 +321,7 @@
                     </div>
 
                     <!-- Quick Actions -->
-                    <div class="col-span-4">
+                    <div class="col-span-12 lg:col-span-4">
                         <div class="card">
                             <div class="card-header">
                                 <h2 class="card-title">Actions rapides</h2>
@@ -342,14 +336,14 @@
                                         </svg>
                                         Créer un club
                                     </a>
-                                    <a href="users.html" class="admin-quick-action">
+                                    <a href="students-manage.html" class="admin-quick-action">
                                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                                             <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
                                             <circle cx="8.5" cy="7" r="4" />
                                             <line x1="20" y1="8" x2="20" y2="14" />
                                             <line x1="23" y1="11" x2="17" y2="11" />
                                         </svg>
-                                        Ajouter un utilisateur
+                                        Ajouter un étudiant
                                     </a>
                                     <a href="logs.html" class="admin-quick-action">
                                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
@@ -399,7 +393,7 @@
     </div>
 
     <div class="mobile-overlay" id="mobile-overlay"></div>
-    <script src="../../assets/js/main.js" defer></script>
+    <script src="../../assets/js/main.js" defer onerror="this.onerror=null;this.src='../assets/js/main.js';"></script>
 </body>
 
 </html>
