@@ -1,5 +1,5 @@
 <?php
-class AdminController{
+class AdminController extends BaseController{
 
     private AdminRepository $adminRepository;
     private EtudiantRepository $etudiantRepository;
@@ -24,7 +24,7 @@ class AdminController{
 {
     $student = $this->etudiantRepository->getEtudiantById($id);
 
-    echo $this->twig->render('admin/edit-student.twig', [
+     $this->render('admin/edit-student.twig', [
         'student' => $student
     ]);
 }
