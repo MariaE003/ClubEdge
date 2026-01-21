@@ -18,26 +18,19 @@ class ClubController extends BaseController{
             ]);
     }
     public function AddClub(){
+
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             try {
                 // echo 'hi';
-                $logo = null;
-                
-                if (!empty($_FILES['logo']['name'])) {
-                $logo = $_FILES['logo']['name'];
-                move_uploaded_file(
-                    $_FILES['logo']['tmp_name'],
-                    __DIR__ . '/../public/uploads/' . $logo
-                );
-                }
-
-                $club = new Club( null,$_POST['nom'],$_POST['description'] ?? null, null,$logo?? null,[]);
+                $club = new Club( null,$_POST['nom'],$_POST['description'] ?? null, null,$_POST['logo']?? null,[]);
                 $this->repoClub->addClub($club);
-                header('Location: /admin/clubs');
+                header('Location: /ClubEdge/student/clubs-list');
                 exit;
 
             } catch (Exception $e) {
-                $error = $e->getMessage();
+                $this->render('admin/create-club.twig', [
+                    'error' => $e->getMessage()
+                ]);
             }
         }
 
@@ -88,9 +81,11 @@ class ClubController extends BaseController{
     }
 
     // voir les clubs 
-    public function pageClubs(){
-        $this->render('admin/create-club.html');
-    }
+    // public function pageClubs(){//jai ajouter les parametre ici ?
+    //     $this->render('admin/create-club.twig', [
+    //     'clubs' => $clubs
+    // ]);
+    // }
 
 
     // pour affichage des clubs
@@ -109,7 +104,7 @@ class ClubController extends BaseController{
         }
         $idClub=(int)$_GET['idC'];
         $club=$this->repoClub->findClubById($idClub);
-        // var_dump($club['members']);
+        // var_dump($club['logo']);
         // var_dump($club['members']);
         // var_dump($club['members']);
         // var_dump($club);

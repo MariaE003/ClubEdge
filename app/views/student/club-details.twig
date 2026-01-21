@@ -394,6 +394,16 @@
     <link rel="stylesheet" href="/../ClubEdge/public/assets/css/animations.css">
     <link rel="stylesheet" href="/../ClubEdge/public/assets/css/responsive.css">
     <link rel="stylesheet" href="/../ClubEdge/public/assets/css/pages/clubs.css">
+    <style>
+        .club-banner {
+            height: 250px;
+            width: 100%;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+    </style>
 </head>
 
 <body>
@@ -513,10 +523,9 @@
                     </svg>
                     Retour aux clubs
                 </a>
-
                 <!-- Club Header -->
                 <div class="card mb-6 overflow-hidden">
-                    <div class="h-48 w-full bg-cover bg-center"
+                    <div class="club-banner"
                         style="background-image: url('{{club.logo}}')">
                         <div class="w-full h-full bg-overlay"></div>
                     </div>

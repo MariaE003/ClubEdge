@@ -27,15 +27,15 @@ $routes = [
 
 
     // les route des clubs
-    "admin/clubs" => ["ClubController" , "pageClubs"],
+    // "admin/clubs" => ["ClubController" , "pageClubs"],
     
     "student/clubs-list" => ["ClubController" , "AfficherClub"],//afficher les clubs
     // detail des clubs
     "student/club-detail" => ["ClubController" , "detailClub"],
     
     // form pour creer un club
-    "admin/Pagecreate-club" => ["ClubController" , "PageAdd"],
+    "admin/clubs/create" => ["ClubController" , "PageAdd"],
 
-    "admin/create-club" => ["ClubController" , "AddClub"],
+    "admin/clubs/store" => ["ClubController" , "AddClub"],
 
 ];
