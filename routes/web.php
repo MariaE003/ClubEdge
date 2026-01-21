@@ -13,5 +13,13 @@ $routes = [
     "admin/users" => ["AdminController" , "usersPage"],
     "admin/editUser" => ["AdminController" , "EditUserPage"],
 
+
+    // les route des clubs
+    "admin/clubs" => ["ClubController" , "pageClubs"],
+    "student/clubs-list" => ["ClubController" , "AfficherClub"],//afficher les clubs
+    // detail des clubs
+    "student/club-detail" => ["ClubController" , "detailClub"],
+    
+
 ];
 

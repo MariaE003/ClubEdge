@@ -12,11 +12,19 @@ class ClubRepository{
         return $req->execute([$club->getNom(),$club->getDescription(),$club->getPresidentId(),'{'. implode(',',$club->getMembers()).'}',$club->getLogo()]);
     }
     // affichier tous les club
-    public function findAllClubs(){
+    public function allClubs(){
         $req=$this->db->prepare("SELECT * from clubs");
         $req->execute();
         return $req->fetchAll(PDO::FETCH_ASSOC);
     }
+
+    // find
+    public function findClubById($idClub){
+        $req=$this->db->prepare("SELECT * from clubs where id=?");
+        $req->execute([$idClub]);
+        return $req->fetch(PDO::FETCH_ASSOC);
+    }
+
     // supprimer un clubs
     public function removeClub(int $id){
     $req=$this->db->prepare("DELETE from clubs where id=?");
@@ -28,6 +36,17 @@ class ClubRepository{
     // member
         return $req->execute([$club->getNom() ,$club->getDescription(),'{'. implode(',',$club->getMembers()).'}',$club->getLogo(),$club->getId()]);
     }
+
+    // les evenemet dun club
+    public function findEventByClub(int $clubId): array {
+        $sql = "SELECT * FROM events WHERE club_id=? ORDER BY event_date DESC";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute([$clubId]);
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+
     public function countMembers(){
         $sql_prepare="SELECT cardinality(members) as total from clubs where id=?";
         $sql=$this->db->prepare($sql_prepare);
@@ -35,6 +54,7 @@ class ClubRepository{
         $result=$sql->fetch(PDO::FETCH_ASSOC);
         return $result;
     }
+    
 
     
     public function isStudentInClub($user_id){
