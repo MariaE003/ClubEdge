@@ -723,6 +723,7 @@
    ═══════════════════════════════════════════════════════════════ */
 
 .toggle {
+    display: inline-block;
     position: relative;
     width: 44px;
     height: 24px;
@@ -750,6 +751,23 @@
 
 .toggle.active::after {
     transform: translateX(20px);
+}
+
+.toggle-input:checked + .toggle {
+    background-color: var(--color-accent);
+}
+
+.toggle-input:checked + .toggle::after {
+    transform: translateX(20px);
+}
+
+.toggle-input:focus-visible + .toggle {
+    box-shadow: 0 0 0 3px var(--color-accent-light);
+}
+
+.toggle-input:disabled + .toggle {
+    opacity: 0.6;
+    cursor: not-allowed;
 }
 
 /* ═══════════════════════════════════════════════════════════════

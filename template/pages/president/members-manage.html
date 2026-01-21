@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Gestion des membres - Espace Président">
+    <title>Membres du club - Espace Président</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="../../assets/css/variables.css">
+    <link rel="stylesheet" href="../../assets/css/reset.css">
+    <link rel="stylesheet" href="../../assets/css/layout.css">
+    <link rel="stylesheet" href="../../assets/css/components.css">
+    <link rel="stylesheet" href="../../assets/css/utilities.css">
+    <link rel="stylesheet" href="../../assets/css/animations.css">
+    <link rel="stylesheet" href="../../assets/css/responsive.css">
+    <link rel="stylesheet" href="../../assets/css/pages/dashboard.css">
+</head>
+
+<body>
+    <div class="app-layout">
+        <aside class="app-sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <a href="/" class="sidebar-logo">
+                    <svg width="32" height="32" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="40" height="40" rx="4" fill="#FF4F00" />
+                        <path
+                            d="M12 28V12H20C22.1217 12 24.1566 12.8429 25.6569 14.3431C27.1571 15.8434 28 17.8783 28 20C28 22.1217 27.1571 24.1566 25.6569 25.6569C24.1566 27.1571 22.1217 28 20 28H12Z"
+                            stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                    <span class="sidebar-logo-text">ClubEdge</span>
+                </a>
+            </div>
+
+            <nav class="sidebar-nav">
+                <ul class="sidebar-menu">
+                    <li class="sidebar-item">
+                        <a href="dashboard.html" class="sidebar-link">
+                            <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="1.5">
+                                <rect x="3" y="3" width="7" height="9" rx="1" />
+                                <rect x="14" y="3" width="7" height="5" rx="1" />
+                                <rect x="14" y="12" width="7" height="9" rx="1" />
+                                <rect x="3" y="16" width="7" height="5" rx="1" />
+                            </svg>
+                            <span>Tableau de bord</span>
+                        </a>
+                    </li>
+                </ul>
+
+                <div class="sidebar-section">
+                    <h3 class="sidebar-section-title">Mon club</h3>
+                    <ul class="sidebar-menu">
+                        <li class="sidebar-item">
+                            <a href="members-manage.html" class="sidebar-link active">
+                                <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="1.5">
+                                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                                    <circle cx="9" cy="7" r="4" />
+                                    <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                                    <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                                </svg>
+                                <span>Membres</span>
+                                <span class="badge badge-secondary ml-auto">6/8</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-section">
+                    <h3 class="sidebar-section-title">Événements</h3>
+                    <ul class="sidebar-menu">
+                        <li class="sidebar-item">
+                            <a href="events-manage.html" class="sidebar-link">
+                                <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="1.5">
+                                    <rect x="3" y="4" width="18" height="18" rx="2" />
+                                    <line x1="16" y1="2" x2="16" y2="6" />
+                                    <line x1="8" y1="2" x2="8" y2="6" />
+                                    <line x1="3" y1="10" x2="21" y2="10" />
+                                </svg>
+                                <span>Mes événements</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a href="create-event.html" class="sidebar-link">
+                                <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="1.5">
+                                    <circle cx="12" cy="12" r="10" />
+                                    <line x1="12" y1="8" x2="12" y2="16" />
+                                    <line x1="8" y1="12" x2="16" y2="12" />
+                                </svg>
+                                <span>Créer un événement</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-section">
+                    <h3 class="sidebar-section-title">Articles</h3>
+                    <ul class="sidebar-menu">
+                        <li class="sidebar-item">
+                            <a href="articles-manage.html" class="sidebar-link">
+                                <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="1.5">
+                                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                                    <polyline points="14 2 14 8 20 8" />
+                                </svg>
+                                <span>Mes articles</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a href="create-article.html" class="sidebar-link">
+                                <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="1.5">
+                                    <path d="M12 20h9" />
+                                    <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" />
+                                </svg>
+                                <span>Rédiger un article</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="sidebar-user">
+                    <div class="avatar avatar-sm">MM</div>
+                    <div class="sidebar-user-info">
+                        <span class="sidebar-user-name">Marie Martin</span>
+                        <span class="sidebar-user-role">Présidente</span>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <div class="app-main">
+            <header class="app-header">
+                <button class="btn btn-icon btn-ghost lg:hidden" id="menu-toggle" aria-label="Ouvrir le menu">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="1.5">
+                        <line x1="3" y1="12" x2="21" y2="12" />
+                        <line x1="3" y1="6" x2="21" y2="6" />
+                        <line x1="3" y1="18" x2="21" y2="18" />
+                    </svg>
+                </button>
+                <span class="badge badge-accent ml-4">Espace Président</span>
+                <div class="flex-1"></div>
+                <div class="avatar avatar-sm">MM</div>
+            </header>
+
+            <main class="app-content">
+                <div class="page-header flex items-center justify-between">
+                    <div>
+                        <h1 class="page-title">Membres du club</h1>
+                        <p class="page-description">Visualisez et gérez les membres (maximum 8).</p>
+                    </div>
+                    <button class="btn btn-primary" disabled title="Prototype template">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="1.5">
+                            <line x1="12" y1="5" x2="12" y2="19" />
+                            <line x1="5" y1="12" x2="19" y2="12" />
+                        </svg>
+                        Inviter un membre
+                    </button>
+                </div>
+
+                <div class="card mb-6">
+                    <div class="card-body flex items-start gap-4">
+                        <div class="stat-icon stat-icon--accent">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <circle cx="12" cy="12" r="10" />
+                                <line x1="12" y1="8" x2="12" y2="12" />
+                                <line x1="12" y1="16" x2="12.01" y2="16" />
+                            </svg>
+                        </div>
+                        <div class="flex-1">
+                            <div class="flex items-center justify-between gap-4">
+                                <div>
+                                    <div class="font-medium">Règle</div>
+                                    <p class="text-sm text-muted">Un club contient au maximum 8 membres.</p>
+                                </div>
+                                <span class="badge badge-secondary">6/8</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header flex items-center justify-between">
+                        <h2 class="card-title">Liste des membres</h2>
+                        <div class="text-sm text-muted">6 membres</div>
+                    </div>
+                    <div class="card-body p-0">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Membre</th>
+                                    <th>Email</th>
+                                    <th>Rôle</th>
+                                    <th>Inscription</th>
+                                    <th class="text-right">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <div class="flex items-center gap-3">
+                                            <div class="avatar avatar-sm">MM</div>
+                                            <div>
+                                                <div class="font-medium">Marie Martin</div>
+                                                <div class="text-xs text-muted">Informatique</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>marie.martin@example.com</td>
+                                    <td><span class="badge badge-accent">Présidente</span></td>
+                                    <td>10 Jan 2026</td>
+                                    <td class="text-right">
+                                        <button class="btn btn-ghost btn-sm" disabled title="Impossible de retirer le président">
+                                            Retirer
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="flex items-center gap-3">
+                                            <div class="avatar avatar-sm">JD</div>
+                                            <div>
+                                                <div class="font-medium">Jean Dupont</div>
+                                                <div class="text-xs text-muted">Réseaux</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>jean.dupont@example.com</td>
+                                    <td><span class="badge badge-secondary">Membre</span></td>
+                                    <td>12 Jan 2026</td>
+                                    <td class="text-right">
+                                        <button class="btn btn-ghost btn-sm text-error" title="Retirer du club">
+                                            Retirer
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="flex items-center gap-3">
+                                            <div class="avatar avatar-sm">LB</div>
+                                            <div>
+                                                <div class="font-medium">Lucas Bernard</div>
+                                                <div class="text-xs text-muted">Développement</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>lucas.bernard@example.com</td>
+                                    <td><span class="badge badge-secondary">Membre</span></td>
+                                    <td>13 Jan 2026</td>
+                                    <td class="text-right">
+                                        <button class="btn btn-ghost btn-sm text-error" title="Retirer du club">
+                                            Retirer
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="flex items-center gap-3">
+                                            <div class="avatar avatar-sm">SD</div>
+                                            <div>
+                                                <div class="font-medium">Sophie Dubois</div>
+                                                <div class="text-xs text-muted">Cybersécurité</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>sophie.dubois@example.com</td>
+                                    <td><span class="badge badge-secondary">Membre</span></td>
+                                    <td>15 Jan 2026</td>
+                                    <td class="text-right">
+                                        <button class="btn btn-ghost btn-sm text-error" title="Retirer du club">
+                                            Retirer
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </main>
+
+            <footer class="app-footer">
+                <p class="text-sm text-muted">2026 ClubEdge. Tous droits réservés.</p>
+            </footer>
+        </div>
+    </div>
+
+    <div class="mobile-overlay" id="mobile-overlay"></div>
+    <script src="../../assets/js/main.js" defer></script>
+</body>
+
+</html>
