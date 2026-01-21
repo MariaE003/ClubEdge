@@ -23,129 +23,132 @@
 
 <body>
 
-<div class="app-layout">
+    <div class="app-layout">
 
-    <!-- SIDEBAR -->
-    <aside class="app-sidebar" id="sidebar">
-        <div class="sidebar-header">
-            <a href="/" class="sidebar-logo">
-                <svg width="32" height="32" viewBox="0 0 40 40" fill="none">
-                    <rect width="40" height="40" rx="4" fill="#FF4F00" />
-                    <path d="M12 28V12H20C22.12 12 24.16 12.84 25.66 14.34C27.16 15.84 28 17.88 28 20C28 22.12 27.16 24.16 25.66 25.66C24.16 27.16 22.12 28 20 28H12Z"
-                          stroke="white" stroke-width="2" />
-                </svg>
-                <span class="sidebar-logo-text">ClubEdge</span>
-            </a>
-            <span class="badge badge-accent ml-2">Admin</span>
-        </div>
+        <!-- SIDEBAR -->
+        <aside class="app-sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <a href="/" class="sidebar-logo">
+                    <svg width="32" height="32" viewBox="0 0 40 40" fill="none">
+                        <rect width="40" height="40" rx="4" fill="#FF4F00" />
+                        <path
+                            d="M12 28V12H20C22.12 12 24.16 12.84 25.66 14.34C27.16 15.84 28 17.88 28 20C28 22.12 27.16 24.16 25.66 25.66C24.16 27.16 22.12 28 20 28H12Z"
+                            stroke="white" stroke-width="2" />
+                    </svg>
+                    <span class="sidebar-logo-text">ClubEdge</span>
+                </a>
+                <span class="badge badge-accent ml-2">Admin</span>
+            </div>
 
-        <nav class="sidebar-nav">
-            <ul class="sidebar-menu">
-                <li class="sidebar-item">
-                    <a href="dashboard" class="sidebar-link active">
-                        <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <rect x="3" y="3" width="7" height="9" rx="1" />
-                            <rect x="14" y="3" width="7" height="5" rx="1" />
-                            <rect x="14" y="12" width="7" height="9" rx="1" />
-                            <rect x="3" y="16" width="7" height="5" rx="1" />
-                        </svg>
-                        <span>Tableau de bord</span>
-                    </a>
-                </li>
-            </ul>
-
-            <div class="sidebar-section">
-                <h3 class="sidebar-section-title">Gestion</h3>
+            <nav class="sidebar-nav">
                 <ul class="sidebar-menu">
                     <li class="sidebar-item">
-                        <a href="clubs" class="sidebar-link">
-                            <span>Clubs</span>
-                        </a>
-                    </li>
-                    <li class="sidebar-item">
-                        <a href="users" class="sidebar-link">
-                            <span>Utilisateurs</span>
-                        </a>
-                    </li>
-                    <li class="sidebar-item">
-                        <a href="events" class="sidebar-link">
-                            <span>Événements</span>
+                        <a href="dashboard" class="sidebar-link active">
+                            <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="1.5">
+                                <rect x="3" y="3" width="7" height="9" rx="1" />
+                                <rect x="14" y="3" width="7" height="5" rx="1" />
+                                <rect x="14" y="12" width="7" height="9" rx="1" />
+                                <rect x="3" y="16" width="7" height="5" rx="1" />
+                            </svg>
+                            <span>Tableau de bord</span>
                         </a>
                     </li>
                 </ul>
-            </div>
-        </nav>
-    </aside>
 
-    <!-- MAIN -->
-    <div class="app-main">
+                <div class="sidebar-section">
+                    <h3 class="sidebar-section-title">Gestion</h3>
+                    <ul class="sidebar-menu">
+                        <li class="sidebar-item">
+                            <a href="clubs" class="sidebar-link">
+                                <span>Clubs</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a href="users" class="sidebar-link">
+                                <span>Utilisateurs</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a href="events" class="sidebar-link">
+                                <span>Événements</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </aside>
 
-        <header class="app-header">
-            <h1 class="text-lg font-semibold ml-4">Tableau de bord Admin</h1>
-        </header>
+        <!-- MAIN -->
+        <div class="app-main">
 
-        <main class="app-content">
+            <header class="app-header">
+                <h1 class="text-lg font-semibold ml-4">Tableau de bord Admin</h1>
+            </header>
 
-            <!-- STATISTIQUES -->
-            <div class="admin-stats-grid mb-8 stagger-animation">
+            <main class="app-content">
 
-                <div class="admin-stat-card">
-                    <div class="admin-stat-info">
-                        <span class="admin-stat-value">{{ totalCl }}</span>
-                        <span class="admin-stat-label">Clubs actifs</span>
+                <!-- STATISTIQUES -->
+                <div class="admin-stats-grid mb-8 stagger-animation">
+
+                    <div class="admin-stat-card">
+                        <div class="admin-stat-info">
+                            <span class="admin-stat-value">{{ totalCl }}</span>
+                            <span class="admin-stat-label">Clubs actifs</span>
+                        </div>
                     </div>
-                </div>
 
-                <div class="admin-stat-card">
-                    <div class="admin-stat-info">
-                        <span class="admin-stat-value">{{ totalEt }}</span>
-                        <span class="admin-stat-label">Étudiants</span>
+                    <div class="admin-stat-card">
+                        <div class="admin-stat-info">
+                            <span class="admin-stat-value">{{ totalEt }}</span>
+                            <span class="admin-stat-label">Étudiants</span>
+                        </div>
                     </div>
-                </div>
 
-                <div class="admin-stat-card">
-                    <div class="admin-stat-info">
-                        <span class="admin-stat-value">{{ totalEv }}</span>
-                        <span class="admin-stat-label">Événements</span>
+                    <div class="admin-stat-card">
+                        <div class="admin-stat-info">
+                            <span class="admin-stat-value">{{ totalEv }}</span>
+                            <span class="admin-stat-label">Événements</span>
+                        </div>
                     </div>
+
                 </div>
 
-            </div>
+                <!-- LISTE DES CLUBS -->
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="text-md font-semibold">Liste des clubs</h2>
+                    </div>
 
-            <!-- LISTE DES CLUBS -->
-            <div class="card">
-                <div class="card-header">
-                    <h2 class="text-md font-semibold">Liste des clubs</h2>
-                </div>
+                    <div class="card-body p-0">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Club</th>
+                                    <th>Description</th>
+                                    <th>president</th>
+                                    <th>Date de création</th>
+                                </tr>
+                            </thead>
+                            <tbody>
 
-                <div class="card-body p-0">
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th>Club</th>
-                                <th>Description</th>
-                                <th>Date de création</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-
-                        {% if clubs is empty %}
-                            <tr>
-                                <td colspan="3" class="text-muted" style="padding:16px;">
-                                    Aucun club disponible
-                                </td>
-                            </tr>
-                        {% else %}
-                            {% for club in clubs %}
+                                {% if clubs is empty %}
+                                <tr>
+                                    <td colspan="3" class="text-muted" style="padding:16px;">
+                                        Aucun club disponible
+                                    </td>
+                                </tr>
+                                {% else %}
+                                {% for club in clubs %}
                                 <tr>
                                     <td>
                                         <div class="flex items-center gap-3">
                                             {% if club.logo %}
-                                                <img src="{{ club.logo }}" class="avatar avatar-sm" alt="{{ club.nom }}">
+                                            <img src="{{ club.logo }}" class="avatar avatar-sm" alt="{{ club.nom }}">
                                             {% else %}
-                                                <div class="avatar avatar-sm bg-accent text-white">
-                                                    {{ club.nom|slice(0,1)|upper }}
-                                                </div>
+                                            <div class="avatar avatar-sm bg-accent text-white">
+                                                {{ club.nom|slice(0,1)|upper }}
+                                            </div>
                                             {% endif %}
                                             <span class="font-medium">{{ club.nom }}</span>
                                         </div>
@@ -156,21 +159,32 @@
                                     </td>
 
                                     <td class="text-muted">
+                                        {% set president = club.getPresident() %}
+
+                                        {% if president %}
+                                        {{ president.nom }} {{ president.prenom }}
+                                        {% else %}
+                                        <span class="text-muted">Aucun président</span>
+                                        {% endif %}
+                                    </td>
+
+                                    <td class="text-muted">
                                         {{ club.createdAt|default('now')|date('Y/m/d') }}
                                     </td>
                                 </tr>
-                            {% endfor %}
-                        {% endif %}
+                                {% endfor %}
+                                {% endif %}
 
-                        </tbody>
-                    </table>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
-            </div>
 
-        </main>
+            </main>
+        </div>
     </div>
-</div>
 
-<script src="/../ClubEdge/public/assets/js/main.js" defer></script>
+    <script src="/../ClubEdge/public/assets/js/main.js" defer></script>
 </body>
+
 </html>

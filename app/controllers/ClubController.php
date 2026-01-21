@@ -1,5 +1,4 @@
 <?php
-require __DIR__.'/BaseController.php';
 class ClubController extends BaseController{
 
     private ClubRepository $repoClub;
