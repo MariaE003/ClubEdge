@@ -14,6 +14,13 @@ class ClubController{
         require_once __DIR__."../../views/student/events-list.html";
     }
 
+
+
+    public function join(){
+        
+    }
+
+
     // public function pageClubs(){
         
     // }
