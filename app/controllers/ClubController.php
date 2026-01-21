@@ -39,25 +39,26 @@ class ClubController extends BaseController{
         //     'error' => $error ?? null
         // ]);
 }
-
-
     // page update club
     public function pageUpdateClubs()
     {
         if (!isset($_GET['id'])) {
             throw new Exception("ID du club manquant");
         }
-        $clubId = (int) $_GET['id'];
+        $id = (int) $_GET['id'];
+
         // search club
-        $clubData = $this->repoClub->findClubById($clubId);
+        $clubData = $this->repoClub->findClubById($id);
         if (!$clubData) {
             throw new Exception("Club introuvable");
         }
+        
         //si formulaire soumis
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             try {
+
                 $club = new Club(
-                    $clubId,
+                    $id,
                     $_POST['nom'],
                     $_POST['description'] ?? null,
                     $clubData['president_id'], //idPresedent
@@ -67,26 +68,32 @@ class ClubController extends BaseController{
                 );
                 $this->repoClub->updateClub($club);
                 // redirection après succès
-                header('Location: /student/clubs-list');
+                header('Location: /ClubEdge/admin/clubs');
                 exit;
             } catch (Exception $e) {
                 $error = $e->getMessage();
             }
         }
         // afficher la vue
-        $this->render('clubs/update.twig', [
+        $this->render('admin/edit-club.twig', [
             'club'  => $clubData,
             'error' => $error ?? null
         ]);
     }
-
-    // voir les clubs 
-    // public function pageClubs(){//jai ajouter les parametre ici ?
-    //     $this->render('admin/create-club.twig', [
-    //     'clubs' => $clubs
-    // ]);
-    // }
-
+    // supp club
+    public function deleteClub(){
+        if (!isset($_GET['id'])) {
+            throw new Exception("ID du club manquant");
+        }
+            $id = (int) $_GET['id'];
+        try {
+            $this->repoClub->removeClub($id);
+            header('Location: /ClubEdge/admin/clubs');
+            exit;
+        } catch (Exception $e) {
+            echo "Erreur: " . $e->getMessage();
+        }
+    }
 
     // pour affichage des clubs
     public function AfficherClub(){
@@ -94,6 +101,15 @@ class ClubController extends BaseController{
         // var_dump($clubs);
         // var_dump($clubs);
         echo $this->render('student/clubs-list.twig',[
+            'clubs'=>$clubs,
+        ]);
+    }
+    // pour affichage des clubs pour Admin
+    public function AfficherClubAdmin(){
+        $clubs=$this->repoClub->allClubs();
+        // var_dump($clubs);
+        // var_dump($clubs);
+        echo $this->render('admin/clubs.twig',[
             'clubs'=>$clubs,
         ]);
     }
@@ -105,7 +121,6 @@ class ClubController extends BaseController{
         $idClub=(int)$_GET['idC'];
         $club=$this->repoClub->findClubById($idClub);
         // var_dump($club['logo']);
-        // var_dump($club['members']);
         // var_dump($club['members']);
         // var_dump($club);
         $NameClub=strtoupper(substr($club['name'],0,2));

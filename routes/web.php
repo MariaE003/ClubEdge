@@ -26,16 +26,21 @@ $routes = [
     "etudiant/events/{id}/join" => ["EventController", "studentJoin"],
 
 
-    // les route des clubs
-    // "admin/clubs" => ["ClubController" , "pageClubs"],
-    
-    "student/clubs-list" => ["ClubController" , "AfficherClub"],//afficher les clubs
+    // les route des clubs 
+        //student    
+    "student/clubs-list" => ["ClubController" , "AfficherClub"],
     // detail des clubs
     "student/club-detail" => ["ClubController" , "detailClub"],
-    
+
+        //admin
+    "admin/clubs" => ["ClubController" , "AfficherClubAdmin"],
     // form pour creer un club
     "admin/clubs/create" => ["ClubController" , "PageAdd"],
-
     "admin/clubs/store" => ["ClubController" , "AddClub"],
+
+    // modifier /supprimer  un club
+    "admin/editClub" => ["ClubController", "pageUpdateClubs"],
+    "admin/deleteClub" => ["ClubController", "deleteClub"],
+    // "admin/editClub"=>"admin",
 
 ];
