@@ -84,4 +84,19 @@ abstract class User{
         return $stmt->execute([$this->id]);
     }
 
+    public function getClub():Club|null{
+    $stmt = $this->db->prepare("
+        SELECT id, name, description, president_id, members, logo, created_at
+        FROM clubs
+        WHERE president_id = :uid
+           OR :uid = ANY(members)
+        ORDER BY created_at DESC
+        LIMIT 1
+    ");
+    $stmt->execute([':uid' => $this->id]);
+
+    $club = $stmt->fetch(PDO::FETCH_ASSOC);
+    return ClubFactory::fromDbRow($club) ;
+}
+
 }

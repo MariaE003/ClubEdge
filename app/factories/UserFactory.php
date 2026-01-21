@@ -9,8 +9,9 @@ class UserFactory {
                 $data['prenom'],
                 $data['email'],
                 $data['password'],
-                $data['profile'] ?? null,
-                $data['date_creation']
+                $data['role'] ?? null,
+                $data['profile'],
+                 dateC: $data["date_creation"]
             ),
             'president' => new President(
                 $data['id'],
@@ -18,8 +19,10 @@ class UserFactory {
                 $data['prenom'],
                 $data['email'],
                 $data['password'],
-                $data['profile'] ?? null,
-                $data['date_creation']
+                $data['role'] ?? null,
+                $data['profile'],
+                 $data["date_creation"]
+
             ),
             default => throw new Exception("Role inconnu")
         };

@@ -211,7 +211,7 @@
                                         <td class="text-muted"><?php $date = new DateTime($u->dateC) ; echo $date->format('Y/m/d'); ?></td>
                                         <td>
                                             <div class="flex gap-1">
-                                                <a href="edit/<?= $u->id ?>" class="btn btn-icon btn-ghost btn-sm"
+                                                <a href="editUser/<?= $u->id ?>" class="btn btn-icon btn-ghost btn-sm"
                                                     title="Modifier">
                                                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
                                                         stroke="currentColor" stroke-width="1.5">
@@ -221,7 +221,7 @@
                                                     </svg>
                                                 </a>
                                                 <button class="btn btn-icon btn-ghost btn-sm text-error" title="Supprimer">
-                                                    <a href="delete/<?= $u->id?>" 
+                                                    <a href="deleteUser/<?= $u->id?>" 
                                                         title="supprimer">
                                                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
                                                         stroke="currentColor" stroke-width="1.5">

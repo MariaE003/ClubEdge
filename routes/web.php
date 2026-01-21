@@ -11,9 +11,11 @@
         "president/dashboard" => ["PresidentController" , "dashboard"],
         "etudiant/dashboard" => ["EtudiantController" , "dashboard"],
         "admin/users" => ["AdminController" , "usersPage"],
-        "admin/editUser" => ["AdminController" , "EditUserPage"],
-        "admin/delete/{id}" => ["AdminController" , "deleteStudent"],
+        "admin/editUser/{id}" => ["AdminController" , "EditUserPage"],
+        "admin/deleteUser/{id}" => ["AdminController" , "deleteStudent"],
         "admin/users/search" => ["AdminController", "searchUsers"],
+        "admin/updateInfoUser" => ["AdminController", "updateInfo"],
+        
 
     ];
 

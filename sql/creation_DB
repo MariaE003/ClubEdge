@@ -6,7 +6,7 @@
             password VARCHAR(255) NOT NULL,
             profile VARCHAR(50),
             role VARCHAR(50) NOT NULL,
-            date_creationTIMESTAMP DEFAULT CURRENT_TIMESTAMP
+            date_creation TIMESTAMP DEFAULT CURRENT_TIMESTAMP
         )
 
 
