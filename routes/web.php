@@ -9,6 +9,7 @@ $routes = [
     "login" => ["AuthController" , "login"],
     "admin/dashboard" => ["AdminController" , "dashboard"],
     "president/dashboard" => ["PresidentController" , "dashboard"],
+    "president/testTwig" => ["PresidentController" , "testTwig"],
     "etudiant/dashboard" => ["EtudiantController" , "dashboard"],
     "logout" => ["AuthController" , "logout"],
     "DatabaseTest" => ["AuthController" , "testConnection"],
