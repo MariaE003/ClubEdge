@@ -4,25 +4,31 @@ class AdminController extends BaseController{
     private AdminRepository $adminRepository;
     private EtudiantRepository $etudiantRepository;
     private UserRepository $userRepository;
+    private ClubRepository $clubRepository;
     public function __construct(){
         $this->adminRepository = new AdminRepository();
         $this->etudiantRepository =  new EtudiantRepository();
         $this->userRepository = new UserRepository();
+        $this->clubRepository = new ClubRepository(Database::getInstance()->getConnection());
         parent::__construct();
     }
     public function dashboard(){
         $totalEt = $this->adminRepository->totalEtudiants();
         $totalCl = $this->adminRepository->totalClub();
         $totalEv = $this->adminRepository->totalEvenements();
-        $this->render('admin/dashboard.php', [
+        $clubs = $this->clubRepository->getAllClub();
+        $this->render('admin/dashboard.twig', [
         'totalEt' => $totalEt,
         'totalCl' => $totalCl ,
-        'totalEv'=> $totalEv
+        'totalEv'=> $totalEv,
+        'clubs' => $clubs
     ]);
     }
     public function usersPage(){
         $users = $this->adminRepository->getAllEtudiant();
-        require_once __DIR__."/../views/admin/students-manage.php";
+        $this->render('admin/students-manage.twig', [
+        'users' => $users
+    ]);
     }
 
     public function EditUserPage($id)
@@ -44,13 +50,14 @@ class AdminController extends BaseController{
             $this->EditUserPage($_POST["id"]);
         }
     }
-    public function searchUsers(): void
-{
-    $q = $_GET['q'] ?? '';
-    $users = $this->adminRepository->searchEtudiants($q);
-    require __DIR__ . "/../views/admin/_students_rows.php";
-    exit;
-}
+    public function searchUsers(): void{
+        $q = $_GET['q'] ?? '';
+        $users = $this->adminRepository->searchEtudiants($q);
+        $this->render('admin/_students_rows.twig', [
+            'users' => $users
+        ]);
+        exit;
+    }
 
 
 }

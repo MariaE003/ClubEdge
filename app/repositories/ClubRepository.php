@@ -27,6 +27,16 @@ class ClubRepository{
         $req->execute();
         return $req->fetchAll(PDO::FETCH_ASSOC);
     }
+    public function getAllClub(){
+        $req=$this->db->prepare("SELECT * from clubs order by created_at desc");
+        $req->execute();
+        $result =  $req->fetchAll(PDO::FETCH_ASSOC);
+        $list = [];
+        foreach($result as $r){
+            $list[] = ClubFactory::fromDbRow($r);
+        }
+        return $list;
+    }
 
     // find
     public function findClubById($idClub){
