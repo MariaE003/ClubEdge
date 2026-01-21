@@ -10,6 +10,8 @@ $routes = [
     "admin/dashboard" => ["AdminController" , "dashboard"],
     "president/dashboard" => ["PresidentController" , "dashboard"],
     "etudiant/dashboard" => ["EtudiantController" , "dashboard"],
-
-];
+    "logout" => ["AuthController" , "logout"],
+    "DatabaseTest" => ["AuthController" , "testConnection"],
+    "president/CreateArticle" => ["AuthController" , "createArticle"],
+];  
 

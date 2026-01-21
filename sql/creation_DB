@@ -49,8 +49,7 @@ CREATE TABLE reviews (
     comment TEXT,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     UNIQUE (event_id, user_id)
-)
-;
+);
 
 
 CREATE TABLE articles (
@@ -61,9 +60,7 @@ CREATE TABLE articles (
     content TEXT,
     images TEXT[],
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-)
-
-;
+);
 
 CREATE TABLE logs (
     id SERIAL PRIMARY KEY,
@@ -71,4 +68,4 @@ CREATE TABLE logs (
     message TEXT NOT NULL,
     context JSON,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-)
+);

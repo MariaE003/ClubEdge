@@ -8,7 +8,10 @@ class Router
     {
         require_once __DIR__ . '/../routes/web.php';
 
-        $url = trim($_GET['url'] ?? '/', '/');
+        $url = trim($_GET['url'] ?? '', '/');
+        if ($url === '') {
+            $url = '/';
+        }
 
         foreach ($routes as $route => $action) {
 
@@ -39,7 +42,8 @@ class Router
             }
         }
 
-        die($url);
+        http_response_code(404);
+        echo "404 Not Found: " . htmlspecialchars($url);
     }
 }
 

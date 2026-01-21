@@ -5,7 +5,7 @@ class AuthController{
         $this->repo = new AuthRepository();
     }
     public function pageHome(){
-        require_once __DIR__. "/../views/home.html";
+        require_once __DIR__. "/../../app/views/home.html";
     }
     public function pageRegister(){
         require_once __DIR__. "/../views/auth/register.html";
@@ -55,5 +55,13 @@ class AuthController{
     public function logout() {
         session_destroy();
         header('Location: index');
+    }
+
+    public function testConnection(){
+        require_once __DIR__. "/../../core/Database.php";
+    }
+
+    public function createArticle(){
+        require_once __DIR__. "/../../app/views/president/create-article.html";
     }
 }
