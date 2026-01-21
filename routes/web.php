@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 
 $routes = [
     "/" => ["AuthController" , "pageHome"],
@@ -12,6 +12,8 @@ $routes = [
     "etudiant/dashboard" => ["EtudiantController" , "dashboard"],
     "admin/users" => ["AdminController" , "usersPage"],
     "admin/editUser" => ["AdminController" , "EditUserPage"],
+    "admin/delete/{id}" => ["AdminController" , "deleteStudent"],
+    "admin/users/search" => ["AdminController", "searchUsers"],
 
     "president/events" => ["EventController", "presidentIndex"],
     "president/events/create" => ["EventController", "presidentCreate"],
@@ -24,6 +26,4 @@ $routes = [
     "etudiant/events" => ["EventController", "studentIndex"],
     "etudiant/events/{id}" => ["EventController", "studentShow"],
     "etudiant/events/{id}/join" => ["EventController", "studentJoin"],
-
 ];
-
