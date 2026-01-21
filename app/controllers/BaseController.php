@@ -1,15 +1,15 @@
-<?php
-use Twig\Environment;
-use Twig\Loader\FilesystemLoader;
+    <?php
+    use Twig\Environment;
+    use Twig\Loader\FilesystemLoader;
 
-class BaseController{
-    protected Environment  $twig;
-    public function __construct(){
-        $loader=new FilesystemLoader(__DIR__ . '/../views');
-        $this->twig=new Environment($loader);
-    }
+    class BaseController{
+        protected Environment  $twig;
+        public function __construct(){
+            $loader=new FilesystemLoader(__DIR__ . '/../views');
+            $this->twig=new Environment($loader);
+        }
 
-    protected function render(string $view , array $data=[]):void{
-        echo $this->twig->render($view,$data);
+        protected function render(string $view , array $data=[]):void{
+            echo $this->twig->render($view,$data);
+        }
     }
-}

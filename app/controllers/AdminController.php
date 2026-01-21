@@ -8,12 +8,17 @@ class AdminController extends BaseController{
         $this->adminRepository = new AdminRepository();
         $this->etudiantRepository =  new EtudiantRepository();
         $this->userRepository = new UserRepository();
+        parent::__construct();
     }
     public function dashboard(){
         $totalEt = $this->adminRepository->totalEtudiants();
         $totalCl = $this->adminRepository->totalClub();
         $totalEv = $this->adminRepository->totalEvenements();
-        require_once __DIR__."/../views/admin/dashboard.php";
+        $this->render('admin/dashboard.php', [
+        'totalEt' => $totalEt,
+        'totalCl' => $totalCl ,
+        'totalEv'=> $totalEv
+    ]);
     }
     public function usersPage(){
         $users = $this->adminRepository->getAllEtudiant();
