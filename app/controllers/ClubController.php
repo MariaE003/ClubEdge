@@ -9,19 +9,89 @@ class ClubController extends BaseController{
         $pdo=Database::getInstance()->getConnection();
         $this->repoClub=new ClubRepository($pdo);
     }
+
+
     // formulaire d'ajou
-    // public function pageAddClubs(){
-    //     $this->render('student/');
-    // }
+    public function PageAdd(){
+        $this->render('admin/create-club.twig', [
+                'error' => $error ?? null
+            ]);
+    }
+    public function AddClub(){
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            try {
+                // echo 'hi';
+                $logo = null;
+                
+                if (!empty($_FILES['logo']['name'])) {
+                $logo = $_FILES['logo']['name'];
+                move_uploaded_file(
+                    $_FILES['logo']['tmp_name'],
+                    __DIR__ . '/../public/uploads/' . $logo
+                );
+                }
+
+                $club = new Club( null,$_POST['nom'],$_POST['description'] ?? null, null,$logo?? null,[]);
+                $this->repoClub->addClub($club);
+                header('Location: /admin/clubs');
+                exit;
+
+            } catch (Exception $e) {
+                $error = $e->getMessage();
+            }
+        }
+
+        // afficher le formulaire
+        // $this->render('admin/create-club.twig', [
+        //     'error' => $error ?? null
+        // ]);
+}
+
+
+    // page update club
+    public function pageUpdateClubs()
+    {
+        if (!isset($_GET['id'])) {
+            throw new Exception("ID du club manquant");
+        }
+        $clubId = (int) $_GET['id'];
+        // search club
+        $clubData = $this->repoClub->findClubById($clubId);
+        if (!$clubData) {
+            throw new Exception("Club introuvable");
+        }
+        //si formulaire soumis
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            try {
+                $club = new Club(
+                    $clubId,
+                    $_POST['nom'],
+                    $_POST['description'] ?? null,
+                    $clubData['president_id'], //idPresedent
+                    $_POST['logo'] ?? null,
+                    $_POST['members'] ?? [],
+                    $clubData['created_at']
+                );
+                $this->repoClub->updateClub($club);
+                // redirection après succès
+                header('Location: /student/clubs-list');
+                exit;
+            } catch (Exception $e) {
+                $error = $e->getMessage();
+            }
+        }
+        // afficher la vue
+        $this->render('clubs/update.twig', [
+            'club'  => $clubData,
+            'error' => $error ?? null
+        ]);
+    }
 
     // voir les clubs 
     public function pageClubs(){
         $this->render('admin/create-club.html');
     }
 
-    // public function pageUpdateClubs(){
-        
-    // }
 
     // pour affichage des clubs
     public function AfficherClub(){
@@ -39,9 +109,9 @@ class ClubController extends BaseController{
         }
         $idClub=(int)$_GET['idC'];
         $club=$this->repoClub->findClubById($idClub);
-        var_dump($club['members']);
-        var_dump($club['members']);
-        var_dump($club['members']);
+        // var_dump($club['members']);
+        // var_dump($club['members']);
+        // var_dump($club['members']);
         // var_dump($club);
         $NameClub=strtoupper(substr($club['name'],0,2));
         echo $this->render('student/club-details.twig',[
@@ -61,9 +131,6 @@ class ClubController extends BaseController{
         ]);
     }
 
-    // public function AjouterClub(){
-    //     $this->repoClub->addClub();
-    // } 
     
 }
 
