@@ -5,6 +5,17 @@ class ClubRepository{
     public function __construct(PDO $db){
         $this->db=$db;
     }
+    public function findIdByPresidentId(int $presidentId): ?int
+    {
+        $stmt = $this->db->prepare("SELECT id FROM clubs WHERE president_id = ? LIMIT 1");
+        $stmt->execute([$presidentId]);
+        $id = $stmt->fetchColumn();
+        if ($id === false) {
+            return null;
+        }
+        return (int) $id;
+    }
+    
     // ajouter un club
     public function addClub(Club $club){
         $req=$this->db->prepare("INSERT into clubs(name,description,president_id,members,logo) values(?,?,?,?,?)");
