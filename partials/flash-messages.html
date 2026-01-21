@@ -1,0 +1,105 @@
+<!-- Flash Messages Partial -->
+
+<!-- Success Message -->
+<div class="alert alert-success animate-slide-down" role="alert">
+    <svg class="alert-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+        <polyline points="22 4 12 14.01 9 11.01" />
+    </svg>
+    <div class="alert-content">
+        <p class="alert-title">Succès</p>
+        <p>Votre inscription a été enregistrée avec succès.</p>
+    </div>
+    <button class="alert-close btn btn-icon btn-ghost btn-sm" aria-label="Fermer">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <line x1="18" y1="6" x2="6" y2="18" />
+            <line x1="6" y1="6" x2="18" y2="18" />
+        </svg>
+    </button>
+</div>
+
+<!-- Error Message -->
+<div class="alert alert-error animate-slide-down" role="alert">
+    <svg class="alert-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <circle cx="12" cy="12" r="10" />
+        <line x1="15" y1="9" x2="9" y2="15" />
+        <line x1="9" y1="9" x2="15" y2="15" />
+    </svg>
+    <div class="alert-content">
+        <p class="alert-title">Erreur</p>
+        <p>Une erreur s'est produite. Veuillez réessayer.</p>
+    </div>
+    <button class="alert-close btn btn-icon btn-ghost btn-sm" aria-label="Fermer">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <line x1="18" y1="6" x2="6" y2="18" />
+            <line x1="6" y1="6" x2="18" y2="18" />
+        </svg>
+    </button>
+</div>
+
+<!-- Warning Message -->
+<div class="alert alert-warning animate-slide-down" role="alert">
+    <svg class="alert-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" />
+        <line x1="12" y1="9" x2="12" y2="13" />
+        <line x1="12" y1="17" x2="12.01" y2="17" />
+    </svg>
+    <div class="alert-content">
+        <p class="alert-title">Attention</p>
+        <p>Le club est presque complet (7/8 membres).</p>
+    </div>
+    <button class="alert-close btn btn-icon btn-ghost btn-sm" aria-label="Fermer">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <line x1="18" y1="6" x2="6" y2="18" />
+            <line x1="6" y1="6" x2="18" y2="18" />
+        </svg>
+    </button>
+</div>
+
+<!-- Info Message -->
+<div class="alert alert-info animate-slide-down" role="alert">
+    <svg class="alert-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <circle cx="12" cy="12" r="10" />
+        <line x1="12" y1="16" x2="12" y2="12" />
+        <line x1="12" y1="8" x2="12.01" y2="8" />
+    </svg>
+    <div class="alert-content">
+        <p class="alert-title">Information</p>
+        <p>Un nouvel événement a été ajouté par votre club.</p>
+    </div>
+    <button class="alert-close btn btn-icon btn-ghost btn-sm" aria-label="Fermer">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <line x1="18" y1="6" x2="6" y2="18" />
+            <line x1="6" y1="6" x2="18" y2="18" />
+        </svg>
+    </button>
+</div>
+
+<style>
+    .alert {
+        position: relative;
+        padding-right: var(--space-10);
+    }
+
+    .alert-close {
+        position: absolute;
+        top: var(--space-3);
+        right: var(--space-3);
+    }
+
+    /* Toast container for floating notifications */
+    .toast-container {
+        position: fixed;
+        top: var(--space-6);
+        right: var(--space-6);
+        z-index: var(--z-toast);
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-3);
+        max-width: 400px;
+    }
+
+    .toast-container .alert {
+        box-shadow: var(--shadow-lg);
+    }
+</style>

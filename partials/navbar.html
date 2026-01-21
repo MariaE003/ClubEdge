@@ -1,0 +1,153 @@
+<!-- Navbar Partial -->
+<nav class="navbar">
+    <div class="container">
+        <div class="navbar-content">
+            <!-- Logo -->
+            <a href="/" class="navbar-logo">
+                <svg width="32" height="32" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="40" height="40" rx="4" fill="#FF4F00" />
+                    <path
+                        d="M12 28V12H20C22.1217 12 24.1566 12.8429 25.6569 14.3431C27.1571 15.8434 28 17.8783 28 20C28 22.1217 27.1571 24.1566 25.6569 25.6569C24.1566 27.1571 22.1217 28 20 28H12Z"
+                        stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+                <span class="navbar-logo-text">ClubEdge</span>
+            </a>
+
+            <!-- Desktop Navigation -->
+            <ul class="navbar-menu">
+                <li><a href="/" class="navbar-link">Accueil</a></li>
+                <li><a href="/clubs" class="navbar-link">Clubs</a></li>
+                <li><a href="/events" class="navbar-link">Événements</a></li>
+                <li><a href="/about" class="navbar-link">À propos</a></li>
+            </ul>
+
+            <!-- Actions -->
+            <div class="navbar-actions">
+                <a href="/login" class="btn btn-ghost">Connexion</a>
+                <a href="/register" class="btn btn-primary">S'inscrire</a>
+            </div>
+
+            <!-- Mobile Menu Toggle -->
+            <button class="navbar-toggle btn btn-icon btn-ghost" id="navbar-toggle" aria-label="Toggle navigation">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <line x1="3" y1="12" x2="21" y2="12" />
+                    <line x1="3" y1="6" x2="21" y2="6" />
+                    <line x1="3" y1="18" x2="21" y2="18" />
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div class="navbar-mobile" id="navbar-mobile">
+        <ul class="navbar-mobile-menu">
+            <li><a href="/" class="navbar-mobile-link">Accueil</a></li>
+            <li><a href="/clubs" class="navbar-mobile-link">Clubs</a></li>
+            <li><a href="/events" class="navbar-mobile-link">Événements</a></li>
+            <li><a href="/about" class="navbar-mobile-link">À propos</a></li>
+        </ul>
+        <div class="navbar-mobile-actions">
+            <a href="/login" class="btn btn-outline w-full">Connexion</a>
+            <a href="/register" class="btn btn-primary w-full">S'inscrire</a>
+        </div>
+    </div>
+</nav>
+
+<style>
+    .navbar {
+        position: sticky;
+        top: 0;
+        background-color: var(--color-white);
+        border-bottom: 1px solid var(--border-color);
+        z-index: var(--z-sticky);
+    }
+
+    .navbar-content {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: var(--header-height);
+    }
+
+    .navbar-logo {
+        display: flex;
+        align-items: center;
+        gap: var(--space-3);
+    }
+
+    .navbar-logo-text {
+        font-size: var(--text-xl);
+        font-weight: var(--font-bold);
+        letter-spacing: var(--tracking-tight);
+    }
+
+    .navbar-menu {
+        display: none;
+        list-style: none;
+        gap: var(--space-8);
+    }
+
+    .navbar-link {
+        font-size: var(--text-sm);
+        font-weight: var(--font-medium);
+        color: var(--color-text-secondary);
+        transition: color var(--duration-fast);
+    }
+
+    .navbar-link:hover {
+        color: var(--color-text-primary);
+    }
+
+    .navbar-actions {
+        display: none;
+        gap: var(--space-3);
+    }
+
+    .navbar-toggle {
+        display: flex;
+    }
+
+    .navbar-mobile {
+        display: none;
+        padding: var(--space-4) var(--space-6);
+        border-top: 1px solid var(--border-color);
+    }
+
+    .navbar-mobile.active {
+        display: block;
+    }
+
+    .navbar-mobile-menu {
+        list-style: none;
+        margin-bottom: var(--space-6);
+    }
+
+    .navbar-mobile-link {
+        display: block;
+        padding: var(--space-3) 0;
+        font-size: var(--text-base);
+        font-weight: var(--font-medium);
+        color: var(--color-text-primary);
+        border-bottom: 1px solid var(--border-color);
+    }
+
+    .navbar-mobile-actions {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-3);
+    }
+
+    @media (min-width: 768px) {
+        .navbar-menu {
+            display: flex;
+        }
+
+        .navbar-actions {
+            display: flex;
+        }
+
+        .navbar-toggle {
+            display: none;
+        }
+    }
+</style>

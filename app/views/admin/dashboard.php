@@ -11,14 +11,14 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="../../assets/css/variables.css">
-    <link rel="stylesheet" href="../../assets/css/reset.css">
-    <link rel="stylesheet" href="../../assets/css/layout.css">
-    <link rel="stylesheet" href="../../assets/css/components.css">
-    <link rel="stylesheet" href="../../assets/css/utilities.css">
-    <link rel="stylesheet" href="../../assets/css/animations.css">
-    <link rel="stylesheet" href="../../assets/css/responsive.css">
-    <link rel="stylesheet" href="../../assets/css/pages/admin.css">
+    <link rel="stylesheet" href="/../ClubEdge/public/assets/css/variables.css">
+    <link rel="stylesheet" href="/../ClubEdge/public/assets/css/reset.css">
+    <link rel="stylesheet" href="/../ClubEdge/public/assets/css/layout.css">
+    <link rel="stylesheet" href="/../ClubEdge/public/assets/css/components.css">
+    <link rel="stylesheet" href="/../ClubEdge/public/assets/css/utilities.css">
+    <link rel="stylesheet" href="/../ClubEdge/public/assets/css/animations.css">
+    <link rel="stylesheet" href="/../ClubEdge/public/assets/css/responsive.css">
+    <link rel="stylesheet" href="/../ClubEdge/public/assets/css/pages/admin.css">
 </head>
 
 <body>
@@ -70,7 +70,7 @@
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a href="users.html" class="sidebar-link">
+                            <a href="users" class="sidebar-link">
                                 <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                     stroke-width="1.5">
                                     <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
@@ -172,7 +172,7 @@
                             </svg>
                         </div>
                         <div class="admin-stat-info">
-                            <span class="admin-stat-value">6</span>
+                            <span class="admin-stat-value"><?= $totalCl ?></span>
                             <span class="admin-stat-label">Clubs actifs</span>
                         </div>
                         <div class="admin-stat-trend admin-stat-trend--up">
@@ -192,7 +192,7 @@
                             </svg>
                         </div>
                         <div class="admin-stat-info">
-                            <span class="admin-stat-value">48</span>
+                            <span class="admin-stat-value"><?= $totalEt?></span>
                             <span class="admin-stat-label">Étudiants</span>
                         </div>
                         <div class="admin-stat-trend admin-stat-trend--up">
@@ -214,7 +214,7 @@
                             </svg>
                         </div>
                         <div class="admin-stat-info">
-                            <span class="admin-stat-value">24</span>
+                            <span class="admin-stat-value"><?= $totalEv?></span>
                             <span class="admin-stat-label">Événements</span>
                         </div>
                         <div class="admin-stat-trend admin-stat-trend--up">
@@ -399,7 +399,7 @@
     </div>
 
     <div class="mobile-overlay" id="mobile-overlay"></div>
-    <script src="../../assets/js/main.js" defer></script>
+    <script src="/../ClubEdge/public/assets/js/main.js" defer></script>
 </body>
 
 </html>

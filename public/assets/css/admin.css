@@ -1,0 +1,15 @@
+/**
+ * ClubEdge - Admin Stylesheet
+ * Loads global styles + admin page styles.
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+@import 'variables.css';
+@import 'reset.css';
+@import 'layout.css';
+@import 'components.css';
+@import 'utilities.css';
+@import 'animations.css';
+@import 'responsive.css';
+@import 'pages/admin.css';

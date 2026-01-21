@@ -41,7 +41,7 @@ class AuthController{
         "etudiant",
         $_POST['urlImage']
     );
-        $result = $this->repo->register($register);
+        $result = $this->repo->register($register); 
 
     if ($result['success']) {
         header("Location: loginPage");

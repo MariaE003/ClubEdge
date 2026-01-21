@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 CREATE TABLE users (
     id SERIAL PRIMARY KEY,
     nom VARCHAR(100) NOT NULL,
@@ -9,6 +10,18 @@ CREATE TABLE users (
     date_creation TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 <<<<<<< HEAD
+=======
+    CREATE TABLE users (
+        id SERIAL PRIMARY KEY,
+        nom VARCHAR(100) NOT NULL,
+        prenom VARCHAR(100) NOT NULL,
+        email VARCHAR(150) UNIQUE NOT NULL,
+        password VARCHAR(255) NOT NULL,
+        profile VARCHAR(50),
+        role VARCHAR(50) NOT NULL,
+        date_creationTIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    )
+>>>>>>> a074416d7f54638d1e59d1f0af388ebfb7a1255d
 
 
 

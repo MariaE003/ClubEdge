@@ -13,6 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initAlerts();
     initTabs();
     initTooltips();
+    initToggles();
 });
 
 /**
@@ -219,13 +220,20 @@ function initTooltips() {
  */
 function initToggles() {
     document.querySelectorAll('.toggle').forEach(toggle => {
+        const input = toggle.querySelector('input[type="checkbox"]');
+        if (input?.checked) {
+            toggle.classList.add('active');
+            toggle.setAttribute('aria-checked', 'true');
+        }
+
         toggle.addEventListener('click', () => {
             toggle.classList.toggle('active');
 
-            const input = toggle.querySelector('input[type="checkbox"]');
             if (input) {
                 input.checked = toggle.classList.contains('active');
             }
+
+            toggle.setAttribute('aria-checked', toggle.classList.contains('active') ? 'true' : 'false');
         });
     });
 }
