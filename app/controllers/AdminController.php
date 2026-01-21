@@ -12,12 +12,24 @@ class AdminController{
         require_once __DIR__."/../views/admin/dashboard.php";
     }
     public function usersPage(){
-        require_once __DIR__."/../views/admin/students-manage.html";
+        $users = $this->adminRepository->getAllEtudiant();
+        require_once __DIR__."/../views/admin/students-manage.php";
     }
 
     public function EditUserPage(){
         require_once __DIR__."/../views/admin/edit-student.html";
     }
+    public function deleteStudent($id){
+        $this->adminRepository->supprimerEtudiant($id);
+        $this->usersPage();
+    }
+    public function searchUsers(): void
+{
+    $q = $_GET['q'] ?? '';
+    $users = $this->adminRepository->searchEtudiants($q);
+    require __DIR__ . "/../views/admin/_students_rows.php";
+    exit;
+}
 
 
 }

@@ -165,7 +165,7 @@
                             <circle cx="11" cy="11" r="8" />
                             <line x1="21" y1="21" x2="16.65" y2="16.65" />
                         </svg>
-                        <input type="text" class="form-input" placeholder="Rechercher (Nom, Email)...">
+                        <input type="text" id="student-search" class="form-input" placeholder="Rechercher (Nom, Email)...">
                     </div>
                     <select class="form-input form-select">
                         <option value="">Tous les clubs</option>
@@ -188,116 +188,53 @@
                                     <th>Actions</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                <tr>
-                                    <td>
-                                        <div class="flex items-center gap-3">
-                                            <div class="avatar avatar-sm bg-black text-white">MM</div>
-                                            <span class="font-medium">Marie Martin</span>
-                                        </div>
-                                    </td>
-                                    <td class="text-muted">marie.m@ecole.com</td>
-                                    <td>
-                                        <div class="flex items-center gap-2">
-                                            <div class="avatar avatar-xs">CI</div>
-                                            <span class="text-sm">Club Informatique</span>
-                                            <span class="badge badge-primary badge-sm">Président</span>
-                                        </div>
-                                    </td>
-                                    <td class="text-muted">15 Jan 2026</td>
-                                    <td>
-                                        <div class="flex gap-1">
-                                            <a href="edit-student.html" class="btn btn-icon btn-ghost btn-sm"
-                                                title="Modifier">
-                                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
-                                                    stroke="currentColor" stroke-width="1.5">
-                                                    <path
-                                                        d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" />
-                                                    <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z" />
-                                                </svg>
-                                            </a>
-                                            <button class="btn btn-icon btn-ghost btn-sm text-error" title="Supprimer">
-                                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
-                                                    stroke="currentColor" stroke-width="1.5">
-                                                    <polyline points="3 6 5 6 21 6" />
-                                                    <path
-                                                        d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />
-                                                </svg>
-                                            </button>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="flex items-center gap-3">
-                                            <div class="avatar avatar-sm bg-secondary">JL</div>
-                                            <span class="font-medium">Jean Legrand</span>
-                                        </div>
-                                    </td>
-                                    <td class="text-muted">jean.l@ecole.com</td>
-                                    <td>
-                                        <div class="flex items-center gap-2">
-                                            <div class="avatar avatar-xs">CI</div>
-                                            <span class="text-sm">Club Informatique</span>
-                                        </div>
-                                    </td>
-                                    <td class="text-muted">18 Jan 2026</td>
-                                    <td>
-                                        <div class="flex gap-1">
-                                            <a href="edit-student.html" class="btn btn-icon btn-ghost btn-sm"
-                                                title="Modifier">
-                                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
-                                                    stroke="currentColor" stroke-width="1.5">
-                                                    <path
-                                                        d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" />
-                                                    <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z" />
-                                                </svg>
-                                            </a>
-                                            <button class="btn btn-icon btn-ghost btn-sm text-error" title="Supprimer">
-                                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
-                                                    stroke="currentColor" stroke-width="1.5">
-                                                    <polyline points="3 6 5 6 21 6" />
-                                                    <path
-                                                        d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />
-                                                </svg>
-                                            </button>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="flex items-center gap-3">
-                                            <div class="avatar avatar-sm bg-accent text-white">NL</div>
-                                            <span class="font-medium">Nina Lu</span>
-                                        </div>
-                                    </td>
-                                    <td class="text-muted">nina.l@ecole.com</td>
-                                    <td>
-                                        <span class="badge badge-ghost">Aucun club</span>
-                                    </td>
-                                    <td class="text-muted">19 Jan 2026</td>
-                                    <td>
-                                        <div class="flex gap-1">
-                                            <a href="edit-student.html" class="btn btn-icon btn-ghost btn-sm"
-                                                title="Modifier">
-                                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
-                                                    stroke="currentColor" stroke-width="1.5">
-                                                    <path
-                                                        d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" />
-                                                    <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z" />
-                                                </svg>
-                                            </a>
-                                            <button class="btn btn-icon btn-ghost btn-sm text-error" title="Supprimer">
-                                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
-                                                    stroke="currentColor" stroke-width="1.5">
-                                                    <polyline points="3 6 5 6 21 6" />
-                                                    <path
-                                                        d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />
-                                                </svg>
-                                            </button>
-                                        </div>
-                                    </td>
-                                </tr>
+                            <tbody id="students-tbody">
+                                <?php foreach ($users as $u) { ?>
+                                    <tr>
+                                        <td>
+                                            <div class="flex items-center gap-3">
+                                                <div class="avatar avatar-sm bg-black text-white">
+                                                    <?= substr($u->nom, 0, 1);
+                                                    substr($u->prenom, 0, 1); ?></div>
+                                                <span class="font-medium"><?= $u->nom;
+                                                $u->prenom ?> </span>
+                                            </div>
+                                        </td>
+                                        <td class="text-muted"><?= $u->email ?></td>
+                                        <td>
+                                            <div class="flex items-center gap-2">
+                                                <div class="avatar avatar-xs">CI</div>
+                                                <span class="text-sm">Club Informatique</span>
+                                                <span class="badge badge-primary badge-sm"><?= $u->role ?></span>
+                                            </div>
+                                        </td>
+                                        <td class="text-muted"><?php $date = new DateTime($u->dateC) ; echo $date->format('Y/m/d'); ?></td>
+                                        <td>
+                                            <div class="flex gap-1">
+                                                <a href="edit/<?= $u->id ?>" class="btn btn-icon btn-ghost btn-sm"
+                                                    title="Modifier">
+                                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
+                                                        stroke="currentColor" stroke-width="1.5">
+                                                        <path
+                                                            d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" />
+                                                        <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z" />
+                                                    </svg>
+                                                </a>
+                                                <button class="btn btn-icon btn-ghost btn-sm text-error" title="Supprimer">
+                                                    <a href="delete/<?= $u->id?>" 
+                                                        title="supprimer">
+                                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
+                                                        stroke="currentColor" stroke-width="1.5">
+                                                        <polyline points="3 6 5 6 21 6" />
+                                                        <path
+                                                            d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />
+                                                    </svg>
+                                                    </a>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                <?php } ?>
                             </tbody>
                         </table>
                     </div>
@@ -365,7 +302,37 @@
     </div>
 
     <div class="mobile-overlay" id="mobile-overlay"></div>
-    <script src="/../ClubEdge/public/assets/js/main.js" defer onerror="this.onerror=null;this.src='../assets/js/main.js';"></script>
+    <script src="/../ClubEdge/public/assets/js/main.js" defer
+        onerror="this.onerror=null;this.src='../assets/js/main.js';"></script>
+    <script>
+(function () {
+  const input = document.getElementById('student-search');
+  const tbody = document.getElementById('students-tbody');
+
+  let t = null;
+  let aborter = null;
+
+  function runSearch() {
+    const q = input.value.trim();
+
+    if (aborter) aborter.abort();
+    aborter = new AbortController();
+
+    fetch(`users/search?q=${encodeURIComponent(q)}`, {
+      headers: { 'X-Requested-With': 'XMLHttpRequest' },
+      signal: aborter.signal
+    })
+    .then(r => r.text())
+    .then(html => { tbody.innerHTML = html; })
+    .catch(err => { if (err.name !== 'AbortError') console.error(err); });
+  }
+
+  input.addEventListener('input', () => {
+    clearTimeout(t);
+    t = setTimeout(runSearch, 300);
+  });
+})();
+</script>
 </body>
 
 </html>

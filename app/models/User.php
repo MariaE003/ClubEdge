@@ -8,11 +8,11 @@ abstract class User{
     protected string $password;
     protected string $role;
     protected string $image;
-    protected string $dateC;
+    protected ?string $dateC;
 
     protected PDO $db;
 
-    public function __construct($id , string $nom,string $prenom,string $email,string $password,string $role,?string $image = null) {
+    public function __construct($id , string $nom,string $prenom,string $email,string $password,string $role,?string $image = null , $dateC = null ) {
         $this->db =  Database::getInstance()->getConnection();
         $this->id = $id ;
         $this->nom = $nom;
@@ -21,6 +21,13 @@ abstract class User{
         $this->password = password_hash($password, PASSWORD_DEFAULT);
         $this->role = $role;
         $this->image = $image;
+        $this->dateC = $dateC;
+    }
+    public function __get($name) {
+        return $this->$name;
+    }
+    public function __set($name,$value){
+        $this->$name = $value;
     }
     public function getId(): ?int {
         return $this->id;
