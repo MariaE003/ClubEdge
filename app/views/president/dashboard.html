@@ -23,15 +23,14 @@
 
 <body>
     <div class="app-layout">
-        <!-- Sidebar -->
         <aside class="app-sidebar" id="sidebar">
             <div class="sidebar-header">
                 <a href="/" class="sidebar-logo">
-                    <svg width="32" height="32" viewBox="0 0 40 40" fill="none">
+                    <svg width="32" height="32" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <rect width="40" height="40" rx="4" fill="#FF4F00" />
                         <path
-                            d="M12 28V12H20C22.12 12 24.16 12.84 25.66 14.34C27.16 15.84 28 17.88 28 20C28 22.12 27.16 24.16 25.66 25.66C24.16 27.16 22.12 28 20 28H12Z"
-                            stroke="white" stroke-width="2" />
+                            d="M12 28V12H20C22.1217 12 24.1566 12.8429 25.6569 14.3431C27.1571 15.8434 28 17.8783 28 20C28 22.1217 27.1571 24.1566 25.6569 25.6569C24.1566 27.1571 22.1217 28 20 28H12Z"
+                            stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                     </svg>
                     <span class="sidebar-logo-text">ClubEdge</span>
                 </a>
@@ -54,20 +53,10 @@
                 </ul>
 
                 <div class="sidebar-section">
-                    <h3 class="sidebar-section-title">Mon Club</h3>
+                    <h3 class="sidebar-section-title">Mon club</h3>
                     <ul class="sidebar-menu">
                         <li class="sidebar-item">
-                            <a href="club-settings.html" class="sidebar-link">
-                                <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                    stroke-width="1.5">
-                                    <circle cx="12" cy="12" r="3" />
-                                    <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06" />
-                                </svg>
-                                <span>Paramètres du club</span>
-                            </a>
-                        </li>
-                        <li class="sidebar-item">
-                            <a href="members.html" class="sidebar-link">
+                            <a href="members-manage.html" class="sidebar-link">
                                 <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                     stroke-width="1.5">
                                     <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
@@ -76,7 +65,7 @@
                                     <path d="M16 3.13a4 4 0 0 1 0 7.75" />
                                 </svg>
                                 <span>Membres</span>
-                                <span class="badge badge-secondary ml-auto">6</span>
+                                <span class="badge badge-secondary ml-auto">6/8</span>
                             </a>
                         </li>
                     </ul>
@@ -86,7 +75,7 @@
                     <h3 class="sidebar-section-title">Événements</h3>
                     <ul class="sidebar-menu">
                         <li class="sidebar-item">
-                            <a href="events.html" class="sidebar-link">
+                            <a href="events-manage.html" class="sidebar-link">
                                 <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                     stroke-width="1.5">
                                     <rect x="3" y="4" width="18" height="18" rx="2" />
@@ -115,7 +104,7 @@
                     <h3 class="sidebar-section-title">Articles</h3>
                     <ul class="sidebar-menu">
                         <li class="sidebar-item">
-                            <a href="articles.html" class="sidebar-link">
+                            <a href="articles-manage.html" class="sidebar-link">
                                 <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                     stroke-width="1.5">
                                     <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
@@ -151,7 +140,7 @@
 
         <div class="app-main">
             <header class="app-header">
-                <button class="btn btn-icon btn-ghost" id="menu-toggle">
+                <button class="btn btn-icon btn-ghost lg:hidden" id="menu-toggle" aria-label="Ouvrir le menu">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                         stroke-width="1.5">
                         <line x1="3" y1="12" x2="21" y2="12" />
@@ -161,7 +150,7 @@
                 </button>
                 <span class="badge badge-accent ml-4">Espace Président</span>
                 <div class="flex-1"></div>
-                <button class="btn btn-icon btn-ghost">
+                <button class="btn btn-icon btn-ghost" aria-label="Notifications">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                         stroke-width="1.5">
                         <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" />
@@ -172,13 +161,11 @@
             </header>
 
             <main class="app-content">
-                <!-- Page Header -->
                 <div class="page-header">
                     <h1 class="page-title">Bienvenue, Marie</h1>
                     <p class="page-description">Gérez votre club, créez des événements et publiez des articles.</p>
                 </div>
 
-                <!-- Club Stats -->
                 <div class="stats-grid mb-8 stagger-animation">
                     <div class="stat-card">
                         <div class="stat-header">
@@ -235,7 +222,6 @@
                     </div>
                 </div>
 
-                <!-- Quick Actions -->
                 <div class="card mb-8">
                     <div class="card-header">
                         <h2 class="card-title">Actions rapides</h2>
@@ -265,7 +251,7 @@
                                 <span class="quick-action-label">Rédiger un article</span>
                             </a>
 
-                            <a href="members.html" class="quick-action-card">
+                            <a href="members-manage.html" class="quick-action-card">
                                 <div class="quick-action-icon">
                                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                                         <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
@@ -277,28 +263,27 @@
                                 <span class="quick-action-label">Gérer les membres</span>
                             </a>
 
-                            <a href="club-settings.html" class="quick-action-card">
+                            <a href="events-manage.html" class="quick-action-card">
                                 <div class="quick-action-icon">
                                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                        <circle cx="12" cy="12" r="3" />
-                                        <path
-                                            d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33" />
+                                        <rect x="3" y="4" width="18" height="18" rx="2" />
+                                        <line x1="16" y1="2" x2="16" y2="6" />
+                                        <line x1="8" y1="2" x2="8" y2="6" />
+                                        <line x1="3" y1="10" x2="21" y2="10" />
                                     </svg>
                                 </div>
-                                <span class="quick-action-label">Paramètres du club</span>
+                                <span class="quick-action-label">Voir mes événements</span>
                             </a>
                         </div>
                     </div>
                 </div>
 
-                <!-- Content Grid -->
                 <div class="grid grid-cols-12 gap-6">
-                    <!-- Upcoming Events -->
                     <div class="col-span-8">
                         <div class="card">
                             <div class="card-header flex items-center justify-between">
                                 <h2 class="card-title">Événements à venir</h2>
-                                <a href="events.html" class="btn btn-ghost btn-sm">Voir tout</a>
+                                <a href="events-manage.html" class="btn btn-ghost btn-sm">Voir tout</a>
                             </div>
                             <div class="card-body">
                                 <div class="upcoming-events">
@@ -312,7 +297,7 @@
                                             <p class="event-preview-meta">Amphi C - 15 inscrits</p>
                                         </div>
                                         <div class="event-preview-actions">
-                                            <button class="btn btn-outline btn-sm">Modifier</button>
+                                            <a href="edit-event.html" class="btn btn-outline btn-sm">Modifier</a>
                                         </div>
                                     </div>
 
@@ -326,7 +311,7 @@
                                             <p class="event-preview-meta">Salle B201 - 8 inscrits</p>
                                         </div>
                                         <div class="event-preview-actions">
-                                            <button class="btn btn-outline btn-sm">Modifier</button>
+                                            <a href="edit-event.html" class="btn btn-outline btn-sm">Modifier</a>
                                         </div>
                                     </div>
 
@@ -340,7 +325,7 @@
                                             <p class="event-preview-meta">Amphi A - 12 inscrits</p>
                                         </div>
                                         <div class="event-preview-actions">
-                                            <button class="btn btn-outline btn-sm">Modifier</button>
+                                            <a href="edit-event.html" class="btn btn-outline btn-sm">Modifier</a>
                                         </div>
                                     </div>
                                 </div>
@@ -348,7 +333,6 @@
                         </div>
                     </div>
 
-                    <!-- Members Preview -->
                     <div class="col-span-4">
                         <div class="card">
                             <div class="card-header flex items-center justify-between">
@@ -383,7 +367,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <a href="members.html" class="btn btn-outline w-full mt-4">
+                                <a href="members-manage.html" class="btn btn-outline w-full mt-4">
                                     Voir tous les membres
                                 </a>
                             </div>
