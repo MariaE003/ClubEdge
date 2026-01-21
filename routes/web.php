@@ -26,5 +26,13 @@
         "etudiant/events/{id}" => ["EventController", "studentShow"],
         "etudiant/events/{id}/join" => ["EventController", "studentJoin"],
 
+
+    // les route des clubs
+    "admin/clubs" => ["ClubController" , "pageClubs"],
+    "student/clubs-list" => ["ClubController" , "AfficherClub"],//afficher les clubs
+    // detail des clubs
+    "student/club-detail" => ["ClubController" , "detailClub"],
+    
+
 ];
 
