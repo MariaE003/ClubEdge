@@ -9,12 +9,12 @@ $events = $events ?? [];
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mes événements - ClubEdge</title>
 
-    <link rel="stylesheet" href="/../ClubEdge/public/assets/css/variables.css">
-    <link rel="stylesheet" href="/../ClubEdge/public/assets/css/reset.css">
-    <link rel="stylesheet" href="/../ClubEdge/public/assets/css/layout.css">
-    <link rel="stylesheet" href="/../ClubEdge/public/assets/css/components.css">
-    <link rel="stylesheet" href="/../ClubEdge/public/assets/css/utilities.css">
-    <link rel="stylesheet" href="/../ClubEdge/public/assets/css/responsive.css">
+    <link rel="stylesheet" href="../../assets/css/variables.css">
+    <link rel="stylesheet" href="../../assets/css/reset.css">
+    <link rel="stylesheet" href="../../assets/css/layout.css">
+    <link rel="stylesheet" href="../../assets/css/components.css">
+    <link rel="stylesheet" href="../../assets/css/utilities.css">
+    <link rel="stylesheet" href="../../assets/css/responsive.css">
 </head>
 
 <body class="p-6">

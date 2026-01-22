@@ -2,8 +2,8 @@
 
 class ClubRepository{
     private PDO $db;
-    public function __construct(PDO $db){
-        $this->db=$db;
+    public function __construct(?PDO $db = null){
+        $this->db = $db ?? Database::getInstance()->getConnection();
     }
     public function findIdByPresidentId(int $presidentId): ?int
     {

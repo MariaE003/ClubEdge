@@ -23,6 +23,8 @@ final class EventController extends BaseController
         }
 
         $events = $this->eventRepository->listByClub($clubId);
+
+
         $this->renderWithFallback(
             'president/events/index.twig',
             __DIR__ . '/../views/president/events/index.php',
@@ -71,6 +73,7 @@ final class EventController extends BaseController
 
         $eventDate = Event::parseEventDate($payload['event_date']);
         if (!$eventDate) {
+
             $this->renderWithFallback(
                 'president/events/create.twig',
                 __DIR__ . '/../views/president/events/create.php',
