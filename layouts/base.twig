@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title|default('ClubEdge') }}</title>
+    <link rel="stylesheet" href="/../ClubEdge/public/assets/css/main.css">
+</head>
+<body>
+    {% include 'layouts/header.twig' %}
+    <div class="main-container">
+        {% include 'layouts/sidebar.twig' %}
+        <main class="content">
+            {% block content %}{% endblock %}
+        </main>
+    </div>
+    {% include 'layouts/footer.twig' %}
+</body>
+</html>

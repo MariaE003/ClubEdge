@@ -5,17 +5,37 @@ class ClubRepository{
     public function __construct(PDO $db){
         $this->db=$db;
     }
+    public function findIdByPresidentId(int $presidentId): ?int
+    {
+        $stmt = $this->db->prepare("SELECT id FROM clubs WHERE president_id = ? LIMIT 1");
+        $stmt->execute([$presidentId]);
+        $id = $stmt->fetchColumn();
+        if ($id === false) {
+            return null;
+        }
+        return (int) $id;
+    }
     // ajouter un club
     public function addClub(Club $club){
         $req=$this->db->prepare("INSERT into clubs(name,description,president_id,members,logo) values(?,?,?,?,?)");
         // getMember
-        return $req->execute([$club->getNom(),$club->getDescription(),$club->getPresidentId(),'{'. implode(',',$club->getMembers()).'}',$club->getLogo()]);
+        return $req->execute([$club->getName(),$club->getDescription(),$club->getPresidentId(),'{}',$club->getLogo()]);
     }
     // affichier tous les club
     public function allClubs(){
         $req=$this->db->prepare("SELECT * from clubs");
         $req->execute();
         return $req->fetchAll(PDO::FETCH_ASSOC);
+    }
+    public function getAllClub(){
+        $req=$this->db->prepare("SELECT * from clubs order by created_at desc");
+        $req->execute();
+        $result =  $req->fetchAll(PDO::FETCH_ASSOC);
+        $list = [];
+        foreach($result as $r){
+            $list[] = ClubFactory::fromDbRow($r);
+        }
+        return $list;
     }
 
     // find
@@ -34,7 +54,19 @@ class ClubRepository{
     public function updateClub(Club $club){
     $req=$this->db->prepare("UPDATE clubs set name=?,description=?,members=?,logo=? where id=?");
     // member
-        return $req->execute([$club->getNom() ,$club->getDescription(),'{'. implode(',',$club->getMembers()).'}',$club->getLogo(),$club->getId()]);
+        return $req->execute([$club->getName() ,$club->getDescription(),'{'. implode(',',$club->getMembers()).'}',$club->getLogo(),$club->getId()]);
+    }
+    // le nombre des club pour virifier si admina depasse la limites des club ou non
+    public function countClubs(){
+        $req = $this->db->prepare("SELECT count(*) from clubs");
+        $req->execute();
+        return (int) $req->fetchColumn();
+    }
+    // search
+    public function searchClubByName($name){
+        $req = $this->db->prepare("SELECT * from clubs where name=?");
+        $req->execute([$name]);
+        return $req->fetch(PDO::FETCH_ASSOC);
     }
 
     // les evenemet dun club

@@ -1,29 +1,38 @@
-<?php
+    <?php
 
-$routes = [
-    "/" => ["AuthController" , "pageHome"],
-    "home" => ["AuthController" , "pageHome"],
-    "loginPage" => ["AuthController" , "pageLogin"],
-    "registerPage" => ["AuthController" , "pageRegister"],
-    "register" => ["AuthController" , "register"],
-    "login" => ["AuthController" , "login"],
-    "admin/dashboard" => ["AdminController" , "dashboard"],
-    "president/dashboard" => ["PresidentController" , "dashboard"],
-    "etudiant/dashboard" => ["EtudiantController" , "dashboard"],
-    "admin/users" => ["AdminController" , "usersPage"],
-    "admin/editUser" => ["AdminController" , "EditUserPage"],
-    // "etudiant/page_clubs" => ["ClubController" , "direction_clubs"],
-    // "etudiant/events"=> ["ClubController","direction_events"],
-    // les route des clubs
-    "admin/clubs" => ["ClubController" , "pageClubs"],
-    "student/clubs-list" => ["ClubController" , "AfficherClub"],//afficher les clubs
-    // detail des clubs
-    "student/club-detail" => ["ClubController" , "detailClub"],
-    "student/join" => ["ClubController", "join"],
-    "etudiant/direction_clubList" => ["ClubController","direction_clubList"]
-    
-    
-    
+    $routes = [
+        "/" => ["AuthController" , "pageHome"],
+        "home" => ["AuthController" , "pageHome"],
+        "loginPage" => ["AuthController" , "pageLogin"],
+        "registerPage" => ["AuthController" , "pageRegister"],
+        "register" => ["AuthController" , "register"],
+        "login" => ["AuthController" , "login"],
+        "admin/dashboard" => ["AdminController" , "dashboard"],
+        "president/dashboard" => ["PresidentController" , "dashboard"],
+        "etudiant/dashboard" => ["EtudiantController" , "dashboard"],
+        "admin/users" => ["AdminController" , "usersPage"],
+        "admin/editUser/{id}" => ["AdminController" , "EditUserPage"],
+        "admin/deleteUser/{id}" => ["AdminController" , "deleteStudent"],
+        "admin/users/search" => ["AdminController", "searchUsers"],
+        "admin/updateInfoUser" => ["AdminController", "updateInfo"],
+        "president/events" => ["EventController", "presidentIndex"],
+        "president/events/create" => ["EventController", "presidentCreate"],
+        "president/events/store" => ["EventController", "presidentStore"],
+        "president/events/{id}/edit" => ["EventController", "presidentEdit"],
+        "president/events/{id}/update" => ["EventController", "presidentUpdate"],
+        "president/events/{id}/delete" => ["EventController", "presidentDelete"],
+        "president/events/{id}/participants" => ["EventController", "presidentParticipants"],
+        "etudiant/events" => ["EventController", "studentIndex"],
+        "etudiant/events/{id}" => ["EventController", "studentShow"],
+        "etudiant/events/{id}/join" => ["EventController", "studentJoin"],
+        "etudiant/clubs-list" => ["ClubController" , "AfficherClub"],
+        "etudiant/club-detail" => ["ClubController" , "detailClub"],
+        "admin/clubs" => ["ClubController" , "AfficherClubAdmin"],
+        "admin/clubs/create" => ["ClubController" , "PageAdd"],
+        "admin/clubs/store" => ["ClubController" , "AddClub"],
+        "admin/editClub" => ["ClubController", "pageUpdateClubs"],
+        "admin/deleteClub" => ["ClubController", "deleteClub"],
+        "etudiant/join" => ["ClubController", "join"],
+        
 
 ];
-
