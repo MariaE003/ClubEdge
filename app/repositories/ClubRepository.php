@@ -12,11 +12,19 @@ class ClubRepository{
         return $req->execute([$club->getNom(),$club->getDescription(),$club->getPresidentId(),'{'. implode(',',$club->getMembers()).'}',$club->getLogo()]);
     }
     // affichier tous les club
-    public function findAllClubs(){
+    public function allClubs(){
         $req=$this->db->prepare("SELECT * from clubs");
         $req->execute();
         return $req->fetchAll(PDO::FETCH_ASSOC);
     }
+
+    // find
+    public function findClubById($idClub){
+        $req=$this->db->prepare("SELECT * from clubs where id=?");
+        $req->execute([$idClub]);
+        return $req->fetch(PDO::FETCH_ASSOC);
+    }
+
     // supprimer un clubs
     public function removeClub(int $id){
     $req=$this->db->prepare("DELETE from clubs where id=?");
@@ -28,19 +36,31 @@ class ClubRepository{
     // member
         return $req->execute([$club->getNom() ,$club->getDescription(),'{'. implode(',',$club->getMembers()).'}',$club->getLogo(),$club->getId()]);
     }
-    public function countMembers(){
+
+    // les evenemet dun club
+    public function findEventByClub(int $clubId): array {
+        $sql = "SELECT * FROM events WHERE club_id=? ORDER BY event_date DESC";
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute([$clubId]);
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+
+    public function countMembers($club_id){
         $sql_prepare="SELECT cardinality(members) as total from clubs where id=?";
         $sql=$this->db->prepare($sql_prepare);
-        $sql->execute([$this->id]);
+        $sql->execute([$club_id]);
         $result=$sql->fetch(PDO::FETCH_ASSOC);
         return $result;
     }
+    
 
     
-    public function isStudentInClub($user_id){
-    $sql_prepare="SELECT count(*) where ? = ANY(members)";
+    public function isStudentInClub($club_id,$user_id){
+    $sql_prepare="SELECT count(*) where id=? and ? = ANY(members)";
     $sql=$this->db->prepare($sql_prepare);
-    $sql->execute([$user_id]);
+    $sql->execute([$club_id,$user_id]);
     $result=$sql->fetchColumn();
     return $result>0;
     }
@@ -48,8 +68,8 @@ class ClubRepository{
 
 
 
-    public function canJoin(){
-        $count_members=$this->countMembers();
+    public function canJoin($club_id){
+        $count_members=$this->countMembers($club_id);
         if($count_members>=8){
             return false;
         }else{
@@ -58,21 +78,21 @@ class ClubRepository{
     }
 
 
-    public function joinClub($user_id){
+    public function joinClub($user_id,$club_id){
         try{
 
             $this->db->beginTransaction();
 
-            $currentCount=$this->countMembers();
+            $currentCount=$this->countMembers($club_id);
             
             $sql_prepare="UPDATE clubs SET members =array_append(members,?) where id=?";
             $sql=$this->db->prepare($sql_prepare);
-            $sql->execute([$user_id,$this->id]);
+            $sql->execute([$user_id,$club_id]);
 
             if($currentCount==0){
                 $sql_pre="UPDATE clubs set president_id=? where id=?";
                 $sql=$this->db->prepare($sql_pre);
-                $sql->execute([$user_id,$this->id]);
+                $sql->execute([$user_id,$club_id]);
 
                 $prepareRole="UPDATE users set role='president' where id=?";
                 $sqlRole=$this->db->prepare($prepareRole);
@@ -85,7 +105,6 @@ class ClubRepository{
             return $e->getMessage();
             
         }
+    }
 
-    
-}
 }

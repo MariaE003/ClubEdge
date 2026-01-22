@@ -1,4 +1,7 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> bb413b87f7e98b7c7de04a0a2d551ef947b96d1d
 CREATE TABLE users (
     id SERIAL PRIMARY KEY,
     nom VARCHAR(100) NOT NULL,
@@ -9,6 +12,7 @@ CREATE TABLE users (
     role VARCHAR(50) NOT NULL,
     date_creation TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
     CREATE TABLE users (
@@ -29,6 +33,8 @@ CREATE TABLE users (
 
 =======
 >>>>>>> 9a06791f925383361af4a078fed1b212c5d422fa
+=======
+>>>>>>> bb413b87f7e98b7c7de04a0a2d551ef947b96d1d
 
 CREATE TABLE clubs (
     id SERIAL PRIMARY KEY,
@@ -40,6 +46,7 @@ CREATE TABLE clubs (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 
 
@@ -48,6 +55,8 @@ CREATE TABLE clubs (
 
 =======
 >>>>>>> 9a06791f925383361af4a078fed1b212c5d422fa
+=======
+>>>>>>> bb413b87f7e98b7c7de04a0a2d551ef947b96d1d
 
 CREATE TABLE events (
     id SERIAL PRIMARY KEY,
@@ -60,6 +69,7 @@ CREATE TABLE events (
     created_by INTEGER REFERENCES users(id) ON DELETE SET NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 <<<<<<< HEAD
+<<<<<<< HEAD
 );
 
 
@@ -70,11 +80,16 @@ CREATE TABLE events (
     
 );
 >>>>>>> 9a06791f925383361af4a078fed1b212c5d422fa
+=======
+    
+);
+>>>>>>> bb413b87f7e98b7c7de04a0a2d551ef947b96d1d
 
 
 CREATE TABLE event_participants (
     id SERIAL PRIMARY KEY,
     event_id INTEGER NOT NULL REFERENCES events(id) ON DELETE CASCADE,
+<<<<<<< HEAD
 <<<<<<< HEAD
     user_id INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE
 );
@@ -83,6 +98,10 @@ CREATE TABLE event_participants (
     user_id INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE 
 )
 >>>>>>> 9a06791f925383361af4a078fed1b212c5d422fa
+=======
+    user_id INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE 
+)
+>>>>>>> bb413b87f7e98b7c7de04a0a2d551ef947b96d1d
 
 
 ;
@@ -95,6 +114,7 @@ CREATE TABLE reviews (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     UNIQUE (event_id, user_id)
 <<<<<<< HEAD
+<<<<<<< HEAD
 );
 
 
@@ -103,6 +123,10 @@ CREATE TABLE reviews (
 )
 ;
 >>>>>>> 9a06791f925383361af4a078fed1b212c5d422fa
+=======
+)
+;
+>>>>>>> bb413b87f7e98b7c7de04a0a2d551ef947b96d1d
 
 
 CREATE TABLE articles (
