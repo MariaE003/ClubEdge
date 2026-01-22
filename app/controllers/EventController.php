@@ -7,7 +7,6 @@
 
     public function __construct()
     {
-        parent::__construct();
         $this->eventRepository = new EventRepository();
         $this->clubRepository = new ClubRepository(Database::getInstance()->getConnection());
     }
@@ -453,6 +452,6 @@
         }
     }
     public function pageListEvent(){
-        parent::render("student/events-list.html" , []);
+        parent::render("student/event-list.html" , []);
     }
 }

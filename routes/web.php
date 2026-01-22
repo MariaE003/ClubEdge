@@ -1,4 +1,4 @@
-    <?php
+﻿<?php
 
     $routes = [
         "/" => ["AuthController" , "pageHome"],
@@ -36,3 +36,4 @@
     
 
 ];
+

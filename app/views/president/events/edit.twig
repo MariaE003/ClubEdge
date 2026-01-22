@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Modifier un événement - Espace Président">
+    <title>Modifier un événement - Espace Président</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="{{ asset('css/variables.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/reset.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/layout.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/components.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/utilities.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/animations.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/responsive.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/pages/dashboard.css') }}">
+</head>
+
+<body>
+    <div class="app-layout">
+        <aside class="app-sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <a href="{{ path('home') }}" class="sidebar-logo">
+                    <svg width="32" height="32" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="40" height="40" rx="4" fill="#FF4F00" />
+                        <path
+                            d="M12 28V12H20C22.1217 12 24.1566 12.8429 25.6569 14.3431C27.1571 15.8434 28 17.8783 28 20C28 22.1217 27.1571 24.1566 25.6569 25.6569C24.1566 27.1571 22.1217 28 20 28H12Z"
+                            stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                    <span class="sidebar-logo-text">ClubEdge</span>
+                </a>
+            </div>
+
+            <nav class="sidebar-nav">
+                <ul class="sidebar-menu">
+                    <li class="sidebar-item">
+                        <a href="{{ path('president/dashboard') }}" class="sidebar-link">
+                            <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="1.5">
+                                <rect x="3" y="3" width="7" height="9" rx="1" />
+                                <rect x="14" y="3" width="7" height="5" rx="1" />
+                                <rect x="14" y="12" width="7" height="9" rx="1" />
+                                <rect x="3" y="16" width="7" height="5" rx="1" />
+                            </svg>
+                            <span>Tableau de bord</span>
+                        </a>
+                    </li>
+                </ul>
+
+                <div class="sidebar-section">
+                    <h3 class="sidebar-section-title">Événements</h3>
+                    <ul class="sidebar-menu">
+                        <li class="sidebar-item">
+                            <a href="{{ path('president/events') }}" class="sidebar-link active">
+                                <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="1.5">
+                                    <rect x="3" y="4" width="18" height="18" rx="2" />
+                                    <line x1="16" y1="2" x2="16" y2="6" />
+                                    <line x1="8" y1="2" x2="8" y2="6" />
+                                    <line x1="3" y1="10" x2="21" y2="10" />
+                                </svg>
+                                <span>Mes événements</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a href="{{ path('president/events/create') }}" class="sidebar-link">
+                                <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="1.5">
+                                    <circle cx="12" cy="12" r="10" />
+                                    <line x1="12" y1="8" x2="12" y2="16" />
+                                    <line x1="8" y1="12" x2="16" y2="12" />
+                                </svg>
+                                <span>Créer un événement</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </aside>
+
+        <div class="app-main">
+            <header class="app-header">
+                <div class="header-left">
+                    <h1 class="header-title">Modifier l'événement</h1>
+                </div>
+                <div class="header-right">
+                    <a href="{{ path('president/events') }}" class="btn btn-outline">Annuler</a>
+                </div>
+            </header>
+
+            <main class="app-content">
+                <div class="card mb-6">
+                    <div class="card-header">
+                        <h2 class="card-title">Images actuelles</h2>
+                    </div>
+                    <div class="card-body">
+                        {% if event.images is empty %}
+                        <p class="text-sm text-muted">Aucune image.</p>
+                        {% else %}
+                        <div class="grid grid-cols-4 gap-3">
+                            {% for img in event.images %}
+                            <img src="{{ img }}" alt=""
+                                style="width:100%;height:90px;object-fit:cover;border-radius:8px;">
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-body">
+                        <form method="post" action="{{ path('president/events/' ~ event.id ~ '/update') }}"
+                            enctype="multipart/form-data" class="form grid gap-6" novalidate>
+                            <input type="hidden" name="_csrf" value="{{ csrf_token() }}">
+
+                            <div class="form-group">
+                                <label for="event-title" class="form-label">Titre</label>
+                                <input type="text" id="event-title" name="title" class="form-input"
+                                    value="{{ old.title ?? event.title ?? '' }}" required>
+                                {% if errors.title ?? false %}
+                                <p class="text-sm text-error mt-1">{{ errors.title }}</p>
+                                {% endif %}
+                            </div>
+
+                            <div class="grid grid-cols-2 gap-4">
+                                <div class="form-group">
+                                    <label for="event-date" class="form-label">Date</label>
+                                    <input type="datetime-local" id="event-date" name="event_date" class="form-input"
+                                        value="{{ old.event_date ?? '' }}" required>
+                                    {% if errors.event_date ?? false %}
+                                    <p class="text-sm text-error mt-1">{{ errors.event_date }}</p>
+                                    {% endif %}
+                                </div>
+                                <div class="form-group">
+                                    <label for="event-location" class="form-label">Lieu</label>
+                                    <input type="text" id="event-location" name="location" class="form-input"
+                                        value="{{ old.location ?? event.location ?? '' }}">
+                                    {% if errors.location ?? false %}
+                                    <p class="text-sm text-error mt-1">{{ errors.location }}</p>
+                                    {% endif %}
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="event-description" class="form-label">Description</label>
+                                <textarea id="event-description" name="description" class="form-textarea" rows="5"
+                                    placeholder="Décrivez l'événement...">{{ old.description ?? event.description ?? '' }}</textarea>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="event-images" class="form-label">Ajouter des images</label>
+                                <input type="file" id="event-images" name="images[]" class="form-input" accept="image/*"
+                                    multiple>
+                                {% if errors.images ?? false %}
+                                <p class="text-sm text-error mt-1">{{ errors.images }}</p>
+                                {% endif %}
+                            </div>
+
+                            <div class="flex justify-end gap-3">
+                                <button type="submit" class="btn btn-primary">Enregistrer</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </main>
+
+            <footer class="app-footer">
+                <p class="text-sm text-muted">2026 ClubEdge. Tous droits réservés.</p>
+            </footer>
+        </div>
+    </div>
+
+    <div class="mobile-overlay" id="mobile-overlay"></div>
+    <script src="{{ asset('js/main.js') }}" defer></script>
+</body>
+
+</html>
+
