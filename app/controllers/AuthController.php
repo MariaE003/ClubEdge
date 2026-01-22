@@ -61,7 +61,5 @@ class AuthController{
         require_once __DIR__. "/../../core/Database.php";
     }
 
-    public function createArticle(){
-        require_once __DIR__. "/../../app/views/president/create-article.html";
-    }
+    
 }

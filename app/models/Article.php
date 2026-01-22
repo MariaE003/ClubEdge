@@ -1,12 +1,11 @@
 <?php
 
 class Article{
-    private int $id;
-    private string $title;
-    private string $content;
-    private $image; // Can be null
-    private DateTime $createdAt;
-
+    public int $id;
+    public string $title;
+    public string $content;
+    public $image; 
+    public DateTime $createdAt; 
     public function __construct(int $id, string $title, string $content, $image, DateTime $createdAt){
         $this->id = $id;
         $this->title = $title;

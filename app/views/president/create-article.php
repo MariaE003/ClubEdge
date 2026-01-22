@@ -1,3 +1,14 @@
+<?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
+require_once __DIR__ . '/../../repositories/EventRepository.php';
+
+$eventRepo = new EventRepository();
+$events = $eventRepo->listByClub(1);
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -154,7 +165,7 @@
                 <div class="page-header flex items-center justify-between">
                     <div>
                         <h1 class="page-title">Rédiger un nouvel article</h1>
-                        <p class="page-description">Partagez les actualités de votre club avec la communauté.</p>
+                        <p class="page-description">Partagez les actualités de votre club avec la communauté.</p>                                        
                     </div>
                     <div class="flex gap-3">
                         <button class="btn btn-primary" type="button">Publier</button>
@@ -165,6 +176,7 @@
                     <div class="col-span-12 lg:col-span-8">
                         <div class="card">
                             <div class="card-body">
+                                <form action=""></form>
                                 <div class="form-group">
                                     <label for="article-title" class="form-label">Titre</label>
                                     <input id="article-title" type="text" name="article-title" class="form-input"
@@ -213,11 +225,14 @@
                             <div class="card-body space-y-4">
                                 <div class="form-group">
                                     <label class="form-label text-sm">Lier à un événement</label>
-                                    <select class="form-input form-select text-sm">
-                                        <!-- <option value="">Aucun événement</option>
-                                        <option value="1">Hackathon 48h</option>
-                                        <option value="2">Atelier Python</option> -->
-                                        
+                                    <select class="form-input form-select text-sm" name="event_id">
+                                        <option value="">Aucun</option>
+                                        <?php foreach ($events as $event): ?>
+                                            <option value="<?= htmlspecialchars($event['id']) ?>">
+                                                <?= htmlspecialchars($event['title'] ?? '') ?> - 
+                                                <?= htmlspecialchars($event['event_date']) ?>
+                                            </option>
+                                        <?php endforeach; ?>
                                     </select>
                                 </div>
 
