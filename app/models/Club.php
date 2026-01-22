@@ -2,7 +2,7 @@
 
 class Club{
     private ?int $id;
-    private string $nom;
+    private string $name;
     private ?string $description;
 
     private ?int $presidentId;
@@ -11,9 +11,9 @@ class Club{
     private array $members;
     private $db;
 
-    public function __construct(?int $id,string $nom,?string $description=null,?int $presidentId=null,?string $logo = null,array $members=[],?string $createdAt = null){
+    public function __construct(?int $id,string $name,?string $description=null,?int $presidentId=null,?string $logo = null,array $members=[],?string $createdAt = null){
     $this->id=$id;
-    $this->setNom($nom);
+    $this->setName($name);
     $this->description=$description;
     $this->logo=$logo;
     $this->presidentId=$presidentId;
@@ -26,14 +26,14 @@ class Club{
         return $this->id;
     }
 
-    public function getNom(): string {
-        return $this->nom;
+    public function getName(): string {
+        return $this->name;
     }
-    public function setNom(string $nom): void {
-        if (trim($nom)==='') {
+    public function setName(string $name): void {
+        if (trim($name)==='') {
             throw new Exception('le nom du club est obligatoire !');
         }
-        $this->nom = $nom;
+        $this->name = $name;
     }
 
     public function getDescription(): ?string {

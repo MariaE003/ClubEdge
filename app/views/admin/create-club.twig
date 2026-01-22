@@ -200,11 +200,11 @@
     <main class="form-section">
         <div class="container">
             <div class="form-container animate-slide-up">
-                <form action="/club/store" method="POST" enctype="multipart/form-data">
+                <form action="/ClubEdge/admin/clubs/store" method="POST" enctype="multipart/form-data">
                     
                     <div class="form-group mb-6">
                         <label for="name" class="form-label">Nom du club universitaire</label>
-                        <input type="text" id="name" name="name" class="form-control" placeholder="Ex: Club de Design Graphique" required>
+                        <input type="text" id="name" name="nom" class="form-control" placeholder="Ex: Club de Design Graphique" required>
                     </div>
 
                     <div class="form-group mb-6">
@@ -212,19 +212,9 @@
                         <textarea id="description" name="description" class="form-control" rows="4" placeholder="Quels sont les objectifs du club ?" required></textarea>
                         <p class="form-hint">Maximum 500 caractères.</p>
                     </div>
-
-                    <div class="form-group mb-8">
-                        <label class="form-label">Identité Visuelle (Logo)</label>
-                        <div class="image-upload-wrapper" onclick="document.getElementById('club-logo').click()">
-                            <div class="upload-icon">
-                                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/>
-                                </svg>
-                            </div>
-                            <p style="font-weight: 500;">Cliquez pour uploader le logo</p>
-                            <p class="text-xs text-muted">Format recommandé : Carré (PNG ou JPG)</p>
-                            <input type="file" id="club-logo" name="logo" hidden accept="image/*">
-                        </div>
+                    <div class="form-group mb-6">
+                        <label for="logo" class="form-label">Le logo</label>
+                        <input type="url" id="club-logo" name="logo" class="form-control" required>
                     </div>
 
                     <div style="display: flex; gap: 1rem; flex-direction: column;">

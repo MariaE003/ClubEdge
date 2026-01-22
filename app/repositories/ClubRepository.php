@@ -19,7 +19,7 @@ class ClubRepository{
     public function addClub(Club $club){
         $req=$this->db->prepare("INSERT into clubs(name,description,president_id,members,logo) values(?,?,?,?,?)");
         // getMember
-        return $req->execute([$club->getNom(),$club->getDescription(),$club->getPresidentId(),'{'. implode(',',$club->getMembers()).'}',$club->getLogo()]);
+        return $req->execute([$club->getName(),$club->getDescription(),$club->getPresidentId(),'{}',$club->getLogo()]);
     }
     // affichier tous les club
     public function allClubs(){
@@ -54,7 +54,7 @@ class ClubRepository{
     public function updateClub(Club $club){
     $req=$this->db->prepare("UPDATE clubs set name=?,description=?,members=?,logo=? where id=?");
     // member
-        return $req->execute([$club->getNom() ,$club->getDescription(),'{'. implode(',',$club->getMembers()).'}',$club->getLogo(),$club->getId()]);
+        return $req->execute([$club->getName() ,$club->getDescription(),'{'. implode(',',$club->getMembers()).'}',$club->getLogo(),$club->getId()]);
     }
 
     // les evenemet dun club
