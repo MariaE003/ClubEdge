@@ -18,7 +18,7 @@
         $clubId = $this->clubRepository->findIdByPresidentId($userId);
         if (!$clubId) {
             $this->flash('error', "Aucun club associé à ce président.");
-            $this->redirect('president/dashboard');
+            $this->redirect('../president/dashboard');
         }
 
         $events = $this->eventRepository->listByClub($clubId);

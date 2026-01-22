@@ -125,17 +125,45 @@ class ClubController extends BaseController{
         }
         $idClub=(int)$_GET['idC'];
         $club=$this->repoClub->findClubById($idClub);
+
+        $member=$this->repoClub->clubMembers($idClub);
+        // var_dump($member);
+
+        $role=$_SESSION["role"];
         // var_dump($club['logo']);
         $NameClub=strtoupper(substr($club['name'],0,2));
+
+        
         echo $this->render('student/club-details.twig',[
             'club'=>$club,
+            'members'=>$member,
             'NameClub'=>$NameClub,
         ]);
         
     }
-    // searsh
-    public function searchByName(){
-        $clubR=$this->repoClub->searchClubByName($_POST["name"]);
+    
+    public function detailClubAdmin(){
+        if (!isset($_GET['idC'])) {
+            die('club introvalbe !');
+        }
+        $idClub=(int)$_GET['idC'];
+        // echo $idClub;
+        $club=$this->repoClub->findClubById($idClub);
+        // var_dump($club['logo']);
+        // les member
+        $member=$this->repoClub->clubMembers($idClub);
+        // var_dump($member);
+
+        $role=$_SESSION["role"];
+        // var_dump($role);
+
+        $NameClub=strtoupper(substr($club['name'],0,2));
+        echo $this->render('admin/club-details.twig',[
+            'club'=>$club,
+            'members'=>$member,
+            'NameClub'=>$NameClub,
+        ]);
+        
     }
 
     // les evnet des club
