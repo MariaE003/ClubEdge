@@ -201,7 +201,11 @@
         <div class="container">
             <div class="form-container animate-slide-up">
                 <form action="/ClubEdge/admin/clubs/store" method="POST" enctype="multipart/form-data">
-                    
+                    {% if error is defined and error %}
+                    <div style="background-color: #fee2e2; color: #b91c1c; padding: 1rem; border-radius: 0.5rem; margin-bottom: 1rem; text-align: center;">
+                        {{ error }}
+                    </div>
+                    {% endif %}
                     <div class="form-group mb-6">
                         <label for="name" class="form-label">Nom du club universitaire</label>
                         <input type="text" id="name" name="nom" class="form-control" placeholder="Ex: Club de Design Graphique" required>

@@ -56,6 +56,18 @@ class ClubRepository{
     // member
         return $req->execute([$club->getName() ,$club->getDescription(),'{'. implode(',',$club->getMembers()).'}',$club->getLogo(),$club->getId()]);
     }
+    // le nombre des club pour virifier si admina depasse la limites des club ou non
+    public function countClubs(){
+        $req = $this->db->prepare("SELECT count(*) from clubs");
+        $req->execute();
+        return (int) $req->fetchColumn();
+    }
+    // search
+    public function searchClubByName($name){
+        $req = $this->db->prepare("SELECT * from clubs where name=?");
+        $req->execute([$name]);
+        return $req->fetch(PDO::FETCH_ASSOC);
+    }
 
     // les evenemet dun club
     public function findEventByClub(int $clubId): array {
