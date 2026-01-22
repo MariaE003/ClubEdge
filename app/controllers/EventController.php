@@ -1,12 +1,13 @@
 <?php
 
-final class EventController
+final class EventController extends BaseController
 {
     private EventRepository $eventRepository;
     private ClubRepository $clubRepository;
 
     public function __construct()
     {
+        parent::__construct();
         $this->eventRepository = new EventRepository();
         $this->clubRepository = new ClubRepository();
     }
@@ -296,21 +297,14 @@ final class EventController
         }
     }
 
-    private function render(string $viewPath, array $data = []): void
-    {
-        $flash = $this->consumeFlash();
-        extract($data, EXTR_SKIP);
-        require $viewPath;
-    }
-
     private function renderWithFallback(string $twigTemplate, string $phpViewPath, array $data = []): void
     {
         $flash = $this->consumeFlash();
         $data['flash'] = $flash;
 
-        $twigPath = __DIR__ . '/../views/twig/' . $twigTemplate;
+        $twigPath = __DIR__ . '/../views/' . ltrim($twigTemplate, '/');
         if (class_exists(\Twig\Environment::class) && file_exists($twigPath)) {
-            View::render($twigTemplate, $data);
+            $this->render($twigTemplate, $data);
             return;
         }
 
