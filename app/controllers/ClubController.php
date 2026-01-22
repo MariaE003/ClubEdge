@@ -18,13 +18,21 @@ class ClubController extends BaseController{
             ]);
     }
     public function AddClub(){
-
+        $error='';
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             try {
                 // echo 'hi';
+                // checker le nbr des club creer par admin
+                $totalClub = $this->repoClub->countClubs();
+                if ($totalClub >= 6) {
+                    throw new Exception("impossible d'ajouter un club : le nombre maximal de clubs est 6.");
+                }
+                // if ($totalClub < 4) {
+                //     throw new Exception("Vous devez avoir au moins 4 clubs avant d'ajouter un nouveau.");
+                // }
                 $club = new Club( null,$_POST['nom'],$_POST['description'] ?? null, null,$_POST['logo']?? null,[]);
                 $this->repoClub->addClub($club);
-                header('Location: /ClubEdge/student/clubs-list');
+                header('Location: /ClubEdge/admin/clubs');
                 exit;
 
             } catch (Exception $e) {
@@ -34,10 +42,9 @@ class ClubController extends BaseController{
             }
         }
 
-        // afficher le formulaire
-        // $this->render('admin/create-club.twig', [
-        //     'error' => $error ?? null
-        // ]);
+        $this->render('admin/create-club.twig', [
+            'error' => $error
+        ]);
 }
     // page update club
     public function pageUpdateClubs()
@@ -98,8 +105,6 @@ class ClubController extends BaseController{
     // pour affichage des clubs
     public function AfficherClub(){
         $clubs=$this->repoClub->allClubs();
-        // var_dump($clubs);
-        // var_dump($clubs);
         echo $this->render('student/clubs-list.twig',[
             'clubs'=>$clubs,
         ]);
@@ -108,9 +113,10 @@ class ClubController extends BaseController{
     public function AfficherClubAdmin(){
         $clubs=$this->repoClub->allClubs();
         // var_dump($clubs);
-        // var_dump($clubs);
+        // var_dump($_SESSION['user']);
         echo $this->render('admin/clubs.twig',[
             'clubs'=>$clubs,
+            'user'  => $_SESSION['user'] ?? null,
         ]);
     }
     // detai dun club
@@ -121,14 +127,16 @@ class ClubController extends BaseController{
         $idClub=(int)$_GET['idC'];
         $club=$this->repoClub->findClubById($idClub);
         // var_dump($club['logo']);
-        // var_dump($club['members']);
-        // var_dump($club);
         $NameClub=strtoupper(substr($club['name'],0,2));
         echo $this->render('student/club-details.twig',[
             'club'=>$club,
             'NameClub'=>$NameClub,
         ]);
         
+    }
+    // searsh
+    public function searchByName(){
+        $clubR=$this->repoClub->searchClubByName($_POST["name"]);
     }
 
     // les evnet des club
