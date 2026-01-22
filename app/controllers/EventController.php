@@ -1,14 +1,15 @@
 <?php
 
-final class EventController
+ class EventController extends BaseController
 {
     private EventRepository $eventRepository;
     private ClubRepository $clubRepository;
 
     public function __construct()
     {
+        parent::__construct();
         $this->eventRepository = new EventRepository();
-        $this->clubRepository = new ClubRepository();
+        $this->clubRepository = new ClubRepository(Database::getInstance()->getConnection());
     }
 
     public function presidentIndex(): void
@@ -296,12 +297,7 @@ final class EventController
         }
     }
 
-    private function render(string $viewPath, array $data = []): void
-    {
-        $flash = $this->consumeFlash();
-        extract($data, EXTR_SKIP);
-        require $viewPath;
-    }
+
 
     private function renderWithFallback(string $twigTemplate, string $phpViewPath, array $data = []): void
     {
@@ -455,5 +451,8 @@ final class EventController
         } catch (Throwable) {
             return '';
         }
+    }
+    public function pageListEvent(){
+        parent::render("student/events-list.html" , []);
     }
 }

@@ -31,7 +31,7 @@ class ClubController extends BaseController{
                 // }
                 $club = new Club( null,$_POST['nom'],$_POST['description'] ?? null, null,$_POST['logo']?? null,[]);
                 $this->repoClub->addClub($club);
-                header('Location: /ClubEdge/admin/clubs');
+                $this->AfficherClubAdmin();
                 exit;
 
             } catch (Exception $e) {
@@ -74,7 +74,7 @@ class ClubController extends BaseController{
                 );
                 $this->repoClub->updateClub($club);
                 // redirection après succès
-                header('Location: /ClubEdge/admin/clubs');
+                $this->AfficherClubAdmin();
                 exit;
             } catch (Exception $e) {
                 $error = $e->getMessage();
@@ -94,7 +94,7 @@ class ClubController extends BaseController{
             $id = (int) $_GET['id'];
         try {
             $this->repoClub->removeClub($id);
-            header('Location: /ClubEdge/admin/clubs');
+            $this->AfficherClubAdmin();
             exit;
         } catch (Exception $e) {
             echo "Erreur: " . $e->getMessage();

@@ -32,6 +32,7 @@
         "admin/clubs/store" => ["ClubController" , "AddClub"],
         "admin/editClub" => ["ClubController", "pageUpdateClubs"],
         "admin/deleteClub" => ["ClubController", "deleteClub"],
+        "admin/events-list" => ["EventController", "pageListEvent"],
     
 
 ];
