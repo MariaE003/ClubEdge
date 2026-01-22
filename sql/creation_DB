@@ -58,6 +58,7 @@ CREATE TABLE articles (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
+
 CREATE TABLE logs (
     id SERIAL PRIMARY KEY,
     level VARCHAR(20),

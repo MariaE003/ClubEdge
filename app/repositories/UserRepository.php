@@ -45,7 +45,6 @@ class UserRepository {
         return (int)$stmt->fetchColumn();
     }
 
-    /* ===== UPDATE ===== */
 
     public function update(User $user): bool {
         $stmt = $this->db->prepare(
@@ -69,5 +68,10 @@ class UserRepository {
     public function deleteById(int $id): bool {
         $stmt = $this->db->prepare("DELETE FROM users WHERE id=?");
         return $stmt->execute([$id]);
+    }
+
+    public function updateInfo(array $data){
+        $stmt = $this->db->prepare("update users set nom = ? , prenom = ? , email = ? , profile = ? where id =  ? ");
+        return $stmt->execute([$data["nom"] , $data["prenom"], $data["email"],$data["profile"] , $data["id"]]);
     }
 }

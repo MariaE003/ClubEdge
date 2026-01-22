@@ -1,6 +1,5 @@
 /config
-# Docker
-Dockerfile
-docker-compose.yml
-docker/
-.env
+/vendor/composer/
+/vendor/symfony/
+/vendor/twig/
+/vendor/autoload.php
