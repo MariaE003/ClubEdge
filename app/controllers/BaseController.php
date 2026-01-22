@@ -1,5 +1,4 @@
 <?php
-
 use Twig\Environment;
 use Twig\Loader\FilesystemLoader;
 use Twig\TwigFunction;
@@ -16,8 +15,8 @@ class BaseController
             'autoescape' => 'html',
         ]);
 
-        $this->twig->addFunction(new TwigFunction('path', fn (string $p): string => View::url($p)));
-        $this->twig->addFunction(new TwigFunction('asset', fn (string $p): string => View::asset($p)));
+        $this->twig->addFunction(new TwigFunction('path', fn (string $path): string => View::url($path)));
+        $this->twig->addFunction(new TwigFunction('asset', fn (string $path): string => View::asset($path)));
         $this->twig->addFunction(new TwigFunction('csrf_token', fn (): string => Csrf::token()));
 
         $this->twig->addGlobal('session', $_SESSION ?? []);

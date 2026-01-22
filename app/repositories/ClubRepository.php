@@ -19,7 +19,7 @@ class ClubRepository{
     public function addClub(Club $club){
         $req=$this->db->prepare("INSERT into clubs(name,description,president_id,members,logo) values(?,?,?,?,?)");
         // getMember
-        return $req->execute([$club->getNom(),$club->getDescription(),$club->getPresidentId(),'{'. implode(',',$club->getMembers()).'}',$club->getLogo()]);
+        return $req->execute([$club->getName(),$club->getDescription(),$club->getPresidentId(),'{}',$club->getLogo()]);
     }
     // affichier tous les club
     public function allClubs(){
@@ -54,7 +54,19 @@ class ClubRepository{
     public function updateClub(Club $club){
     $req=$this->db->prepare("UPDATE clubs set name=?,description=?,members=?,logo=? where id=?");
     // member
-        return $req->execute([$club->getNom() ,$club->getDescription(),'{'. implode(',',$club->getMembers()).'}',$club->getLogo(),$club->getId()]);
+        return $req->execute([$club->getName() ,$club->getDescription(),'{'. implode(',',$club->getMembers()).'}',$club->getLogo(),$club->getId()]);
+    }
+    // le nombre des club pour virifier si admina depasse la limites des club ou non
+    public function countClubs(){
+        $req = $this->db->prepare("SELECT count(*) from clubs");
+        $req->execute();
+        return (int) $req->fetchColumn();
+    }
+    // search
+    public function searchClubByName($name){
+        $req = $this->db->prepare("SELECT * from clubs where name=?");
+        $req->execute([$name]);
+        return $req->fetch(PDO::FETCH_ASSOC);
     }
 
     // les evenemet dun club
@@ -66,11 +78,20 @@ class ClubRepository{
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
+    //
+    public function clubMembers($id){
+        $sql = "SELECT u.id, u.nom, u.prenom, u.email, u.role FROM users u
+        JOIN clubs c ON u.id = ANY(c.members) WHERE c.id = ? ORDER BY u.nom";
 
+    $stmt = $this->db->prepare($sql);
+    $stmt->execute([$id]);
+
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    } 
     public function countMembers($club){
         $sql_prepare="SELECT cardinality(members) as total from clubs where id=?";
         $sql=$this->db->prepare($sql_prepare);
-        $sql->execute([$club->getId()]);
+        $sql->execute([$club]);
         $result=$sql->fetch(PDO::FETCH_ASSOC);
         return $result;
     }

@@ -1,15 +1,14 @@
 <?php
 
-final class EventController extends BaseController
+ class EventController extends BaseController
 {
     private EventRepository $eventRepository;
     private ClubRepository $clubRepository;
 
     public function __construct()
     {
-        parent::__construct();
         $this->eventRepository = new EventRepository();
-        $this->clubRepository = new ClubRepository();
+        $this->clubRepository = new ClubRepository(Database::getInstance()->getConnection());
     }
 
     public function presidentIndex(): void
@@ -19,7 +18,7 @@ final class EventController extends BaseController
         $clubId = $this->clubRepository->findIdByPresidentId($userId);
         if (!$clubId) {
             $this->flash('error', "Aucun club associé à ce président.");
-            $this->redirect('president/dashboard');
+            $this->redirect('../president/dashboard');
         }
 
         $events = $this->eventRepository->listByClub($clubId);
@@ -300,14 +299,16 @@ final class EventController extends BaseController
         }
     }
 
+
+
     private function renderWithFallback(string $twigTemplate, string $phpViewPath, array $data = []): void
     {
         $flash = $this->consumeFlash();
         $data['flash'] = $flash;
 
-        $twigPath = __DIR__ . '/../views/' . ltrim($twigTemplate, '/');
+        $twigPath = __DIR__ . '/../views/twig/' . $twigTemplate;
         if (class_exists(\Twig\Environment::class) && file_exists($twigPath)) {
-            $this->render($twigTemplate, $data);
+            View::render($twigTemplate, $data);
             return;
         }
 
@@ -452,5 +453,8 @@ final class EventController extends BaseController
         } catch (Throwable) {
             return '';
         }
+    }
+    public function pageListEvent(){
+        parent::render("student/event-list.html" , []);
     }
 }

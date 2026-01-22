@@ -1,0 +1,19 @@
+<aside class="sidebar">
+    <ul>
+        {% if user.role == 'admin' %}
+            <li><a href="/admin/dashboard">Dashboard</a></li>
+            <li><a href="/admin/users">Utilisateurs</a></li>
+            <li><a href="/admin/clubs">Clubs</a></li>
+        {% endif %}
+
+        {% if user.role == 'president' %}
+            <li><a href="/president/dashboard">Dashboard</a></li>
+            <li><a href="/president/events">Événements</a></li>
+        {% endif %}
+
+        {% if user.role == 'etudiant' %}
+            <li><a href="/etudiant/dashboard">Mon Espace</a></li>
+            <li><a href="/student/clubs-list">Clubs</a></li>
+        {% endif %}
+    </ul>
+</aside>
