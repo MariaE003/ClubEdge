@@ -9,6 +9,7 @@ class Club{
     private ?string $logo;
     private ?string $createdAt; 
     private array $members;
+    private $db;
 
     public function __construct(?int $id,string $name,?string $description=null,?int $presidentId=null,?string $logo = null,array $members=[],?string $createdAt = null){
     $this->id=$id;
@@ -18,7 +19,7 @@ class Club{
     $this->presidentId=$presidentId;
     $this->setMembers($members);
     $this->createdAt=$createdAt;
-
+    $this->db = Database::getInstance()->getConnection();
     }
 
     public function getId(): ?int {
@@ -67,9 +68,25 @@ class Club{
     public function getCreatedAt(): ?string {
         return $this->createdAt; 
     }
+   public function getPresident(): ?User
+{
+    if ($this->presidentId === null) {
+        return null;
+    }
+
+    $stmt = $this->db->prepare("SELECT * FROM users WHERE id = ?");
+    $stmt->execute([$this->presidentId]);
+
+    $data = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    if ($data === false) {
+        return null;
+    }
+
+    return UserFactory::create($data);
+}
+
 
 
 
 }
-
-?>

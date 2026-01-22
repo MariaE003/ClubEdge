@@ -59,8 +59,6 @@ CREATE TABLE articles (
 );
 
 
-;
-
 CREATE TABLE logs (
     id SERIAL PRIMARY KEY,
     level VARCHAR(20),

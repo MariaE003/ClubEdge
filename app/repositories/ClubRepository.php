@@ -15,7 +15,6 @@ class ClubRepository{
         }
         return (int) $id;
     }
-    
     // ajouter un club
     public function addClub(Club $club){
         $req=$this->db->prepare("INSERT into clubs(name,description,president_id,members,logo) values(?,?,?,?,?)");
@@ -27,6 +26,16 @@ class ClubRepository{
         $req=$this->db->prepare("SELECT * from clubs");
         $req->execute();
         return $req->fetchAll(PDO::FETCH_ASSOC);
+    }
+    public function getAllClub(){
+        $req=$this->db->prepare("SELECT * from clubs order by created_at desc");
+        $req->execute();
+        $result =  $req->fetchAll(PDO::FETCH_ASSOC);
+        $list = [];
+        foreach($result as $r){
+            $list[] = ClubFactory::fromDbRow($r);
+        }
+        return $list;
     }
 
     // find
@@ -63,14 +72,14 @@ class ClubRepository{
     // les evenemet dun club
     public function findEventByClub(int $clubId): array {
         $sql = "SELECT * FROM events WHERE club_id=? ORDER BY event_date DESC";
-        $stmt = $this->pdo->prepare($sql);
+        $stmt = $this->db->prepare($sql);
         $stmt->execute([$clubId]);
 
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
 
-    public function countMembers(){
+    public function countMembers($club){
         $sql_prepare="SELECT cardinality(members) as total from clubs where id=?";
         $sql=$this->db->prepare($sql_prepare);
         $sql->execute([$club->getId()]);
@@ -101,12 +110,12 @@ class ClubRepository{
     }
 
 
-    public function joinClub($user_id){
+    public function joinClub($user_id ,$club){
         try{
 
             $this->db->beginTransaction();
 
-            $currentCount=$this->countMembers();
+            $currentCount=$this->countMembers($club);
             
             $sql_prepare="UPDATE clubs SET members =array_append(members,?) where id=?";
             $sql=$this->db->prepare($sql_prepare);
@@ -131,4 +140,3 @@ class ClubRepository{
     }
 
 }
-?>

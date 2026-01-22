@@ -32,7 +32,7 @@ class AuthController{
         }
     }
     public function register() {
-        $register = new Register(
+        $register = new Register(   
             null,
         $_POST['nom'],
         $_POST['prenom'],
