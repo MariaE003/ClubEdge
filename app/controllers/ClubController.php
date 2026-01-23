@@ -9,6 +9,8 @@ class ClubController extends BaseController{
         $this->repoClub = new ClubRepository($pdo);
     }
 
+    
+
 
     // formulaire d'ajou
     public function PageAdd(){
@@ -16,6 +18,8 @@ class ClubController extends BaseController{
                 'error' => $error ?? null
             ]);
     }
+
+    
 
     
 
@@ -130,6 +134,7 @@ class ClubController extends BaseController{
         }
         
         $idClub=(int)$_GET['idC'];
+        $user_id = $_SESSION['user_id'];
         $events = $this->repoClub->findEventByClub($idClub);
         $club=$this->repoClub->findClubById($idClub);
         $result=$this->repoClub->countMembers($idClub);
@@ -139,11 +144,21 @@ class ClubController extends BaseController{
         // var_dump($club['members']);
         // var_dump($club);
         $NameClub=strtoupper(substr($club['name'],0,2));
+
+
+        $isMemberHere = $this->repoClub->isStudentInClub($idClub, $user_id);
+    
+        $isMemberGlobally = $this->repoClub->isStudentInAnyClub($user_id);
+
+    $club = $this->repoClub->findClubById($idClub);
+
         echo $this->render('student/club-details.twig',[
             'club'=>$club,
             'NameClub'=>$NameClub,
             'events'=>$events,
-            'members' =>$nombre_members
+            'members' =>$nombre_members,
+            'isMemberHere' => $isMemberHere,
+            'isMemberGlobally' => $isMemberGlobally
         ]);
         
     }
@@ -166,15 +181,14 @@ class ClubController extends BaseController{
         die("Désolé, ce club est déjà complet (max 8 membres).");
     }
 
-    if ($this->repoClub->isStudentInClub($user_id, $club_id)) {
+    if ($this->repoClub->isStudentInClub( $club_id,$user_id)) {
         die("Vous êtes déjà membre de ce club.");
     }
 
     $result = $this->repoClub->joinClub($user_id, $club_id);
 
 
-    header("Location: /club/detail?idC=" . $club_id);
-    exit();
+    $this->AfficherClub();
     }
 
 

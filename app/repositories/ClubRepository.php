@@ -90,7 +90,7 @@ class ClubRepository{
 
     
     public function isStudentInClub($club_id,$user_id){
-    $sql_prepare="SELECT count(*) where id=? and ? = ANY(members)";
+    $sql_prepare="SELECT count(*) from clubs where id=? and ? = ANY(members)";
     $sql=$this->db->prepare($sql_prepare);
     $sql->execute([$club_id,$user_id]);
     $result=$sql->fetchColumn();
@@ -98,11 +98,22 @@ class ClubRepository{
     }
 
 
+    public function isStudentInAnyClub($user_id) {
+    // Kat-qleb f ga3 les clubs wach had l-user_id kayn f ay array 'members'
+    $sql = "SELECT COUNT(*) FROM clubs WHERE ? = ANY(members)";
+    $stmt = $this->db->prepare($sql);
+    $stmt->execute([$user_id]);
+    
+    // fetchColumn() ghadi t-rje3 lina 0 (false) awla 1 o k-ter (true)
+    return (int)$stmt->fetchColumn() > 0;
+}
+
+
 
 
     public function canJoin($club_id){
         $count_members=$this->countMembers($club_id);
-        if($count_members>=8){
+        if($count_members<=8){
             return false;
         }else{
             return true;
@@ -115,7 +126,12 @@ class ClubRepository{
 
             $this->db->beginTransaction();
 
-            $currentCount=$this->countMembers($club_id);
+            $result=$this->countMembers($club_id);
+            $currentCount = (int)$result['total'];
+
+            if ($currentCount >= 8) {
+            throw new Exception("Le club est plein.");
+        }
             
             $sql_prepare="UPDATE clubs SET members =array_append(members,?) where id=?";
             $sql=$this->db->prepare($sql_prepare);
@@ -129,6 +145,7 @@ class ClubRepository{
                 $prepareRole="UPDATE users set role='president' where id=?";
                 $sqlRole=$this->db->prepare($prepareRole);
                 $sqlRole->execute([$user_id]);
+                $_SESSION['role'] = 'president';
             }
             $this->db->commit();
             

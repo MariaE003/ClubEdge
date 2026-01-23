@@ -27,12 +27,16 @@
         "etudiant/events/{id}/join" => ["EventController", "studentJoin"],
         "etudiant/clubs-list" => ["ClubController" , "AfficherClub"],
         "etudiant/club-detail" => ["ClubController" , "detailClub"],
+        "student/clubs-list" => ["ClubController" , "AfficherClub"],
+        "student/club-detail" => ["ClubController" , "detailClub"],
         "admin/clubs" => ["ClubController" , "AfficherClubAdmin"],
         "admin/clubs/create" => ["ClubController" , "PageAdd"],
         "admin/clubs/store" => ["ClubController" , "AddClub"],
         "admin/editClub" => ["ClubController", "pageUpdateClubs"],
         "admin/deleteClub" => ["ClubController", "deleteClub"],
-        "etudiant/join" => ["ClubController", "join"],
+        "student/join" => ["ClubController", "join"],
         
+        "admin/events-list" => ["EventController", "pageListEvent"],
+    
 
 ];
