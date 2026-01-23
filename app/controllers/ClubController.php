@@ -10,6 +10,15 @@ class ClubController extends BaseController{
     }
 
 
+     public function direction_clubs(){
+        require_once __DIR__."../../views/student/clubs-list.html";
+    }
+
+    public function direction_events(){
+        require_once __DIR__."../../views/student/events-list.html";
+    }
+
+
     // formulaire d'ajou
     public function PageAdd(){
         $this->render('admin/create-club.twig', [

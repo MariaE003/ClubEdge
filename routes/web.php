@@ -34,5 +34,8 @@
         "admin/clubs/store" => ["ClubController" , "AddClub"],
         "admin/editClub" => ["ClubController", "pageUpdateClubs"],
         "admin/deleteClub" => ["ClubController", "deleteClub"],
+        "admin/editUser" => ["AdminController" , "EditUserPage"],
+    "etudiant/page_clubs" => ["ClubController" , "direction_clubs"],
+    "etudiant/events"=> ["ClubController","direction_events"]
 
 ];
