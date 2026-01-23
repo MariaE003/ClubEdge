@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Découvrez tous les clubs de l'établissement">
+    <title>Clubs - ClubEdge</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/../ClubEdge/public/assets/css/variables.css">
+    <link rel="stylesheet" href="/../ClubEdge/public/assets/css/reset.css">
+    <link rel="stylesheet" href="/../ClubEdge/public/assets/css/layout.css">
+    <link rel="stylesheet" href="/../ClubEdge/public/assets/css/components.css">
+    <link rel="stylesheet" href="/../ClubEdge/public/assets/css/utilities.css">
+    <link rel="stylesheet" href="/../ClubEdge/public/assets/css/animations.css">
+    <link rel="stylesheet" href="/../ClubEdge/public/assets/css/responsive.css">
+    <link rel="stylesheet" href="/../ClubEdge/public/assets/css/pages/clubs.css">
+
+    <title>{{ title|default('ClubEdge') }}</title>
+    <link rel="stylesheet" href="/../ClubEdge/public/assets/css/main.css">
+</head>
+
+<body>
+
+    {% include 'layouts/header.twig' %}
+    <div class="main-container">
+        {% include 'layouts/sidebar.twig' %}
+        <main class="content">
+            {% block content %}{% endblock %}
+        </main>
+    </div>
+    {% include 'layouts/footer.twig' %}
+</body>
+</html>

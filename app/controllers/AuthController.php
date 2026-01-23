@@ -23,7 +23,7 @@ class AuthController{
             }else if($result["user"]["role"] === "president"){
                 header("Location: president/dashboard");
             }else{
-                header("Location: etudiant/dashboard");
+                header("Location: student/clubs-list");
             }
             exit();   
         } else {

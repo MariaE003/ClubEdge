@@ -104,6 +104,7 @@ class ClubController extends BaseController{
     // pour affichage des clubs
     public function AfficherClub(){
         $clubs=$this->repoClub->allClubs();
+        
         echo $this->render('student/clubs-list.twig',[
             'clubs'=>$clubs,
         ]);
