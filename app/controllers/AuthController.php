@@ -2,6 +2,7 @@
 class AuthController extends BaseController{
     private AuthRepository $repo ;
     public function __construct(){
+        parent::__construct();
         $this->repo = new AuthRepository();
     }
     public function pageHome(){
@@ -22,42 +23,75 @@ class AuthController extends BaseController{
     public function dashboardPresident(){
         require_once __DIR__."/../views/president/dashboard.html";
     }
-    public function login() {
-        $email = $_POST["email"];
-        $password = $_POST["password"];
-        $result = $this->repo->login($email,$password);
-        if ($result['success']) {
-            if($result["user"]["role"] === "admin"){
-               $this->dashboardAdmin();
-            }else if($result["user"]["role"] === "president"){
-                $this->dashboardPresident();
-            }else{
-               $this->dashboardEtudiant();
-            }
-            exit();   
-        } else {
+    private function redirect(string $path): void
+    {
+        header('Location: ' . View::url($path));
+        exit();
+    }
+
+    public function login(): void
+    {
+        if (($_SERVER['REQUEST_METHOD'] ?? 'GET') !== 'POST') {
             $this->pageLogin();
-            exit();      
+            return;
         }
+
+        $email = trim((string) ($_POST['email'] ?? ''));
+        $password = (string) ($_POST['password'] ?? '');
+
+        if ($email === '' || $password === '') {
+            $this->redirect('loginPage');
+        }
+
+        $result = $this->repo->login($email, $password);
+        if (($result['success'] ?? false) && isset($result['user']['role'])) {
+            $role = (string) $result['user']['role'];
+            if ($role === "admin") {
+                $this->redirect('admin/dashboard');
+            }
+            if ($role === "president") {
+                $this->redirect('president/dashboard');
+            }
+            $this->redirect('etudiant/dashboard');
+        }
+
+        $this->redirect('loginPage');
     }
     public function register() {
+        if (($_SERVER['REQUEST_METHOD'] ?? 'GET') !== 'POST') {
+            $this->pageRegister();
+            return;
+        }
+
+        $nom = trim((string) ($_POST['nom'] ?? ''));
+        $prenom = trim((string) ($_POST['prenom'] ?? ''));
+        $email = trim((string) ($_POST['email'] ?? ''));
+        $password = (string) ($_POST['password'] ?? '');
+        $urlImage = trim((string) ($_POST['urlImage'] ?? ''));
+        $passwordConfirm = (string) ($_POST['password_confirm'] ?? '');
+
+        if ($nom === '' || $prenom === '' || $email === '' || $password === '' || $urlImage === '') {
+            $this->redirect('registerPage');
+        }
+        if ($passwordConfirm !== '' && $passwordConfirm !== $password) {
+            $this->redirect('registerPage');
+        }
+
         $register = new Register(   
             null,
-        $_POST['nom'],
-        $_POST['prenom'],
-        $_POST['email'],
-        $_POST['password'],
+        $nom,
+        $prenom,
+        $email,
+        $password,
         "etudiant",
-        $_POST['urlImage']
+        $urlImage
     );
         $result = $this->repo->register($register); 
 
     if ($result['success']) {
-        $this->pageLogin();
-        exit();   
+        $this->redirect('loginPage');
     } else {
-        $this->pageRegister();
-        exit();      
+        $this->redirect('registerPage');
     }
     }
 

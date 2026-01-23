@@ -7,6 +7,7 @@
 
     public function __construct()
     {
+        parent::__construct();
         $this->eventRepository = new EventRepository();
         $this->clubRepository = new ClubRepository(Database::getInstance()->getConnection());
     }
@@ -306,9 +307,9 @@
         $flash = $this->consumeFlash();
         $data['flash'] = $flash;
 
-        $twigPath = __DIR__ . '/../views/twig/' . $twigTemplate;
-        if (class_exists(\Twig\Environment::class) && file_exists($twigPath)) {
-            View::render($twigTemplate, $data);
+        $twigPath = __DIR__ . '/../views/' . $twigTemplate;
+        if (class_exists(\Twig\Environment::class) && is_file($twigPath)) {
+            $this->render($twigTemplate, $data);
             return;
         }
 

@@ -9,18 +9,18 @@ $events = $events ?? [];
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Événements - ClubEdge</title>
 
-    <link rel="stylesheet" href="/../ClubEdge/public/assets/css/variables.css">
-    <link rel="stylesheet" href="/../ClubEdge/public/assets/css/reset.css">
-    <link rel="stylesheet" href="/../ClubEdge/public/assets/css/layout.css">
-    <link rel="stylesheet" href="/../ClubEdge/public/assets/css/components.css">
-    <link rel="stylesheet" href="/../ClubEdge/public/assets/css/utilities.css">
-    <link rel="stylesheet" href="/../ClubEdge/public/assets/css/responsive.css">
+    <link rel="stylesheet" href="<?= htmlspecialchars(View::asset('css/variables.css'), ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8') ?>">
+    <link rel="stylesheet" href="<?= htmlspecialchars(View::asset('css/reset.css'), ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8') ?>">
+    <link rel="stylesheet" href="<?= htmlspecialchars(View::asset('css/layout.css'), ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8') ?>">
+    <link rel="stylesheet" href="<?= htmlspecialchars(View::asset('css/components.css'), ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8') ?>">
+    <link rel="stylesheet" href="<?= htmlspecialchars(View::asset('css/utilities.css'), ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8') ?>">
+    <link rel="stylesheet" href="<?= htmlspecialchars(View::asset('css/responsive.css'), ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8') ?>">
 </head>
 
 <body class="p-6">
     <div class="flex items-center justify-between mb-6">
         <h1 class="text-xl font-semibold">Événements</h1>
-        <a class="btn btn-outline" href="dashboard">Dashboard</a>
+        <a class="btn btn-outline" href="<?= htmlspecialchars(View::url('etudiant/dashboard'), ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8') ?>">Dashboard</a>
     </div>
 
     <?php if (!empty($flash['message'])): ?>
@@ -55,7 +55,7 @@ $events = $events ?? [];
                                     <td><?= htmlspecialchars((string) ($event['location'] ?? ''), ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8') ?></td>
                                     <td><?= (int) ($event['participants_count'] ?? 0) ?></td>
                                     <td>
-                                        <a class="btn btn-outline btn-sm" href="events/<?= (int) $event['id'] ?>">Détails</a>
+                                        <a class="btn btn-outline btn-sm" href="<?= htmlspecialchars(View::url('etudiant/events/' . (int) $event['id']), ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8') ?>">Détails</a>
                                     </td>
                                 </tr>
                             <?php endforeach; ?>

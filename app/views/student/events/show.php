@@ -12,18 +12,18 @@ $isPast = (bool) ($event['is_past'] ?? false);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Détails événement - ClubEdge</title>
 
-    <link rel="stylesheet" href="/../ClubEdge/public/assets/css/variables.css">
-    <link rel="stylesheet" href="/../ClubEdge/public/assets/css/reset.css">
-    <link rel="stylesheet" href="/../ClubEdge/public/assets/css/layout.css">
-    <link rel="stylesheet" href="/../ClubEdge/public/assets/css/components.css">
-    <link rel="stylesheet" href="/../ClubEdge/public/assets/css/utilities.css">
-    <link rel="stylesheet" href="/../ClubEdge/public/assets/css/responsive.css">
+    <link rel="stylesheet" href="<?= htmlspecialchars(View::asset('css/variables.css'), ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8') ?>">
+    <link rel="stylesheet" href="<?= htmlspecialchars(View::asset('css/reset.css'), ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8') ?>">
+    <link rel="stylesheet" href="<?= htmlspecialchars(View::asset('css/layout.css'), ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8') ?>">
+    <link rel="stylesheet" href="<?= htmlspecialchars(View::asset('css/components.css'), ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8') ?>">
+    <link rel="stylesheet" href="<?= htmlspecialchars(View::asset('css/utilities.css'), ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8') ?>">
+    <link rel="stylesheet" href="<?= htmlspecialchars(View::asset('css/responsive.css'), ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8') ?>">
 </head>
 
 <body class="p-6">
     <div class="flex items-center justify-between mb-6">
         <h1 class="text-xl font-semibold"><?= htmlspecialchars((string) ($event['title'] ?? ''), ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8') ?></h1>
-        <a class="btn btn-outline" href="..">Retour</a>
+        <a class="btn btn-outline" href="<?= htmlspecialchars(View::url('etudiant/events'), ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8') ?>">Retour</a>
     </div>
 
     <?php if (!empty($flash['message'])): ?>
@@ -63,7 +63,7 @@ $isPast = (bool) ($event['is_past'] ?? false);
         <?php elseif ($isJoined): ?>
             <span class="badge badge-accent">Déjà inscrit</span>
         <?php else: ?>
-            <form method="post" action="<?= (int) ($event['id'] ?? 0) ?>/join">
+            <form method="post" action="<?= htmlspecialchars(View::url('etudiant/events/' . (int) ($event['id'] ?? 0) . '/join'), ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8') ?>">
                 <input type="hidden" name="_csrf" value="<?= htmlspecialchars(Csrf::token(), ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8') ?>">
                 <button class="btn btn-primary" type="submit">S'inscrire</button>
             </form>
