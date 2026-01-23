@@ -1,0 +1,95 @@
+<?php
+$asset = fn (string $p): string => htmlspecialchars(View::asset($p), ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
+$path = fn (string $p): string => htmlspecialchars(View::url($p), ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
+?>
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Accès refusé - ClubEdge">
+    <title>403 - Accès refusé - ClubEdge</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="<?= $asset('css/variables.css') ?>">
+    <link rel="stylesheet" href="<?= $asset('css/reset.css') ?>">
+    <link rel="stylesheet" href="<?= $asset('css/layout.css') ?>">
+    <link rel="stylesheet" href="<?= $asset('css/components.css') ?>">
+    <link rel="stylesheet" href="<?= $asset('css/utilities.css') ?>">
+    <link rel="stylesheet" href="<?= $asset('css/animations.css') ?>">
+
+    <style>
+        .error-page {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: var(--space-8);
+            background-color: var(--color-bg-secondary);
+            text-align: center;
+        }
+
+        .error-icon {
+            width: 80px;
+            height: 80px;
+            margin-bottom: var(--space-6);
+            color: var(--color-error);
+        }
+
+        .error-code {
+            font-size: 5rem;
+            font-weight: var(--font-bold);
+            letter-spacing: var(--tracking-tighter);
+            color: var(--color-black);
+            line-height: 1;
+            margin-bottom: var(--space-4);
+        }
+
+        .error-title {
+            font-size: var(--text-2xl);
+            font-weight: var(--font-semibold);
+            margin-bottom: var(--space-4);
+        }
+
+        .error-description {
+            font-size: var(--text-base);
+            color: var(--color-text-secondary);
+            max-width: 400px;
+            margin-bottom: var(--space-8);
+        }
+
+        .error-actions {
+            display: flex;
+            gap: var(--space-4);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="error-page animate-fade-in">
+        <svg class="error-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+            <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+        </svg>
+
+        <h1 class="error-code">403</h1>
+        <h2 class="error-title">Accès refusé</h2>
+        <p class="error-description">
+            Vous n'avez pas les permissions nécessaires pour accéder à cette page. Contactez un administrateur si vous
+            pensez qu'il s'agit d'une erreur.
+        </p>
+
+        <div class="error-actions">
+            <a href="<?= $path('home') ?>" class="btn btn-primary">Retour à l'accueil</a>
+            <a href="<?= $path('loginPage') ?>" class="btn btn-outline">Se connecter</a>
+        </div>
+    </div>
+</body>
+
+</html>
+

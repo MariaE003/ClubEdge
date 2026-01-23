@@ -40,6 +40,12 @@ class Router
         }
 
         http_response_code(404);
+        $phpView = __DIR__ . '/../app/views/errors/404.php';
+        if (is_file($phpView)) {
+            require_once $phpView;
+            return;
+        }
+
         require_once __DIR__ . '/../app/views/errors/404.html';
         return;
     }

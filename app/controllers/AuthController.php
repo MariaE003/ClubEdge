@@ -9,9 +9,21 @@ class AuthController extends BaseController{
         require_once __DIR__. "/../views/home.html";
     }
     public function pageRegister(){
+        $phpView = __DIR__ . '/../views/auth/register.php';
+        if (is_file($phpView)) {
+            require_once $phpView;
+            return;
+        }
+
         require_once __DIR__. "/../views/auth/register.html";
     }
     public function pageLogin(){
+        $phpView = __DIR__ . '/../views/auth/login.php';
+        if (is_file($phpView)) {
+            require_once $phpView;
+            return;
+        }
+
         require_once __DIR__. "/../views/auth/login.html";
     }
     public function dashboardAdmin(){
@@ -35,6 +47,8 @@ class AuthController extends BaseController{
             $this->pageLogin();
             return;
         }
+
+        Csrf::validatePostOrDie();
 
         $email = trim((string) ($_POST['email'] ?? ''));
         $password = (string) ($_POST['password'] ?? '');
@@ -62,6 +76,8 @@ class AuthController extends BaseController{
             $this->pageRegister();
             return;
         }
+
+        Csrf::validatePostOrDie();
 
         $nom = trim((string) ($_POST['nom'] ?? ''));
         $prenom = trim((string) ($_POST['prenom'] ?? ''));
@@ -97,6 +113,7 @@ class AuthController extends BaseController{
 
     public function logout() {
         session_destroy();
-        header('Location: index');
+        header('Location: ' . View::url('home'));
+        exit();
     }
 }

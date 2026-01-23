@@ -1,0 +1,133 @@
+<?php
+$asset = fn (string $p): string => htmlspecialchars(View::asset($p), ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
+$path = fn (string $p): string => htmlspecialchars(View::url($p), ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
+?>
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Page non trouvée - ClubEdge">
+    <title>404 - Page non trouvée - ClubEdge</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="<?= $asset('css/variables.css') ?>">
+    <link rel="stylesheet" href="<?= $asset('css/reset.css') ?>">
+    <link rel="stylesheet" href="<?= $asset('css/layout.css') ?>">
+    <link rel="stylesheet" href="<?= $asset('css/components.css') ?>">
+    <link rel="stylesheet" href="<?= $asset('css/utilities.css') ?>">
+    <link rel="stylesheet" href="<?= $asset('css/animations.css') ?>">
+
+    <style>
+        .error-page {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: var(--space-8);
+            background-color: var(--color-bg-secondary);
+            text-align: center;
+        }
+
+        .error-code {
+            font-size: 8rem;
+            font-weight: var(--font-bold);
+            letter-spacing: var(--tracking-tighter);
+            color: var(--color-black);
+            line-height: 1;
+            margin-bottom: var(--space-4);
+        }
+
+        .error-code span {
+            color: var(--color-accent);
+        }
+
+        .error-title {
+            font-size: var(--text-2xl);
+            font-weight: var(--font-semibold);
+            margin-bottom: var(--space-4);
+        }
+
+        .error-description {
+            font-size: var(--text-base);
+            color: var(--color-text-secondary);
+            max-width: 400px;
+            margin-bottom: var(--space-8);
+        }
+
+        .error-actions {
+            display: flex;
+            gap: var(--space-4);
+        }
+
+        .error-illustration {
+            margin-bottom: var(--space-8);
+        }
+
+        @media (max-width: 639px) {
+            .error-code {
+                font-size: 5rem;
+            }
+
+            .error-actions {
+                flex-direction: column;
+                width: 100%;
+                max-width: 300px;
+            }
+
+            .error-actions .btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="error-page animate-fade-in">
+        <div class="error-illustration">
+            <svg width="200" height="160" viewBox="0 0 200 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="40" y="40" width="120" height="80" rx="4" stroke="#E2E8F0" stroke-width="2" />
+                <path d="M40 52H160" stroke="#E2E8F0" stroke-width="2" />
+                <circle cx="52" cy="46" r="3" fill="#E2E8F0" />
+                <circle cx="62" cy="46" r="3" fill="#E2E8F0" />
+                <circle cx="72" cy="46" r="3" fill="#E2E8F0" />
+                <path d="M70 80L90 100M90 80L70 100" stroke="#FF4F00" stroke-width="3" stroke-linecap="round" />
+                <path d="M110 80L130 100M130 80L110 100" stroke="#FF4F00" stroke-width="3" stroke-linecap="round" />
+                <path d="M80 115C80 115 90 125 100 125C110 125 120 115 120 115" stroke="#121212" stroke-width="2"
+                    stroke-linecap="round" />
+            </svg>
+        </div>
+
+        <h1 class="error-code">4<span>0</span>4</h1>
+        <h2 class="error-title">Page non trouvée</h2>
+        <p class="error-description">
+            Oups ! La page que vous recherchez semble avoir disparu ou n'existe pas. Pas de panique, retournez à
+            l'accueil.
+        </p>
+
+        <div class="error-actions">
+            <a href="<?= $path('home') ?>" class="btn btn-primary">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+                    <polyline points="9 22 9 12 15 12 15 22" />
+                </svg>
+                Retour à l'accueil
+            </a>
+            <button onclick="history.back()" class="btn btn-outline">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <line x1="19" y1="12" x2="5" y2="12" />
+                    <polyline points="12 19 5 12 12 5" />
+                </svg>
+                Page précédente
+            </button>
+        </div>
+    </div>
+</body>
+
+</html>
+

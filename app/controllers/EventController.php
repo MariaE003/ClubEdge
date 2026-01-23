@@ -334,6 +334,12 @@
     private function forbidden(): void
     {
         http_response_code(403);
+        $phpView = __DIR__ . '/../views/errors/403.php';
+        if (is_file($phpView)) {
+            require $phpView;
+            exit();
+        }
+
         require __DIR__ . '/../views/errors/403.html';
         exit();
     }
@@ -341,6 +347,12 @@
     private function notFound(): void
     {
         http_response_code(404);
+        $phpView = __DIR__ . '/../views/errors/404.php';
+        if (is_file($phpView)) {
+            require $phpView;
+            exit();
+        }
+
         require __DIR__ . '/../views/errors/404.html';
         exit();
     }
