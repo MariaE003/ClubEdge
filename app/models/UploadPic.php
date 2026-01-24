@@ -39,5 +39,4 @@ class UploadPic
         }
         return $newFileName;
     }
-    
 }

@@ -1,0 +1,48 @@
+{# <nav class="navbar">
+    <div class="container">
+        <div class="navbar-content">
+            <a href="/" class="navbar-logo">
+                <svg width="32" height="32" viewBox="0 0 40 40" fill="none">
+                    <rect width="40" height="40" rx="4" fill="#FF4F00" />
+                    <path d="M12 28V12H20C22.12 12 24.16 12.84 25.66 14.34C27.16 15.84 28 17.88 28 20C28 22.12 27.16 24.16 25.66 25.66C24.16 27.16 22.12 28 20 28H12Z" stroke="white" stroke-width="2" />
+                </svg>
+                <span class="navbar-logo-text">ClubEdge</span>
+            </a>
+
+            <ul class="navbar-menu">
+                <li><a href="/home" class="navbar-link">Accueil</a></li>
+
+                {% if user is defined and user.role == 'admin' %}
+                    <li><a href="/admin/dashboard" class="navbar-link">Dashboard Admin</a></li>
+                    <li><a href="/admin/clubs" class="navbar-link">Clubs</a></li>
+                {% endif %}
+
+                {% if user is defined and user.role == 'president' %}
+                    <li><a href="/president/dashboard" class="navbar-link">Dashboard Président</a></li>
+                    <li><a href="/president/events" class="navbar-link">Événements</a></li>
+                {% endif %}
+
+                {% if user is defined and user.role == 'etudiant' %}
+                    <li><a href="/etudiant/dashboard" class="navbar-link">Mon Espace</a></li>
+                    <li><a href="/student/clubs-list" class="navbar-link">Clubs</a></li>
+                {% endif %}
+            </ul>
+
+            <div class="navbar-actions">
+                <a href="/logout" class="btn btn-ghost" style="color: var(--text-main)">Déconnexion</a>
+            </div>
+        </div>
+    </div>
+</nav> #}
+
+<header class="app-header">
+    <button class="btn btn-icon btn-ghost" id="menu-toggle">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="1.5">
+            <line x1="3" y1="12" x2="21" y2="12" />
+            <line x1="3" y1="6" x2="21" y2="6" />
+            <line x1="3" y1="18" x2="21" y2="18" />
+        </svg>
+    </button>
+    <div class="flex-1"></div>
+</header>

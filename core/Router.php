@@ -1,7 +1,4 @@
 <?php
-session_start();
-require_once __DIR__ . '../../vendor/autoloadRepository.php';
-
 class Router
 {
     public function handleRequest()
@@ -43,8 +40,8 @@ class Router
         }
 
         http_response_code(404);
-        echo "404 Not Found: " . htmlspecialchars($url);
+        require_once __DIR__ . '/../app/views/errors/404.html';
+        return;
     }
 }
-
 

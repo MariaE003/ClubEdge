@@ -8,11 +8,11 @@ abstract class User{
     protected string $password;
     protected string $role;
     protected string $image;
-    protected string $dateC;
+    protected ?string $dateC;
 
     protected PDO $db;
 
-    public function __construct($id , string $nom,string $prenom,string $email,string $password,string $role,?string $image = null) {
+    public function __construct($id , string $nom,string $prenom,string $email,string $password,string $role,?string $image = null , $dateC = null ) {
         $this->db =  Database::getInstance()->getConnection();
         $this->id = $id ;
         $this->nom = $nom;
@@ -21,6 +21,13 @@ abstract class User{
         $this->password = password_hash($password, PASSWORD_DEFAULT);
         $this->role = $role;
         $this->image = $image;
+        $this->dateC = $dateC;
+    }
+    public function __get($name) {
+        return $this->$name;
+    }
+    public function __set($name,$value){
+        $this->$name = $value;
     }
     public function getId(): ?int {
         return $this->id;
@@ -64,6 +71,32 @@ abstract class User{
     }
 
 
-   
+    public static function lougoutUser(){
+        session_destroy();
+    }
+    public function updateInfoUser(): bool {
+        $stmt = $this->db->prepare("UPDATE utilisateur SET nom = ?, prenom = ?, email = ?, img_utilisateur = ? WHERE id_utilisateur = ?");
+        return $stmt->execute([$this->nom, $this->prenom, $this->email, $this->image, $this->id]);
+    }
+
+    public function deleteUser(): bool {
+        $stmt = $this->db->prepare("DELETE FROM utilisateur WHERE id_utilisateur = ?");
+        return $stmt->execute([$this->id]);
+    }
+
+    public function getClub():Club|null{
+    $stmt = $this->db->prepare("
+        SELECT id, name, description, president_id, members, logo, created_at
+        FROM clubs
+        WHERE president_id = :uid
+           OR :uid = ANY(members)
+        ORDER BY created_at DESC
+        LIMIT 1
+    ");
+    $stmt->execute([':uid' => $this->id]);
+
+    $club = $stmt->fetch(PDO::FETCH_ASSOC);
+    return ClubFactory::fromDbRow($club) ;
+}
 
 }

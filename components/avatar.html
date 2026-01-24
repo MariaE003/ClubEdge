@@ -1,0 +1,122 @@
+<!-- Avatar Component Examples -->
+
+<!-- Sizes -->
+<div class="flex items-center gap-4 mb-8">
+    <div class="avatar avatar-xs">XS</div>
+    <div class="avatar avatar-sm">SM</div>
+    <div class="avatar avatar-md">MD</div>
+    <div class="avatar avatar-lg">LG</div>
+    <div class="avatar avatar-xl">XL</div>
+</div>
+
+<!-- With Image -->
+<div class="flex items-center gap-4 mb-8">
+    <div class="avatar avatar-sm">
+        <img src="../assets/images/avatars/user.jpg" alt="User">
+    </div>
+    <div class="avatar avatar-md">
+        <img src="../assets/images/avatars/user.jpg" alt="User">
+    </div>
+    <div class="avatar avatar-lg">
+        <img src="../assets/images/avatars/user.jpg" alt="User">
+    </div>
+</div>
+
+<!-- With Initials -->
+<div class="flex items-center gap-4 mb-8">
+    <div class="avatar avatar-sm">JD</div>
+    <div class="avatar avatar-sm">MM</div>
+    <div class="avatar avatar-sm">LB</div>
+    <div class="avatar avatar-sm">SD</div>
+</div>
+
+<!-- With Accent Background -->
+<div class="flex items-center gap-4 mb-8">
+    <div class="avatar avatar-sm bg-accent text-white">AD</div>
+    <div class="avatar avatar-md bg-accent text-white">+5</div>
+</div>
+
+<!-- Avatar Group / Stack -->
+<div class="avatar-group mb-8">
+    <div class="avatar avatar-sm">JD</div>
+    <div class="avatar avatar-sm">MM</div>
+    <div class="avatar avatar-sm">LB</div>
+    <div class="avatar avatar-sm">SD</div>
+    <div class="avatar avatar-sm bg-accent text-white">+3</div>
+</div>
+
+<!-- Avatar with Status -->
+<div class="flex items-center gap-6 mb-8">
+    <div class="avatar-with-status">
+        <div class="avatar avatar-md">JD</div>
+        <span class="avatar-status avatar-status--online"></span>
+    </div>
+    <div class="avatar-with-status">
+        <div class="avatar avatar-md">MM</div>
+        <span class="avatar-status avatar-status--offline"></span>
+    </div>
+    <div class="avatar-with-status">
+        <div class="avatar avatar-md">LB</div>
+        <span class="avatar-status avatar-status--busy"></span>
+    </div>
+</div>
+
+<!-- Avatar with Badge -->
+<div class="flex items-center gap-6 mb-8">
+    <div class="avatar-with-badge">
+        <div class="avatar avatar-md">JD</div>
+        <span class="avatar-badge">3</span>
+    </div>
+</div>
+
+<style>
+    .avatar-with-status {
+        position: relative;
+        display: inline-block;
+    }
+
+    .avatar-status {
+        position: absolute;
+        bottom: 2px;
+        right: 2px;
+        width: 12px;
+        height: 12px;
+        border-radius: var(--radius-full);
+        border: 2px solid var(--color-white);
+    }
+
+    .avatar-status--online {
+        background-color: var(--color-success);
+    }
+
+    .avatar-status--offline {
+        background-color: var(--color-gray-400);
+    }
+
+    .avatar-status--busy {
+        background-color: var(--color-error);
+    }
+
+    .avatar-with-badge {
+        position: relative;
+        display: inline-block;
+    }
+
+    .avatar-badge {
+        position: absolute;
+        top: -4px;
+        right: -4px;
+        min-width: 20px;
+        height: 20px;
+        padding: 0 6px;
+        font-size: 11px;
+        font-weight: var(--font-semibold);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: var(--color-accent);
+        color: var(--color-white);
+        border-radius: var(--radius-full);
+        border: 2px solid var(--color-white);
+    }
+</style>

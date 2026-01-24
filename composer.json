@@ -1,18 +1,4 @@
 {
-    "name": "club/edge",
-    "description": "Club Edge project",
-    "type": "project",
-    "autoload": {
-        "psr-4": {
-            "Club\\Edge\\": "src/"
-        }
-    },
-    "authors": [
-        {
-            "name": "Othmanehaiba",
-            "email": "othmanehaiba4@gmail.com"
-        }
-    ],
     "require": {
         "twig/twig": "^3.22"
     }

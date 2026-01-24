@@ -1,3 +1,15 @@
+<?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+require_once __DIR__ . "/../../repositories/ArticleRepositoriy.php";
+
+$articleRepo = new ArticleRepository(Database::getInstance()->getConnection());
+$articles = $articleRepo->getArticlesByPresidentId(1);
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -182,45 +194,14 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                <?php foreach($articles as $article): ?>
                                 <tr>
                                     <td>
-                                        <div class="font-medium">Retour sur le Hackathon 48h</div>
-                                        <div class="text-xs text-muted">Bilan, gagnants et photos</div>
+                                        <div class="font-medium"><?= $article['title'] ?></div>
+                                        <div class="text-xs text-muted"><?= $article['event_title'] ?></div>
                                     </td>
-                                    <td>Hackathon 48h</td>
-                                    <td>03 Fév 2026</td>
-                                    <td><span class="badge badge-success">Publié</span></td>
-                                    <td class="text-right">
-                                        <div class="flex items-center justify-end gap-2">
-                                            <a href="edit-article.html" class="btn btn-icon btn-ghost btn-sm"
-                                                title="Modifier" aria-label="Modifier">
-                                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
-                                                    stroke="currentColor" stroke-width="1.5">
-                                                    <path
-                                                        d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" />
-                                                    <path
-                                                        d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z" />
-                                                </svg>
-                                            </a>
-                                            <button class="btn btn-icon btn-ghost btn-sm text-error" title="Supprimer"
-                                                aria-label="Supprimer">
-                                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
-                                                    stroke="currentColor" stroke-width="1.5">
-                                                    <polyline points="3 6 5 6 21 6" />
-                                                    <path
-                                                        d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />
-                                                </svg>
-                                            </button>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="font-medium">Atelier Python : ce qu'il fallait retenir</div>
-                                        <div class="text-xs text-muted">Support de cours + exercices</div>
-                                    </td>
-                                    <td>Atelier Python débutant</td>
-                                    <td>16 Fév 2026</td>
+                                    <td><?= $article['event_title'] ?></td>
+                                    <td><?= $article['event_date'] ?></td>
                                     <td><span class="badge badge-warning">Brouillon</span></td>
                                     <td class="text-right">
                                         <div class="flex items-center justify-end gap-2">
@@ -246,6 +227,7 @@
                                         </div>
                                     </td>
                                 </tr>
+                                <?php endforeach; ?>
                             </tbody>
                         </table>
                     </div>

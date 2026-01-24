@@ -1,0 +1,226 @@
+{% extends "layouts/base.twig" %}
+
+{% block title %}
+Clubs
+{% endblock %}
+{% block content %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Club Informatique - Détails du club">
+    <title>Club Informatique - ClubEdge</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/../ClubEdge/public/assets/css/variables.css">
+    <link rel="stylesheet" href="/../ClubEdge/public/assets/css/reset.css">
+    <link rel="stylesheet" href="/../ClubEdge/public/assets/css/layout.css">
+    <link rel="stylesheet" href="/../ClubEdge/public/assets/css/components.css">
+    <link rel="stylesheet" href="/../ClubEdge/public/assets/css/utilities.css">
+    <link rel="stylesheet" href="/../ClubEdge/public/assets/css/animations.css">
+    <link rel="stylesheet" href="/../ClubEdge/public/assets/css/responsive.css">
+    <link rel="stylesheet" href="/../ClubEdge/public/assets/css/pages/clubs.css">
+    <style>
+        .club-banner {
+            height: 250px;
+            width: 100%;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="app-layout">
+        <div class="app-main">
+            <main class="app-content">
+            {# ajouter route pour retour a la page des clubs #}
+                <a href="/ClubEdge/student/clubs-list" class="btn btn-ghost btn-sm mb-4 pl-0 hover:bg-transparent">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="1.5">
+                        <path d="M19 12H5" />
+                        <path d="M12 19l-7-7 7-7" />
+                    </svg>
+                    Retour aux clubs
+                </a>
+                <!-- Club Header -->
+                <div class="card mb-6 overflow-hidden">
+                    <div class="club-banner"
+                        style="background-image: url('{{club.logo}}')">
+                        <div class="w-full h-full bg-overlay"></div>
+                    </div>
+                    <div class="card-body relative pt-0">
+                        <div class="flex flex-col md:flex-row items-start md:items-end -mt-12 gap-6">
+                            <div class="w-24 h-24 rounded-2xl bg-white p-1 shadow-lg">
+                                <div
+                                    class="w-full h-full rounded-xl bg-gray-900 flex items-center justify-center text-white text-2xl font-bold">
+                                    {{NameClub}}
+                                </div>
+                            </div>
+                            <div class="flex-1 mb-2">
+                                <div class="flex items-center gap-3 mb-1">
+                                    <h1 class="text-3xl font-bold">{{club.name}}</h1>
+                                    <span class="badge badge-success">Ouvert</span>
+                                </div>
+                                {# <p class="text-muted">La technologie au service de l'innovation</p> #}
+                            </div>
+
+
+                            <div class="mt-4">
+    {% if isMemberHere %}
+        
+        <button class="btn btn-success mb-2 w-full cursor-not-allowed" disabled>
+            Déjà membre
+        </button>
+
+    {% elseif isMemberGlobally %}
+        
+        <button class="btn btn-secondary mb-2 w-full cursor-not-allowed" title="Vous êtes déjà inscrit dans un autre club" disabled>
+            Déjà inscrit (autre club)
+        </button>
+
+    {% else %}
+        
+        <a href="join?idC={{ club.id }}" class="btn btn-primary mb-2 w-full">
+            Rejoindre le club
+        </a>
+    {% endif %}
+</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-12 gap-6">
+                    <!-- Main Content -->
+                    <div class="col-span-8 space-y-6">
+                        <!-- About -->
+                        <div class="card">
+                            <div class="card-header">
+                                <h2 class="card-title">À propos</h2>
+                            </div>
+                            <div class="card-body">
+                                <p class="text-gray-600 mb-4">
+                                   {{club.description}}
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Upcoming Events -->
+                        <div class="card">
+                            <div class="card-header flex items-center justify-between">
+                                <h2 class="card-title">Événements à venir</h2>
+                                <a href="events-list.html" class="btn btn-ghost btn-sm">Voir tout</a>
+                            </div>
+                            <div class="card-body">
+                                <div class="space-y-4">
+                                {% for event in events %}
+                                    <div
+                                        class="flex items-center gap-4 p-4 border border-gray-100 rounded-lg hover:border-accent transition-colors">
+                                        <div
+                                            class="flex flex-col items-center justify-center w-16 h-16 bg-gray-50 rounded-lg text-center">
+                                            <span class="text-xl font-bold text-gray-900">{{ event.event_date|date("d") }}</span>
+                                            <span class="text-xs uppercase font-medium text-gray-500">{{ event.event_date|date("M") }}</span>
+                                        </div>
+                                        <div class="flex-1">
+                                            <h3 class="font-semibold text-lg">{{ event.title }}</h3>
+                                            <div class="flex items-center gap-4 text-sm text-gray-500 mt-1">
+                                                <div class="flex items-center gap-1">
+                                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+                                                        stroke="currentColor" stroke-width="2">
+                                                        <rect x="3" y="4" width="18" height="18" rx="2" />
+                                                        <line x1="16" y1="2" x2="16" y2="6" />
+                                                        <line x1="8" y1="2" x2="8" y2="6" />
+                                                        <line x1="3" y1="10" x2="21" y2="10" />
+                                                    </svg>
+                                                    09:00 - 18:00
+                                                </div>
+                                                <div class="flex items-center gap-1">
+                                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+                                                        stroke="currentColor" stroke-width="2">
+                                                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                                                        <circle cx="12" cy="10" r="3" />
+                                                    </svg>
+                                                    {{ event.location }}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <button class="btn btn-outline btn-sm">S'inscrire</button>
+                                    </div>
+                                    {% endfor %}
+
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sidebar Info -->
+                    <div class="col-span-4 space-y-6">
+                        <!-- Stats -->
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title text-base">Informations</h3>
+                            </div>
+                            <div class="card-body">
+                                <div class="space-y-4">
+                                    <div class="flex justify-between items-center">
+                                        <span class="text-gray-600">Président</span>
+                                        <span class="font-medium">Marie Martin</span>
+                                    </div>
+                                    <div class="flex justify-between items-center">
+                                        <span class="text-gray-600">Membres</span>
+                                        <span class="font-medium">{{membres}} / 8</span>
+                                    </div>
+                                    <div class="flex justify-between items-center">
+                                        <span class="text-gray-600">Création</span>
+                                        <span class="font-medium">{{ club.created_at|date("M Y") }}</span>
+                                    </div>
+                                    <div class="flex justify-between items-center">
+                                        <span class="text-gray-600">Catégorie</span>
+                                        <span class="badge badge-secondary">Technologie</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Contact -->
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title text-base">Membres du club</h3>
+                            </div>
+                            <div class="card-body">
+                                <div class="space-y-4">
+                                    {% for m in members %}
+                                    <div class="flex items-center gap-3">
+                                        <div class="avatar avatar-sm">
+                                            {# Affiche les initiales ou une icône par défaut #}
+                                            {{ m.nom|slice(0, 1)|upper }}{{ m.prenom|slice(0, 1)|upper }}
+                                        </div>
+                                        <div class="flex flex-col">
+                                            <span class="text-sm font-medium text-gray-900">{{ m.prenom }} {{ m.nom }}</span>
+                                            <span class="text-xs text-gray-500 capitalize">{{ m.role }}</span>
+                                        </div>
+                                    </div>
+                                    {% else %}
+                                    <p class="text-sm text-gray-500">Aucun membre pour le moment.</p>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <div class="mobile-overlay" id="mobile-overlay"></div>
+    <script src="/../ClubEdge/public/assets/js/main.js" defer></script>
+</body>
+</html>
+
+{% endblock %}

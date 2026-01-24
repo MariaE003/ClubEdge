@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="ClubEdge - Création d'un nouveau club universitaire">
+    <title>Créer un Club - ClubEdge</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Liaisons CSS existantes -->
+    <link rel="stylesheet" href="/../ClubEdge/public/assets/css/variables.css">
+    <link rel="stylesheet" href="/../ClubEdge/public/assets/css/reset.css">
+    <link rel="stylesheet" href="/../ClubEdge/public/assets/css/layout.css">
+    <link rel="stylesheet" href="/../ClubEdge/public/assets/css/components.css">
+    <link rel="stylesheet" href="/../ClubEdge/public/assets/css/utilities.css">
+    <link rel="stylesheet" href="/../ClubEdge/public/assets/css/animations.css">
+    <link rel="stylesheet" href="/../ClubEdge/public/assets/css/responsive.css">
+
+    <style>
+        /* Surcharge pour le thème LIGHT */
+        :root {
+            --page-bg: #f9fafb;
+            --card-bg: #ffffff;
+            --text-main: #111827;
+            --text-muted: #6b7280;
+            --border-color: #e5e7eb;
+            --input-bg: #ffffff;
+        }
+
+        body {
+            background-color: var(--page-bg);
+            color: var(--text-main);
+        }
+
+        /* Navbar Light */
+        .navbar {
+            background-color: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .navbar-logo-text, .navbar-link {
+            color: var(--text-main) !important;
+        }
+
+        /* Header de page */
+        .page-header {
+            padding: var(--space-16) 0 var(--space-10);
+            background-color: #ffffff;
+            border-bottom: 1px solid var(--border-color);
+            text-align: center;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--text-main);
+            letter-spacing: -0.02em;
+            margin-bottom: var(--space-3);
+        }
+
+        .section-title span {
+            color: var(--color-accent);
+        }
+
+        .section-subtitle {
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto;
+            font-size: var(--text-lg);
+        }
+
+        /* Formulaire */
+        .form-section {
+            padding: var(--space-16) 0;
+        }
+
+        .form-container {
+            max-width: 700px;
+            margin: 0 auto;
+            background-color: var(--card-bg);
+            padding: var(--space-10);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border-color);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-label {
+            display: block;
+            font-size: var(--text-sm);
+            font-weight: 600;
+            color: var(--text-main);
+            margin-bottom: var(--space-2);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            background-color: var(--input-bg);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-base);
+            color: var(--text-main);
+            font-family: inherit;
+            transition: all 0.2s;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--color-accent);
+            ring: 2px solid rgba(255, 79, 0, 0.1);
+            box-shadow: 0 0 0 3px rgba(255, 79, 0, 0.1);
+        }
+
+        .form-hint {
+            font-size: var(--text-xs);
+            color: var(--text-muted);
+            margin-top: 0.5rem;
+        }
+
+        /* Zone Upload */
+        .image-upload-wrapper {
+            border: 2px dashed var(--border-color);
+            padding: var(--space-10);
+            border-radius: var(--radius-base);
+            text-align: center;
+            cursor: pointer;
+            background-color: #fefefe;
+            transition: all 0.2s;
+        }
+
+        .image-upload-wrapper:hover {
+            border-color: var(--color-accent);
+            background-color: rgba(255, 79, 0, 0.02);
+        }
+
+        .upload-icon {
+            color: var(--color-accent);
+            margin-bottom: var(--space-3);
+        }
+
+        /* Boutons */
+        .btn-outline-custom {
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+            background: transparent;
+        }
+
+        .btn-outline-custom:hover {
+            background: #f3f4f6;
+        }
+
+        /* Footer Light */
+        .site-footer {
+            background-color: #ffffff;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-muted);
+            padding: var(--space-12) 0;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-content">
+                <a href="/" class="navbar-logo">
+                    <svg width="32" height="32" viewBox="0 0 40 40" fill="none">
+                        <rect width="40" height="40" rx="4" fill="#FF4F00" />
+                        <path d="M12 28V12H20C22.12 12 24.16 12.84 25.66 14.34C27.16 15.84 28 17.88 28 20C28 22.12 27.16 24.16 25.66 25.66C24.16 27.16 22.12 28 20 28H12Z" stroke="white" stroke-width="2" />
+                    </svg>
+                    <span class="navbar-logo-text">ClubEdge</span>
+                </a>
+
+                <ul class="navbar-menu">
+                    <li><a href="admin-dashboard.html" class="navbar-link">Dashboard</a></li>
+                    <li><a href="clubs-list.html" class="navbar-link">Clubs</a></li>
+                </ul>
+
+                <div class="navbar-actions">
+                    <a href="logout" class="btn btn-ghost" style="color: var(--text-main)">Déconnexion</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <header class="page-header">
+        <div class="container animate-fade-in">
+            <h1 class="section-title">Nouveau <span>Club</span></h1>
+            <p class="section-subtitle">Créez un nouvel espace pour dynamiser la vie étudiante de votre établissement.</p>
+        </div>
+    </header>
+
+    <!-- Formulaire -->
+    <main class="form-section">
+        <div class="container">
+            <div class="form-container animate-slide-up">
+                <form action="/ClubEdge/admin/clubs/store" method="POST" enctype="multipart/form-data">
+                    {% if error is defined and error %}
+                    <div style="background-color: #fee2e2; color: #b91c1c; padding: 1rem; border-radius: 0.5rem; margin-bottom: 1rem; text-align: center;">
+                        {{ error }}
+                    </div>
+                    {% endif %}
+                    <div class="form-group mb-6">
+                        <label for="name" class="form-label">Nom du club universitaire</label>
+                        <input type="text" id="name" name="nom" class="form-control" placeholder="Ex: Club de Design Graphique" required>
+                    </div>
+
+                    <div class="form-group mb-6">
+                        <label for="description" class="form-label">Description officielle</label>
+                        <textarea id="description" name="description" class="form-control" rows="4" placeholder="Quels sont les objectifs du club ?" required></textarea>
+                        <p class="form-hint">Maximum 500 caractères.</p>
+                    </div>
+                    <div class="form-group mb-6">
+                        <label for="logo" class="form-label">Le logo</label>
+                        <input type="url" id="club-logo" name="logo" class="form-control" required>
+                    </div>
+
+                    <div style="display: flex; gap: 1rem; flex-direction: column;">
+                        <button type="submit" class="btn btn-primary btn-lg" style="width: 100%; justify-content: center;">
+                            Enregistrer le club
+                        </button>
+                        <a href="admin-dashboard.html" class="btn btn-outline-custom btn-lg" style="width: 100%; justify-content: center; text-align: center; display: flex; align-items: center;">
+                            Annuler
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <p class="footer-copyright">© 2026 ClubEdge - Administration</p>
+                <div style="display: flex; gap: 1rem;">
+                    <span class="text-xs" style="color: var(--color-accent); font-weight: 600;">PHP MVC</span>
+                    <span class="text-xs" style="color: var(--text-muted);">PostgreSQL</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/../ClubEdge/public/assets/js/main.js" defer></script>
+</body>
+</html>
