@@ -5,7 +5,7 @@ class AuthController extends BaseController{
         $this->repo = new AuthRepository();
     }
     public function pageHome(){
-        require_once __DIR__. "/../views/home.html";
+        require_once __DIR__. "/../../app/views/home.html";
     }
     public function pageRegister(){
         require_once __DIR__. "/../views/auth/register.html";
@@ -67,4 +67,10 @@ class AuthController extends BaseController{
         session_destroy();
         header('Location: index');
     }
+
+    public function testConnection(){
+        require_once __DIR__. "/../../core/Database.php";
+    }
+
+    
 }

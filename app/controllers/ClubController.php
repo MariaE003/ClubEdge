@@ -147,16 +147,8 @@ class ClubController extends BaseController{
         $user_id = $_SESSION['user_id'];
         $events = $this->repoClub->findEventByClub($idClub);
         $club=$this->repoClub->findClubById($idClub);
-
-        $member=$this->repoClub->clubMembers($idClub);
-        // var_dump($member);
-
-        $role=$_SESSION["role"];
-        // var_dump($club['logo']);
-        $NameClub=strtoupper(substr($club['name'],0,2));
-
-        
         $result=$this->repoClub->countMembers($idClub);
+        $role=$_SESSION["role"];
         $nombre_members=$result['total'];
         // var_dump($club['members']);
         // var_dump($club['members']);
@@ -173,7 +165,6 @@ class ClubController extends BaseController{
 
         echo $this->render('student/club-details.twig',[
             'club'=>$club,
-            'members'=>$member,
             'NameClub'=>$NameClub,
             'events'=>$events,
             'members' =>$nombre_members,
@@ -248,8 +239,3 @@ class ClubController extends BaseController{
 
 
 }
-
-
-    
-
-?>

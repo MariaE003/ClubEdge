@@ -83,15 +83,15 @@ class ClubRepository{
         $sql = "SELECT u.id, u.nom, u.prenom, u.email, u.role FROM users u
         JOIN clubs c ON u.id = ANY(c.members) WHERE c.id = ? ORDER BY u.nom";
 
-    $stmt = $this->db->prepare($sql);
-    $stmt->execute([$id]);
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute([$id]);
 
-    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     } 
-    public function countMembers($club){
+    public function countMembers($club_id){
         $sql_prepare="SELECT cardinality(members) as total from clubs where id=?";
         $sql=$this->db->prepare($sql_prepare);
-        $sql->execute([$club]);
+        $sql->execute([$club_id]);
         $result=$sql->fetch(PDO::FETCH_ASSOC);
         return $result;
     }

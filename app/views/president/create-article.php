@@ -1,24 +1,32 @@
+<?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
+require_once __DIR__ . '/../../repositories/EventRepository.php';
+
+$eventRepo = new EventRepository();
+$events = $eventRepo->listByClub(1);
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Modifier un article - Espace Président">
-    <title>Modifier un article - Espace Président</title>
+    <meta name="description" content="Rédiger un nouvel article - Espace Président">
+    <title>Rédiger un article - Espace Président</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="../../assets/css/variables.css">
-    <link rel="stylesheet" href="../../assets/css/reset.css">
-    <link rel="stylesheet" href="../../assets/css/layout.css">
-    <link rel="stylesheet" href="../../assets/css/components.css">
-    <link rel="stylesheet" href="../../assets/css/utilities.css">
-    <link rel="stylesheet" href="../../assets/css/animations.css">
-    <link rel="stylesheet" href="../../assets/css/responsive.css">
-    <link rel="stylesheet" href="../../assets/css/pages/dashboard.css">
+    <!-- Styles (fallbacks for different hosting setups) -->
+    <link rel="stylesheet" href="/coachprov3/public/assets/css/main.css">
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <link rel="stylesheet" href="../../assets/css/main.css">
+    <link rel="stylesheet" href="../../../public/assets/css/main.css">
 </head>
 
 <body>
@@ -104,7 +112,7 @@
                     <h3 class="sidebar-section-title">Articles</h3>
                     <ul class="sidebar-menu">
                         <li class="sidebar-item">
-                            <a href="articles-manage.html" class="sidebar-link active">
+                            <a href="ArticleManage" class="sidebar-link">
                                 <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                     stroke-width="1.5">
                                     <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
@@ -114,7 +122,7 @@
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a href="create-article.html" class="sidebar-link">
+                            <a href="create-article.html" class="sidebar-link active">
                                 <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                     stroke-width="1.5">
                                     <path d="M12 20h9" />
@@ -154,84 +162,100 @@
             </header>
 
             <main class="app-content">
-                <nav class="breadcrumb mb-6" aria-label="Fil d'Ariane">
-                    <ol class="breadcrumb-list flex items-center gap-2" role="list">
-                        <li class="breadcrumb-item flex items-center">
-                            <a href="articles-manage.html" class="breadcrumb-link text-sm text-secondary hover:text-primary">Mes articles</a>
-                        </li>
-                        <li class="breadcrumb-separator flex items-center text-muted" aria-hidden="true">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="1.5">
-                                <polyline points="9 18 15 12 9 6" />
-                            </svg>
-                        </li>
-                        <li class="breadcrumb-item flex items-center">
-                            <span class="breadcrumb-current text-sm font-medium">Modifier</span>
-                        </li>
-                    </ol>
-                </nav>
-
                 <div class="page-header flex items-center justify-between">
                     <div>
-                        <h1 class="page-title">Modifier l'article</h1>
-                        <p class="page-description">Mettre à jour le contenu, les images et les options.</p>
+                        <h1 class="page-title">Rédiger un nouvel article</h1>
+                        <p class="page-description">Partagez les actualités de votre club avec la communauté.</p>                                        
                     </div>
+                    <form action="insertArticle" method="post">
                     <div class="flex gap-3">
-                        <button class="btn btn-ghost">Enregistrer</button>
-                        <button class="btn btn-primary">Publier</button>
+                        <button class="btn btn-primary" type="submit" name="submit">Publier</button>
                     </div>
                 </div>
 
                 <div class="grid grid-cols-12 gap-6">
-                    <div class="col-span-8">
+                    <div class="col-span-12 lg:col-span-8">
                         <div class="card">
-                            <div class="card-body cursor-text h-[500px]">
-                                <input type="text"
-                                    class="text-3xl font-bold w-full border-none focus:ring-0 p-0 mb-4 placeholder-gray-300"
-                                    value="Retour sur le Hackathon 48h">
-                                <textarea class="w-full h-[400px] border-none focus:ring-0 p-0 resize-none text-gray-600">Merci à tous pour votre participation ! Voici le bilan de l'événement : thèmes, projets, photos et retours d'expérience.</textarea>
+                            <div class="card-body">
+                                    <div class="form-group">
+                                        <label for="article-title" class="form-label">Titre</label>
+                                        <input id="article-title" type="text" name="article-title" class="form-input"
+                                            placeholder="Titre de votre article...">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="article-content" class="form-label">Contenu</label>
+                                        <textarea id="article-content" name="article-content" class="form-input form-textarea" rows="14"
+                                            placeholder="Écrivez votre contenu ici..."></textarea>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-
-                    <div class="col-span-4 space-y-6">
+                        
+                        <div class="col-span-12 lg:col-span-4 space-y-6">
                         <div class="card">
                             <div class="card-header">
                                 <h3 class="card-title text-base">Image de couverture</h3>
                             </div>
-                            <div class="card-body">
-                                <div
-                                    class="w-full aspect-video bg-gray-50 rounded-lg flex flex-col items-center justify-center border-2 border-dashed border-gray-300 hover:border-accent cursor-pointer transition-colors">
-                                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                        stroke-width="1.5" class="text-gray-400 mb-2">
-                                        <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
-                                        <circle cx="8.5" cy="8.5" r="1.5" />
-                                        <polyline points="21 15 16 10 5 21" />
-                                    </svg>
-                                    <span class="text-sm text-gray-500">Cliquez pour remplacer l'image</span>
-                                </div>
-                            </div>
-                        </div>
+                            <div class="card-body space-y-3">
+                                <!-- URL input -->
+                                <label for="cover-image-url" class="block text-sm font-medium text-gray-700">
+                                    URL de l'image de couverture
+                                </label>
+                                
+                                <input
+                                type="url"
+                                id="cover-image-url"
+                                name="cover_image_url"
+                                placeholder="https://example.com/image.jpg"
+                                class="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-accent"
+                                autocomplete="off"
+                                />
+                                
+                                <!-- Preview box -->
+                                <div class="relative w-full aspect-video bg-gray-50 rounded-lg border border-gray-200 overflow-hidden">
+                                    <img id="cover-image-preview"
+                                    class="hidden w-full h-full object-cover"
+                                    alt="Aperçu de l'image de couverture">
 
-                        <div class="card">
-                            <div class="card-header">
-                                <h3 class="card-title text-base">Options</h3>
-                            </div>
-                            <div class="card-body space-y-4">
-                                <div class="form-group">
-                                    <label class="form-label text-sm">Lier à un événement</label>
-                                    <select class="form-input form-select text-sm">
-                                        <option value="">Aucun événement</option>
-                                        <option value="1" selected>Hackathon 48h</option>
-                                        <option value="2">Atelier Python</option>
-                                    </select>
-                                </div>
-
+                                    <div id="cover-image-placeholder"
+                                    class="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
+                                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="1.5" class="text-gray-400 mb-2">
+                                    <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
+                                    <circle cx="8.5" cy="8.5" r="1.5" />
+                                    <polyline points="21 15 16 10 5 21" />
+                                </svg>
+                                <span class="text-sm text-gray-500">Collez un lien d'image pour voir l’aperçu</span>
+                                <span class="text-xs text-gray-400 mt-2">PNG, JPG, WEBP</span>
                             </div>
                         </div>
                     </div>
                 </div>
-            </main>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title text-base">Options</h3>
+                    </div>
+                    <div class="card-body space-y-4">
+                        <div class="form-group">
+                            <label class="form-label text-sm">Lier à un événement</label>
+                            <select class="form-input form-select text-sm" name="event_id">
+                                <option value="">Aucun</option>
+                                <?php foreach ($events as $event): ?>
+                                    <option value="<?= htmlspecialchars($event['id']) ?>">
+                                        <?= htmlspecialchars($event['title'] ?? '') ?> - 
+                                        <?= htmlspecialchars($event['event_date']) ?>
+                                    </option>
+                                    <?php endforeach; ?>
+                                </select>
+                            </div>
+                        </form>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
 
             <footer class="app-footer">
                 <p class="text-sm text-muted">2026 ClubEdge. Tous droits réservés.</p>
@@ -241,6 +265,81 @@
 
     <div class="mobile-overlay" id="mobile-overlay"></div>
     <script src="../../assets/js/main.js" defer></script>
+    <script>
+        (() => {
+            const input = document.getElementById('cover-image-input');
+            const dropzone = document.getElementById('cover-image-dropzone');
+            const preview = document.getElementById('cover-image-preview');
+            const placeholder = document.getElementById('cover-image-placeholder');
+
+            if (!input || !dropzone || !preview || !placeholder) return;
+
+            let objectUrl = null;
+
+            const openPicker = () => input.click();
+
+            dropzone.addEventListener('click', openPicker);
+            dropzone.addEventListener('keydown', (event) => {
+                if (event.key !== 'Enter' && event.key !== ' ') return;
+                event.preventDefault();
+                openPicker();
+            });
+
+            input.addEventListener('change', () => {
+                const file = input.files && input.files[0];
+                if (!file) return;
+                if (!file.type || !file.type.startsWith('image/')) {
+                    input.value = '';
+                    return;
+                }
+
+                if (objectUrl) URL.revokeObjectURL(objectUrl);
+                objectUrl = URL.createObjectURL(file);
+
+                preview.src = objectUrl;
+                preview.classList.remove('hidden');
+                placeholder.classList.add('hidden');
+                dropzone.setAttribute('aria-label', `Changer l'image de couverture (${file.name})`);
+            });
+
+            window.addEventListener('beforeunload', () => {
+                if (objectUrl) URL.revokeObjectURL(objectUrl);
+            });
+        })();
+                                            
+    const input = document.getElementById("cover-image-url");
+    const preview = document.getElementById("cover-image-preview");
+    const placeholder = document.getElementById("cover-image-placeholder");
+
+    input.addEventListener("input", () => {
+        const url = input.value.trim();
+
+        // reset if empty
+        if (!url) {
+            preview.src = "";
+            preview.classList.add("hidden");
+            placeholder.classList.remove("hidden");
+            return;
+        }
+
+        // update preview
+        preview.src = url;
+
+        // show when loaded
+        preview.onload = () => {
+            preview.classList.remove("hidden");
+            placeholder.classList.add("hidden");
+        };
+
+        // hide if error (invalid URL or forbidden image)
+        preview.onerror = () => {
+            preview.src = "";
+            preview.classList.add("hidden");
+            placeholder.classList.remove("hidden");
+        };
+    });
+
+    </script>
 </body>
 
 </html>

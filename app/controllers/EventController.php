@@ -7,7 +7,6 @@
 
     public function __construct()
     {
-        parent::__construct();
         $this->eventRepository = new EventRepository();
         $this->clubRepository = new ClubRepository(Database::getInstance()->getConnection());
     }
@@ -19,7 +18,7 @@
         $clubId = $this->clubRepository->findIdByPresidentId($userId);
         if (!$clubId) {
             $this->flash('error', "Aucun club associé à ce président.");
-            $this->redirect('president/dashboard');
+            $this->redirect('../president/dashboard');
         }
 
         $events = $this->eventRepository->listByClub($clubId);
@@ -453,6 +452,6 @@
         }
     }
     public function pageListEvent(){
-        parent::render("student/events-list.html" , []);
+        parent::render("student/event-list.html" , []);
     }
 }

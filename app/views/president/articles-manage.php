@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Modifier un article - Espace Président">
-    <title>Modifier un article - Espace Président</title>
+    <meta name="description" content="Gestion des articles - Espace Président">
+    <title>Mes articles - Espace Président</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -114,7 +114,7 @@
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a href="create-article.html" class="sidebar-link">
+                            <a href="CreateArticle" class="sidebar-link">
                                 <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                     stroke-width="1.5">
                                     <path d="M12 20h9" />
@@ -154,81 +154,100 @@
             </header>
 
             <main class="app-content">
-                <nav class="breadcrumb mb-6" aria-label="Fil d'Ariane">
-                    <ol class="breadcrumb-list flex items-center gap-2" role="list">
-                        <li class="breadcrumb-item flex items-center">
-                            <a href="articles-manage.html" class="breadcrumb-link text-sm text-secondary hover:text-primary">Mes articles</a>
-                        </li>
-                        <li class="breadcrumb-separator flex items-center text-muted" aria-hidden="true">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="1.5">
-                                <polyline points="9 18 15 12 9 6" />
-                            </svg>
-                        </li>
-                        <li class="breadcrumb-item flex items-center">
-                            <span class="breadcrumb-current text-sm font-medium">Modifier</span>
-                        </li>
-                    </ol>
-                </nav>
-
                 <div class="page-header flex items-center justify-between">
                     <div>
-                        <h1 class="page-title">Modifier l'article</h1>
-                        <p class="page-description">Mettre à jour le contenu, les images et les options.</p>
+                        <h1 class="page-title">Mes articles</h1>
+                        <p class="page-description">Publiez des articles sur les événements passés (texte + images).</p>
                     </div>
-                    <div class="flex gap-3">
-                        <button class="btn btn-ghost">Enregistrer</button>
-                        <button class="btn btn-primary">Publier</button>
-                    </div>
+                    <a href="CreateArticle" class="btn btn-primary">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="1.5">
+                            <line x1="12" y1="5" x2="12" y2="19" />
+                            <line x1="5" y1="12" x2="19" y2="12" />
+                        </svg>
+                        Rédiger un article
+                    </a>
                 </div>
 
-                <div class="grid grid-cols-12 gap-6">
-                    <div class="col-span-8">
-                        <div class="card">
-                            <div class="card-body cursor-text h-[500px]">
-                                <input type="text"
-                                    class="text-3xl font-bold w-full border-none focus:ring-0 p-0 mb-4 placeholder-gray-300"
-                                    value="Retour sur le Hackathon 48h">
-                                <textarea class="w-full h-[400px] border-none focus:ring-0 p-0 resize-none text-gray-600">Merci à tous pour votre participation ! Voici le bilan de l'événement : thèmes, projets, photos et retours d'expérience.</textarea>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-span-4 space-y-6">
-                        <div class="card">
-                            <div class="card-header">
-                                <h3 class="card-title text-base">Image de couverture</h3>
-                            </div>
-                            <div class="card-body">
-                                <div
-                                    class="w-full aspect-video bg-gray-50 rounded-lg flex flex-col items-center justify-center border-2 border-dashed border-gray-300 hover:border-accent cursor-pointer transition-colors">
-                                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                        stroke-width="1.5" class="text-gray-400 mb-2">
-                                        <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
-                                        <circle cx="8.5" cy="8.5" r="1.5" />
-                                        <polyline points="21 15 16 10 5 21" />
-                                    </svg>
-                                    <span class="text-sm text-gray-500">Cliquez pour remplacer l'image</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="card">
-                            <div class="card-header">
-                                <h3 class="card-title text-base">Options</h3>
-                            </div>
-                            <div class="card-body space-y-4">
-                                <div class="form-group">
-                                    <label class="form-label text-sm">Lier à un événement</label>
-                                    <select class="form-input form-select text-sm">
-                                        <option value="">Aucun événement</option>
-                                        <option value="1" selected>Hackathon 48h</option>
-                                        <option value="2">Atelier Python</option>
-                                    </select>
-                                </div>
-
-                            </div>
-                        </div>
+                <div class="card">
+                    <div class="card-body p-0">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Titre</th>
+                                    <th>Événement lié</th>
+                                    <th>Date</th>
+                                    <th>Statut</th>
+                                    <th class="text-right">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <div class="font-medium">Retour sur le Hackathon 48h</div>
+                                        <div class="text-xs text-muted">Bilan, gagnants et photos</div>
+                                    </td>
+                                    <td>Hackathon 48h</td>
+                                    <td>03 Fév 2026</td>
+                                    <td><span class="badge badge-success">Publié</span></td>
+                                    <td class="text-right">
+                                        <div class="flex items-center justify-end gap-2">
+                                            <a href="edit-article.html" class="btn btn-icon btn-ghost btn-sm"
+                                                title="Modifier" aria-label="Modifier">
+                                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
+                                                    stroke="currentColor" stroke-width="1.5">
+                                                    <path
+                                                        d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" />
+                                                    <path
+                                                        d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z" />
+                                                </svg>
+                                            </a>
+                                            <button class="btn btn-icon btn-ghost btn-sm text-error" title="Supprimer"
+                                                aria-label="Supprimer">
+                                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
+                                                    stroke="currentColor" stroke-width="1.5">
+                                                    <polyline points="3 6 5 6 21 6" />
+                                                    <path
+                                                        d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />
+                                                </svg>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="font-medium">Atelier Python : ce qu'il fallait retenir</div>
+                                        <div class="text-xs text-muted">Support de cours + exercices</div>
+                                    </td>
+                                    <td>Atelier Python débutant</td>
+                                    <td>16 Fév 2026</td>
+                                    <td><span class="badge badge-warning">Brouillon</span></td>
+                                    <td class="text-right">
+                                        <div class="flex items-center justify-end gap-2">
+                                            <a href="edit-article.html" class="btn btn-icon btn-ghost btn-sm"
+                                                title="Modifier" aria-label="Modifier">
+                                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
+                                                    stroke="currentColor" stroke-width="1.5">
+                                                    <path
+                                                        d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" />
+                                                    <path
+                                                        d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z" />
+                                                </svg>
+                                            </a>
+                                            <button class="btn btn-icon btn-ghost btn-sm text-error" title="Supprimer"
+                                                aria-label="Supprimer">
+                                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
+                                                    stroke="currentColor" stroke-width="1.5">
+                                                    <polyline points="3 6 5 6 21 6" />
+                                                    <path
+                                                        d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />
+                                                </svg>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </main>

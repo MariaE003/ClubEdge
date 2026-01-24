@@ -76,7 +76,6 @@ CREATE TABLE reviews (
 );
 
 
-
 CREATE TABLE articles (
     id SERIAL PRIMARY KEY,
     club_id INTEGER NOT NULL REFERENCES clubs(id),
@@ -86,7 +85,6 @@ CREATE TABLE articles (
     images TEXT[],
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
-
 
 CREATE TABLE logs (
     id SERIAL PRIMARY KEY,

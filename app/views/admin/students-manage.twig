@@ -118,21 +118,18 @@
                             <tr>
                                 <td>
                                     <div class="flex items-center gap-3">
-                                        <div class="avatar avatar-sm bg-black text-white">
-                                            {{ u.nom|slice(0,1) }}{{ u.prenom|slice(0,1) }}
-                                        </div>
+                                        <img src="{{ u.profile}}"  class ="avatar "/>
                                         <span class="font-medium">
                                             {{ u.nom }} {{ u.prenom }}
                                         </span>
                                     </div>
                                 </td>
-
                                 <td class="text-muted">{{ u.email }}</td>
 
                                 <td>
                                     <div class="flex items-center gap-2">
                                         <div class="avatar avatar-xs">CI</div>
-                                        <span class="text-sm">Club Informatique</span>
+                                        <span class="text-sm">{{ u.getClub().getName() }}</span>
                                         <span class="badge badge-primary badge-sm">{{ u.role }}</span>
                                     </div>
                                 </td>
