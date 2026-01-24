@@ -1,0 +1,33 @@
+<aside class="app-sidebar" id="sidebar">
+
+    <div class="sidebar-header">
+        <a href="/ClubEdge/admin/dashboard" class="sidebar-logo">
+            <strong>ClubEdge</strong>
+        </a>
+        <span class="badge badge-accent ml-2">Admin</span>
+    </div>
+
+    <nav class="sidebar-nav">
+        <ul class="sidebar-menu">
+            <li>
+                <a href="/ClubEdge/admin/dashboard"
+                   class="{{ active == 'dashboard' ? 'active' : '' }}">
+                    Dashboard
+                </a>
+            </li>
+            <li>
+                <a href="/ClubEdge/admin/users"
+                   class="{{ active == 'users' ? 'active' : '' }}">
+                    Utilisateurs
+                </a>
+            </li>
+            <li>
+                <a href="/ClubEdge/admin/clubs"
+                   class="{{ active == 'clubs' ? 'active' : '' }}">
+                    Clubs
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+</aside>

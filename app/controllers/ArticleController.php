@@ -1,7 +1,11 @@
 <?php
 
-class ArticleController
+class ArticleController extends BaseController
 {
+    public function __construct(){
+        parent::__construct();
+        $this->requireRole1('admin');
+    }
     
     public function createArticle(){
         require_once __DIR__. "/../../app/views/president/create-article.php";

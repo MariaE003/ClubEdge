@@ -2,6 +2,7 @@
 class AuthController extends BaseController{
     private AuthRepository $repo ;
     public function __construct(){
+        parent::__construct();
         $this->repo = new AuthRepository();
     }
     public function pageHome(){

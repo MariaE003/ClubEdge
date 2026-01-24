@@ -74,4 +74,39 @@ class UserRepository {
         $stmt = $this->db->prepare("update users set nom = ? , prenom = ? , email = ? , profile = ? where id =  ? ");
         return $stmt->execute([$data["nom"] , $data["prenom"], $data["email"],$data["profile"] , $data["id"]]);
     }
+    public function searchForAdmin(array $filters = []): array
+{
+    $q    = trim($filters['q'] ?? '');
+    $role = $filters['role'] ?? '';
+
+    $sql = "
+        SELECT u.*
+        FROM users u
+        WHERE 1=1
+    ";
+
+    $params = [];
+
+    if ($q !== '') {
+        $sql .= " AND (
+            u.nom ILIKE :q
+            OR u.prenom ILIKE :q
+            OR u.email ILIKE :q
+        )";
+        $params[':q'] = '%' . $q . '%';
+    }
+
+    if ($role !== '') {
+        $sql .= " AND u.role = :role";
+        $params[':role'] = $role;
+    }
+
+    $sql .= " ORDER BY u.date_creation DESC";
+
+    $stmt = $this->db->prepare($sql);
+    $stmt->execute($params);
+
+    return $stmt->fetchAll();
+}
+
 }

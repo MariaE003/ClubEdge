@@ -22,7 +22,7 @@ $routes = [
     "president/ArticleManage"       => ["ArticleController", "manageArticles"],
 
     // Admin - Users
-    "admin/users"               => ["AdminController", "usersPage"],
+    "admin/users"               => ["AdminController", "users"],
     "admin/editUser/{id}"       => ["AdminController", "EditUserPage"],
     "admin/deleteUser/{id}"     => ["AdminController", "deleteStudent"],
     "admin/users/search"        => ["AdminController", "searchUsers"],
@@ -60,4 +60,9 @@ $routes = [
     // Events list (Admin)
     "admin/events-list"     => ["EventController", "pageListEvent"],
     "admin/events"     => ["EventController", "pageEventList"],
+    //deconexion 
+    "admin/logout"     => ["AdminController", "logout"],
+    "president/logout"     => ["PresidentController", "logout"],
+    "etudiant/lougout"     => ["EtudiantController", "logout"],
+
 ];

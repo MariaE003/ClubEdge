@@ -11,6 +11,7 @@ class AdminController extends BaseController{
         $this->userRepository = new UserRepository();
         $this->clubRepository = new ClubRepository(Database::getInstance()->getConnection());
         parent::__construct();
+        $this->requireRole1('admin');
     }
     public function dashboard(){
         $totalEt = $this->adminRepository->totalEtudiants();
@@ -53,11 +54,32 @@ class AdminController extends BaseController{
     public function searchUsers(): void{
         $q = $_GET['q'] ?? '';
         $users = $this->adminRepository->searchEtudiants($q);
-        $this->render('admin/_students_rows.twig', [
+        $this->render('admin/students-manage.twig', [
             'users' => $users
         ]);
         exit;
     }
+    public function users(): void
+    {
+
+        $filters = [
+            'q'    => $_GET['q'] ?? '',
+            'role' => $_GET['role'] ?? '',
+        ];
+
+        $users = $this->userRepository->searchForAdmin($filters);
+
+        $this->render('admin/students-manage.twig', [
+            'users'   => $users,
+            'filters' => $filters,
+            'active'  => 'users'
+        ]);
+    }
+    public function logout(){
+        session_destroy();
+        header("Location: ../loginPage");
+    }
+
 
 
 
