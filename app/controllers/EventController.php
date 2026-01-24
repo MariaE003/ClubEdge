@@ -18,6 +18,7 @@
         $userId = $this->requireRole('president');
 
         $clubId = $this->clubRepository->findIdByPresidentId($userId);
+        // var_dump($clubId);
         if (!$clubId) {
             $this->flash('error', "Aucun club associé à ce président.");
             $this->redirect('../president/dashboard');
@@ -479,4 +480,7 @@
     ]);
 }
 
+    public function AddReview(){
+        require_once __DIR__. "/../views/student/review.php";
+    }
 }

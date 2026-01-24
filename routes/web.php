@@ -41,6 +41,7 @@ $routes = [
     "etudiant/events"           => ["EventController", "studentIndex"],
     "etudiant/events/{id}"      => ["EventController", "studentShow"],
     "etudiant/events/{id}/join" => ["EventController", "studentJoin"],
+    "etudiant/review/{id}"      => ["EventController", "AddReview"],
 
     // Clubs (Student / Etudiant)
     "etudiant/clubs-list"       => ["ClubController", "AfficherClub"],

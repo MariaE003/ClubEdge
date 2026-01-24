@@ -9,7 +9,6 @@ CREATE TABLE users (
     role VARCHAR(50) NOT NULL,
     date_creation TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
-
     CREATE TABLE users (
         id SERIAL PRIMARY KEY,
         nom VARCHAR(100) NOT NULL,
@@ -20,6 +19,9 @@ CREATE TABLE users (
         role VARCHAR(50) NOT NULL,
         date_creationTIMESTAMP DEFAULT CURRENT_TIMESTAMP
     )
+
+
+
 CREATE TABLE clubs (
     id SERIAL PRIMARY KEY,
     name VARCHAR(150) NOT NULL,
@@ -29,6 +31,8 @@ CREATE TABLE clubs (
     logo TEXT,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
+
 
 
 CREATE TABLE events (
@@ -41,18 +45,25 @@ CREATE TABLE events (
     images TEXT[],
     created_by INTEGER REFERENCES users(id) ON DELETE SET NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-    
+
 );
+
+
+
 
 
 CREATE TABLE event_participants (
     id SERIAL PRIMARY KEY,
     event_id INTEGER NOT NULL REFERENCES events(id) ON DELETE CASCADE,
-    user_id INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE 
-)
+
+    user_id INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+    UNIQUE (event_id, user_id)
+);
 
 
-;
+
+
+
 CREATE TABLE reviews (
     id SERIAL PRIMARY KEY,
     event_id INTEGER NOT NULL REFERENCES events(id),
@@ -61,8 +72,9 @@ CREATE TABLE reviews (
     comment TEXT,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     UNIQUE (event_id, user_id)
-)
-;
+
+);
+
 
 CREATE TABLE articles (
     id SERIAL PRIMARY KEY,

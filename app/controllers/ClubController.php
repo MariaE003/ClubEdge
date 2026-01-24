@@ -13,6 +13,15 @@ class ClubController extends BaseController{
     
 
 
+     public function direction_clubs(){
+        require_once __DIR__."../../views/student/clubs-list.html";
+    }
+
+    public function direction_events(){
+        require_once __DIR__."../../views/student/events-list.html";
+    }
+
+
     // formulaire d'ajou
     public function PageAdd(){
         $this->render('admin/create-club.twig', [
@@ -113,7 +122,8 @@ class ClubController extends BaseController{
     // pour affichage des clubs
     public function AfficherClub(){
         $clubs=$this->repoClub->allClubs();
-        echo $this->render('student/clubs-list.twig',[
+        
+        echo $this->render('student/clubs-list.html',[
             'clubs'=>$clubs,
         ]);
     }
@@ -139,6 +149,7 @@ class ClubController extends BaseController{
         $events = $this->repoClub->findEventByClub($idClub);
         $club=$this->repoClub->findClubById($idClub);
         $result=$this->repoClub->countMembers($idClub);
+        $role=$_SESSION["role"];
         $nombre_members=$result['total'];
         // var_dump($club['members']);
         // var_dump($club['members']);
@@ -186,6 +197,21 @@ class ClubController extends BaseController{
             'NameClub'=>$NameClub,
         ]);
         
+    }
+
+    public function showPresidentClub(){
+        $userId = $this->requireRole('president');
+
+        $club = $this->clubRepository->ClubDuPrisident($userId);
+
+        if (!$club) {
+            $this->flash('error', 'Aucun club associe a ce president.');
+            $this->redirect('president/dashboard');
+        }
+
+        $this->render('president/club/show.twig', [
+            'club' => $club
+        ]);
     }
 
     

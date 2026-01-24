@@ -30,11 +30,9 @@ class PresidentController extends BaseController
             exit;
         }
 
-        // Récupération du club
+        // recuperer le club
         $clubId = $this->repo->getClubByPresidentId($userId);
         if (!$clubId) {
-            // Pas de club → tu peux rediriger ou afficher un message
-            // Pour l'instant on rend la vue avec des valeurs à 0
             $clubId = 0;
         }
 
@@ -44,17 +42,19 @@ class PresidentController extends BaseController
 
         $events = $this->repo->getUpcomingEvents($clubId);
         $members = $this->repo->getMembers($clubId);
-
+        // var_dump($members);
+    
         $this->render('president/dashboard.twig', [
             'president' => [
                 'prenom' => $president['prenom'],
                 'nom' => $president['nom'],
                 'fullname' => trim($president['prenom'] . ' ' . $president['nom']),
-                'initials' => strtoupper(mb_substr($president['prenom'] ?? '', 0, 1) . mb_substr($president['nom'] ?? '', 0, 1))
+                'initials' => strtoupper(mb_substr($president['prenom'] ?? '', 0, 1) . mb_substr($president['nom'] ?? '', 0, 1)),
+                'club_id'=>$clubId,
             ],
             'stats' => [
                 'members' => $membersCount,
-                'max_members' => 20,           // valeur fixe comme dans ton HTML
+                'max_members' => 8,           // valeur fixe comme dans ton HTML
                 'events' => $eventsCount,
                 'articles' => $articlesCount
             ],

@@ -1,15 +1,20 @@
 <?php
 use Twig\Environment;
 use Twig\Loader\FilesystemLoader;
-class BaseController{
-    protected Environment  $twig;
-    public function __construct(){
-        $loader=new FilesystemLoader(__DIR__ . '/../views');
-        $this->twig=new Environment($loader);
+class BaseController
+{
+    protected Environment $twig;
+    public function __construct()
+    {
+        $loader = new FilesystemLoader(__DIR__ . '/../views');
+        $this->twig = new Environment($loader, ['debug' => true]);
+        $this->twig->addExtension(new \Twig\Extension\DebugExtension());
+        $this->twig->addGlobal('user', $_SESSION['role'] ?? null);
+
     }
 
     protected function render(string $view, array $data = []): void
-{
+    {
         $this->twig->addFunction(new \Twig\TwigFunction('path', function ($route, $params = []) {
             $url = '/ClubEdge/' . str_replace('_', '/', $route);
 
@@ -22,8 +27,8 @@ class BaseController{
             return $url;
         }));
 
-    echo $this->twig->render($view, $data);
-}
+        echo $this->twig->render($view, $data);
+    }
 
     protected function checkSession(): void
     {
@@ -74,6 +79,6 @@ class BaseController{
             // Sécurité : mauvais rôle
             $this->redirectToDashboard();
         }
-    }   
-
     }
+
+}

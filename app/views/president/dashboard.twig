@@ -39,7 +39,7 @@
             <nav class="sidebar-nav">
                 <ul class="sidebar-menu">
                     <li class="sidebar-item">
-                        <a href="dashboard" class="sidebar-link active">
+                        <a href="/ClubEdge/president/dashboard" class="sidebar-link active">
                             <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                                 <rect x="3" y="3" width="7" height="9" rx="1" />
                                 <rect x="14" y="3" width="7" height="5" rx="1" />
@@ -52,25 +52,31 @@
                 </ul>
 
                 <div class="sidebar-section">
-                    <h3 class="sidebar-section-title">Mon Club</h3>
+                    {# <h3 class="sidebar-section-title">Mon Club</h3> #}
                     <ul class="sidebar-menu">
                         <li class="sidebar-item">
-                            <a href="club-settings" class="sidebar-link">
-                                <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <a href="/ClubEdge/student/club-detail?idC=10" class="sidebar-link">
+                                {# <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                                     <circle cx="12" cy="12" r="3" />
                                     <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06" />
-                                </svg>
-                                <span>Paramètres du club</span>
+                                </svg> #}
+                                {# <span>Paramètres du club</span> #}
+                                Mon Club
+                            </a>
+                        </li>
+                        {# <li class="sidebar-item">
+                            <a href="/ClubEdge/president/CreateArticle?idC={{president.club_id}}" class="sidebar-link">
+                             Creer un article
+                            </a>
+                        </li> #}
+                         <li class="sidebar-item">
+                            <a href="/ClubEdge/president/ArticleManage?idC={{president.club_id}}" class="sidebar-link">
+                             Mes Article
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a href="members" class="sidebar-link">
-                                <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
-                                    <circle cx="9" cy="7" r="4" />
-                                </svg>
-                                <span>Membres</span>
-                                <span class="badge badge-secondary ml-auto">{{ stats.members }}</span>
+                            <a href="/ClubEdge/president/events" class="sidebar-link">
+                             Mes Evenements
                             </a>
                         </li>
                     </ul>
@@ -95,7 +101,10 @@
                         <line x1="3" y1="12" x2="21" y2="12" /><line x1="3" y1="6" x2="21" y2="6" /><line x1="3" y1="18" x2="21" y2="18" />
                     </svg>
                 </button>
-                <span class="badge badge-accent ml-4">Espace Président</span>
+                {% if user == 'president' %}
+                    <span class="badge badge-accent ml-4">Espace Président</span>
+                {% endif %}
+
                 <div class="flex-1"></div>
                 <div class="avatar avatar-sm">{{ president.initials }}</div>
             </header>
@@ -128,10 +137,6 @@
                 <div class="grid grid-cols-12 gap-6">
                     <div class="col-span-8">
                         <div class="card">
-                            <div class="card-header flex items-center justify-between">
-                                <h2 class="card-title">Événements à venir</h2>
-                                <a href="events" class="btn btn-ghost btn-sm">Voir tout</a>
-                            </div>
                             <div class="card-body">
                                 <div class="upcoming-events">
                                     {% for event in upcoming_events %}
@@ -144,9 +149,9 @@
                                                 <h3 class="event-preview-title">{{ event.title }}</h3>
                                                 <p class="event-preview-meta">{{ event.location }} - {{ event.participants }} inscrits</p>
                                             </div>
-                                            <div class="event-preview-actions">
+                                            {# <div class="event-preview-actions">
                                                 <button class="btn btn-outline btn-sm">Modifier</button>
-                                            </div>
+                                            </div> #}
                                         </div>
                                     {% else %}
                                         <p class="text-muted text-center py-4">Aucun événement à venir</p>
@@ -176,7 +181,7 @@
                                         </div>
                                     {% endfor %}
                                 </div>
-                                <a href="members" class="btn btn-outline w-full mt-4">Voir tous les membres</a>
+                                {# <a href="members" class="btn btn-outline w-full mt-4">Voir tous les membres</a> #}
                             </div>
                         </div>
                     </div>
