@@ -1,16 +1,13 @@
 <!DOCTYPE html>
 <html lang="fr">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Tableau de bord étudiant - ClubEdge">
-    <title>Tableau de bord - ClubEdge</title>
-
+    <meta name="description" content="Tableau de bord président - ClubEdge">
+    <title>Espace Président - ClubEdge</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-
     <link rel="stylesheet" href="/../ClubEdge/public/assets/css/variables.css">
     <link rel="stylesheet" href="/../ClubEdge/public/assets/css/reset.css">
     <link rel="stylesheet" href="/../ClubEdge/public/assets/css/layout.css">
@@ -20,7 +17,6 @@
     <link rel="stylesheet" href="/../ClubEdge/public/assets/css/responsive.css">
     <link rel="stylesheet" href="/../ClubEdge/public/assets/css/pages/dashboard.css">
 </head>
-
 <body>
     <div class="app-layout">
         <!-- Sidebar -->
@@ -51,55 +47,87 @@
                             <span>Tableau de bord</span>
                         </a>
                     </li>
-                    <li class="sidebar-item">
-                        <a href="clubs-list.html" class="sidebar-link">
-                            <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="1.5">
-                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
-                                <circle cx="9" cy="7" r="4" />
-                                <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
-                                <path d="M16 3.13a4 4 0 0 1 0 7.75" />
-                            </svg>
-                            <span>Clubs</span>
-                        </a>
-                    </li>
-                    <li class="sidebar-item">
-                        <a href="events" class="sidebar-link">
-                            <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="1.5">
-                                <rect x="3" y="4" width="18" height="18" rx="2" />
-                                <line x1="16" y1="2" x2="16" y2="6" />
-                                <line x1="8" y1="2" x2="8" y2="6" />
-                                <line x1="3" y1="10" x2="21" y2="10" />
-                            </svg>
-                            <span>Événements</span>
-                        </a>
-                    </li>
-                    <li class="sidebar-item">
-                        <a href="articles-list.html" class="sidebar-link">
-                            <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="1.5">
-                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
-                                <polyline points="14 2 14 8 20 8" />
-                                <line x1="16" y1="13" x2="8" y2="13" />
-                                <line x1="16" y1="17" x2="8" y2="17" />
-                            </svg>
-                            <span>Articles</span>
-                        </a>
-                    </li>
                 </ul>
 
                 <div class="sidebar-section">
                     <h3 class="sidebar-section-title">Mon Club</h3>
                     <ul class="sidebar-menu">
                         <li class="sidebar-item">
-                            <a href="my-club.html" class="sidebar-link">
+                            <a href="club-settings.html" class="sidebar-link">
                                 <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                     stroke-width="1.5">
-                                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
-                                    <polyline points="9 22 9 12 15 12 15 22" />
+                                    <circle cx="12" cy="12" r="3" />
+                                    <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06" />
                                 </svg>
-                                <span>Espace club</span>
+                                <span>Paramètres du club</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a href="members.html" class="sidebar-link">
+                                <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="1.5">
+                                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                                    <circle cx="9" cy="7" r="4" />
+                                    <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                                    <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                                </svg>
+                                <span>Membres</span>
+                                <span class="badge badge-secondary ml-auto">6</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-section">
+                    <h3 class="sidebar-section-title">Événements</h3>
+                    <ul class="sidebar-menu">
+                        <li class="sidebar-item">
+                            <a href="events" class="sidebar-link">
+                                <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="1.5">
+                                    <rect x="3" y="4" width="18" height="18" rx="2" />
+                                    <line x1="16" y1="2" x2="16" y2="6" />
+                                    <line x1="8" y1="2" x2="8" y2="6" />
+                                    <line x1="3" y1="10" x2="21" y2="10" />
+                                </svg>
+                                <span>Mes événements</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a href="events/create" class="sidebar-link">
+                                <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="1.5">
+                                    <circle cx="12" cy="12" r="10" />
+                                    <line x1="12" y1="8" x2="12" y2="16" />
+                                    <line x1="8" y1="12" x2="16" y2="12" />
+                                </svg>
+                                <span>Créer un événement</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-section">
+                    <h3 class="sidebar-section-title">Articles</h3>
+                    <ul class="sidebar-menu">
+                        <li class="sidebar-item">
+                            <a href="articles.html" class="sidebar-link">
+                                <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="1.5">
+                                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                                    <polyline points="14 2 14 8 20 8" />
+                                </svg>
+                                <span>Mes articles</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a href="create-article.html" class="sidebar-link">
+                                <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="1.5">
+                                    <path d="M12 20h9" />
+                                    <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" />
+                                </svg>
+                                <span>Rédiger un article</span>
                             </a>
                         </li>
                     </ul>
@@ -108,159 +136,60 @@
 
             <div class="sidebar-footer">
                 <div class="sidebar-user">
-                    <div class="avatar avatar-sm">JD</div>
+                    <div class="avatar avatar-sm">MM</div>
                     <div class="sidebar-user-info">
-                        <span class="sidebar-user-name">Jean Dupont</span>
-                        <span class="sidebar-user-role">Étudiant</span>
+                        <span class="sidebar-user-name">Marie Martin</span>
+                        <span class="sidebar-user-role">Présidente</span>
                     </div>
                 </div>
             </div>
         </aside>
 
-        <!-- Main -->
         <div class="app-main">
             <header class="app-header">
                 <button class="btn btn-icon btn-ghost" id="menu-toggle">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                        stroke-width="1.5">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                         <line x1="3" y1="12" x2="21" y2="12" />
                         <line x1="3" y1="6" x2="21" y2="6" />
                         <line x1="3" y1="18" x2="21" y2="18" />
                     </svg>
                 </button>
-
-                <!-- Search Bar -->
-                <div class="header-search">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                        stroke-width="1.5">
-                        <circle cx="11" cy="11" r="8" />
-                        <path d="m21 21-4.35-4.35" />
+                <span class="badge badge-accent ml-4">Espace Président</span>
+                <div class="flex-1"></div>
+                <button class="btn btn-icon btn-ghost">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" />
+                        <path d="M13.73 21a2 2 0 0 1-3.46 0" />
                     </svg>
-                    <input type="text" placeholder="Rechercher..." class="header-search-input">
-                </div>
-
-                <div class="header-actions">
-                    <!-- Notification Dropdown -->
-                    <div class="dropdown" id="notification-dropdown">
-                        <button class="btn btn-icon btn-ghost notification-btn" id="notification-toggle">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="1.5">
-                                <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" />
-                                <path d="M13.73 21a2 2 0 0 1-3.46 0" />
-                            </svg>
-                            <span class="notification-badge">3</span>
-                        </button>
-                        <div class="dropdown-menu notification-menu" id="notification-menu">
-                            <div class="notification-header">
-                                <span class="notification-title">Notifications</span>
-                                <button class="btn btn-ghost btn-sm">Tout marquer comme lu</button>
-                            </div>
-                            <div class="notification-list">
-                                <a href="#" class="notification-item unread">
-                                    <div class="avatar avatar-sm">CP</div>
-                                    <div class="notification-content">
-                                        <p><strong>Club Photo</strong> a publié un nouvel article</p>
-                                        <span class="notification-time">Il y a 2 heures</span>
-                                    </div>
-                                </a>
-                                <a href="#" class="notification-item unread">
-                                    <div class="avatar avatar-sm">CE</div>
-                                    <div class="notification-content">
-                                        <p><strong>Club Échecs</strong> a créé un événement</p>
-                                        <span class="notification-time">Hier</span>
-                                    </div>
-                                </a>
-                                <a href="#" class="notification-item unread">
-                                    <div class="avatar avatar-sm">CI</div>
-                                    <div class="notification-content">
-                                        <p>Rappel: <strong>Hackathon 48h</strong> dans 5 jours</p>
-                                        <span class="notification-time">Il y a 2 jours</span>
-                                    </div>
-                                </a>
-                            </div>
-                            <a href="#" class="notification-footer">Voir toutes les notifications</a>
-                        </div>
-                    </div>
-
-                    <!-- User Menu -->
-                    <div class="dropdown" id="user-dropdown">
-                        <button class="user-menu-btn" id="user-toggle">
-                            <div class="avatar avatar-sm">JD</div>
-                            <span class="user-name">Jean</span>
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="1.5">
-                                <path d="m6 9 6 6 6-6" />
-                            </svg>
-                        </button>
-                        <div class="dropdown-menu user-menu" id="user-menu">
-                            <div class="user-menu-header">
-                                <div class="avatar avatar-lg">JD</div>
-                                <div>
-                                    <div class="user-menu-name">Jean Dupont</div>
-                                    <div class="user-menu-email">jean.dupont@edu.fr</div>
-                                </div>
-                            </div>
-                            <div class="dropdown-divider"></div>
-                            <a href="#" class="dropdown-item">
-                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                    stroke-width="1.5">
-                                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
-                                    <circle cx="12" cy="7" r="4" />
-                                </svg>
-                                Mon profil
-                            </a>
-                            <a href="#" class="dropdown-item">
-                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                    stroke-width="1.5">
-                                    <path
-                                        d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z" />
-                                    <circle cx="12" cy="12" r="3" />
-                                </svg>
-                                Paramètres
-                            </a>
-                            <div class="dropdown-divider"></div>
-                            <a href="../auth/login.html" class="dropdown-item text-error">
-                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                    stroke-width="1.5">
-                                    <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
-                                    <polyline points="16 17 21 12 16 7" />
-                                    <line x1="21" y1="12" x2="9" y2="12" />
-                                </svg>
-                                Déconnexion
-                            </a>
-                        </div>
-                    </div>
-                </div>
+                </button>
+                <div class="avatar avatar-sm">{{ president.initials }}</div>
             </header>
 
             <main class="app-content">
                 <!-- Page Header -->
                 <div class="page-header">
-                    <h1 class="page-title">Bienvenue, Jean</h1>
-                    <p class="page-description">Voici un aperçu de votre activité et des dernières nouvelles des clubs.
-                    </p>
+                    <h1 class="page-title">Bienvenue, {{ president.prenom }}</h1>
+                    <p class="page-description">Gérez votre club, créez des événements et publiez des articles.</p>
                 </div>
 
-                <!-- Stats Grid -->
+                <!-- Club Stats -->
                 <div class="stats-grid mb-8 stagger-animation">
                     <div class="stat-card">
                         <div class="stat-header">
-                            <div class="stat-icon">
+                            <div class="stat-icon stat-icon--accent">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                                     <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
                                     <circle cx="9" cy="7" r="4" />
-                                    <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
-                                    <path d="M16 3.13a4 4 0 0 1 0 7.75" />
                                 </svg>
                             </div>
                         </div>
-                        <div class="stat-value">1</div>
-                        <div class="stat-label">Club rejoint</div>
+                        <div class="stat-value">{{ stats.members }} / {{ stats.max_members }}</div>
+                        <div class="stat-label">Membres du club</div>
                     </div>
 
                     <div class="stat-card">
                         <div class="stat-header">
-                            <div class="stat-icon stat-icon--accent">
+                            <div class="stat-icon">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                                     <rect x="3" y="4" width="18" height="18" rx="2" />
                                     <line x1="16" y1="2" x2="16" y2="6" />
@@ -269,158 +198,156 @@
                                 </svg>
                             </div>
                         </div>
-                        <div class="stat-value">3</div>
-                        <div class="stat-label">Événements à venir</div>
+                        <div class="stat-value">{{ stats.events }}</div>
+                        <div class="stat-label">Événements actifs</div>
                     </div>
 
                     <div class="stat-card">
                         <div class="stat-header">
                             <div class="stat-icon">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                    <polygon
-                                        points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                                    <polyline points="14 2 14 8 20 8" />
                                 </svg>
                             </div>
                         </div>
-                        <div class="stat-value">5</div>
-                        <div class="stat-label">Avis donnés</div>
+                        <div class="stat-value">{{ stats.articles }}</div>
+                        <div class="stat-label">Articles publiés</div>
                     </div>
 
                     <div class="stat-card">
                         <div class="stat-header">
                             <div class="stat-icon">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
-                                    <polyline points="22 4 12 14.01 9 11.01" />
+                                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
                                 </svg>
                             </div>
                         </div>
-                        <div class="stat-value">8</div>
-                        <div class="stat-label">Participations</div>
+                        <div class="stat-value">{{ average_rating|default('—') }}</div>
+                        <div class="stat-label">Note moyenne</div>
+                    </div>
+                </div>
+
+                <!-- Quick Actions -->
+                <div class="card mb-8">
+                    <div class="card-header">
+                        <h2 class="card-title">Actions rapides</h2>
+                    </div>
+                    <div class="card-body">
+                        <div class="quick-actions-grid">
+                            <a href="{{ path('event_create') }}" class="quick-action-card">
+                                <div class="quick-action-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                        <rect x="3" y="4" width="18" height="18" rx="2" />
+                                        <line x1="16" y1="2" x2="16" y2="6" />
+                                        <line x1="8" y1="2" x2="8" y2="6" />
+                                        <line x1="12" y1="11" x2="12" y2="17" />
+                                        <line x1="9" y1="14" x2="15" y2="14" />
+                                    </svg>
+                                </div>
+                                <span class="quick-action-label">Créer un événement</span>
+                            </a>
+                            <a href="{{ path('article_create') }}" class="quick-action-card">
+                                <div class="quick-action-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                        <path d="M12 20h9" />
+                                        <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" />
+                                    </svg>
+                                </div>
+                                <span class="quick-action-label">Rédiger un article</span>
+                            </a>
+                            <a href="{{ path('club_members') }}" class="quick-action-card">
+                                <div class="quick-action-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                        <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                                        <circle cx="8.5" cy="7" r="4" />
+                                        <line x1="20" y1="8" x2="20" y2="14" />
+                                        <line x1="23" y1="11" x2="17" y2="11" />
+                                    </svg>
+                                </div>
+                                <span class="quick-action-label">Gérer les membres</span>
+                            </a>
+                            <a href="{{ path('club_settings') }}" class="quick-action-card">
+                                <div class="quick-action-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                        <circle cx="12" cy="12" r="3" />
+                                        <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33" />
+                                    </svg>
+                                </div>
+                                <span class="quick-action-label">Paramètres du club</span>
+                            </a>
+                        </div>
                     </div>
                 </div>
 
                 <!-- Content Grid -->
-                <div class="grid grid-cols-3 gap-6">
+                <div class="grid grid-cols-12 gap-6">
                     <!-- Upcoming Events -->
-                    <div class="col-span-2">
+                    <div class="col-span-8">
                         <div class="card">
                             <div class="card-header flex items-center justify-between">
                                 <h2 class="card-title">Événements à venir</h2>
-                                <a href="events" class="btn btn-ghost btn-sm">
-                                    Voir tout
-                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                        stroke-width="1.5">
-                                        <polyline points="9 18 15 12 9 6" />
-                                    </svg>
-                                </a>
+                                <a href="{{ path('events_list') }}" class="btn btn-ghost btn-sm">Voir tout</a>
                             </div>
                             <div class="card-body">
                                 <div class="upcoming-events">
-                                    <div class="event-preview">
-                                        <div class="event-preview-date">
-                                            <span class="event-preview-day">24</span>
-                                            <span class="event-preview-month">Jan</span>
+                                    {% if upcoming_events is empty %}
+                                        <div class="text-center py-8 text-muted">
+                                            Aucun événement à venir pour le moment
                                         </div>
-                                        <div class="event-preview-info">
-                                            <h3 class="event-preview-title">Tournoi d'échecs inter-clubs</h3>
-                                            <p class="event-preview-meta">Club Échecs - Salle A102, 14h00</p>
-                                        </div>
-                                    </div>
-
-                                    <div class="event-preview">
-                                        <div class="event-preview-date">
-                                            <span class="event-preview-day">28</span>
-                                            <span class="event-preview-month">Jan</span>
-                                        </div>
-                                        <div class="event-preview-info">
-                                            <h3 class="event-preview-title">Atelier photo portrait</h3>
-                                            <p class="event-preview-meta">Club Photo - Studio B, 16h30</p>
-                                        </div>
-                                    </div>
-
-                                    <div class="event-preview">
-                                        <div class="event-preview-date">
-                                            <span class="event-preview-day">02</span>
-                                            <span class="event-preview-month">Fév</span>
-                                        </div>
-                                        <div class="event-preview-info">
-                                            <h3 class="event-preview-title">Hackathon 48h</h3>
-                                            <p class="event-preview-meta">Club Informatique - Amphi C, 09h00</p>
-                                        </div>
-                                    </div>
+                                    {% else %}
+                                        {% for event in upcoming_events %}
+                                            <div class="event-preview">
+                                                <div class="event-preview-date">
+                                                    <span class="event-preview-day">{{ event.day }}</span>
+                                                    <span class="event-preview-month">{{ event.month }}</span>
+                                                </div>
+                                                <div class="event-preview-info">
+                                                    <h3 class="event-preview-title">{{ event.title }}</h3>
+                                                    <p class="event-preview-meta">
+                                                        {{ event.location|default('Lieu non précisé') }} • {{ event.participants }} inscrit{{ event.participants > 1 ? 's' : '' }}
+                                                    </p>
+                                                </div>
+                                                <div class="event-preview-actions">
+                                                    <a href="{{ path('event_edit', {id: event.id}) }}" class="btn btn-outline btn-sm">Modifier</a>
+                                                </div>
+                                            </div>
+                                        {% endfor %}
+                                    {% endif %}
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- My Club -->
-                    <div>
+                    <!-- Members Preview -->
+                    <div class="col-span-4">
                         <div class="card">
-                            <div class="card-header">
-                                <h2 class="card-title">Mon Club</h2>
+                            <div class="card-header flex items-center justify-between">
+                                <h2 class="card-title">Membres</h2>
+                                <span class="badge badge-secondary">{{ stats.members }} / {{ stats.max_members }}</span>
                             </div>
                             <div class="card-body">
-                                <div class="profile-club">
-                                    <div class="avatar avatar-lg profile-club-avatar">CI</div>
-                                    <div class="profile-club-info">
-                                        <h3 class="profile-club-name">Club Informatique</h3>
-                                        <p class="profile-club-role">Membre depuis Jan 2026</p>
-                                    </div>
+                                <div class="members-list">
+                                    {% for member in members %}
+                                        <div class="member-item">
+                                            <div class="avatar avatar-sm">{{ member.initials }}</div>
+                                            <div class="member-info">
+                                                <span class="member-name">{{ member.name }}</span>
+                                                {% if member.is_president %}
+                                                    <span class="badge badge-accent">Présidente</span>
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                    {% else %}
+                                        <div class="text-center py-6 text-muted">
+                                            Aucun membre pour le moment
+                                        </div>
+                                    {% endfor %}
                                 </div>
 
-                                <div class="mt-6">
-                                    <div class="flex justify-between text-sm mb-2">
-                                        <span class="text-secondary">Membres</span>
-                                        <span class="font-medium">6/8</span>
-                                    </div>
-                                    <div class="progress">
-                                        <div class="progress-bar" style="width: 75%"></div>
-                                    </div>
-                                </div>
-
-                                <a href="my-club.html" class="btn btn-outline w-full mt-6">
-                                    Voir mon club
+                                <a href="{{ path('club_members') }}" class="btn btn-outline w-full mt-4">
+                                    Voir tous les membres
                                 </a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Recent Activity -->
-                    <div class="col-span-3">
-                        <div class="card">
-                            <div class="card-header">
-                                <h2 class="card-title">Activité récente</h2>
-                            </div>
-                            <div class="card-body">
-                                <div class="activity-feed">
-                                    <div class="activity-item">
-                                        <div class="avatar avatar-sm activity-avatar">CP</div>
-                                        <div class="activity-content">
-                                            <p class="activity-text"><strong>Club Photo</strong> a publié un nouvel
-                                                article : "Retour sur l'exposition annuelle"</p>
-                                            <span class="activity-time">Il y a 2 heures</span>
-                                        </div>
-                                    </div>
-
-                                    <div class="activity-item">
-                                        <div class="avatar avatar-sm activity-avatar">CE</div>
-                                        <div class="activity-content">
-                                            <p class="activity-text"><strong>Club Échecs</strong> a créé un événement :
-                                                "Tournoi d'échecs inter-clubs"</p>
-                                            <span class="activity-time">Hier</span>
-                                        </div>
-                                    </div>
-
-                                    <div class="activity-item">
-                                        <div class="avatar avatar-sm activity-avatar">CI</div>
-                                        <div class="activity-content">
-                                            <p class="activity-text">Vous avez rejoint <strong>Club
-                                                    Informatique</strong></p>
-                                            <span class="activity-time">Il y a 3 jours</span>
-                                        </div>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -434,8 +361,6 @@
     </div>
 
     <div class="mobile-overlay" id="mobile-overlay"></div>
-
     <script src="/../ClubEdge/public/assets/js/main.js" defer></script>
 </body>
-
 </html>
