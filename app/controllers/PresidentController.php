@@ -36,43 +36,54 @@ class PresidentController extends BaseController
             $clubId = 0;
         }
 
-        $membersCount  = $this->repo->countMembers($clubId);
-        $eventsCount   = $this->repo->countEvents($clubId);
+        $membersCount = $this->repo->countMembers($clubId);
+        $eventsCount = $this->repo->countEvents($clubId);
         $articlesCount = $this->repo->countArticles($clubId);
 
-        $events  = $this->repo->getUpcomingEvents($clubId);
+        $events = $this->repo->getUpcomingEvents($clubId);
         $members = $this->repo->getMembers($clubId);
 
         $this->render('president/dashboard.twig', [
             'president' => [
-                'prenom'   => $president['prenom'],
-                'nom'      => $president['nom'],
+                'prenom' => $president['prenom'],
+                'nom' => $president['nom'],
                 'fullname' => trim($president['prenom'] . ' ' . $president['nom']),
                 'initials' => strtoupper(mb_substr($president['prenom'] ?? '', 0, 1) . mb_substr($president['nom'] ?? '', 0, 1))
             ],
             'stats' => [
-                'members'     => $membersCount,
+                'members' => $membersCount,
                 'max_members' => 20,           // valeur fixe comme dans ton HTML
-                'events'      => $eventsCount,
-                'articles'    => $articlesCount
+                'events' => $eventsCount,
+                'articles' => $articlesCount
             ],
             'upcoming_events' => array_map(function ($e) {
                 $date = strtotime($e['event_date']);
                 return [
-                    'day'         => date('d', $date),
-                    'month'       => date('M', $date),
-                    'title'       => $e['title'],
-                    'location'    => $e['location'] ?: 'Lieu non précisé',
-                    'participants'=> (int)$e['participants']
+                    'day' => date('d', $date),
+                    'month' => date('M', $date),
+                    'title' => $e['title'],
+                    'location' => $e['location'] ?: 'Lieu non précisé',
+                    'participants' => (int) $e['participants']
                 ];
             }, $events),
 
             'members' => array_map(function ($m) {
                 return [
-                    'name'    => trim($m['prenom'] . ' ' . $m['nom']),
-                    'initials'=> strtoupper(mb_substr($m['prenom'] ?? '', 0, 1) . mb_substr($m['nom'] ?? '', 0, 1))
+                    'name' => trim($m['prenom'] . ' ' . $m['nom']),
+                    'initials' => strtoupper(mb_substr($m['prenom'] ?? '', 0, 1) . mb_substr($m['nom'] ?? '', 0, 1))
                 ];
             }, $members)
         ]);
     }
-}   
+    public function testTwig()
+    {
+        require_once __DIR__ . '/../vendor/autoload.php';
+
+        $loader = new \Twig\Loader\FilesystemLoader(__DIR__ . '/../app/views');
+        $twig = new \Twig\Environment($loader);
+
+        echo $twig->render('test.twig', [
+            'name' => 'Othmane'
+        ]);
+    }
+}
