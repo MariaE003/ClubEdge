@@ -15,6 +15,7 @@ $routes = [
     "DatabaseTest" => ["AuthController" , "testConnection"],
     "president/CreateArticle" => ["ArticleController" , "createArticle"],
     "president/insertArticle" => ["ArticleController" , "insertArticle"],
+    "president/ArticleManage" => ["ArticleController" , "manageArticles"],
 
     "admin/users" => ["AdminController", "usersPage"],
     "admin/editUser/{id}" => ["AdminController", "EditUserPage"],
