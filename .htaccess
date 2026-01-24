@@ -1,6 +1,6 @@
 RewriteEngine On
 
-RewriteBase /ClubEdge/public/
+RewriteBase /club_edge/public/
 
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d

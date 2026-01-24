@@ -122,7 +122,7 @@ class ClubController extends BaseController{
     public function AfficherClub(){
         $clubs=$this->repoClub->allClubs();
         
-        echo $this->render('student/clubs-list.twig',[
+        echo $this->render('student/clubs-list.html',[
             'clubs'=>$clubs,
         ]);
     }
