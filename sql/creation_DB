@@ -1,5 +1,4 @@
 
->>>>>>> 29ebd05dd0584989bb4851d31c38556605104a15
 CREATE TABLE users (
     id SERIAL PRIMARY KEY,
     nom VARCHAR(100) NOT NULL,
@@ -10,10 +9,6 @@ CREATE TABLE users (
     role VARCHAR(50) NOT NULL,
     date_creation TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
     CREATE TABLE users (
         id SERIAL PRIMARY KEY,
         nom VARCHAR(100) NOT NULL,
@@ -24,15 +19,8 @@ CREATE TABLE users (
         role VARCHAR(50) NOT NULL,
         date_creationTIMESTAMP DEFAULT CURRENT_TIMESTAMP
     )
->>>>>>> a074416d7f54638d1e59d1f0af388ebfb7a1255d
 
 
-
-
-
-=======
->>>>>>> 9a06791f925383361af4a078fed1b212c5d422fa
->>>>>>> 29ebd05dd0584989bb4851d31c38556605104a15
 
 CREATE TABLE clubs (
     id SERIAL PRIMARY KEY,
@@ -43,18 +31,9 @@ CREATE TABLE clubs (
     logo TEXT,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
 
 
 
-
-
-
-=======
->>>>>>> 9a06791f925383361af4a078fed1b212c5d422fa
->>>>>>> 29ebd05dd0584989bb4851d31c38556605104a15
 
 CREATE TABLE events (
     id SERIAL PRIMARY KEY,
@@ -66,44 +45,25 @@ CREATE TABLE events (
     images TEXT[],
     created_by INTEGER REFERENCES users(id) ON DELETE SET NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-<<<<<<< HEAD
-);
-=======
-<<<<<<< HEAD
+
 );
 
 
 
 
-
-=======
-    
-);
->>>>>>> 9a06791f925383361af4a078fed1b212c5d422fa
-
->>>>>>> 29ebd05dd0584989bb4851d31c38556605104a15
 
 CREATE TABLE event_participants (
     id SERIAL PRIMARY KEY,
     event_id INTEGER NOT NULL REFERENCES events(id) ON DELETE CASCADE,
-<<<<<<< HEAD
+
     user_id INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
     UNIQUE (event_id, user_id)
 );
 
-=======
-<<<<<<< HEAD
-    user_id INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE
-);
-
-=======
-    user_id INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE 
-)
->>>>>>> 9a06791f925383361af4a078fed1b212c5d422fa
 
 
-;
->>>>>>> 29ebd05dd0584989bb4851d31c38556605104a15
+
+
 CREATE TABLE reviews (
     id SERIAL PRIMARY KEY,
     event_id INTEGER NOT NULL REFERENCES events(id),
@@ -112,22 +72,11 @@ CREATE TABLE reviews (
     comment TEXT,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     UNIQUE (event_id, user_id)
-<<<<<<< HEAD
-);
 
-=======
-<<<<<<< HEAD
 );
 
 
 
-=======
-)
-;
->>>>>>> 9a06791f925383361af4a078fed1b212c5d422fa
-
-
->>>>>>> 29ebd05dd0584989bb4851d31c38556605104a15
 CREATE TABLE articles (
     id SERIAL PRIMARY KEY,
     club_id INTEGER NOT NULL REFERENCES clubs(id),

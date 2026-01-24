@@ -25,7 +25,8 @@
         "etudiant/events" => ["EventController", "studentIndex"],
         "etudiant/events/{id}" => ["EventController", "studentShow"],
         "etudiant/events/{id}/join" => ["EventController", "studentJoin"],
-        
+        "etudiant/clubs-list" => ["ClubController" , "AfficherClub"],
+        "etudiant/club-detail" => ["ClubController" , "detailClub"],
         "student/clubs-list" => ["ClubController" , "AfficherClub"],
         "student/club-detail" => ["ClubController" , "detailClub"],
         "admin/clubs" => ["ClubController" , "AfficherClubAdmin"],
@@ -36,6 +37,10 @@
         "admin/deleteClub" => ["ClubController", "deleteClub"],
         "admin/editUser" => ["AdminController" , "EditUserPage"],
     "etudiant/page_clubs" => ["ClubController" , "direction_clubs"],
-    "etudiant/events"=> ["ClubController","direction_events"]
+    "etudiant/events"=> ["ClubController","direction_events"],
+        "student/join" => ["ClubController", "join"],
+        
+        "admin/events-list" => ["EventController", "pageListEvent"],
+    
 
 ];

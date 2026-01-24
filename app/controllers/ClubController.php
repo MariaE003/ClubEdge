@@ -6,8 +6,10 @@ class ClubController extends BaseController{
     public function __construct(){
         parent::__construct();
         $pdo=Database::getInstance()->getConnection();
-        $this->repoClub=new ClubRepository($pdo);
+        $this->repoClub = new ClubRepository($pdo);
     }
+
+    
 
 
      public function direction_clubs(){
@@ -25,6 +27,12 @@ class ClubController extends BaseController{
                 'error' => $error ?? null
             ]);
     }
+
+    
+
+    
+
+
     public function AddClub(){
         $error='';
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -130,10 +138,14 @@ class ClubController extends BaseController{
     }
     // detai dun club
     public function detailClub(){
+        
         if (!isset($_GET['idC'])) {
             die('club introvalbe !');
         }
+        
         $idClub=(int)$_GET['idC'];
+        $user_id = $_SESSION['user_id'];
+        $events = $this->repoClub->findEventByClub($idClub);
         $club=$this->repoClub->findClubById($idClub);
 
         $member=$this->repoClub->clubMembers($idClub);
@@ -144,10 +156,29 @@ class ClubController extends BaseController{
         $NameClub=strtoupper(substr($club['name'],0,2));
 
         
+        $result=$this->repoClub->countMembers($idClub);
+        $nombre_members=$result['total'];
+        // var_dump($club['members']);
+        // var_dump($club['members']);
+        // var_dump($club['members']);
+        // var_dump($club);
+        $NameClub=strtoupper(substr($club['name'],0,2));
+
+
+        $isMemberHere = $this->repoClub->isStudentInClub($idClub, $user_id);
+    
+        $isMemberGlobally = $this->repoClub->isStudentInAnyClub($user_id);
+
+    $club = $this->repoClub->findClubById($idClub);
+
         echo $this->render('student/club-details.twig',[
             'club'=>$club,
             'members'=>$member,
             'NameClub'=>$NameClub,
+            'events'=>$events,
+            'members' =>$nombre_members,
+            'isMemberHere' => $isMemberHere,
+            'isMemberGlobally' => $isMemberGlobally
         ]);
         
     }
@@ -176,17 +207,49 @@ class ClubController extends BaseController{
         
     }
 
-    // les evnet des club
-    public function listEventByClub(int $clubId) {
-        $events = $this->eventRepo->findEventByClub($clubId);
-
-        $this->render('events/list', [
-            'events' => $events,
-            'clubId' => $clubId
-        ]);
-    }
+    
+   
 
     
+
+
+    public function join(){
+        $user_id = $_SESSION['user_id']; 
+        $club_id = $_GET['idC'];
+
+        if (!$this->repoClub->canJoin($club_id)) {
+        die("Désolé, ce club est déjà complet (max 8 membres).");
+    }
+
+    if ($this->repoClub->isStudentInClub( $club_id,$user_id)) {
+        die("Vous êtes déjà membre de ce club.");
+    }
+
+    $result = $this->repoClub->joinClub($user_id, $club_id);
+
+
+    $this->AfficherClub();
+    }
+
+
+    public function nb_members(){
+        $club_id=$_GET['idC'];
+        
+        $club = $this->repoClub->findClubById($club_id);
+        $events = $this->repoClub->findEventByClub($club_id);
+        
+        echo $this->render('student/club-details.twig', [
+        'club'          => $club,
+        // 'nombreMembres' => $nombre_members,
+        'events'        => $events, // HADOU HUMA LES EVENTS LI GHADI Y-LISTIW
+        'NameClub'      => strtoupper(substr($club['name'], 0, 2))
+    ]);
+    }
+
+
 }
+
+
+    
 
 ?>

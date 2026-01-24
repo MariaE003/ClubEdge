@@ -98,20 +98,31 @@ class ClubRepository{
     
 
     
-    public function isStudentInClub($user_id){
-    $sql_prepare="SELECT count(*) where ? = ANY(members)";
+    public function isStudentInClub($club_id,$user_id){
+    $sql_prepare="SELECT count(*) from clubs where id=? and ? = ANY(members)";
     $sql=$this->db->prepare($sql_prepare);
-    $sql->execute([$user_id]);
+    $sql->execute([$club_id,$user_id]);
     $result=$sql->fetchColumn();
     return $result>0;
     }
 
 
+    public function isStudentInAnyClub($user_id) {
+    // Kat-qleb f ga3 les clubs wach had l-user_id kayn f ay array 'members'
+    $sql = "SELECT COUNT(*) FROM clubs WHERE ? = ANY(members)";
+    $stmt = $this->db->prepare($sql);
+    $stmt->execute([$user_id]);
+    
+    // fetchColumn() ghadi t-rje3 lina 0 (false) awla 1 o k-ter (true)
+    return (int)$stmt->fetchColumn() > 0;
+}
 
 
-    public function canJoin(){
-        $count_members=$this->countMembers();
-        if($count_members>=8){
+
+
+    public function canJoin($club_id){
+        $count_members=$this->countMembers($club_id);
+        if($count_members<=8){
             return false;
         }else{
             return true;
@@ -119,25 +130,31 @@ class ClubRepository{
     }
 
 
-    public function joinClub($user_id ,$club){
+    public function joinClub($user_id,$club_id){
         try{
 
             $this->db->beginTransaction();
 
-            $currentCount=$this->countMembers($club);
+            $result=$this->countMembers($club_id);
+            $currentCount = (int)$result['total'];
+
+            if ($currentCount >= 8) {
+            throw new Exception("Le club est plein.");
+        }
             
             $sql_prepare="UPDATE clubs SET members =array_append(members,?) where id=?";
             $sql=$this->db->prepare($sql_prepare);
-            $sql->execute([$user_id,$club->getId()]);
+            $sql->execute([$user_id,$club_id]);
 
             if($currentCount==0){
                 $sql_pre="UPDATE clubs set president_id=? where id=?";
                 $sql=$this->db->prepare($sql_pre);
-                $sql->execute([$user_id,$club->getId()]);
+                $sql->execute([$user_id,$club_id]);
 
                 $prepareRole="UPDATE users set role='president' where id=?";
                 $sqlRole=$this->db->prepare($prepareRole);
                 $sqlRole->execute([$user_id]);
+                $_SESSION['role'] = 'president';
             }
             $this->db->commit();
             

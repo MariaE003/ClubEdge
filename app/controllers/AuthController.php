@@ -1,5 +1,5 @@
 <?php 
-class AuthController{
+class AuthController extends BaseController{
     private AuthRepository $repo ;
     public function __construct(){
         $this->repo = new AuthRepository();
@@ -13,21 +13,32 @@ class AuthController{
     public function pageLogin(){
         require_once __DIR__. "/../views/auth/login.html";
     }
+    public function dashboardAdmin(){
+        require_once __DIR__. "/../views/admin/dashboard.twig";
+    }
+    public function dashboardEtudiant(){
+        require_once __DIR__."/../views/student/dashboard.html";
+    }
+    public function dashboardPresident(){
+        require_once __DIR__."/../views/president/dashboard.html";
+    }
     public function login() {
         $email = $_POST["email"];
         $password = $_POST["password"];
         $result = $this->repo->login($email,$password);
         if ($result['success']) {
             if($result["user"]["role"] === "admin"){
-                header("Location: admin/dashboard");
+               $this->dashboardAdmin();
             }else if($result["user"]["role"] === "president"){
-                header("Location: president/dashboard");
+                $this->dashboardPresident();
             }else{
+                // mohssine
                 header("Location: student/clubs-list");
+               $this->dashboardEtudiant();
             }
             exit();   
         } else {
-            header("Location: index");
+            $this->pageLogin();
             exit();      
         }
     }
@@ -44,10 +55,10 @@ class AuthController{
         $result = $this->repo->register($register); 
 
     if ($result['success']) {
-        header("Location: loginPage");
+        $this->pageLogin();
         exit();   
     } else {
-        header("Location: registerPage");
+        $this->pageRegister();
         exit();      
     }
     }

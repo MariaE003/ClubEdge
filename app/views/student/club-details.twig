@@ -69,7 +69,28 @@ Clubs
                                 </div>
                                 {# <p class="text-muted">La technologie au service de l'innovation</p> #}
                             </div>
-                            <button class="btn btn-primary mb-2">Rejoindre le club</button>
+
+
+                            <div class="mt-4">
+    {% if isMemberHere %}
+        
+        <button class="btn btn-success mb-2 w-full cursor-not-allowed" disabled>
+            Déjà membre
+        </button>
+
+    {% elseif isMemberGlobally %}
+        
+        <button class="btn btn-secondary mb-2 w-full cursor-not-allowed" title="Vous êtes déjà inscrit dans un autre club" disabled>
+            Déjà inscrit (autre club)
+        </button>
+
+    {% else %}
+        
+        <a href="join?idC={{ club.id }}" class="btn btn-primary mb-2 w-full">
+            Rejoindre le club
+        </a>
+    {% endif %}
+</div>
                         </div>
                     </div>
                 </div>
@@ -97,15 +118,16 @@ Clubs
                             </div>
                             <div class="card-body">
                                 <div class="space-y-4">
+                                {% for event in events %}
                                     <div
                                         class="flex items-center gap-4 p-4 border border-gray-100 rounded-lg hover:border-accent transition-colors">
                                         <div
                                             class="flex flex-col items-center justify-center w-16 h-16 bg-gray-50 rounded-lg text-center">
-                                            <span class="text-xl font-bold text-gray-900">02</span>
-                                            <span class="text-xs uppercase font-medium text-gray-500">Fév</span>
+                                            <span class="text-xl font-bold text-gray-900">{{ event.event_date|date("d") }}</span>
+                                            <span class="text-xs uppercase font-medium text-gray-500">{{ event.event_date|date("M") }}</span>
                                         </div>
                                         <div class="flex-1">
-                                            <h3 class="font-semibold text-lg">Hackathon 48h</h3>
+                                            <h3 class="font-semibold text-lg">{{ event.title }}</h3>
                                             <div class="flex items-center gap-4 text-sm text-gray-500 mt-1">
                                                 <div class="flex items-center gap-1">
                                                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
@@ -123,45 +145,15 @@ Clubs
                                                         <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
                                                         <circle cx="12" cy="10" r="3" />
                                                     </svg>
-                                                    Amphi C
+                                                    {{ event.location }}
                                                 </div>
                                             </div>
                                         </div>
                                         <button class="btn btn-outline btn-sm">S'inscrire</button>
                                     </div>
+                                    {% endfor %}
 
-                                    <div
-                                        class="flex items-center gap-4 p-4 border border-gray-100 rounded-lg hover:border-accent transition-colors">
-                                        <div
-                                            class="flex flex-col items-center justify-center w-16 h-16 bg-gray-50 rounded-lg text-center">
-                                            <span class="text-xl font-bold text-gray-900">15</span>
-                                            <span class="text-xs uppercase font-medium text-gray-500">Fév</span>
-                                        </div>
-                                        <div class="flex-1">
-                                            <h3 class="font-semibold text-lg">Atelier Python débutant</h3>
-                                            <div class="flex items-center gap-4 text-sm text-gray-500 mt-1">
-                                                <div class="flex items-center gap-1">
-                                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
-                                                        stroke="currentColor" stroke-width="2">
-                                                        <rect x="3" y="4" width="18" height="18" rx="2" />
-                                                        <line x1="16" y1="2" x2="16" y2="6" />
-                                                        <line x1="8" y1="2" x2="8" y2="6" />
-                                                        <line x1="3" y1="10" x2="21" y2="10" />
-                                                    </svg>
-                                                    14:00 - 16:00
-                                                </div>
-                                                <div class="flex items-center gap-1">
-                                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
-                                                        stroke="currentColor" stroke-width="2">
-                                                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
-                                                        <circle cx="12" cy="10" r="3" />
-                                                    </svg>
-                                                    Salle B201
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <button class="btn btn-outline btn-sm">S'inscrire</button>
-                                    </div>
+                                    
                                 </div>
                             </div>
                         </div>
@@ -182,11 +174,11 @@ Clubs
                                     </div>
                                     <div class="flex justify-between items-center">
                                         <span class="text-gray-600">Membres</span>
-                                        <span class="font-medium">6 / 8</span>
+                                        <span class="font-medium">{{membres}} / 8</span>
                                     </div>
                                     <div class="flex justify-between items-center">
                                         <span class="text-gray-600">Création</span>
-                                        <span class="font-medium">Sept 2025</span>
+                                        <span class="font-medium">{{ club.created_at|date("M Y") }}</span>
                                     </div>
                                     <div class="flex justify-between items-center">
                                         <span class="text-gray-600">Catégorie</span>
