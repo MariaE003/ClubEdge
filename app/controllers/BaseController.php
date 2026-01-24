@@ -8,9 +8,23 @@ class BaseController{
         $this->twig=new Environment($loader);
     }
 
-    protected function render(string $view , array $data=[]):void{
-        echo $this->twig->render($view,$data);
-    }
+    protected function render(string $view, array $data = []): void
+{
+        $this->twig->addFunction(new \Twig\TwigFunction('path', function ($route, $params = []) {
+            $url = '/ClubEdge/' . str_replace('_', '/', $route);
+
+            if (!empty($params)) {
+                foreach ($params as $key => $value) {
+                    $url .= '/' . $value;
+                }
+            }
+
+            return $url;
+        }));
+
+    echo $this->twig->render($view, $data);
+}
+
     protected function checkSession(): void
     {
         // Pas connecté
