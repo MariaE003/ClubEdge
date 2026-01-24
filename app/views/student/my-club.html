@@ -11,16 +11,21 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="../../assets/css/variables.css">
-    <link rel="stylesheet" href="../../assets/css/reset.css">
-    <link rel="stylesheet" href="../../assets/css/layout.css">
-    <link rel="stylesheet" href="../../assets/css/components.css">
-    <link rel="stylesheet" href="../../assets/css/utilities.css">
-    <link rel="stylesheet" href="../../assets/css/animations.css">
-    <link rel="stylesheet" href="../../assets/css/responsive.css">
+    <link rel="stylesheet" href="/../ClubEdge/public/assets/css/variables.css">
+    <link rel="stylesheet" href="/../ClubEdge/public/assets/css/reset.css">
+    <link rel="stylesheet" href="/../ClubEdge/public/assets/css/layout.css">
+    <link rel="stylesheet" href="/../ClubEdge/public/assets/css/components.css">
+    <link rel="stylesheet" href="/../ClubEdge/public/assets/css/utilities.css">
+    <link rel="stylesheet" href="/../ClubEdge/public/assets/css/animations.css">
+    <link rel="stylesheet" href="/../ClubEdge/public/assets/css/responsive.css">
 </head>
 
 <body>
+    {% set months = {
+        '01':'Jan','02':'Fév','03':'Mar','04':'Avr','05':'Mai','06':'Juin',
+        '07':'Juil','08':'Aoû','09':'Sep','10':'Oct','11':'Nov','12':'Déc'
+    } %}
+
     <div class="app-layout">
         <!-- Sidebar -->
         <aside class="app-sidebar" id="sidebar">
@@ -103,9 +108,9 @@
 
             <div class="sidebar-footer">
                 <div class="sidebar-user">
-                    <div class="avatar avatar-sm">JD</div>
+                    <div class="avatar avatar-sm">{{ student.initials|default('JD') }}</div>
                     <div class="sidebar-user-info">
-                        <span class="sidebar-user-name">Jean Dupont</span>
+                        <span class="sidebar-user-name">{{ student.prenom|default('Jean') }} {{ student.nom|default('Dupont') }}</span>
                         <span class="sidebar-user-role">Étudiant</span>
                     </div>
                 </div>
@@ -123,21 +128,26 @@
                     </svg>
                 </button>
                 <div class="flex-1"></div>
-                <div class="avatar avatar-sm">JD</div>
+                <div class="avatar avatar-sm">{{ student.initials|default('JD') }}</div>
             </header>
 
             <main class="app-content">
+
+                {% if hasClub %}
+
                 <!-- Club Header -->
                 <div class="card mb-6">
                     <div class="card-body">
                         <div class="flex items-center gap-6">
-                            <div class="avatar avatar-xl" style="background-color: #FF4F00; color: white;">CI</div>
+                            <div class="avatar avatar-xl" style="background-color: #FF4F00; color: white;">
+                                {{ club.name|slice(0,2)|upper }}
+                            </div>
                             <div class="flex-1">
-                                <h1 class="text-2xl font-bold mb-1">Club Informatique</h1>
-                                <p class="text-secondary mb-3">Technologie & Innovation</p>
+                                <h1 class="text-2xl font-bold mb-1">{{ club.name }}</h1>
+                                <p class="text-secondary mb-3">{{ club.description_short|default('—') }}</p>
                                 <div class="flex items-center gap-4">
                                     <span class="badge badge-success">Actif</span>
-                                    <span class="text-sm text-muted">Membre depuis Janvier 2026</span>
+                                    <span class="text-sm text-muted">Membre depuis {{ membership_since|default('—') }}</span>
                                 </div>
                             </div>
                             <div class="flex gap-3">
@@ -163,10 +173,7 @@
                             </div>
                             <div class="card-body">
                                 <p class="text-secondary leading-relaxed">
-                                    Le Club Informatique est dédié à l'apprentissage et au partage des connaissances en
-                                    développement, cybersécurité, et nouvelles technologies. Nous organisons
-                                    régulièrement des hackathons, des ateliers de programmation et des conférences avec
-                                    des professionnels du secteur.
+                                    {{ club.description|default('Aucune description pour le moment.') }}
                                 </p>
                             </div>
                         </div>
@@ -179,28 +186,40 @@
                             </div>
                             <div class="card-body">
                                 <div class="flex flex-col gap-4">
-                                    <div class="flex items-center gap-4 p-4 border border-gray-200 rounded">
-                                        <div class="text-center" style="min-width: 48px;">
-                                            <div class="text-xl font-bold">02</div>
-                                            <div class="text-xs text-muted">Fév</div>
+
+                                    {% if club_events is empty %}
+                                        <div class="flex items-center gap-4 p-4 border border-gray-200 rounded">
+                                            <div class="text-center" style="min-width: 48px;">
+                                                <div class="text-xl font-bold">--</div>
+                                                <div class="text-xs text-muted">--</div>
+                                            </div>
+                                            <div class="flex-1">
+                                                <h3 class="font-medium">Aucun événement</h3>
+                                                <p class="text-sm text-muted">Votre club n’a pas encore publié d’événements.</p>
+                                            </div>
                                         </div>
-                                        <div class="flex-1">
-                                            <h3 class="font-medium">Hackathon 48h</h3>
-                                            <p class="text-sm text-muted">Amphi C - 09h00</p>
-                                        </div>
-                                        <span class="badge badge-accent">Inscrit</span>
-                                    </div>
-                                    <div class="flex items-center gap-4 p-4 border border-gray-200 rounded">
-                                        <div class="text-center" style="min-width: 48px;">
-                                            <div class="text-xl font-bold">15</div>
-                                            <div class="text-xs text-muted">Fév</div>
-                                        </div>
-                                        <div class="flex-1">
-                                            <h3 class="font-medium">Atelier Python</h3>
-                                            <p class="text-sm text-muted">Salle B201 - 14h00</p>
-                                        </div>
-                                        <button class="btn btn-outline btn-sm">S'inscrire</button>
-                                    </div>
+                                    {% else %}
+                                        {% for e in club_events %}
+                                            {% set mm = e.event_date|date('m') %}
+                                            <div class="flex items-center gap-4 p-4 border border-gray-200 rounded">
+                                                <div class="text-center" style="min-width: 48px;">
+                                                    <div class="text-xl font-bold">{{ e.event_date|date('d') }}</div>
+                                                    <div class="text-xs text-muted">{{ months[mm] ?? e.event_date|date('M') }}</div>
+                                                </div>
+                                                <div class="flex-1">
+                                                    <h3 class="font-medium">{{ e.title }}</h3>
+                                                    <p class="text-sm text-muted">{{ e.location|default('Lieu non précisé') }} - {{ e.event_date|date('H:i') }}</p>
+                                                </div>
+
+                                                {% if e.is_registered %}
+                                                    <span class="badge badge-accent">Inscrit</span>
+                                                {% else %}
+                                                    <button class="btn btn-outline btn-sm">S'inscrire</button>
+                                                {% endif %}
+                                            </div>
+                                        {% endfor %}
+                                    {% endif %}
+
                                 </div>
                             </div>
                         </div>
@@ -211,36 +230,37 @@
                         <!-- Members -->
                         <div class="card mb-6">
                             <div class="card-header">
-                                <h2 class="card-title">Membres (6/8)</h2>
+                                <h2 class="card-title">Membres ({{ club.members_count }}/{{ club.max_members }})</h2>
                             </div>
                             <div class="card-body">
                                 <div class="flex flex-col gap-3">
-                                    <div class="flex items-center gap-3">
-                                        <div class="avatar avatar-sm">MM</div>
-                                        <div class="flex-1">
-                                            <span class="text-sm font-medium">Marie Martin</span>
+
+                                    {% if members is empty %}
+                                        <div class="flex items-center gap-3">
+                                            <div class="avatar avatar-sm">--</div>
+                                            <div class="flex-1">
+                                                <span class="text-sm font-medium">Aucun membre</span>
+                                            </div>
                                         </div>
-                                        <span class="badge badge-accent">Présidente</span>
-                                    </div>
-                                    <div class="flex items-center gap-3">
-                                        <div class="avatar avatar-sm">JD</div>
-                                        <div class="flex-1">
-                                            <span class="text-sm font-medium">Jean Dupont</span>
-                                        </div>
-                                        <span class="text-xs text-muted">Vous</span>
-                                    </div>
-                                    <div class="flex items-center gap-3">
-                                        <div class="avatar avatar-sm">LB</div>
-                                        <div class="flex-1">
-                                            <span class="text-sm font-medium">Lucas Bernard</span>
-                                        </div>
-                                    </div>
-                                    <div class="flex items-center gap-3">
-                                        <div class="avatar avatar-sm">SD</div>
-                                        <div class="flex-1">
-                                            <span class="text-sm font-medium">Sophie Dubois</span>
-                                        </div>
-                                    </div>
+                                    {% else %}
+                                        {% for m in members|slice(0,6) %}
+                                            <div class="flex items-center gap-3">
+                                                <div class="avatar avatar-sm">
+                                                    {{ (m.prenom|slice(0,1) ~ m.nom|slice(0,1))|upper }}
+                                                </div>
+                                                <div class="flex-1">
+                                                    <span class="text-sm font-medium">{{ m.prenom }} {{ m.nom }}</span>
+                                                </div>
+
+                                                {% if m.is_president %}
+                                                    <span class="badge badge-accent">Présidente</span>
+                                                {% elseif m.id == student.id %}
+                                                    <span class="text-xs text-muted">Vous</span>
+                                                {% endif %}
+                                            </div>
+                                        {% endfor %}
+                                    {% endif %}
+
                                 </div>
                             </div>
                         </div>
@@ -261,6 +281,28 @@
                         </div>
                     </div>
                 </div>
+
+                {% else %}
+
+                <!-- même design (card) mais sans club -->
+                <div class="card mb-6">
+                    <div class="card-body">
+                        <div class="flex items-center gap-6">
+                            <div class="avatar avatar-xl" style="background-color: #FF4F00; color: white;">NO</div>
+                            <div class="flex-1">
+                                <h1 class="text-2xl font-bold mb-1">Aucun club</h1>
+                                <p class="text-secondary mb-3">Vous n’êtes inscrit dans aucun club.</p>
+                                <div class="flex items-center gap-4">
+                                    <span class="badge badge-secondary">Inactif</span>
+                                    <span class="text-sm text-muted">Rejoignez un club pour accéder à cet espace</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                {% endif %}
+
             </main>
 
             <footer class="app-footer">
@@ -270,7 +312,7 @@
     </div>
 
     <div class="mobile-overlay" id="mobile-overlay"></div>
-    <script src="../../assets/js/main.js" defer></script>
+    <script src="/../ClubEdge/public/assets/js/main.js" defer></script>
 </body>
 
 </html>

@@ -5,7 +5,7 @@ class ClubController extends BaseController{
 
     public function __construct(){
         parent::__construct();
-        $this->requireRole1("admin");
+        $this->requireRole1("etudiant");
         $pdo=Database::getInstance()->getConnection();
         $this->repoClub = new ClubRepository($pdo);
     }
