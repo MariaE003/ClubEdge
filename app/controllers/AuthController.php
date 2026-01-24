@@ -28,11 +28,11 @@ class AuthController extends BaseController{
         $result = $this->repo->login($email,$password);
         if ($result['success']) {
             if($result["user"]["role"] === "admin"){
-               $this->dashboardAdmin();
+               header("Location: admin/dashboard");
             }else if($result["user"]["role"] === "president"){
-                $this->dashboardPresident();
+                header("Location: president/dashboard");
             }else{
-               $this->dashboardEtudiant();
+               header("Location: etudiant/dashboard"); 
             }
             exit();   
         } else {

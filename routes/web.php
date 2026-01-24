@@ -59,4 +59,5 @@ $routes = [
 
     // Events list (Admin)
     "admin/events-list"     => ["EventController", "pageListEvent"],
+    "admin/events"     => ["EventController", "pageEventList"],
 ];

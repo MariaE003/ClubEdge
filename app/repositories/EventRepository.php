@@ -239,4 +239,50 @@ final class EventRepository
         }
         return $row;
     }
+    public function listAllForAdmin(array $filters = []): array
+{
+    $q = trim((string)($filters['q'] ?? ''));
+    $clubId = $filters['club_id'] ?? null;
+    $status = (string)($filters['status'] ?? '');
+
+    $sql = "
+        SELECT e.*,
+               c.name AS club_name,
+               u.nom AS creator_nom,
+               u.prenom AS creator_prenom,
+               (SELECT COUNT(*) FROM event_participants ep WHERE ep.event_id = e.id) AS participants_count,
+               (e.event_date <= NOW()) AS is_past
+        FROM events e
+        JOIN clubs c ON c.id = e.club_id
+        LEFT JOIN users u ON u.id = e.created_by
+        WHERE 1=1
+    ";
+
+    $params = [];
+
+    if ($q !== '') {
+        $sql .= " AND (e.title ILIKE :q OR COALESCE(e.description,'') ILIKE :q) ";
+        $params[':q'] = '%' . $q . '%';
+    }
+
+    if ($clubId !== null && $clubId !== '') {
+        $sql .= " AND e.club_id = :club_id ";
+        $params[':club_id'] = (int)$clubId;
+    }
+
+    if ($status === 'upcoming') {
+        $sql .= " AND e.event_date > NOW() ";
+    } elseif ($status === 'past') {
+        $sql .= " AND e.event_date <= NOW() ";
+    }
+
+    $sql .= " ORDER BY e.event_date DESC ";
+
+    $stmt = $this->db->prepare($sql);
+    $stmt->execute($params);
+
+    $rows = $stmt->fetchAll();
+    return array_map(fn($r) => $this->normalizeEventRow($r), $rows);
+}
+
 }

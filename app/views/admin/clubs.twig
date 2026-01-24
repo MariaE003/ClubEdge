@@ -29,10 +29,12 @@
         <!-- Sidebar (Style de la page 2 avec badge Admin) -->
         <aside class="app-sidebar" id="sidebar">
             <div class="sidebar-header">
-                <a href="/" class="sidebar-logo">
+                <a href="admin/dashboard" class="sidebar-logo">
                     <svg width="32" height="32" viewBox="0 0 40 40" fill="none">
                         <rect width="40" height="40" rx="4" fill="#FF4F00" />
-                        <path d="M12 28V12H20C22.12 12 24.16 12.84 25.66 14.34C27.16 15.84 28 17.88 28 20C28 22.12 27.16 24.16 25.66 25.66C24.16 27.16 22.12 28 20 28H12Z" stroke="white" stroke-width="2" />
+                        <path
+                            d="M12 28V12H20C22.12 12 24.16 12.84 25.66 14.34C27.16 15.84 28 17.88 28 20C28 22.12 27.16 24.16 25.66 25.66C24.16 27.16 22.12 28 20 28H12Z"
+                            stroke="white" stroke-width="2" />
                     </svg>
                     <span class="sidebar-logo-text">ClubEdge</span>
                 </a>
@@ -42,8 +44,9 @@
             <nav class="sidebar-nav">
                 <ul class="sidebar-menu">
                     <li class="sidebar-item">
-                        <a href="dashboard.html" class="sidebar-link">
-                            <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <a href="dashboard" class="sidebar-link active">
+                            <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="1.5">
                                 <rect x="3" y="3" width="7" height="9" rx="1" />
                                 <rect x="14" y="3" width="7" height="5" rx="1" />
                                 <rect x="14" y="12" width="7" height="9" rx="1" />
@@ -58,36 +61,23 @@
                     <h3 class="sidebar-section-title">Gestion</h3>
                     <ul class="sidebar-menu">
                         <li class="sidebar-item">
-                            <a href="clubs.html" class="sidebar-link active">
-                                <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
-                                    <circle cx="9" cy="7" r="4" />
-                                </svg>
+                            <a href="clubs" class="sidebar-link">
                                 <span>Clubs</span>
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a href="users.html" class="sidebar-link">
-                                <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
-                                    <circle cx="12" cy="7" r="4" />
-                                </svg>
+                            <a href="users" class="sidebar-link">
                                 <span>Utilisateurs</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a href="events" class="sidebar-link">
+                                <span>Événements</span>
                             </a>
                         </li>
                     </ul>
                 </div>
             </nav>
-
-            <div class="sidebar-footer">
-                <div class="sidebar-user">
-                    <div class="avatar avatar-sm bg-accent text-white">AD</div>
-                    <div class="sidebar-user-info">
-                        <span class="sidebar-user-name">Administrateur</span>
-                        <span class="sidebar-user-role">Super Admin</span>
-                    </div>
-                </div>
-            </div>
         </aside>
 
         <div class="app-main">

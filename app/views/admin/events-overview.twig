@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Aperçu des événements - Admin ClubEdge">
+  <title>Événements - Admin - ClubEdge</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/../ClubEdge/public/assets/css/admin.css">
+</head>
+
+<body>
+  <div class="app-layout">
+
+    <!-- Admin Sidebar -->
+    <aside class="app-sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <a href="dashboard" class="sidebar-logo">
+          <svg width="32" height="32" viewBox="0 0 40 40" fill="none">
+            <rect width="40" height="40" rx="4" fill="#FF4F00" />
+            <path
+              d="M12 28V12H20C22.12 12 24.16 12.84 25.66 14.34C27.16 15.84 28 17.88 28 20C28 22.12 27.16 24.16 25.66 25.66C24.16 27.16 22.12 28 20 28H12Z"
+              stroke="white" stroke-width="2" />
+          </svg>
+          <span class="sidebar-logo-text">ClubEdge</span>
+        </a>
+        <span class="badge badge-accent ml-2">Admin</span>
+      </div>
+
+      <nav class="sidebar-nav">
+        <ul class="sidebar-menu">
+          <li class="sidebar-item">
+            <a href="dashboard" class="sidebar-link {{ active == 'dashboard' ? 'active' : '' }}">
+              <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <rect x="3" y="3" width="7" height="9" rx="1" />
+                <rect x="14" y="3" width="7" height="5" rx="1" />
+                <rect x="14" y="12" width="7" height="9" rx="1" />
+                <rect x="3" y="16" width="7" height="5" rx="1" />
+              </svg>
+              <span>Tableau de bord</span>
+            </a>
+          </li>
+        </ul>
+
+        <div class="sidebar-section">
+          <h3 class="sidebar-section-title">Gestion</h3>
+          <ul class="sidebar-menu">
+            <li class="sidebar-item">
+              <a href="clubs" class="sidebar-link {{ active == 'clubs' ? 'active' : '' }}">
+                <span>Clubs</span>
+              </a>
+            </li>
+            <li class="sidebar-item">
+              <a href="users" class="sidebar-link {{ active == 'users' ? 'active' : '' }}">
+                <span>Utilisateurs</span>
+              </a>
+            </li>
+            <li class="sidebar-item">
+              <a href="events-list" class="sidebar-link {{ active == 'events' ? 'active' : '' }}">
+                <span>Événements</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </aside>
+
+    <div class="app-main">
+
+      <header class="app-header">
+        <button class="btn btn-icon btn-ghost" id="menu-toggle" type="button" aria-label="Menu">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <line x1="3" y1="12" x2="21" y2="12" />
+            <line x1="3" y1="6" x2="21" y2="6" />
+            <line x1="3" y1="18" x2="21" y2="18" />
+          </svg>
+        </button>
+
+        <h1 class="text-lg font-semibold ml-4">Tous les événements</h1>
+        <div class="flex-1"></div>
+        <a href="/logout" class="btn btn-outline btn-sm">Déconnexion</a>
+      </header>
+
+      <main class="app-content">
+
+        <!-- Page Header -->
+        <div class="page-header flex items-center justify-between">
+          <div>
+            <h1 class="page-title">Événements</h1>
+            <p class="page-description">Vue d'ensemble de tous les événements organisés par les clubs.</p>
+          </div>
+        </div>
+
+        <!-- Filters (server-side GET) -->
+        <form class="admin-toolbar admin-toolbar--filters mb-6" method="GET" action="events">
+          <div class="admin-search">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <circle cx="11" cy="11" r="8" />
+              <line x1="21" y1="21" x2="16.65" y2="16.65" />
+            </svg>
+            <input
+              type="text"
+              class="form-input"
+              name="q"
+              value="{{ filters.q|default('') }}"
+              placeholder="Rechercher un événement...">
+          </div>
+
+          <select class="form-input form-select" name="club_id">
+            <option value="">Tous les clubs</option>
+            {% for c in clubs %}
+              <option value="{{ c.id }}" {{ (filters.club_id|default('') == c.id) ? 'selected' : '' }}>
+                {{ c.name }}
+              </option>
+            {% endfor %}
+          </select>
+
+          <select class="form-input form-select" name="status">
+            <option value="">Tous les statuts</option>
+            <option value="upcoming" {{ filters.status == 'upcoming' ? 'selected' : '' }}>À venir</option>
+            <option value="past" {{ filters.status == 'past' ? 'selected' : '' }}>Passé</option>
+          </select>
+
+          <button class="btn btn-primary btn-sm" type="submit">Filtrer</button>
+        </form>
+
+        {% if events is empty %}
+          <div class="card">
+            <div class="card-body">
+              <p class="text-muted">Aucun événement trouvé.</p>
+            </div>
+          </div>
+        {% else %}
+
+          <!-- Events Grid -->
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+            {% for event in events %}
+
+              {% set cover = (event.images is defined and event.images|length > 0) ? event.images[0] : null %}
+              {% set isPast = event.is_past ?? false %}
+
+              <div class="card h-full flex flex-col">
+
+                <div class="relative h-40 bg-slate-100 border-b overflow-hidden">
+                  {% if cover %}
+                    <img src="{{ cover }}" alt="Image de l'événement" class="w-full h-full object-cover">
+                  {% else %}
+                    <div class="absolute inset-0 flex items-center justify-center text-muted">
+                      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
+                        <circle cx="8.5" cy="8.5" r="1.5" />
+                        <polyline points="21 15 16 10 5 21" />
+                      </svg>
+                    </div>
+                  {% endif %}
+
+                  {% if isPast %}
+                    <span class="absolute top-3 right-3 badge badge-secondary">Terminé</span>
+                  {% else %}
+                    <span class="absolute top-3 right-3 badge badge-success">À venir</span>
+                  {% endif %}
+
+                  {% if event.images is defined and event.images|length > 1 %}
+                    <span class="absolute top-3 left-3 badge badge-neutral">
+                      {{ event.images|length }} photos
+                    </span>
+                  {% endif %}
+                </div>
+
+                <div class="card-body flex-1 flex flex-col">
+
+                  <div class="flex items-center gap-2 mb-2">
+                    <span class="text-xs text-primary font-medium">{{ event.club_name|default('Club') }}</span>
+                    <span class="text-xs text-muted">• {{ event.event_date|date('d M') }}</span>
+                  </div>
+
+                  <h3 class="font-bold text-lg mb-2">{{ event.title }}</h3>
+
+                  <p class="text-sm text-muted mb-3 flex-1">
+                    {{ event.description|default('—')|slice(0,120) }}{% if event.description and event.description|length > 120 %}...{% endif %}
+                  </p>
+
+                  {% if event.location %}
+                    <p class="text-xs text-muted mb-3">
+                      📍 {{ event.location }}
+                    </p>
+                  {% endif %}
+
+                  {# mini thumbnails (jusqu'à 3) #}
+                  {% if event.images is defined and event.images|length > 0 %}
+                    <div class="flex items-center gap-2 mb-3">
+                      {% for img in event.images|slice(0,3) %}
+                        <img src="{{ img }}" alt="" class="w-8 h-8 rounded-md object-cover border">
+                      {% endfor %}
+                      {% if event.images|length > 3 %}
+                        <div class="w-8 h-8 rounded-md border flex items-center justify-center text-xs text-muted">
+                          +{{ event.images|length - 3 }}
+                        </div>
+                      {% endif %}
+                    </div>
+                  {% endif %}
+
+                  <div class="flex items-center justify-between pt-4 border-t mt-auto">
+                    <div class="flex -space-x-2">
+                      {# initials du créateur (président) #}
+                      {% set creatorInitials =
+                        ((event.creator_prenom|default('')|slice(0,1)|upper) ~ (event.creator_nom|default('')|slice(0,1)|upper))
+                      %}
+                      <div class="w-8 h-8 rounded-full bg-slate-200 border-2 border-white flex items-center justify-center text-xs font-medium">
+                        {{ creatorInitials|trim ? creatorInitials : 'CE' }}
+                      </div>
+
+                      {% if event.participants_count is defined %}
+                        <div class="w-8 h-8 rounded-full bg-slate-200 border-2 border-white flex items-center justify-center text-xs font-medium">
+                          +{{ event.participants_count }}
+                        </div>
+                      {% endif %}
+                    </div>
+
+                    <span class="btn btn-ghost btn-sm pointer-events-none">
+                      ID #{{ event.id }}
+                    </span>
+                  </div>
+
+                </div>
+              </div>
+
+            {% endfor %}
+
+          </div>
+        {% endif %}
+
+      </main>
+    </div>
+  </div>
+
+  <div class="mobile-overlay" id="mobile-overlay"></div>
+  <script src="/../ClubEdge/public/assets/js/main.js" defer></script>
+
+  <script>
+    // Optionnel: auto-submit quand on change les selects
+    document.addEventListener('DOMContentLoaded', () => {
+      const form = document.querySelector('form[method="GET"]');
+      if (!form) return;
+
+      form.querySelectorAll('select').forEach(sel => {
+        sel.addEventListener('change', () => form.submit());
+      });
+    });
+  </script>
+</body>
+</html>

@@ -7,6 +7,7 @@
 
     public function __construct()
     {
+        parent::__construct();
         $this->eventRepository = new EventRepository();
         $this->clubRepository = new ClubRepository(Database::getInstance()->getConnection());
     }
@@ -454,4 +455,27 @@
     public function pageListEvent(){
         parent::render("student/event-list.html" , []);
     }
+
+    public function pageEventList(): void
+{
+    $this->requireRole('admin');
+
+    $filters = [
+        'q'       => $_GET['q'] ?? '',
+        'club_id' => $_GET['club_id'] ?? '',
+        'status'  => $_GET['status'] ?? '',
+    ];
+
+    $events = $this->eventRepository->listAllForAdmin($filters);
+
+    $clubs = $this->clubRepository->allClubs();
+
+    $this->render('admin/events-overview.twig', [
+        'events'  => $events,
+        'clubs'   => $clubs,
+        'filters' => $filters,
+        'active'  => 'events'
+    ]);
+}
+
 }
