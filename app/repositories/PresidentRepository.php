@@ -21,110 +21,90 @@ class PresidentRepository
         return $row ?: null;
     }
 
-    public function getClubByPresidentId(int $userId): ?int
+     public function getDashboardData(int $userId): array
     {
-        $stmt = $this->db->prepare("
-            SELECT id 
-            FROM clubs 
-            WHERE president_id = :id
-            LIMIT 1
-        ");
+
+        // Étudiant
+        $stmt = $this->db->prepare("SELECT id, prenom, nom, email FROM users WHERE id = :id");
         $stmt->execute(['id' => $userId]);
-        $row = $stmt->fetch(PDO::FETCH_ASSOC);
-        return $row ? (int)$row['id'] : null;
-    }
+        $student = $stmt->fetch(PDO::FETCH_ASSOC);
 
-    public function countMembers(int $clubId): int
-    {
+        // Club via members[]
         $stmt = $this->db->prepare("
-            SELECT members 
-            FROM clubs 
-            WHERE id = :id
+            SELECT c.id, c.name, c.members
+            FROM clubs c
+            WHERE :uid = ANY(c.members)
         ");
-        $stmt->execute(['id' => $clubId]);
-        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+        $stmt->execute(['uid' => $userId]);
+        $club = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        if (!$row || !is_array($row['members'])) {
-            return 0;
+        // ❌ Pas de club
+        if (!$club) {
+            return [
+                'hasClub' => false,
+                'student' => [
+                    'prenom' => $student['prenom'],
+                    'nom' => $student['nom'],
+                    'email' => $student['email'],
+                    'initials' => strtoupper($student['prenom'][0] . $student['nom'][0])
+                ],
+                'stats' => [
+                    'clubs' => 0,
+                    'events' => 0,
+                    'reviews' => 0,
+                    'participations' => 0
+                ],
+                'club' => null,
+                'members' => [],
+                'upcoming_events' => []
+            ];
         }
 
-        // On filtre les valeurs null / non numériques qui pourraient venir d'un mauvais INSERT
-        $validIds = array_filter($row['members'], 'is_int');
-        return count($validIds);
-    }
+        $clubId = $club['id'];
 
-    public function countEvents(int $clubId): int
-    {
-        $stmt = $this->db->prepare("
-            SELECT COUNT(*) 
-            FROM events 
-            WHERE club_id = :id
-        ");
-        $stmt->execute(['id' => $clubId]);
-        return (int) $stmt->fetchColumn();
-    }
-
-    public function countArticles(int $clubId): int
-    {
-        $stmt = $this->db->prepare("
-            SELECT COUNT(*) 
-            FROM articles 
-            WHERE club_id = :id
-        ");
-        $stmt->execute(['id' => $clubId]);
-        return (int) $stmt->fetchColumn();
-    }
-
-    public function getUpcomingEvents(int $clubId): array
-    {
-        $stmt = $this->db->prepare("
-            SELECT 
-                e.title, 
-                e.location, 
-                e.event_date,
-                (SELECT COUNT(*) 
-                 FROM event_participants ep 
-                 WHERE ep.event_id = e.id) AS participants
-            FROM events e
-            WHERE e.club_id = :id 
-              AND e.event_date >= CURRENT_DATE
-            ORDER BY e.event_date ASC
-            LIMIT 3
-        ");
-        $stmt->execute(['id' => $clubId]);
-        return $stmt->fetchAll(PDO::FETCH_ASSOC) ?: [];
-    }
-
-    public function getMembers(int $clubId): array
-    {
-        $stmt = $this->db->prepare("
-            SELECT members 
-            FROM clubs 
-            WHERE id = :id
-        ");
-        $stmt->execute(['id' => $clubId]);
-        $row = $stmt->fetch(PDO::FETCH_ASSOC);
-
-        if (!$row || empty($row['members']) || !is_array($row['members'])) {
-            return [];
-        }
-
-        // On enlève les éventuelles valeurs invalides
-        $memberIds = array_filter($row['members'], 'is_int');
-        if (empty($memberIds)) {
-            return [];
-        }
-
-        $placeholders = implode(',', array_fill(0, count($memberIds), '?'));
-        
-        $stmt = $this->db->prepare("
-            SELECT id, prenom, nom
+        // Membres
+        $members = $this->db->query("
+            SELECT prenom, nom
             FROM users
-            WHERE id IN ($placeholders)
-            ORDER BY nom, prenom
-        ");
-        
-        $stmt->execute($memberIds);
-        return $stmt->fetchAll(PDO::FETCH_ASSOC) ?: [];
+            WHERE id = ANY(
+                SELECT unnest(members) FROM clubs WHERE id = $clubId
+            )
+        ")->fetchAll(PDO::FETCH_ASSOC);
+
+        // Événements à venir
+        $events = $this->db->query("
+            SELECT title, event_date, location
+            FROM events
+            WHERE club_id = $clubId AND event_date >= NOW()
+            ORDER BY event_date ASC
+        ")->fetchAll(PDO::FETCH_ASSOC);
+
+        return [
+            'hasClub' => true,
+
+            'student' => [
+                'prenom' => $student['prenom'],
+                'nom' => $student['nom'],
+                'email' => $student['email'],
+                'initials' => strtoupper($student['prenom'][0] . $student['nom'][0])
+            ],
+
+            'club' => [
+                'id' => $clubId,
+                'name' => $club['name'],
+                'members_count' => count($members),
+                'max_members' => 8
+            ],
+
+            'members' => $members,
+            'upcoming_events' => $events,
+
+            'stats' => [
+                'clubs' => 1,
+                'events' => count($events),
+                'reviews' => 5,
+                'participations' => 8
+            ]
+        ];
     }
 }
