@@ -5,7 +5,19 @@ class Router
     {
         require_once __DIR__ . '/../routes/web.php';
 
-        $url = trim($_GET['url'] ?? '', '/');
+        $rawUrl = $_GET['url'] ?? null;
+        if (!is_string($rawUrl) || $rawUrl === '') {
+            $requestUri = (string) ($_SERVER['REQUEST_URI'] ?? '');
+            $rawUrl = (string) (parse_url($requestUri, PHP_URL_PATH) ?? '');
+        }
+
+        $base = class_exists(View::class) ? View::basePath() : '';
+        if ($base !== '' && str_starts_with($rawUrl, $base)) {
+            $rawUrl = substr($rawUrl, strlen($base));
+        }
+        $rawUrl = preg_replace('#^/index\.php#', '', $rawUrl) ?? $rawUrl;
+
+        $url = trim($rawUrl, '/');
         if ($url === '') {
             $url = '/';
         }
