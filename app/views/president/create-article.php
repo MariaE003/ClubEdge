@@ -6,7 +6,20 @@ error_reporting(E_ALL);
 require_once __DIR__ . '/../../repositories/EventRepository.php';
 
 $eventRepo = new EventRepository();
-$events = $eventRepo->listByClub(1);
+
+$db = Database::getInstance()->getConnection();
+$clubRepo = new ClubRepository($db);
+$userId = $_SESSION['user_id'];
+$club = $clubRepo->ClubDuPrisident($userId);
+$idClub = $club['id'] ?? null;
+var_dump($idClub);
+if (!$idClub) {
+    die("erreur : aucun club sélectionné !");
+}
+
+
+$events = $eventRepo->listByClub($idClub);
+
 ?>
 
 <!DOCTYPE html>
@@ -25,8 +38,8 @@ $events = $eventRepo->listByClub(1);
     <!-- Styles (fallbacks for different hosting setups) -->
     <link rel="stylesheet" href="/coachprov3/public/assets/css/main.css">
     <link rel="stylesheet" href="/assets/css/main.css">
-    <link rel="stylesheet" href="../../assets/css/main.css">
-    <link rel="stylesheet" href="../../../public/assets/css/main.css">
+    <link rel="stylesheet" href="/../ClubEdge/public/assets/css/main.css">
+    <link rel="stylesheet" href="/../ClubEdge/public/public/assets/css/main.css">
 </head>
 
 <body>
@@ -248,6 +261,7 @@ $events = $eventRepo->listByClub(1);
                                     </option>
                                     <?php endforeach; ?>
                                 </select>
+                                <input type="hidden" name="idC" value="<?= htmlspecialchars($idClub) ?>" >
                             </div>
                         </form>
                             
@@ -264,7 +278,7 @@ $events = $eventRepo->listByClub(1);
     </div>
 
     <div class="mobile-overlay" id="mobile-overlay"></div>
-    <script src="../../assets/js/main.js" defer></script>
+    <script src="/../ClubEdge/public/assets/js/main.js" defer></script>
     <script>
         (() => {
             const input = document.getElementById('cover-image-input');

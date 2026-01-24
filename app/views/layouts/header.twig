@@ -35,7 +35,7 @@
     </div>
 </nav> #}
 
-<header class="app-header">
+{# <header class="app-header">
     <button class="btn btn-icon btn-ghost" id="menu-toggle">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
             stroke-width="1.5">
@@ -45,4 +45,20 @@
         </svg>
     </button>
     <div class="flex-1"></div>
-</header>
+</header> #}
+
+
+
+<header class="app-header">
+                <button class="btn btn-icon btn-ghost" id="menu-toggle">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <line x1="3" y1="12" x2="21" y2="12" /><line x1="3" y1="6" x2="21" y2="6" /><line x1="3" y1="18" x2="21" y2="18" />
+                    </svg>
+                </button>
+                {% if user == 'president' %}
+                    <span class="badge badge-accent ml-4">Espace Président</span>
+                {% endif %}
+
+                <div class="flex-1"></div>
+                <div class="avatar avatar-sm">{{ president.initials }}</div>
+            </header>

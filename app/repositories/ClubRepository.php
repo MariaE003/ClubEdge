@@ -79,6 +79,20 @@ class ClubRepository{
     }
 
     //
+     // id et nom dun club dun pricisent:
+    public function ClubDuPrisident(int $presidentId){
+        $sql = "SELECT id, name 
+                FROM clubs 
+                WHERE president_id = ? 
+                LIMIT 1";
+
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute([$presidentId]);
+
+        $club = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $club ?: null;
+    }
+    //
     public function clubMembers($id){
         $sql = "SELECT u.id, u.nom, u.prenom, u.email, u.role FROM users u
         JOIN clubs c ON u.id = ANY(c.members) WHERE c.id = ? ORDER BY u.nom";

@@ -34,24 +34,37 @@ class PresidentRepository
         return $row ? (int)$row['id'] : null;
     }
 
+    // public function countMembers(int $clubId): int
+    // {
+    //     $stmt = $this->db->prepare("
+    //         SELECT members 
+    //         FROM clubs 
+    //         WHERE id = :id
+    //     ");
+    //     $stmt->execute(['id' => $clubId]);
+    //     $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    //     if (!$row || !is_array($row['members'])) {
+    //         return 0;
+    //     }
+
+    //     // On filtre les valeurs null / non numériques qui pourraient venir d'un mauvais INSERT
+    //     $validIds = array_filter($row['members'], 'is_int');
+    //     return count($validIds);
+    // }
     public function countMembers(int $clubId): int
     {
         $stmt = $this->db->prepare("
-            SELECT members 
-            FROM clubs 
+            SELECT COALESCE(cardinality(members), 0) AS total
+            FROM clubs
             WHERE id = :id
         ");
+
         $stmt->execute(['id' => $clubId]);
-        $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        if (!$row || !is_array($row['members'])) {
-            return 0;
-        }
-
-        // On filtre les valeurs null / non numériques qui pourraient venir d'un mauvais INSERT
-        $validIds = array_filter($row['members'], 'is_int');
-        return count($validIds);
+        return (int) $stmt->fetchColumn();
     }
+
 
     public function countEvents(int $clubId): int
     {
@@ -98,33 +111,34 @@ class PresidentRepository
     public function getMembers(int $clubId): array
     {
         $stmt = $this->db->prepare("
-            SELECT members 
-            FROM clubs 
-            WHERE id = :id
+            SELECT u.id, u.prenom, u.nom, u.role
+            FROM users u
+            JOIN clubs c ON u.id = ANY(c.members)
+            WHERE c.id = ?;
         ");
-        $stmt->execute(['id' => $clubId]);
-        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+        $stmt->execute([$clubId]);
+        return $row = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-        if (!$row || empty($row['members']) || !is_array($row['members'])) {
-            return [];
-        }
+        // if (!$row || empty($row['members']) || !is_array($row['members'])) {
+        //     return [];
+        // }
 
-        // On enlève les éventuelles valeurs invalides
-        $memberIds = array_filter($row['members'], 'is_int');
-        if (empty($memberIds)) {
-            return [];
-        }
+        // // On enlève les éventuelles valeurs invalides
+        // $memberIds = array_filter($row['members'], 'is_int');
+        // if (empty($memberIds)) {
+        //     return [];
+        // }
 
-        $placeholders = implode(',', array_fill(0, count($memberIds), '?'));
+        // $placeholders = implode(',', array_fill(0, count($memberIds), '?'));
         
-        $stmt = $this->db->prepare("
-            SELECT id, prenom, nom
-            FROM users
-            WHERE id IN ($placeholders)
-            ORDER BY nom, prenom
-        ");
+        // $stmt = $this->db->prepare("
+        //     SELECT id, prenom, nom
+        //     FROM users
+        //     WHERE id IN ($placeholders)
+        //     ORDER BY nom, prenom
+        // ");
         
-        $stmt->execute($memberIds);
-        return $stmt->fetchAll(PDO::FETCH_ASSOC) ?: [];
+        // $stmt->execute($memberIds);
+        // return $stmt->fetchAll(PDO::FETCH_ASSOC) ?: [];
     }
 }

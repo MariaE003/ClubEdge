@@ -198,6 +198,21 @@ class ClubController extends BaseController{
         
     }
 
+    public function showPresidentClub(){
+        $userId = $this->requireRole('president');
+
+        $club = $this->clubRepository->ClubDuPrisident($userId);
+
+        if (!$club) {
+            $this->flash('error', 'Aucun club associe a ce president.');
+            $this->redirect('president/dashboard');
+        }
+
+        $this->render('president/club/show.twig', [
+            'club' => $club
+        ]);
+    }
+
     
    
 

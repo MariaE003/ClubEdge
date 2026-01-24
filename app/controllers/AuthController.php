@@ -20,21 +20,39 @@ class AuthController extends BaseController{
         require_once __DIR__."/../views/student/dashboard.html";
     }
     public function dashboardPresident(){
-        require_once __DIR__."/../views/president/dashboard.html";
+        require_once __DIR__."/../views/president/dashboard.twig";
     }
+    // public function login() {
+    //     $email = $_POST["email"];
+    //     $password = $_POST["password"];
+    //     $result = $this->repo->login($email,$password);
+    //     if ($result['success']) {
+    //         if($result["user"]["role"] === "admin"){
+    //            $this->dashboardAdmin();
+    //         }else if($result["user"]["role"] === "president"){
+    //             $this->dashboardPresident();
+    //         }else{
+    //             // mohssine
+    //             header("Location: student/clubs-list");
+    //            $this->dashboardEtudiant();
+    //         }
+    //         exit();   
+    //     } else {
+    //         $this->pageLogin();
+    //         exit();      
+    //     }
+    // }
     public function login() {
         $email = $_POST["email"];
         $password = $_POST["password"];
         $result = $this->repo->login($email,$password);
         if ($result['success']) {
             if($result["user"]["role"] === "admin"){
-               $this->dashboardAdmin();
+               header("Location: admin/dashboard");
             }else if($result["user"]["role"] === "president"){
-                $this->dashboardPresident();
+                header("Location: president/dashboard");
             }else{
-                // mohssine
-                header("Location: student/clubs-list");
-               $this->dashboardEtudiant();
+               header("Location: etudiant/dashboard"); 
             }
             exit();   
         } else {
