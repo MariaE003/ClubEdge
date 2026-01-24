@@ -454,4 +454,8 @@
     public function pageListEvent(){
         parent::render("student/event-list.html" , []);
     }
+
+    public function AddReview(){
+        require_once __DIR__. "/../views/student/review.php";
+    }
 }
