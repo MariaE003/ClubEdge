@@ -1,5 +1,4 @@
 ﻿<?php
-
 $routes = [
     // Public / Auth
     "/"                 => ["AuthController", "pageHome"],
