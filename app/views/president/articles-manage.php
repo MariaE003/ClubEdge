@@ -114,7 +114,7 @@
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a href="create-article.html" class="sidebar-link">
+                            <a href="CreateArticle" class="sidebar-link">
                                 <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                     stroke-width="1.5">
                                     <path d="M12 20h9" />
@@ -159,7 +159,7 @@
                         <h1 class="page-title">Mes articles</h1>
                         <p class="page-description">Publiez des articles sur les événements passés (texte + images).</p>
                     </div>
-                    <a href="create-article.html" class="btn btn-primary">
+                    <a href="CreateArticle" class="btn btn-primary">
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                             stroke-width="1.5">
                             <line x1="12" y1="5" x2="12" y2="19" />
