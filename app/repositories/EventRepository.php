@@ -239,4 +239,6 @@ final class EventRepository
         }
         return $row;
     }
+
+    
 }
