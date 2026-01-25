@@ -39,9 +39,8 @@
             <nav class="sidebar-nav">
                 <ul class="sidebar-menu">
                     <li class="sidebar-item">
-                        <a href="{{ path('president/dashboard') }}" class="sidebar-link">
-                            <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="1.5">
+                        <a href="/ClubEdge/president/dashboard" class="sidebar-link active">
+                            <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                                 <rect x="3" y="3" width="7" height="9" rx="1" />
                                 <rect x="14" y="3" width="7" height="5" rx="1" />
                                 <rect x="14" y="12" width="7" height="9" rx="1" />
@@ -53,29 +52,31 @@
                 </ul>
 
                 <div class="sidebar-section">
-                    <h3 class="sidebar-section-title">Événements</h3>
+                    {# <h3 class="sidebar-section-title">Mon Club</h3> #}
                     <ul class="sidebar-menu">
                         <li class="sidebar-item">
-                            <a href="{{ path('president/events') }}" class="sidebar-link">
-                                <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                    stroke-width="1.5">
-                                    <rect x="3" y="4" width="18" height="18" rx="2" />
-                                    <line x1="16" y1="2" x2="16" y2="6" />
-                                    <line x1="8" y1="2" x2="8" y2="6" />
-                                    <line x1="3" y1="10" x2="21" y2="10" />
-                                </svg>
-                                <span>Mes événements</span>
+                            <a href="/ClubEdge/student/club-detail?idC={{id_club}}" class="sidebar-link">
+                                {# <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <circle cx="12" cy="12" r="3" />
+                                    <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06" />
+                                </svg> #}
+                                {# <span>Paramètres du club</span> #}
+                                Mon Club
+                            </a>
+                        </li>
+                        {# <li class="sidebar-item">
+                            <a href="/ClubEdge/president/CreateArticle?idC={{president.club_id}}" class="sidebar-link">
+                             Creer un article
+                            </a>
+                        </li> #}
+                         <li class="sidebar-item">
+                            <a href="/ClubEdge/president/ArticleManage?idC={{president.club_id}}" class="sidebar-link">
+                             Mes Article
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a href="{{ path('president/events/create') }}" class="sidebar-link active">
-                                <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                    stroke-width="1.5">
-                                    <circle cx="12" cy="12" r="10" />
-                                    <line x1="12" y1="8" x2="12" y2="16" />
-                                    <line x1="8" y1="12" x2="16" y2="12" />
-                                </svg>
-                                <span>Créer un événement</span>
+                            <a href="/ClubEdge/president/events" class="sidebar-link">
+                             Mes Evenements
                             </a>
                         </li>
                     </ul>
