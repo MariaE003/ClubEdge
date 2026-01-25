@@ -4,7 +4,6 @@ class ArticleController extends BaseController
 {
     public function __construct(){
         parent::__construct();
-        $this->requireRole1('admin');
     }
     
     public function createArticle(){

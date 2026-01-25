@@ -36,16 +36,17 @@ $routes = [
     "president/events/{id}/update"      => ["EventController", "presidentUpdate"],
     "president/events/{id}/delete"      => ["EventController", "presidentDelete"],
     "president/events/{id}/participants"=> ["EventController", "presidentParticipants"],
+    "etudiant/club-detail"      => ["ClubController", "detailClub"],
 
     // Events (Student side)
     "etudiant/events"           => ["EventController", "studentIndex"],
     "etudiant/events/{id}"      => ["EventController", "studentShow"],
     "etudiant/events/{id}/join" => ["EventController", "studentJoin"],
     "etudiant/review/{id}"      => ["EventController", "AddReview"],
+    "etudiant/club-detail2"      => ["ClubController", "detailClubEtudiant"],
 
     // Clubs (Student / Etudiant)
     "etudiant/clubs-list"       => ["ClubController", "AfficherClub"],
-    "etudiant/club-detail"      => ["ClubController", "detailClub"],
     "student/clubs-list"        => ["ClubController", "AfficherClub"],
     "student/club-detail"       => ["ClubController", "detailClub"],
     "student/join"              => ["ClubController", "join"],

@@ -59,6 +59,18 @@ class PresidentRepository
 
         return (int) $stmt->fetchColumn();
     }
+    public function getClubByPresidentId(int $userId): ?int
+    {
+        $stmt = $this->db->prepare("
+            SELECT id 
+            FROM clubs 
+            WHERE president_id = :id
+            LIMIT 1
+        ");
+        $stmt->execute(['id' => $userId]);
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $row ? (int)$row['id'] : null;
+    }
 
 
     public function countEvents(int $clubId): int
@@ -135,5 +147,13 @@ class PresidentRepository
         
         // $stmt->execute($memberIds);
         // return $stmt->fetchAll(PDO::FETCH_ASSOC) ?: [];
+    }
+     public function getIdClubByIdPresident(int $id_president): array
+    {
+        $stmt = $this->db->prepare("
+            select id from clubs where president_id= ?
+        ");
+        $stmt->execute(['id' => $id_president]);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC) ?: [];
     }
 }

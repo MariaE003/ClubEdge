@@ -10,7 +10,6 @@
         parent::__construct();
         $this->eventRepository = new EventRepository();
         $this->clubRepository = new ClubRepository(Database::getInstance()->getConnection());
-        $this->requireRole('president');
     }
 
     public function presidentIndex(): void

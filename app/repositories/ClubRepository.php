@@ -40,7 +40,7 @@ class ClubRepository{
 
     // find
     public function findClubById($idClub){
-        $req=$this->db->prepare("SELECT * from clubs where id=?");
+        $req=$this->db->prepare("SELECT * from clubs where id = ? limit 1 ");
         $req->execute([$idClub]);
         return $req->fetch(PDO::FETCH_ASSOC);
     }
@@ -141,6 +141,14 @@ class ClubRepository{
         }else{
             return true;
         }
+    }
+    public function getIdClubByIdPresident($id_president)
+    {
+        $stmt = $this->db->prepare("
+            select * from clubs where president_id = ? limit 1 
+        ");
+        $stmt->execute([$id_president]);
+        return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
 
