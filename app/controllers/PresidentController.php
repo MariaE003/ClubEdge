@@ -7,7 +7,6 @@ class PresidentController extends BaseController
     public function __construct()
     {
         parent::__construct();
-         $this->requireRole1('president');
         $this->repo = new PresidentRepository();
 
     }

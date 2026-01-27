@@ -5,7 +5,6 @@ class ClubController extends BaseController{
 
     public function __construct(){
         parent::__construct();
-        $this->requireRole1("etudiant");
         $pdo=Database::getInstance()->getConnection();
         $this->repoClub = new ClubRepository($pdo);
     }
@@ -123,7 +122,7 @@ class ClubController extends BaseController{
     public function AfficherClub(){
         $clubs=$this->repoClub->allClubs();
         
-        echo $this->render('student/clubs-list.html',[
+        echo $this->render('student/clubs-list.twig',[
             'clubs'=>$clubs,
         ]);
     }
@@ -143,10 +142,46 @@ class ClubController extends BaseController{
         if (!isset($_GET['idC'])) {
             die('club introvalbe !');
         }
-        
-        $idClub=(int)$_GET['idC'];
         $user_id = $_SESSION['user_id'];
+        $idClub=$this->repoClub->getIdClubByIdPresident($user_id)["id"];
         $events = $this->repoClub->findEventByClub($idClub);
+        
+        $club=$this->repoClub->findClubById($idClub);
+        $result=$this->repoClub->countMembers($idClub);
+        $role=$_SESSION["role"];
+        $nombre_members=$result['total'];
+        // var_dump($club['members']);
+        // var_dump($club['members']);
+        // var_dump($club['members']);
+        // var_dump($club);
+        $NameClub=strtoupper(substr($club['name'],0,2));
+
+
+        $isMemberHere = $this->repoClub->isStudentInClub($idClub, $user_id);
+    
+        $isMemberGlobally = $this->repoClub->isStudentInAnyClub($user_id);
+
+    $club = $this->repoClub->findClubById($idClub);
+
+        echo $this->render('student/club-details.twig',[
+            'club'=>$club,
+            'NameClub'=>$NameClub,
+            'events'=>$events,
+            'members' =>$nombre_members,
+            'isMemberHere' => $isMemberHere,
+            'isMemberGlobally' => $isMemberGlobally
+        ]);
+        
+    }
+    public function detailClubEtudiant(){
+        
+        if (!isset($_GET['idC'])) {
+            die('club introvalbe !');
+        }
+        $user_id = $_SESSION['user_id'];
+        $idClub=$_GET['idC'];
+        $events = $this->repoClub->findEventByClub($idClub);
+        
         $club=$this->repoClub->findClubById($idClub);
         $result=$this->repoClub->countMembers($idClub);
         $role=$_SESSION["role"];
@@ -195,6 +230,7 @@ class ClubController extends BaseController{
             'club'=>$club,
             'members'=>$member,
             'NameClub'=>$NameClub,
+            'id_club' => $idClub
         ]);
         
     }

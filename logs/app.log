@@ -5,3 +5,4 @@
 {"ts":"2026-01-24T13:40:42+00:00","level":"INFO","message":"event_created","context":{"event_id":2,"user_id":10}}
 {"ts":"2026-01-24T14:00:58+00:00","level":"INFO","message":"event_created","context":{"event_id":3,"user_id":10}}
 {"ts":"2026-01-24T14:26:22+00:00","level":"INFO","message":"event_created","context":{"event_id":4,"user_id":10}}
+{"ts":"2026-01-27T14:21:40+00:00","level":"INFO","message":"event_created","context":{"event_id":1,"user_id":2}}
